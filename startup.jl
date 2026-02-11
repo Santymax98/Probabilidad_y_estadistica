@@ -1,16 +1,27 @@
-#!/usr/bin/env julia
+# Este archivo lanzará Pluto cuando lo ejecutes en Binder
 
-import Pkg
+using Pkg
 Pkg.activate(".")
-Pkg.instantiate()
+
+# Asegurarse que Pluto esté instalado
+if !haskey(Pkg.project().dependencies, "Pluto")
+    @info "Instalando Pluto..."
+    Pkg.add("Pluto")
+end
+
+if !haskey(Pkg.project().dependencies, "PlutoUI")
+    @info "Instalando PlutoUI..."
+    Pkg.add("PlutoUI")
+end
 
 using Pluto
+
+# Iniciar Pluto con la configuración correcta para Binder
+@info "Iniciando servidor Pluto..."
 Pluto.run(
-    host="0.0.0.0",        # Escuchar en todas las interfaces de red
-    port=1234,             # Puerto estándar para Pluto
-    launch_browser=false,  # No intentar abrir un navegador
-    require_secret_for_access=false,  # No requerir secreto para acceso
-    require_secret_for_open_links=false, # No requerir secreto para links
-    show_fb_bar=false,     # No mostrar barra de retroalimentación (feedback)
-    auto_reload_from_file=true, # Recargar automáticamente al cambiar archivos
+    host="0.0.0.0",
+    port=1234,
+    launch_browser=false,
+    require_secret_for_access=false,
+    require_secret_for_open_links=false
 )

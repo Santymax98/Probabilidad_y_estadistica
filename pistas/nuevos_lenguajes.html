@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pista: Nuevos Lenguajes (Inglés II) | MathStats</title>
+  
+  <!-- Bootstrap CSS desde CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      padding-top: 70px;
+    }
+    
+    /* HEADER */
+    #header { 
+      background: #fff; 
+      box-shadow: 0 2px 15px rgba(0,0,0,.1); 
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    
+    .logo { 
+      font-size: 28px; 
+      font-weight: 700; 
+      color: #2487ce; 
+      text-decoration: none;
+    }
+    
+    .get-started-btn {
+      background: #2487ce;
+      color: #fff;
+      padding: 8px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .get-started-btn:hover {
+      background: #3194db;
+      color: #fff;
+    }
+    
+    /* HERO */
+    #hero { 
+      width: 100%; 
+      height: 60vh; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative; 
+      padding: 0; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #hero h1 { 
+      margin: 0; 
+      font-size: 48px; 
+      font-weight: 700; 
+      color: #fff; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    #hero h2 { 
+      color: #eee; 
+      margin: 10px 0 0 0; 
+      font-size: 24px; 
+    }
+    
+    .btn-get-started {
+      background: #fff;
+      color: #2487ce;
+      padding: 12px 30px;
+      border-radius: 50px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    
+    .btn-get-started:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+    
+    /* SECTIONS */
+    .section-pad { 
+      padding: 60px 0; 
+    }
+    
+    .section-title {
+      text-align: center;
+      padding-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2487ce;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #2487ce;
+      bottom: 0;
+      left: calc(50% - 40px);
+    }
+    
+    .section-title p {
+      color: #666;
+    }
+    
+    /* CARDS */
+    .card-soft { 
+      border: 0; 
+      border-radius: 15px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      transition: 0.3s;
+    }
+    
+    .card-soft:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.15);
+    }
+    
+    /* PROGRESS BAR */
+    .fixed-bottom-bar { 
+      z-index: 999; 
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      padding: 15px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .progress { 
+      background-color: rgba(255,255,255,0.2); 
+      height: 20px;
+      border-radius: 10px;
+    }
+    
+    .progress-bar { 
+      font-weight: 700;
+      background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+      border-radius: 10px;
+    }
+    
+    /* ANGLE CONTAINER */
+    .angle-container { 
+      height: 200px; 
+      position: relative; 
+      margin: 30px 0;
+    }
+    
+    /* LIST GROUP */
+    .list-group-item { 
+      cursor: pointer; 
+      transition: all 0.3s;
+      border-left: 4px solid transparent;
+    }
+    
+    .list-group-item:hover { 
+      background-color: #f8f9fa; 
+      padding-left: 25px;
+      border-left-color: #2487ce;
+    }
+    
+    .list-group-item.active { 
+      background-color: #2487ce; 
+      border-color: #2487ce; 
+    }
+    
+    /* STICKY NOTE */
+    .sticky-note { 
+      border-left: 4px solid #ff9800; 
+      background: #fff8e1; 
+      padding: 15px; 
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+    
+    /* MODAL CERTIFICADO */
+    .modal-certificate {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 50px;
+      text-align: center;
+    }
+    
+    .certificate-badge {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .certificate-content {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    /* BOTÓN BLOQUEADO */
+    .btn-locked {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    
+    /* NAV PILLS */
+    .nav-pills .nav-link {
+      border-radius: 50px;
+      padding: 12px 25px;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+    
+    .nav-pills .nav-link.active {
+      background: #2487ce;
+    }
+    
+    .nav-pills .nav-link:disabled {
+      opacity: 0.4;
+    }
+    
+    /* WORD BUTTONS */
+    .word-btn {
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    
+    .word-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* DROP ZONE */
+    #drop-zone {
+      min-height: 80px;
+      border: 3px dashed #ccc;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background: #fafafa;
+    }
+    
+    #drop-zone .badge {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 5px;
+    }
+    
+    /* QUIZ BUTTONS */
+    .quiz-btn {
+      text-align: left;
+      padding: 15px 20px;
+      transition: 0.3s;
+    }
+    
+    .quiz-btn:hover:not(.disabled) {
+      background: #e3f2fd;
+      border-color: #2487ce;
+    }
+    
+    /* FOOTER */
+    #footer {
+      background: #1e3c72;
+      color: #fff;
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    
+    #footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    
+    /* BOXES */
+    .box {
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .box.featured {
+      border: 3px solid #2487ce;
+      transform: scale(1.05);
+    }
+    
+    .box h3 {
+      color: #2487ce;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .box ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .box ul li {
+      padding: 10px 0;
+    }
+    
+    .box ul li i {
+      color: #4CAF50;
+      margin-right: 10px;
+    }
+    
+    .btn-buy {
+      background: #2487ce;
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    
+    .btn-buy:hover {
+      background: #3194db;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      #hero h1 { font-size: 32px; }
+      #hero h2 { font-size: 18px; }
+      .section-title h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="#" class="logo">MathStats Code Hub</a>
+      <a href="#matematicas" class="get-started-btn">Ir a Actividad</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container text-center">
+      <h1>Nuevos lenguajes (Inglés II)</h1>
+      <h2>Pista - Recursos interactivos</h2>
+      <a href="#prefiguracion" class="btn-get-started"><i class="bi bi-rocket-takeoff"></i> Iniciar ruta</a>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- PREFIGURACIÓN -->
+    <section id="prefiguracion" class="section-pad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Prefiguración (antes de entrenar)</h2>
+          <p>Propósito, preguntas orientadoras y checklist</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="alert alert-info border-0 shadow-sm">
+              <h4 class="alert-heading"><i class="bi bi-bullseye"></i> Resultado de Aprendizaje</h4>
+              <p class="mb-0">
+                Aplica vocabulario elemental en inglés para clasificar figuras y ángulos en una situación cotidiana,
+                justificando la clasificación con atributos visibles.
+              </p>
+            </div>
+
+            <h5 class="mt-4"><i class="bi bi-compass"></i> Preguntas orientadoras</h5>
+            <ol class="mt-2">
+              <li>¿Qué figura predomina en mi objeto y qué atributo visible lo demuestra?</li>
+              <li>¿Hay un ángulo? ¿Cómo sé si es <em>right / acute / obtuse</em> sin medir?</li>
+              <li>¿Qué vocabulario mínimo necesito para describirlo con claridad?</li>
+              <li>Si esto fuera para primaria, ¿qué apoyo visual usaría para que se entienda?</li>
+            </ol>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card card-soft p-4">
+              <h5 class="mb-3"><i class="bi bi-check2-square"></i> Checklist de entrada</h5>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-2"><i class="bi bi-camera me-2 text-primary"></i> 2 fotos de objetos del entorno</li>
+                <li class="mb-2"><i class="bi bi-pencil-square me-2 text-primary"></i> 1 señalamiento (lados/ángulo)</li>
+                <li class="mb-2"><i class="bi bi-chat-quote me-2 text-primary"></i> 3–4 frases en inglés</li>
+                <li class="mb-2"><i class="bi bi-eye me-2 text-primary"></i> Atributos observables</li>
+              </ul>
+              <hr>
+              <a href="#matematicas" class="btn btn-primary w-100">
+                <i class="bi bi-lightning-charge"></i> Ir a Entrenamiento
+              </a>
+            </div>
+
+            <div class="sticky-note">
+              <strong><i class="bi bi-exclamation-triangle"></i> Importante:</strong> Debes responder correctamente cada nivel antes de avanzar. La barra de progreso solo avanza con respuestas correctas.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUTA -->
+    <section id="ruta" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ruta de trabajo</h2>
+          <p>Antes / Durante / Después del encuentro</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-1-circle"></i> Antes</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Selecciona 2 objetos del entorno</li>
+                <li><i class="bi bi-check"></i> Identifica figura y ángulo</li>
+                <li><i class="bi bi-check"></i> Prepara evidencia visual</li>
+                <li><i class="bi bi-check"></i> Redacta 3–4 frases en inglés</li>
+              </ul>
+              <a href="#matematicas" class="btn-buy">Ir a módulos</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="box featured">
+              <h3><i class="bi bi-2-circle"></i> Durante</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Integración evidencia–criterio</li>
+                <li><i class="bi bi-check"></i> Justificación con atributos</li>
+                <li><i class="bi bi-check"></i> Cierre: conclusiones</li>
+                <li><i class="bi bi-check"></i> Trabajo colaborativo</li>
+              </ul>
+              <a href="#reconfiguracion" class="btn-buy">Ver cierre</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-3-circle"></i> Después</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Verifica claridad visual</li>
+                <li><i class="bi bi-check"></i> Entrega evidencia final</li>
+                <li><i class="bi bi-check"></i> Integra producto del curso</li>
+                <li><i class="bi bi-check"></i> Reflexión pedagógica</li>
+              </ul>
+              <a href="#reconfiguracion" class="btn-buy">Ver evidencia</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA DE PROGRESO FIJA -->
+    <div class="fixed-bottom fixed-bottom-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-trophy-fill text-warning me-2 fs-3"></i>
+              <div>
+                <small class="d-block text-uppercase" style="font-size: 0.7rem; opacity: 0.8;">Misión actual</small>
+                <strong id="mission-name" style="font-size: 0.9rem;">1. Shapes</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7">
+            <div class="progress">
+              <div id="game-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;">0%</div>
+            </div>
+          </div>
+
+          <div class="col-md-2 text-end">
+            <span class="badge bg-warning text-dark fs-6" id="score-badge">0 Pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTACIÓN DE ENTRENAMIENTO -->
+    <section id="matematicas" class="section-pad" style="padding-bottom: 150px;">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Estación de Entrenamiento</h2>
+          <p>Completa correctamente los 4 niveles para consolidar la preparación</p>
+        </div>
+
+        <!-- TABS -->
+        <ul class="nav nav-pills nav-fill mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-lvl1-tab" data-bs-toggle="pill" data-bs-target="#pills-lvl1" type="button" role="tab">
+              <span id="status-lvl1"><i class="bi bi-circle"></i></span> 1. Shapes
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-lvl2-tab" data-bs-toggle="pill" data-bs-target="#pills-lvl2" type="button" role="tab" disabled>
+              <span id="status-lvl2"><i class="bi bi-lock-fill"></i></span> 2. Angles
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-lvl3-tab" data-bs-toggle="pill" data-bs-target="#pills-lvl3" type="button" role="tab" disabled>
+              <span id="status-lvl3"><i class="bi bi-lock-fill"></i></span> 3. English
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-lvl4-tab" data-bs-toggle="pill" data-bs-target="#pills-lvl4" type="button" role="tab" disabled>
+              <span id="status-lvl4"><i class="bi bi-lock-fill"></i></span> 4. Saber Pro
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+          <!-- NIVEL 1: SHAPES -->
+          <div class="tab-pane fade show active" id="pills-lvl1" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="list-group">
+                  <button class="list-group-item list-group-item-action active" onclick="showShape('square')">
+                    <i class="bi bi-square me-2"></i> Square (Cuadrado)
+                  </button>
+                  <button class="list-group-item list-group-item-action" onclick="showShape('triangle')">
+                    <i class="bi bi-triangle me-2"></i> Triangle (Triángulo)
+                  </button>
+                  <button class="list-group-item list-group-item-action" onclick="showShape('circle')">
+                    <i class="bi bi-circle me-2"></i> Circle (Círculo)
+                  </button>
+                </div>
+                <div class="mt-3 alert alert-warning small">
+                  <i class="bi bi-exclamation-triangle"></i> <strong>Importante:</strong> Estudia cada figura y responde correctamente el mini-reto para desbloquear el siguiente nivel.
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="card card-soft text-center p-5" id="shape-card">
+                  <!-- Contenido dinámico -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NIVEL 2: ANGLES -->
+          <div class="tab-pane fade" id="pills-lvl2" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="card card-soft p-4 text-center">
+                  <h4><i class="bi bi-rulers"></i> Laboratorio de Ángulos</h4>
+                  <p class="text-muted">Mueve el deslizador hasta encontrar el <strong>Right Angle</strong> (90°) y verifica tu respuesta.</p>
+
+                  <div class="angle-container my-4 d-flex justify-content-center align-items-end">
+                    <div style="width: 250px; border-bottom: 4px solid #333; position: absolute; bottom: 50px;"></div>
+                    <div id="moving-arm" style="width: 250px; border-bottom: 4px solid #dc3545; position: absolute; bottom: 50px; transform-origin: 0% 100%; transform: rotate(-45deg); transition: transform 0.1s;"></div>
+                  </div>
+
+                  <label for="angleRange" class="form-label fw-bold fs-5 text-primary" id="angle-display">45° - Acute (Agudo)</label>
+                  <input type="range" class="form-range" min="0" max="180" value="45" id="angleRange" oninput="updateAngle(this.value)">
+
+                  <div class="mt-4">
+                    <button class="btn btn-lg btn-outline-primary" onclick="checkAngleTask()">
+                      <i class="bi bi-check-circle"></i> ¡Encontré el Right Angle (90°)!
+                    </button>
+                  </div>
+                  <div id="angle-feedback" class="mt-3 fw-bold"></div>
+
+                  <hr class="my-4">
+
+                  <button class="btn btn-success btn-lg btn-locked" id="btn-complete-lvl2" onclick="completeLevel('lvl2', 180)">
+                    <i class="bi bi-lock-fill"></i> Verifica el ángulo correcto para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NIVEL 3: ENGLISH -->
+          <div class="tab-pane fade" id="pills-lvl3" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="card card-soft">
+                  <div class="card-header bg-warning text-dark fw-bold text-center py-3">
+                    <h5 class="mb-0"><i class="bi bi-chat-left-text"></i> Sentence Builder (Construye la frase)</h5>
+                  </div>
+                  <div class="card-body text-center p-4">
+                    <p class="lead">Ordena las palabras para describir la figura correctamente:</p>
+
+                    <div class="mb-4">
+                      <svg width="180" height="120" style="border: 2px solid #ccc; border-radius: 10px; background: #f9f9f9;">
+                        <rect x="30" y="20" width="120" height="80" fill="#4CAF50" stroke="#2e7d32" stroke-width="3"/>
+                      </svg>
+                      <p class="text-muted mt-2"><small>Rectangle (Rectángulo)</small></p>
+                    </div>
+
+                    <div id="drop-zone">
+                      <span class="text-muted fst-italic placeholder-text">Haz clic en las palabras de abajo en orden...</span>
+                    </div>
+
+                    <div id="word-bank" class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+                      <button class="btn btn-outline-dark word-btn" onclick="addWord(this, 'rectangle.')">rectangle.</button>
+                      <button class="btn btn-outline-dark word-btn" onclick="addWord(this, 'It')">It</button>
+                      <button class="btn btn-outline-dark word-btn" onclick="addWord(this, 'a')">a</button>
+                      <button class="btn btn-outline-dark word-btn" onclick="addWord(this, 'is')">is</button>
+                    </div>
+
+                    <div class="mt-4">
+                      <button class="btn btn-danger me-2" onclick="resetSentence()">
+                        <i class="bi bi-arrow-counterclockwise"></i> Borrar
+                      </button>
+                      <button class="btn btn-success btn-lg" onclick="checkSentence()">
+                        <i class="bi bi-check-circle"></i> Verificar frase
+                      </button>
+                    </div>
+                    <div id="sentence-feedback" class="mt-3"></div>
+
+                    <hr class="my-4">
+
+                    <div class="text-start alert alert-info">
+                      <h6 class="fw-bold"><i class="bi bi-journal-text"></i> Sentence frames (para tu evidencia)</h6>
+                      <ul class="mb-0">
+                        <li><code>This is a ___ because it has ___ sides and ___ vertices.</code></li>
+                        <li><code>The angle is ___ because it is smaller/bigger than a right angle.</code></li>
+                      </ul>
+                    </div>
+
+                    <button class="btn btn-success btn-lg btn-locked" id="btn-complete-lvl3" onclick="completeLevel('lvl3', 220)">
+                      <i class="bi bi-lock-fill"></i> Construye la frase correcta para avanzar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NIVEL 4: SABER PRO -->
+          <div class="tab-pane fade" id="pills-lvl4" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card card-soft h-100">
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center p-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px;">
+                    <i class="bi bi-building display-1 text-white mb-3"></i>
+                    <h5 class="text-white text-center">Contexto Real</h5>
+                    <p class="text-white text-center">
+                      Observa ejemplos del entorno donde identifiques perpendicularidad:
+                    </p>
+                    <ul class="text-white">
+                      <li>Esquinas de edificios</li>
+                      <li>Postes verticales</li>
+                      <li>Marcos de puertas/ventanas</li>
+                      <li>Señales de tránsito</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card card-soft h-100">
+                  <div class="card-body p-4">
+                    <h4 class="text-center mb-4"><i class="bi bi-clipboard-check"></i> Reto Saber Pro</h4>
+                    <p class="lead">Si un poste vertical es perpendicular al suelo horizontal, el ángulo entre ambos es:</p>
+
+                    <div class="d-grid gap-3 mt-4">
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="checkQuiz(this, false)">
+                        <strong>A)</strong> Acute angle (menos de 90°)
+                      </button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="checkQuiz(this, true)">
+                        <strong>B)</strong> Right angle (90°)
+                      </button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="checkQuiz(this, false)">
+                        <strong>C)</strong> Obtuse angle (más de 90°)
+                      </button>
+                    </div>
+
+                    <div id="quiz-final-feedback" class="mt-4"></div>
+
+                    <hr class="my-4">
+
+                    <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-lvl4" onclick="completeLevel('lvl4', 260)">
+                      <i class="bi bi-lock-fill"></i> Responde correctamente para finalizar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RECONFIGURACIÓN -->
+    <section id="reconfiguracion" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Reconfiguración (cierre matemático)</h2>
+          <p>Producto final + checklist de calidad + captura de evidencia</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card card-soft p-4">
+              <h5 class="mb-4"><i class="bi bi-file-earmark-check"></i> Evidencia final (lista para entregar)</h5>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">Nombre completo *</label>
+                <input type="text" class="form-control form-control-lg" id="student-name" placeholder="Escribe tu nombre completo" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">1) Describe tu evidencia (objeto y contexto) *</label>
+                <input type="text" class="form-control" id="evi-context" placeholder="Ej.: Ventana de mi casa / marco de la puerta / señal de tránsito..." required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">2) Figura y atributos (en inglés) *</label>
+                <textarea class="form-control" id="evi-shape" rows="2" placeholder="This is a __ because it has __ sides and __ vertices." required></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">3) Ángulo y justificación (en inglés) *</label>
+                <textarea class="form-control" id="evi-angle" rows="2" placeholder="The angle is __ because it is smaller/bigger than a right angle." required></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">4) Atributo decisivo (matemático) *</label>
+                <textarea class="form-control" id="evi-math" rows="2" placeholder="Ej.: Conté 4 lados iguales / identifiqué perpendicularidad / observé que es menor que 90°..." required></textarea>
+              </div>
+
+              <button class="btn btn-primary btn-lg w-100 btn-locked" id="btn-generate-certificate" onclick="generateCertificate()">
+                <i class="bi bi-award"></i> Generar certificado de completación
+              </button>
+
+              <div class="text-center mt-3">
+                <small class="text-muted">
+                  <i class="bi bi-info-circle"></i> Completa los 4 niveles para activar el certificado
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card card-soft p-4 mb-4">
+              <h5 class="mb-3"><i class="bi bi-check-circle"></i> Checklist de calidad</h5>
+
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="chk1">
+                <label class="form-check-label" for="chk1">
+                  Clasifiqué correctamente la figura (shape)
+                </label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="chk2">
+                <label class="form-check-label" for="chk2">
+                  Justifiqué con atributos observables
+                </label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="chk3">
+                <label class="form-check-label" for="chk3">
+                  Escribí 3–4 frases breves en inglés
+                </label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="chk4">
+                <label class="form-check-label" for="chk4">
+                  La imagen tiene señalamiento claro
+                </label>
+              </div>
+            </div>
+
+            <div class="card card-soft p-4">
+              <h6 class="fw-bold mb-3"><i class="bi bi-lightbulb"></i> Reflexión pedagógica</h6>
+              
+              <div class="mb-3">
+                <label class="form-label">¿Qué atributo fue decisivo para clasificar?</label>
+                <textarea class="form-control" rows="2" id="ref1"></textarea>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">¿Qué apoyo visual usarías con niños de primaria?</label>
+                <textarea class="form-control" rows="2" id="ref2"></textarea>
+              </div>
+
+              <div class="alert alert-success border-0 mb-0">
+                <i class="bi bi-stars"></i> Completa todos los campos y genera tu certificado para finalizar.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL CERTIFICADO -->
+  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0">
+        <div class="modal-certificate">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          
+          <div class="certificate-badge">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          
+          <h2 class="mb-3">¡Felicitaciones!</h2>
+          <h3 class="mb-4" id="cert-student-name" style="color: #ffd700;">Estudiante</h3>
+          
+          <p class="lead mb-4">Has completado exitosamente el <strong>100%</strong> de la pista<br>"Nuevos lenguajes (Inglés II)"</p>
+          
+          <div class="certificate-content">
+            <div class="row text-start mb-4">
+              <div class="col-md-6 mb-3">
+                <strong><i class="bi bi-star-fill text-warning"></i> Puntaje total:</strong>
+                <div class="fs-2 text-warning" id="cert-score">0 pts</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <strong><i class="bi bi-check-circle-fill text-success"></i> Niveles completados:</strong>
+                <div class="fs-2">4/4</div>
+              </div>
+            </div>
+            
+            <hr class="my-3" style="border-color: rgba(255,255,255,0.3);">
+            
+            <div class="text-start">
+              <h6 class="mb-3"><i class="bi bi-bookmark-check-fill"></i> Tu evidencia:</h6>
+              <p class="mb-2"><strong>Contexto:</strong> <span id="cert-context">-</span></p>
+              <p class="mb-2"><strong>Figura:</strong> <span id="cert-shape">-</span></p>
+              <p class="mb-2"><strong>Ángulo:</strong> <span id="cert-angle">-</span></p>
+              <p class="mb-0"><strong>Justificación:</strong> <span id="cert-math">-</span></p>
+            </div>
+          </div>
+          
+          <div class="mt-4">
+            <p class="mb-3">
+              <i class="bi bi-camera-fill"></i> Toma un pantallazo de este certificado y adjúntalo como evidencia de completación.
+            </p>
+            <button class="btn btn-light btn-lg px-5" onclick="window.print()">
+              <i class="bi bi-printer"></i> Imprimir certificado
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container text-center">
+      <div class="copyright">
+        &copy; 2025 <strong><span>MathStats Code Hub</span></strong> - Universidad de Nariño
+      </div>
+      <div class="credits mt-2">
+        Plataforma educativa interactiva
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ==========================================
+    // ESTADO DEL JUEGO
+    // ==========================================
+    let progress = 0;
+    let score = 0;
+    const tasksCompleted = { lvl1: false, lvl2: false, lvl3: false, lvl4: false };
+    let correctAnswers = { lvl1: false, lvl2: false, lvl3: false, lvl4: false };
+
+    function updateMissionName(text) {
+      document.getElementById('mission-name').innerText = text;
+    }
+
+    function updateGame(points, levelKey) {
+      if (tasksCompleted[levelKey]) return;
+
+      tasksCompleted[levelKey] = true;
+      score += points;
+      progress += 25;
+
+      if (progress > 100) progress = 100;
+
+      document.getElementById('game-progress').style.width = progress + "%";
+      document.getElementById('game-progress').innerText = progress + "%";
+      document.getElementById('score-badge').innerText = score + " Pts";
+
+      // Actualizar estado visual del nivel completado
+      document.getElementById(`status-${levelKey}`).innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+
+      // Si ya llegó al 100%, habilitar generación de certificado
+      if (progress === 100) {
+        const btn = document.getElementById('btn-generate-certificate');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-award"></i> Generar certificado de completación';
+      }
+    }
+
+    function unlockNextLevel(currentLevel) {
+      const levels = ['lvl1', 'lvl2', 'lvl3', 'lvl4'];
+      const currentIndex = levels.indexOf(currentLevel);
+      
+      if (currentIndex < levels.length - 1) {
+        const nextLevel = levels[currentIndex + 1];
+        const nextTab = document.getElementById(`pills-${nextLevel}-tab`);
+        nextTab.disabled = false;
+        document.getElementById(`status-${nextLevel}`).innerHTML = '<i class="bi bi-circle"></i>';
+      }
+    }
+
+    // Tabs cambio de misión
+    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(tab => {
+      tab.addEventListener('shown.bs.tab', function (event) {
+        const text = event.target.innerText.replace(/.*\d\.\s/, '');
+        updateMissionName(text);
+      });
+    });
+
+    // ==========================================
+    // NIVEL 1: FIGURAS
+    // ==========================================
+    const shapes = {
+      square: {
+        title: "Square (Cuadrado)",
+        icon: "bi-square",
+        text: "4 equal sides, 4 vertices",
+        textEs: "4 lados iguales, 4 vértices",
+        quiz: [
+          { txt: "Square has 4 equal sides.", ok: true },
+          { txt: "Square has 3 sides.", ok: false },
+          { txt: "Square has 0 vertices.", ok: false }
+        ]
+      },
+      triangle: {
+        title: "Triangle (Triángulo)",
+        icon: "bi-triangle",
+        text: "3 sides, 3 vertices",
+        textEs: "3 lados, 3 vértices",
+        quiz: [
+          { txt: "Triangle has 3 sides.", ok: true },
+          { txt: "Triangle has 4 vertices.", ok: false },
+          { txt: "Triangle is round.", ok: false }
+        ]
+      },
+      circle: {
+        title: "Circle (Círculo)",
+        icon: "bi-circle",
+        text: "0 sides, 0 vertices - It is round",
+        textEs: "0 lados, 0 vértices - Es redondo",
+        quiz: [
+          { txt: "Circle has 0 vertices.", ok: true },
+          { txt: "Circle has 4 sides.", ok: false },
+          { txt: "Circle has 3 vertices.", ok: false }
+        ]
+      }
+    };
+
+    function showShape(key) {
+      const data = shapes[key];
+      const quizBtns = data.quiz.map((q) =>
+        `<button class="btn btn-outline-secondary quiz-btn mb-2" onclick="checkShapeQuiz(this, ${q.ok})">${q.txt}</button>`
+      ).join('');
+
+      document.getElementById('shape-card').innerHTML = `
+        <i class="bi ${data.icon} display-1 text-primary mb-3"></i>
+        <h3>${data.title}</h3>
+        <p class="text-muted fs-5">${data.text}</p>
+        <p class="text-secondary"><small>(${data.textEs})</small></p>
+
+        <hr class="my-4">
+
+        <div class="text-start">
+          <h6 class="fw-bold mb-3"><i class="bi bi-question-circle"></i> Mini-reto (elige la opción correcta)</h6>
+          <div class="d-grid gap-2" id="shape-quiz">
+            ${quizBtns}
+          </div>
+          <div id="shape-feedback" class="mt-3"></div>
+        </div>
+
+        <hr class="my-4">
+
+        <button class="btn btn-success btn-lg btn-locked" id="btn-complete-lvl1" onclick="completeLevel('lvl1', 120)">
+          <i class="bi bi-lock-fill"></i> Responde correctamente para avanzar
+        </button>
+      `;
+      
+      correctAnswers.lvl1 = false;
+    }
+
+    function checkShapeQuiz(btn, isCorrect) {
+      const feedback = document.getElementById('shape-feedback');
+      const buttons = document.querySelectorAll('#shape-quiz button');
+      buttons.forEach(b => b.classList.add('disabled'));
+
+      if (isCorrect) {
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-success');
+        feedback.innerHTML = `
+          <div class='alert alert-success border-0'>
+            <i class="bi bi-check-circle-fill"></i> <strong>¡Excelente!</strong> 
+            Justificas correctamente usando atributos observables (lados y vértices).
+          </div>
+        `;
+        
+        correctAnswers.lvl1 = true;
+        const completeBtn = document.getElementById('btn-complete-lvl1');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar nivel 1';
+      } else {
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-danger');
+        feedback.innerHTML = `
+          <div class='alert alert-danger border-0'>
+            <i class="bi bi-x-circle-fill"></i> <strong>Incorrecto.</strong> 
+            Revisa los atributos: cuenta lados y vértices cuidadosamente.
+          </div>
+        `;
+        
+        correctAnswers.lvl1 = false;
+      }
+    }
+
+    // ==========================================
+    // NIVEL 2: ÁNGULOS
+    // ==========================================
+    function updateAngle(val) {
+      val = Number(val);
+      const arm = document.getElementById('moving-arm');
+      const text = document.getElementById('angle-display');
+
+      arm.style.transform = `rotate(-${val}deg)`;
+
+      let type = "";
+      if (val < 90) type = "Acute (Agudo)";
+      else if (val === 90) type = "Right (Recto) ✓";
+      else type = "Obtuse (Obtuso)";
+
+      text.innerHTML = `${val}° - ${type}`;
+
+      if (val === 90) {
+        text.classList.remove('text-primary');
+        text.classList.add('text-success');
+      } else {
+        text.classList.add('text-primary');
+        text.classList.remove('text-success');
+      }
+    }
+
+    function checkAngleTask() {
+      const val = Number(document.getElementById('angleRange').value);
+      const feedback = document.getElementById('angle-feedback');
+      
+      if (val === 90) {
+        feedback.className = "mt-3 alert alert-success border-0";
+        feedback.innerHTML = `
+          <i class="bi bi-check-circle-fill"></i> 
+          <strong>¡Correcto!</strong> 90° corresponde a Right Angle (ángulo recto).
+        `;
+        
+        correctAnswers.lvl2 = true;
+        const completeBtn = document.getElementById('btn-complete-lvl2');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar nivel 2';
+      } else {
+        feedback.className = "mt-3 alert alert-danger border-0";
+        feedback.innerHTML = `
+          <i class="bi bi-x-circle-fill"></i> 
+          <strong>Aún no.</strong> Ajusta el deslizador exactamente a 90°.
+        `;
+        
+        correctAnswers.lvl2 = false;
+      }
+    }
+
+    // ==========================================
+    // NIVEL 3: INGLÉS
+    // ==========================================
+    let currentSentence = [];
+
+    function addWord(btn, word) {
+      currentSentence.push(word);
+      btn.style.display = 'none';
+
+      const zone = document.getElementById('drop-zone');
+      const ph = document.querySelector('.placeholder-text');
+      if (ph) zone.innerHTML = '';
+
+      const tag = document.createElement('span');
+      tag.className = "badge bg-primary fs-5 me-2";
+      tag.innerText = word;
+      zone.appendChild(tag);
+    }
+
+    function resetSentence() {
+      currentSentence = [];
+      document.getElementById('drop-zone').innerHTML =
+        '<span class="text-muted fst-italic placeholder-text">Haz clic en las palabras de abajo en orden...</span>';
+      document.querySelectorAll('.word-btn').forEach(b => b.style.display = 'inline-block');
+      document.getElementById('sentence-feedback').innerHTML = "";
+    }
+
+    function checkSentence() {
+      const attempt = currentSentence.join(" ");
+      const feedback = document.getElementById('sentence-feedback');
+
+      if (attempt === "It is a rectangle.") {
+        feedback.innerHTML = `
+          <div class='alert alert-success border-0'>
+            <i class="bi bi-check-circle-fill"></i> <strong>Perfect!</strong> 
+            Estructura correcta: Sujeto + verbo + artículo + objeto.
+          </div>
+        `;
+        
+        correctAnswers.lvl3 = true;
+        const completeBtn = document.getElementById('btn-complete-lvl3');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar nivel 3';
+      } else {
+        feedback.innerHTML = `
+          <div class='alert alert-danger border-0'>
+            <i class="bi bi-x-circle-fill"></i> <strong>Intenta nuevamente.</strong> 
+            Orden: Sujeto (It) + verbo (is) + artículo (a) + objeto (rectangle.)
+          </div>
+        `;
+        
+        correctAnswers.lvl3 = false;
+        setTimeout(resetSentence, 2500);
+      }
+    }
+
+    // ==========================================
+    // NIVEL 4: QUIZ
+    // ==========================================
+    function checkQuiz(btn, isCorrect) {
+      const allBtns = document.querySelectorAll('.quiz-btn');
+      allBtns.forEach(b => b.classList.add('disabled'));
+
+      const feedback = document.getElementById('quiz-final-feedback');
+
+      if (isCorrect) {
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-success');
+        feedback.innerHTML = `
+          <div class='alert alert-success border-0'>
+            <i class="bi bi-check-circle-fill"></i> <strong>¡Excelente!</strong> 
+            Perpendicularidad implica ángulo recto (90°).
+          </div>
+        `;
+        
+        correctAnswers.lvl4 = true;
+        const completeBtn = document.getElementById('btn-complete-lvl4');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar nivel 4 y finalizar';
+      } else {
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-danger');
+        feedback.innerHTML = `
+          <div class='alert alert-danger border-0'>
+            <i class="bi bi-x-circle-fill"></i> <strong>Incorrecto.</strong> 
+            Piensa: si es perpendicular, el ángulo mide 90°.
+          </div>
+        `;
+        
+        correctAnswers.lvl4 = false;
+      }
+    }
+
+    // ==========================================
+    // COMPLETAR NIVELES
+    // ==========================================
+    function completeLevel(levelKey, points) {
+      if (!correctAnswers[levelKey]) {
+        alert('⚠️ Debes responder correctamente antes de avanzar al siguiente nivel.');
+        return;
+      }
+      
+      updateGame(points, levelKey);
+      unlockNextLevel(levelKey);
+
+      if (levelKey === 'lvl1') {
+        document.getElementById('pills-lvl2-tab').click();
+      } else if (levelKey === 'lvl2') {
+        document.getElementById('pills-lvl3-tab').click();
+      } else if (levelKey === 'lvl3') {
+        document.getElementById('pills-lvl4-tab').click();
+      } else if (levelKey === 'lvl4') {
+        setTimeout(() => {
+          window.location.hash = "#reconfiguracion";
+          window.scrollTo({ top: document.getElementById('reconfiguracion').offsetTop - 100, behavior: 'smooth' });
+          alert('🎉 ¡Felicitaciones! Has completado todos los niveles. Ahora completa tu evidencia en la sección de Reconfiguración.');
+        }, 1000);
+      }
+    }
+
+    // ==========================================
+    // GENERAR CERTIFICADO
+    // ==========================================
+    function generateCertificate() {
+      const name = document.getElementById('student-name').value.trim();
+      const context = document.getElementById('evi-context').value.trim();
+      const shape = document.getElementById('evi-shape').value.trim();
+      const angle = document.getElementById('evi-angle').value.trim();
+      const math = document.getElementById('evi-math').value.trim();
+
+      if (!name || !context || !shape || !angle || !math) {
+        alert('⚠️ Por favor completa todos los campos obligatorios (*) antes de generar el certificado.');
+        return;
+      }
+
+      if (progress < 100) {
+        alert('⚠️ Debes completar los 4 niveles (100%) antes de generar tu certificado.');
+        return;
+      }
+
+      // Llenar el modal
+      document.getElementById('cert-student-name').innerText = name;
+      document.getElementById('cert-score').innerText = score + ' pts';
+      document.getElementById('cert-context').innerText = context;
+      document.getElementById('cert-shape').innerText = shape;
+      document.getElementById('cert-angle').innerText = angle;
+      document.getElementById('cert-math').innerText = math;
+
+      // Mostrar modal
+      const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+      modal.show();
+    }
+
+    // ==========================================
+    // INICIALIZAR
+    // ==========================================
+    updateAngle(45);
+    showShape('square');
+  </script>
+</body>
+</html>
