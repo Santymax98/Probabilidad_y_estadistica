@@ -18,6 +18,7 @@ permissions:
 
 jobs:
     build-and-deploy:
+        if: false
         runs-on: ubuntu-latest
         steps:
             - name: Checkout this repository
