@@ -9,22 +9,25 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <style>
     body { 
       font-family: 'Poppins', sans-serif; 
-      padding-top: 70px;
+      padding-top: 80px;
+      background: #f8fafc;
     }
     
-    /* HEADER */
+    /* ===== HEADER PROFESIONAL ===== */
     #header { 
       background: #fff; 
-      box-shadow: 0 2px 15px rgba(0,0,0,.1); 
+      box-shadow: 0 2px 15px rgba(36, 135, 206, 0.1);
       padding: 15px 0;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
+      transition: all 0.3s;
     }
     
     .logo { 
@@ -32,20 +35,198 @@
       font-weight: 700; 
       color: #2487ce; 
       text-decoration: none;
-    }
-    
-    .get-started-btn {
-      background: #2487ce;
-      color: #fff;
-      padding: 8px 25px;
-      border-radius: 50px;
-      text-decoration: none;
+      letter-spacing: -0.5px;
       transition: 0.3s;
     }
     
-    .get-started-btn:hover {
-      background: #3194db;
+    .logo:hover {
+      color: #1a6ca3;
+    }
+    
+    /* ===== NAVBAR ===== */
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .navbar li {
+      position: relative;
+    }
+    
+    .navbar > ul > li {
+      padding: 10px 0 10px 18px;
+    }
+    
+    .navbar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      white-space: nowrap;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    
+    .navbar a i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+    
+    .navbar > ul > li > a:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #2487ce;
+      visibility: hidden;
+      width: 0px;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .navbar > ul > li > a:hover:before,
+    .navbar > ul > li > a.active:before {
+      visibility: visible;
+      width: 25px;
+    }
+    
+    .navbar a:hover,
+    .navbar .active {
+      color: #2487ce;
+    }
+    
+    /* ===== DROPDOWN ===== */
+    .navbar .dropdown ul {
+      display: block;
+      position: absolute;
+      left: 14px;
+      top: calc(100% + 30px);
+      margin: 0;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      background: #fff;
+      box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+      transition: 0.3s;
+      border-radius: 10px;
+    }
+    
+    .navbar .dropdown ul li {
+      min-width: 200px;
+    }
+    
+    .navbar .dropdown ul a {
+      padding: 10px 20px;
+      font-size: 14px;
+      text-transform: none;
+      font-weight: 500;
+    }
+    
+    .navbar .dropdown ul a i {
+      font-size: 12px;
+    }
+    
+    .navbar .dropdown:hover > ul {
+      opacity: 1;
+      top: 100%;
+      visibility: visible;
+    }
+    
+    .navbar .dropdown .dropdown ul {
+      top: 0;
+      left: calc(100% - 30px);
+      visibility: hidden;
+    }
+    
+    .navbar .dropdown .dropdown:hover > ul {
+      opacity: 1;
+      top: 0;
+      left: 100%;
+      visibility: visible;
+    }
+    
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+      transition: 0.5s;
+      color: #444;
+    }
+    
+    @media (max-width: 991px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        bottom: 0;
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+        z-index: 9997;
+        overflow-y: auto;
+      }
+      .navbar ul {
+        display: block;
+        margin-top: 60px;
+      }
+      .navbar.active {
+        right: 0;
+      }
+      .navbar .dropdown ul {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 20px;
+        transition: none;
+      }
+      .navbar .dropdown:hover > ul {
+        display: block;
+      }
+      .navbar > ul > li > a:before {
+        display: none;
+      }
+    }
+    
+    /* ===== BOTÓN DE ACCIÓN ===== */
+    .get-started-btn {
+      background: #2487ce;
       color: #fff;
+      padding: 10px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(36, 135, 206, 0.3);
+      border: none;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    
+    .get-started-btn:hover {
+      background: #1a6ca3;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 135, 206, 0.4);
     }
     
     /* HERO */
@@ -371,19 +552,86 @@
       #hero h1 { font-size: 32px; }
       #hero h2 { font-size: 18px; }
       .section-title h2 { font-size: 24px; }
+      .get-started-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo { font-size: 22px; }
+      .get-started-btn { display: none; }
+    }
+
+    /* ===== HEADER HIDE ON SCROLL ===== */
+    .header-hidden {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #header {
+      transition: transform 0.3s ease-in-out;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- ======= HEADER PROFESIONAL COMPLETO ======= -->
   <header id="header">
     <div class="container d-flex align-items-center justify-content-between">
+
+      <!-- Logo -->
       <a href="#" class="logo">MathStats Code Hub</a>
-      <a href="#matematicas" class="get-started-btn">Ir a Actividad</a>
+
+      <!-- Navbar -->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="active" href="/index.html">Inicio</a></li>
+          <li><a href="geometria.html">Geometría</a></li>
+
+          <!-- Dropdown: Pedagogía - Pistas -->
+          <li class="dropdown">
+            <a href="#"><span>Pedagogía - Pistas</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Espacios alternativos educativos</a></li>
+              <li><a href="#">Origen del universo 2</a></li>
+              <li><a href="/pistas/nuevos_lenguajes.html" class="active">Nuevos lenguajes</a></li>
+              <li><a href="/pistas/relaciones_ser.html">Relación del ser humano II</a></li>
+              <li><a href="#">Aprendemos</a></li>
+              <li><a href="#">Grupos sociales</a></li>
+              <li><a href="#">Teorías del desciframiento</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/algebra.html">Álgebra</a></li>
+          <li><a href="/programacion.html">Programación</a></li>
+
+          <!-- Dropdown: Probabilidad y Estadística -->
+          <li class="dropdown">
+            <a href="#"><span>Probabilidad y Estadística</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Estadística descriptiva</a></li>
+              <li><a href="#">Técnicas de conteo</a></li>
+              <li><a href="#">Cálculo de probabilidades</a></li>
+              <li><a href="#">Variables aleatorias</a></li>
+              <li><a href="#">Modelos probabilísticos</a></li>
+            </ul>
+          </li>
+
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <!-- Botón contextual -->
+      <a href="#matematicas" class="get-started-btn">
+        <i class="bi bi-activity"></i> Ir a Actividad
+      </a>
+
     </div>
-  </header>
+  </header><!-- End Header -->
 
   <!-- HERO -->
   <section id="hero">
@@ -1276,6 +1524,59 @@
     // ==========================================
     updateAngle(45);
     showShape('square');
+
+    // ==========================================
+    // MOBILE NAV TOGGLE
+    // ==========================================
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar');
+    
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function(e) {
+        navbar.classList.toggle('active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+    }
+
+    // Cerrar menú al hacer click en un link
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          const toggle = document.querySelector('.mobile-nav-toggle');
+          toggle.classList.add('bi-list');
+          toggle.classList.remove('bi-x');
+        }
+      });
+    });
+    // ==========================================
+    // HEADER HIDE ON SCROLL DOWN, SHOW ON SCROLL UP
+    // ==========================================
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const scrollThreshold = 10; // Mínimo de píxeles para activar el cambio
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Solo activar si el scroll es mayor que el header (para que no desaparezca al inicio)
+      if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+          // Scroll hacia ABAJO → ocultar header
+          header.classList.add('header-hidden');
+        } else {
+          // Scroll hacia ARRIBA → mostrar header
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        // Si estamos en la parte superior, siempre mostrar
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
   </script>
+  
 </body>
 </html>

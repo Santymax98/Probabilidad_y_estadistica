@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pista: Relaciones del ser humano II (Matemáticas) | MathStats</title>
+
+  <!-- Bootstrap + Fuentes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+      background: #f7f9fc;
+    }
+
+    /* ===== HEADER PROFESIONAL ===== */
+    #header {
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(36, 135, 206, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .header-hidden {
+      transform: translateY(-100%);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2487ce;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: 0.3s;
+    }
+
+    .logo:hover {
+      color: #1a6ca3;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar > ul > li {
+      padding: 10px 0 10px 18px;
+    }
+
+    .navbar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      white-space: nowrap;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .navbar a i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+
+    .navbar > ul > li > a:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #2487ce;
+      visibility: hidden;
+      width: 0px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar > ul > li > a:hover:before,
+    .navbar > ul > li > a.active:before {
+      visibility: visible;
+      width: 25px;
+    }
+
+    .navbar a:hover,
+    .navbar .active {
+      color: #2487ce;
+    }
+
+    /* ===== DROPDOWN ===== */
+    .navbar .dropdown ul {
+      display: block;
+      position: absolute;
+      left: 14px;
+      top: calc(100% + 30px);
+      margin: 0;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      background: #fff;
+      box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+      transition: 0.3s;
+      border-radius: 10px;
+    }
+
+    .navbar .dropdown ul li {
+      min-width: 200px;
+    }
+
+    .navbar .dropdown ul a {
+      padding: 10px 20px;
+      font-size: 14px;
+      text-transform: none;
+      font-weight: 500;
+    }
+
+    .navbar .dropdown ul a i {
+      font-size: 12px;
+    }
+
+    .navbar .dropdown:hover > ul {
+      opacity: 1;
+      top: 100%;
+      visibility: visible;
+    }
+
+    .navbar .dropdown .dropdown ul {
+      top: 0;
+      left: calc(100% - 30px);
+      visibility: hidden;
+    }
+
+    .navbar .dropdown .dropdown:hover > ul {
+      opacity: 1;
+      top: 0;
+      left: 100%;
+      visibility: visible;
+    }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+      transition: 0.5s;
+      color: #444;
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        bottom: 0;
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+        z-index: 9997;
+        overflow-y: auto;
+      }
+      .navbar ul {
+        display: block;
+        margin-top: 60px;
+      }
+      .navbar.active {
+        right: 0;
+      }
+      .navbar .dropdown ul {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 20px;
+        transition: none;
+      }
+      .navbar .dropdown:hover > ul {
+        display: block;
+      }
+      .navbar > ul > li > a:before {
+        display: none;
+      }
+    }
+
+    /* ===== BOTÓN DE ACCIÓN ===== */
+    .get-started-btn {
+      background: #2487ce;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(36, 135, 206, 0.3);
+      border: none;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .get-started-btn:hover {
+      background: #1a6ca3;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 135, 206, 0.4);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      width: 100%;
+      height: 55vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hero h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,.25);
+    }
+
+    #hero h2 {
+      color: #dfe9ff;
+      margin: 10px 0 0 0;
+      font-size: 20px;
+    }
+
+    .btn-get-started {
+      background: #fff;
+      color: #2487ce;
+      padding: 12px 28px;
+      border-radius: 50px;
+      margin-top: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: .2s;
+    }
+
+    .btn-get-started:hover {
+      background: #eef5ff;
+      transform: scale(1.03);
+    }
+
+    /* ===== TUS ESTILOS EXISTENTES (INTACTOS) ===== */
+    .section-pad { padding: 60px 0; }
+    .section-title { text-align: center; padding-bottom: 26px; }
+    .section-title h2 { font-size: 30px; font-weight: 800; color: #2487ce; position: relative; padding-bottom: 18px; }
+    .section-title h2::after { content: ''; position: absolute; display: block; width: 90px; height: 3px; background: #2487ce; bottom: 0; left: calc(50% - 45px); }
+    .section-title p { color: #5f6b7a; }
+    .card-soft { border: 0; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.08); transition: .2s; }
+    .card-soft:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.10); }
+    .sticky-note { border-left: 4px solid #ff9800; background: #fff8e1; padding: 14px; border-radius: 12px; margin-top: 14px; }
+    .box { padding: 26px; background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transition: .2s; height: 100%; }
+    .box:hover { transform: translateY(-6px); }
+    .box h3 { color: #2487ce; font-weight: 800; margin-bottom: 14px; }
+    .box ul { list-style: none; padding: 0; margin: 0; }
+    .box ul li { padding: 8px 0; }
+    .box ul li i { color: #2fb344; margin-right: 10px; }
+    .fixed-bottom-bar { z-index: 999; background: linear-gradient(135deg, #0f2a4f 0%, #1e3c72 100%); color: #fff; padding: 14px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); }
+    .progress { background-color: rgba(255,255,255,0.25); height: 18px; border-radius: 10px; }
+    .progress-bar { font-weight: 800; border-radius: 10px; }
+    .btn-locked { opacity: .45; pointer-events: none; cursor: not-allowed; }
+    .nav-pills .nav-link { border-radius: 50px; padding: 12px 18px; margin: 4px; transition: .2s; }
+    .nav-pills .nav-link.active { background: #2487ce; }
+    .nav-pills .nav-link:disabled { opacity: .35; }
+    .role-chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px; border: 2px solid #e6eef8; background: #fff; cursor: grab; font-weight: 700; }
+    .role-chip .badge { font-size: .8rem; }
+    .drop-zone { min-height: 70px; border: 3px dashed #cdd8ea; border-radius: 14px; padding: 14px; background: #fbfdff; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .drop-zone strong { color: #5d6a7a; }
+    .bar-wrap { display: flex; gap: 24px; align-items: flex-end; justify-content: center; min-height: 220px; }
+    .bar { width: 84px; border-radius: 14px 14px 8px 8px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; border: 2px solid #e6eef8; background: #fff; }
+    .note { height: 18px; margin: 2px; border-radius: 4px; }
+    .bar-label { text-align: center; margin-top: 10px; font-weight: 800; color: #2b3645; }
+    .emoji { font-size: 26px; }
+    #footer { background: #0f2a4f; color: #fff; padding: 26px 0; margin-top: 60px; }
+    #footer a { color: #7ee787; text-decoration: none; }
+    .modal-certificate { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 20px; padding: 46px; text-align: center; }
+    .certificate-badge { width: 110px; height: 110px; background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; font-size: 56px; box-shadow: 0 10px 26px rgba(0,0,0,.25); }
+    .certificate-content { background: rgba(255,255,255,0.14); backdrop-filter: blur(10px); border-radius: 16px; padding: 22px; margin-top: 18px; border: 1px solid rgba(255,255,255,0.18); text-align: left; }
+    
+    @media (max-width: 768px) {
+      #hero h1 { font-size: 28px; }
+      #hero h2 { font-size: 16px; }
+      .section-title h2 { font-size: 24px; }
+      .get-started-btn { padding: 8px 16px; font-size: 14px; margin-left: 10px; }
+    }
+    @media (max-width: 576px) {
+      .logo { font-size: 22px; }
+      .get-started-btn { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= HEADER PROFESIONAL COMPLETO ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <!-- Logo -->
+      <a href="#" class="logo">MathStats Code Hub</a>
+
+      <!-- Navbar -->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="active" href="index.html">Inicio</a></li>
+          <li><a href="geometria.html">Geometría</a></li>
+
+          <!-- Dropdown: Pedagogía - Pistas -->
+          <li class="dropdown">
+            <a href="#"><span>Pedagogía - Pistas</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Espacios alternativos educativos</a></li>
+              <li><a href="#">Origen del universo 2</a></li>
+              <li><a href="/pistas/nuevos_lenguajes.html">Nuevos lenguajes</a></li>
+              <li><a href="/pistas/relaciones_ser.html" class="active">Relación del ser humano II</a></li>
+              <li><a href="#">Aprendemos</a></li>
+              <li><a href="#">Grupos sociales</a></li>
+              <li><a href="#">Teorías del desciframiento</a></li>
+            </ul>
+          </li>
+
+          <li><a href="algebra.html">Álgebra</a></li>
+          <li><a href="programacion.html">Programación</a></li>
+
+          <!-- Dropdown: Probabilidad y Estadística -->
+          <li class="dropdown">
+            <a href="#"><span>Probabilidad y Estadística</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Estadística descriptiva</a></li>
+              <li><a href="#">Técnicas de conteo</a></li>
+              <li><a href="#">Cálculo de probabilidades</a></li>
+              <li><a href="#">Variables aleatorias</a></li>
+              <li><a href="#">Modelos probabilísticos</a></li>
+            </ul>
+          </li>
+
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <!-- Botón contextual -->
+      <a href="#ruta" class="get-started-btn">
+        <i class="bi bi-activity"></i> Ir a la ruta
+      </a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container text-center">
+      <h1>Relaciones del ser humano II (Matemáticas)</h1>
+      <h2>Pista · Recursos interactivos (Prefiguración → Configuración → Reconfiguración)</h2>
+      <a href="#prefiguracion" class="btn-get-started"><i class="bi bi-rocket-takeoff"></i> Iniciar</a>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- PREFIGURACIÓN -->
+    <section id="prefiguracion" class="section-pad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento I. Prefiguración</h2>
+          <p>Introspección situada + diagnóstico breve (desbloquea la configuración)</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card card-soft p-4">
+              <h5 class="mb-3"><i class="bi bi-bullseye"></i> Competencia y objetivo de la pista</h5>
+              <div class="alert alert-info border-0 mb-3">
+                <strong>Competencia a formar:</strong>
+                Interpreta situaciones del entorno escolar mediante registros simples, toma decisiones cooperativas y justifica sus elecciones,
+                reconociendo la diversidad de pensamiento y aplicando ajustes razonables que favorezcan la participación de todos los estudiantes.
+              </div>
+              <div class="alert alert-light border-0 mb-0">
+                <strong>Objetivo de aprendizaje:</strong>
+                Desarrollar la capacidad de modelar matemáticamente situaciones cotidianas de bienestar y convivencia, argumentar en equipo y diseñar apoyos
+                que garanticen el acceso al conocimiento matemático en el aula de básica primaria.
+              </div>
+
+              <hr class="my-4">
+
+              <h5 class="mb-2"><i class="bi bi-compass"></i> Ejercicio de observación consciente</h5>
+              <p class="text-muted mb-3">
+                Recuerda la última vez que resolviste un problema matemático en grupo. Responde (marcando una opción) y recibe retroalimentación.
+              </p>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">1) ¿Hubo acuerdos explícitos y roles definidos?</label>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-outline-primary" onclick="setPref('q1','sí')">Sí</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q1','parcial')">Parcial</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q1','no')">No</button>
+                </div>
+                <div class="small text-muted mt-2" id="pref-q1"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">2) En el trabajo grupal, ¿te sentiste escuchado/a?</label>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-outline-primary" onclick="setPref('q2','sí')">Sí</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q2','a veces')">A veces</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q2','no')">No</button>
+                </div>
+                <div class="small text-muted mt-2" id="pref-q2"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold">3) ¿El foco del grupo fue el proceso o solo el resultado?</label>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-outline-primary" onclick="setPref('q3','proceso')">Proceso</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q3','mixto')">Mixto</button>
+                  <button class="btn btn-outline-primary" onclick="setPref('q3','resultado')">Solo resultado</button>
+                </div>
+                <div class="small text-muted mt-2" id="pref-q3"></div>
+              </div>
+
+              <div class="sticky-note">
+                <strong><i class="bi bi-exclamation-triangle"></i> Clave pedagógica:</strong>
+                La “brecha” suele ser que el aula valora rapidez y silencio. Esta pista te lleva a cooperación, argumentación e inclusión.
+              </div>
+
+              <hr class="my-4">
+
+              <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-pref" onclick="completeLevel('pref', 20)">
+                <i class="bi bi-lock-fill"></i> Responde las 3 preguntas para desbloquear Configuración
+              </button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="box">
+              <h3><i class="bi bi-check2-square"></i> Checklist de entrada</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Comprendo que “hacer matemáticas” también es social</li>
+                <li><i class="bi bi-check"></i> Reconozco la importancia de acuerdos y roles</li>
+                <li><i class="bi bi-check"></i> Acepto el error como insumo colectivo</li>
+                <li><i class="bi bi-check"></i> Tengo disposición para aulas diversas</li>
+              </ul>
+              <hr>
+              <a href="#configuracion" class="btn btn-primary w-100">
+                <i class="bi bi-lightning-charge"></i> Ver Configuración (se habilita al completar)
+              </a>
+              <div class="mt-3 alert alert-warning border-0 small">
+                <i class="bi bi-info-circle"></i>
+                La barra de progreso y los niveles se desbloquean con respuestas correctas / completadas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUTA -->
+    <section id="ruta" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ruta de trabajo</h2>
+          <p>Enfoque metodológico de la pista (para aula de primaria)</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-1-circle"></i> Prefiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Introspección situada</li>
+                <li><i class="bi bi-check"></i> Identificación de brechas</li>
+                <li><i class="bi bi-check"></i> Propósito compartido</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="box" style="border:3px solid #2487ce;">
+              <h3><i class="bi bi-2-circle"></i> Configuración (núcleo)</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Cooperación y roles</li>
+                <li><i class="bi bi-check"></i> Modelación con datos del aula</li>
+                <li><i class="bi bi-check"></i> Estimar, comparar y decidir</li>
+                <li><i class="bi bi-check"></i> Inclusión y ajustes razonables</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-3-circle"></i> Reconfiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Síntesis: Cooperar–Modelar–Decidir–Incluir</li>
+                <li><i class="bi bi-check"></i> Preguntas de reflexión docente</li>
+                <li><i class="bi bi-check"></i> Evidencia: tríptico</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="fixed-bottom fixed-bottom-bar">
+      <div class="container">
+        <div class="row align-items-center g-2">
+          <div class="col-md-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-trophy-fill text-warning me-2 fs-3"></i>
+              <div>
+                <small class="d-block text-uppercase" style="font-size:0.68rem;opacity:.85;">Misión actual</small>
+                <strong id="mission-name" style="font-size:0.95rem;">Prefiguración</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="progress">
+              <div id="game-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                   role="progressbar" style="width:0%;">0%</div>
+            </div>
+          </div>
+          <div class="col-md-2 text-end">
+            <span class="badge bg-warning text-dark fs-6" id="score-badge">0 Pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIGURACIÓN -->
+    <section id="configuracion" class="section-pad" style="padding-bottom:150px;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento II. Configuración</h2>
+          <p>Cuatro estaciones prácticas (una por eje). Desbloqueo progresivo.</p>
+        </div>
+
+        <!-- TABS -->
+        <ul class="nav nav-pills nav-fill mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-pref-tab" data-bs-toggle="pill" data-bs-target="#pills-pref"
+                    type="button" role="tab">
+              <span id="status-pref"><i class="bi bi-circle"></i></span> 0. Prefiguración
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje1-tab" data-bs-toggle="pill" data-bs-target="#pills-eje1"
+                    type="button" role="tab" disabled>
+              <span id="status-eje1"><i class="bi bi-lock-fill"></i></span> 1. Cooperación y roles
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje2-tab" data-bs-toggle="pill" data-bs-target="#pills-eje2"
+                    type="button" role="tab" disabled>
+              <span id="status-eje2"><i class="bi bi-lock-fill"></i></span> 2. Datos y bienestar
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje3-tab" data-bs-toggle="pill" data-bs-target="#pills-eje3"
+                    type="button" role="tab" disabled>
+              <span id="status-eje3"><i class="bi bi-lock-fill"></i></span> 3. Decidir y justificar
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje4-tab" data-bs-toggle="pill" data-bs-target="#pills-eje4"
+                    type="button" role="tab" disabled>
+              <span id="status-eje4"><i class="bi bi-lock-fill"></i></span> 4. Inclusión (DUA)
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-rec-tab" data-bs-toggle="pill" data-bs-target="#pills-rec"
+                    type="button" role="tab" disabled>
+              <span id="status-rec"><i class="bi bi-lock-fill"></i></span> 5. Reconfiguración
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+          <!-- TAB: PREVIO -->
+          <div class="tab-pane fade show active" id="pills-pref" role="tabpanel">
+            <div class="card card-soft p-4">
+              <h5><i class="bi bi-flag"></i> Estado</h5>
+              <p class="text-muted mb-2">
+                Completa el bloque de Prefiguración (arriba) para desbloquear el Eje 1.
+              </p>
+              <div class="alert alert-info border-0 mb-0">
+                <strong>Tip:</strong> cuando completes un nivel, se habilita el siguiente. La barra de progreso avanza por estaciones.
+              </div>
+            </div>
+          </div>
+
+          <!-- EJE 1: COOPERACIÓN Y ROLES -->
+          <div class="tab-pane fade" id="pills-eje1" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-people"></i> Eje 1: Resolución de problemas con cooperación</h5>
+                  <p class="text-muted mb-3">
+                    Reto: asigna roles cooperativos de manera explícita. Arrastra los roles al "acuerdo" correcto.
+                  </p>
+
+                  <div class="mb-3">
+                    <div class="d-flex flex-wrap gap-2">
+                      <div class="role-chip" draggable="true" ondragstart="dragRole(event)" data-role="LÍDER">
+                        <span class="badge bg-primary">LÍDER</span> Coordina acuerdos
+                      </div>
+                      <div class="role-chip" draggable="true" ondragstart="dragRole(event)" data-role="VOCERO">
+                        <span class="badge bg-success">VOCERO</span> Expone al grupo
+                      </div>
+                      <div class="role-chip" draggable="true" ondragstart="dragRole(event)" data-role="VERIFICADOR">
+                        <span class="badge bg-warning text-dark">VERIFICADOR</span> Revisa evidencia
+                      </div>
+                      <div class="role-chip" draggable="true" ondragstart="dragRole(event)" data-role="MATERIALISTA">
+                        <span class="badge bg-danger">MATERIALISTA</span> Organiza recursos
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Conceptos clave:</strong>
+                    acuerdos cooperativos, roles rotativos y argumentación básica ("lo sé porque lo medimos…").
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-7">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-shuffle"></i> Matching de roles</h5>
+
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="drop-zone" ondragover="allowDrop(event)" ondrop="dropRole(event,'LÍDER')" id="dz-lider">
+                        <strong>Drop:</strong> "Define acuerdos y turnos"
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="drop-zone" ondragover="allowDrop(event)" ondrop="dropRole(event,'VOCERO')" id="dz-vocero">
+                        <strong>Drop:</strong> "Presenta la solución"
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="drop-zone" ondragover="allowDrop(event)" ondrop="dropRole(event,'VERIFICADOR')" id="dz-verif">
+                        <strong>Drop:</strong> "Comprueba cálculos y evidencia"
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="drop-zone" ondragover="allowDrop(event)" ondrop="dropRole(event,'MATERIALISTA')" id="dz-mat">
+                        <strong>Drop:</strong> "Gestiona y cuida materiales"
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="roles-feedback" class="mt-3"></div>
+
+                  <hr class="my-4">
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje1" onclick="completeLevel('eje1', 20)">
+                    <i class="bi bi-lock-fill"></i> Completa los 4 emparejamientos para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EJE 2: DATOS Y BIENESTAR -->
+          <div class="tab-pane fade" id="pills-eje2" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-bar-chart"></i> Eje 2: Modelación de bienestar y convivencia</h5>
+                  <p class="text-muted">
+                    Construye un "emocionómetro" simple (barras con notas). Luego responde el mini-reto tipo Saber Pro con un solo contexto.
+                  </p>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-check-circle"></i> Idea didáctica:</strong>
+                    transformar una variable cualitativa (emoción) en representación cuantitativa gestionable (conteos y barras).
+                  </div>
+
+                  <hr class="my-3">
+
+                  <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-warning" onclick="incEmotion('happy')">+ Happy</button>
+                    <button class="btn btn-outline-success" onclick="incEmotion('calm')">+ Calm</button>
+                    <button class="btn btn-outline-primary" onclick="incEmotion('sad')">+ Sad</button>
+                    <button class="btn btn-outline-danger" onclick="incEmotion('angry')">+ Angry</button>
+                    <button class="btn btn-outline-secondary" onclick="resetEmotions()"><i class="bi bi-arrow-counterclockwise"></i> Reiniciar</button>
+                  </div>
+
+                  <div class="small text-muted mt-3">
+                    Ajusta las barras (no es evaluación). El reto evaluativo está abajo con tabla y preguntas.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-7">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-stickies"></i> Emocionómetro (barras con "notas")</h5>
+
+                  <div class="bar-wrap" aria-label="Emocionómetro">
+                    <div>
+                      <div class="bar" id="bar-happy"></div>
+                      <div class="bar-label"><span class="emoji">😊</span><br>Happy</div>
+                    </div>
+                    <div>
+                      <div class="bar" id="bar-calm"></div>
+                      <div class="bar-label"><span class="emoji">😌</span><br>Calm</div>
+                    </div>
+                    <div>
+                      <div class="bar" id="bar-sad"></div>
+                      <div class="bar-label"><span class="emoji">😢</span><br>Sad</div>
+                    </div>
+                    <div>
+                      <div class="bar" id="bar-angry"></div>
+                      <div class="bar-label"><span class="emoji">😠</span><br>Angry</div>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <h5 class="mb-2"><i class="bi bi-clipboard-check"></i> Mini-reto (3 preguntas, un solo contexto)</h5>
+                  <p class="text-muted mb-3">
+                    Contexto: En una práctica de aula, un docente aplicó un "chequeo emocional" diario. Cada día, 120 estudiantes eligieron una emoción dominante.
+                  </p>
+
+                  <div class="table-responsive">
+                    <table class="table table-sm table-bordered align-middle bg-white">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Día</th><th>Happy</th><th>Calm</th><th>Sad</th><th>Angry</th><th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Lunes</td><td>32</td><td>40</td><td>28</td><td>20</td><td>120</td></tr>
+                        <tr><td>Martes</td><td>28</td><td>42</td><td>30</td><td>20</td><td>120</td></tr>
+                        <tr><td>Miércoles</td><td>35</td><td>38</td><td>22</td><td>25</td><td>120</td></tr>
+                        <tr><td>Jueves</td><td>30</td><td>45</td><td>25</td><td>20</td><td>120</td></tr>
+                        <tr><td>Viernes</td><td>24</td><td>52</td><td>28</td><td>16</td><td>120</td></tr>
+                      </tbody>
+                      <caption class="small text-muted">
+                        <strong>Tabla 2.</strong> Registro semanal de emociones reportadas por 120 estudiantes.
+                        <br><strong>Nota.</strong> Los valores corresponden al número de estudiantes que seleccionaron cada emoción; el total por día es 120.
+                      </caption>
+                    </table>
+                  </div>
+
+                  <div class="mt-3">
+                    <div class="mb-3">
+                      <div class="fw-bold">P1 (Interpretación y representación): ¿Qué emoción tiene mayor rango (máx–mín) en la semana?</div>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','A')">A) Happy</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','B')">B) Calm</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','C')">C) Sad</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','D')">D) Angry</button>
+                      </div>
+                      <div id="quiz-q1" class="mt-2"></div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="fw-bold">P2 (Formulación y ejecución): Sea <span class="badge bg-light text-dark">B = 3·Happy + 2·Calm − Sad − 4·Angry</span>. ¿En qué día B es mayor?</div>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','A')">A) Lunes</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','B')">B) Miércoles</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','C')">C) Jueves</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','D')">D) Viernes</button>
+                      </div>
+                      <div id="quiz-q2" class="mt-2"></div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="fw-bold">P3 (Argumentación): "El viernes fue el mejor porque al menos 65% fueron positivos (Happy+Calm)". ¿Cuál evaluación es correcta?</div>
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','A')">A) Válida: 76/120 ≈ 0.633 &gt; 0.65</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','B')">B) No válida: 76/120 ≈ 0.633 no alcanza 0.65</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','C')">C) No válida: viernes 24+52 = 74</button>
+                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','D')">D) Válida: Calm (52) es máximo semanal</button>
+                      </div>
+                      <div id="quiz-q3" class="mt-2"></div>
+                    </div>
+
+                    <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje2" onclick="completeLevel('eje2', 20)">
+                      <i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para avanzar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EJE 3: DECIDIR Y JUSTIFICAR -->
+          <div class="tab-pane fade" id="pills-eje3" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-calculator"></i> Eje 3: Estimación, comparación y decisión</h5>
+                  <p class="text-muted">
+                    No es solo "hacer la operación". Es justificar decisiones pedagógicas con criterios (más que/menos que/suficiente/insuficiente).
+                  </p>
+                  <div class="alert alert-light border-0">
+                    <strong>Situación:</strong> "Vamos a repartir <strong>24</strong> colores para <strong>4</strong> mesas".
+                  </div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Pista:</strong>
+                    24÷4 = 6, pero la decisión incluye: ¿todos requieren lo mismo?, ¿se comparte?, ¿hay apoyos?
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-chat-square-text"></i> Mini-reto (elige la mejor justificación)</h5>
+                  <p class="text-muted mb-3">
+                    ¿Cuál opción muestra mejor una <strong>decisión pedagógica justificada</strong> y no solo el resultado?
+                  </p>
+
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-outline-secondary" onclick="answerEje3('A')">
+                      A) "Da 6 a cada mesa porque 24÷4=6. Fin."
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="answerEje3('B')">
+                      B) "Da 6 a cada mesa, y si una mesa requiere apoyo, se comparte: definimos acuerdos para redistribuir sin excluir."
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="answerEje3('C')">
+                      C) "Da 5 a cada mesa para que sobre, sin explicar por qué."
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="answerEje3('D')">
+                      D) "No se puede decidir sin datos, así que no hacemos nada."
+                    </button>
+                  </div>
+
+                  <div id="eje3-feedback" class="mt-3"></div>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked mt-3" id="btn-complete-eje3" onclick="completeLevel('eje3', 20)">
+                    <i class="bi bi-lock-fill"></i> Selecciona la opción correcta para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EJE 4: INCLUSIÓN (DUA) -->
+          <div class="tab-pane fade" id="pills-eje4" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-universal-access"></i> Eje 4: Aula inclusiva en matemáticas (DUA)</h5>
+                  <p class="text-muted mb-3">
+                    Ajustes razonables: consignas por pasos, apoyo visual, tiempos flexibles y roles cooperativos para participación real.
+                  </p>
+
+                  <div class="alert alert-info border-0">
+                    <strong>Micro-caso:</strong> En una actividad de medición, un estudiante presenta dificultad motriz fina.
+                    ¿Qué harías para garantizar participación con sentido?
+                  </div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-check-circle"></i> Recuerda:</strong> inclusión = garantizar aprendizaje y participación, no solo "estar".
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-list-check"></i> Mini-reto (selecciona TODAS las acciones DUA pertinentes)</h5>
+
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="1" id="dua1">
+                    <label class="form-check-label" for="dua1">
+                      Fragmentar consignas en pasos cortos y visuales (secuencias).
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="2" id="dua2">
+                    <label class="form-check-label" for="dua2">
+                      Mantener el mismo tiempo para todos "por equidad".
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="3" id="dua3">
+                    <label class="form-check-label" for="dua3">
+                      Permitir rol alterno (relator/verificador con material) para asegurar participación.
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="4" id="dua4">
+                    <label class="form-check-label" for="dua4">
+                      Apoyo visual: pictogramas, colores, plantillas, recta numérica mural.
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="5" id="dua5">
+                    <label class="form-check-label" for="dua5">
+                      Excluir del equipo "para que no retrase".
+                    </label>
+                  </div>
+
+                  <button class="btn btn-outline-primary mt-3 w-100" onclick="checkDUA()">
+                    <i class="bi bi-check-circle"></i> Verificar selección
+                  </button>
+
+                  <div id="eje4-feedback" class="mt-3"></div>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked mt-2" id="btn-complete-eje4" onclick="completeLevel('eje4', 20)">
+                    <i class="bi bi-lock-fill"></i> Verifica correctamente para avanzar a Reconfiguración
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECONFIGURACIÓN -->
+          <div class="tab-pane fade" id="pills-rec" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-2"><i class="bi bi-arrow-repeat"></i> Momento III. Reconfiguración (recordatorio)</h5>
+                  <p class="text-muted">
+                    Cierre: análisis de información bajo diferentes registros de representación y síntesis del marco de enseñanza.
+                  </p>
+
+                  <div class="alert alert-light border-0">
+                    <strong>Ruta metodológica:</strong>
+                    <ul class="mb-0">
+                      <li><strong>Cooperar:</strong> acuerdos, roles y negociación.</li>
+                      <li><strong>Modelar:</strong> entorno → datos → tablas/gráficas.</li>
+                      <li><strong>Decidir:</strong> estimar, comparar, justificar con evidencias.</li>
+                      <li><strong>Incluir:</strong> ajustes razonables para participación real.</li>
+                    </ul>
+                  </div>
+
+                  <h6 class="fw-bold mt-3"><i class="bi bi-question-circle"></i> Preguntas de reflexión (sincrónico)</h6>
+                  <ul class="mb-0">
+                    <li>¿Por qué asociamos "ser bueno en matemáticas" con resolver rápido y en silencio?</li>
+                    <li>¿Cómo un registro (emociones, fruta, pulsaciones) puede convertirse en cuidado del otro?</li>
+                    <li>¿Qué ajuste razonable implementarías mañana para participación plena?</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-file-earmark-check"></i> Evidencia (tríptico) + certificado</h5>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre completo *</label>
+                    <input type="text" class="form-control form-control-lg" id="student-name" placeholder="Escribe tu nombre completo">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Idea central del tríptico (1 frase) *</label>
+                    <input type="text" class="form-control" id="tri-idea" placeholder="Ej.: Matemáticas para convivir: cooperar, modelar, decidir e incluir.">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">3 decisiones didácticas (bullets) *</label>
+                    <textarea class="form-control" id="tri-decisions" rows="3" placeholder="• Acuerdos y roles…&#10;• Emocionómetro…&#10;• Ajustes razonables…"></textarea>
+                  </div>
+
+                  <button class="btn btn-primary btn-lg w-100 btn-locked" id="btn-generate-certificate" onclick="generateCertificate()">
+                    <i class="bi bi-award"></i> Generar certificado de completación
+                  </button>
+
+                  <div class="text-center mt-2">
+                    <small class="text-muted"><i class="bi bi-info-circle"></i> Se activa al completar 100% de la ruta.</small>
+                  </div>
+
+                  <hr class="my-3">
+
+                  <div class="alert alert-success border-0 mb-0">
+                    <i class="bi bi-camera-fill"></i>
+                    Al finalizar, toma un <strong>pantallazo</strong> del certificado y adjúntalo como evidencia.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-success btn-lg w-100 mt-4" onclick="finalizeRoute()">
+              <i class="bi bi-check2-circle"></i> Finalizar ruta (marca completado)
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS / REFERENCIAS -->
+    <section id="referencias" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Recursos y referencias</h2>
+          <p>Bloque de apoyo (formato APA 7) para usar en la guía</p>
+        </div>
+
+        <div class="accordion" id="accRefs">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="hRefs">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cRefs">
+                Ver referencias (APA 7)
+              </button>
+            </h2>
+            <div id="cRefs" class="accordion-collapse collapse" data-bs-parent="#accRefs">
+              <div class="accordion-body small">
+                <p class="mb-2">Ainscow, M. (2020). Promoting inclusion and equity in education: Lessons from international experiences. <em>Nordic Journal of Studies in Educational Policy, 6</em>(1), 7–16. https://doi.org/10.1080/20020317.2020.1729587</p>
+                <p class="mb-2">American Statistical Association. (2020). <em>Pre-K–12 guidelines for assessment and instruction in statistics education II (GAISE II): A framework for statistics and data science education</em> (2nd ed.).</p>
+                <p class="mb-2">Carbonneau, K. J., Marley, S. C., &amp; Selig, J. P. (2013). A meta-analysis of the efficacy of teaching mathematics with concrete manipulatives. <em>Journal of Educational Psychology, 105</em>(2), 380–400. https://doi.org/10.1037/a0031084</p>
+                <p class="mb-2">CAST. (2018). <em>Universal design for learning guidelines version 2.2</em>.</p>
+                <p class="mb-2">Echeita Sarrionandia, G. (2024). <em>Educación inclusiva. ¿El sueño de una noche de verano?</em> (Ed. revisada y ampliada). Octaedro.</p>
+                <p class="mb-2">Freudenthal, H. (1991). <em>Revisiting mathematics education: China lectures</em>. Kluwer Academic Publishers.</p>
+                <p class="mb-2">Gillies, R. M. (2016). Cooperative learning: Review of research and practice. <em>Australian Journal of Teacher Education, 41</em>(3), Article 3. https://doi.org/10.14221/ajte.2016v41n3.3</p>
+                <p class="mb-2">Goos, M. (2004). Learning mathematics in a classroom community of inquiry. <em>Journal for Research in Mathematics Education, 35</em>(4), 258–291. https://doi.org/10.2307/30034810</p>
+                <p class="mb-2">Johnson, D. W., &amp; Johnson, R. T. (2019). Cooperative learning: The foundation for active learning. In <em>Active learning—Beyond the future</em>. IntechOpen. https://doi.org/10.5772/intechopen.81086</p>
+                <p class="mb-0">Planas, N., &amp; Civil, M. (2013). Diversidad e inclusión en las clases de matemáticas. <em>Uno: Revista de Didáctica de las Matemáticas, 62</em>, 7–15.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL CERTIFICADO -->
+  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0">
+        <div class="modal-certificate position-relative">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+                  data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="certificate-badge"><i class="bi bi-trophy-fill"></i></div>
+
+          <h2 class="mb-2">¡Felicitaciones!</h2>
+          <h3 class="mb-3" id="cert-student-name" style="color:#ffd700;">Estudiante</h3>
+
+          <p class="lead mb-3">Has completado exitosamente el <strong>100%</strong> de la ruta interactiva<br>
+            "Relaciones del ser humano II (Matemáticas)".</p>
+
+          <div class="certificate-content">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-star-fill text-warning"></i> Puntaje:</strong>
+                <div class="fs-3" id="cert-score">0 pts</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-check-circle-fill text-success"></i> Estaciones:</strong>
+                <div class="fs-3">Completadas</div>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.25)">
+
+            <p class="mb-2"><strong>Idea central del tríptico:</strong> <span id="cert-idea">-</span></p>
+            <p class="mb-0"><strong>Decisiones didácticas:</strong><br><span id="cert-decisions">-</span></p>
+          </div>
+
+          <div class="mt-4">
+            <p class="mb-3"><i class="bi bi-camera-fill"></i> Toma un pantallazo de este certificado y adjúntalo como evidencia.</p>
+            <button class="btn btn-light btn-lg px-5" onclick="window.print()">
+              <i class="bi bi-printer"></i> Imprimir
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container text-center">
+      <div class="copyright">
+        &copy; 2025 <strong><span>MathStats Code Hub</span></strong> - Recursos interactivos
+      </div>
+      <div class="credits mt-2">
+        Página de apoyo pedagógico (no reemplaza la guía oficial).
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // =========================
+    // ESTADO GENERAL
+    // =========================
+    let progress = 0;   // 0..100
+    let score = 0;
+    const tasksCompleted = { pref:false, eje1:false, eje2:false, eje3:false, eje4:false, rec:false };
+    const correct = { pref:false, eje1:false, eje2:false, eje3:false, eje4:false };
+
+    const levelOrder = ['pref','eje1','eje2','eje3','eje4','rec'];
+    const missionNames = { pref:'Prefiguración', eje1:'Cooperación', eje2:'Datos y bienestar', eje3:'Decidir', eje4:'Inclusión', rec:'Reconfiguración' };
+
+    function setMissionName(key){ document.getElementById('mission-name').innerText = missionNames[key] || 'Ruta'; }
+
+    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(tab => {
+      tab.addEventListener('shown.bs.tab', function (event) {
+        const id = event.target.id || '';
+        if(id.includes('pref')) setMissionName('pref');
+        if(id.includes('eje1')) setMissionName('eje1');
+        if(id.includes('eje2')) setMissionName('eje2');
+        if(id.includes('eje3')) setMissionName('eje3');
+        if(id.includes('eje4')) setMissionName('eje4');
+        if(id.includes('rec'))  setMissionName('rec');
+      });
+    });
+
+    function updateProgressBar(){
+      document.getElementById('game-progress').style.width = progress + "%";
+      document.getElementById('game-progress').innerText = progress + "%";
+      document.getElementById('score-badge').innerText = score + " Pts";
+    }
+
+    function markCompletedUI(levelKey){
+      document.getElementById(`status-${levelKey}`).innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+    }
+
+    function unlockTab(levelKey){
+      const map = {
+        pref: 'pills-eje1-tab',
+        eje1: 'pills-eje2-tab',
+        eje2: 'pills-eje3-tab',
+        eje3: 'pills-eje4-tab',
+        eje4: 'pills-rec-tab'
+      };
+      const nextId = map[levelKey];
+      if(nextId){
+        const btn = document.getElementById(nextId);
+        btn.disabled = false;
+        const statusSpanId = nextId.replace('pills-','status-').replace('-tab','');
+        document.getElementById(statusSpanId).innerHTML = '<i class="bi bi-circle"></i>';
+      }
+    }
+
+    function completeLevel(levelKey, points){
+      if(tasksCompleted[levelKey]) return;
+
+      // Exigir "correcto" en niveles evaluativos
+      if(levelKey !== 'rec' && !correct[levelKey]){
+        alert('⚠️ Debes completar correctamente el reto antes de avanzar.');
+        return;
+      }
+
+      tasksCompleted[levelKey] = true;
+      score += points;
+
+      // avance porcentual: pref 20% + 4 ejes 20% cada uno = 100%
+      const inc = (levelKey === 'pref') ? 20 : (levelKey === 'rec') ? 0 : 20;
+      progress = Math.min(100, progress + inc);
+
+      updateProgressBar();
+      markCompletedUI(levelKey);
+      unlockTab(levelKey);
+
+      // auto-navegación
+      const next = { pref:'pills-eje1-tab', eje1:'pills-eje2-tab', eje2:'pills-eje3-tab', eje3:'pills-eje4-tab', eje4:'pills-rec-tab' };
+      if(next[levelKey]) document.getElementById(next[levelKey]).click();
+
+      // activar botón certificado cuando llegue a 100%
+      if(progress === 100){
+        const btn = document.getElementById('btn-generate-certificate');
+        btn.classList.remove('btn-locked');
+      }
+    }
+
+    // =========================
+    // PREFIGURACIÓN (3 preguntas)
+    // =========================
+    const prefState = { q1:null, q2:null, q3:null };
+
+    function setPref(q, val){
+      prefState[q] = val;
+      const el = document.getElementById(`pref-${q}`);
+      const msg = {
+        q1: { sí:'Bien: acuerdos y roles hacen visible la cooperación.', parcial:'Oportunidad: vuelve explícitos acuerdos y roles.', no:'Brecha típica: sin acuerdos, suele haber exclusión o silencios.' },
+        q2: { sí:'Buen indicador: participación real y turnos.', 'a veces':'Oportunidad: usa reglas de turnos y rol de vocería.', no:'Alerta: requiere acuerdos, roles y mediación del docente.' },
+        q3: { proceso:'Excelente: el proceso es formativo.', mixto:'Bien: asegura criterios de proceso y producto.', resultado:'Brecha: priorizar solo resultado reduce argumentación y convivencia.' }
+      };
+      el.innerText = msg[q][val] || '';
+      checkPrefCompletion();
+    }
+
+    function checkPrefCompletion(){
+      const done = prefState.q1 && prefState.q2 && prefState.q3;
+      if(done){
+        correct.pref = true;
+        const btn = document.getElementById('btn-complete-pref');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Prefiguración (desbloquear Configuración)';
+      }
+    }
+
+    // =========================
+    // EJE 1: DRAG & DROP ROLES
+    // =========================
+    let draggedRole = null;
+    const rolesPlaced = { 'LÍDER':false, 'VOCERO':false, 'VERIFICADOR':false, 'MATERIALISTA':false };
+
+    function dragRole(ev){
+      draggedRole = ev.target.getAttribute('data-role');
+      ev.dataTransfer.setData("text", draggedRole);
+    }
+    function allowDrop(ev){ ev.preventDefault(); }
+
+    function dropRole(ev, expectedRole){
+      ev.preventDefault();
+      const role = ev.dataTransfer.getData("text") || draggedRole;
+      const feedback = document.getElementById('roles-feedback');
+
+      if(!role) return;
+
+      if(role === expectedRole){
+        ev.currentTarget.innerHTML = `<span class="badge bg-success">${role}</span> <span class="small text-muted">Asignado correctamente</span>`;
+        ev.currentTarget.style.borderColor = '#2fb344';
+        rolesPlaced[role] = true;
+
+        feedback.innerHTML = `<div class="alert alert-success border-0 mt-2">
+          <i class="bi bi-check-circle-fill"></i> Correcto: <strong>${role}</strong> asignado.
+        </div>`;
+      }else{
+        feedback.innerHTML = `<div class="alert alert-danger border-0 mt-2">
+          <i class="bi bi-x-circle-fill"></i> No corresponde. Revisa la función del rol.
+        </div>`;
+      }
+
+      const all = Object.values(rolesPlaced).every(v => v);
+      if(all){
+        correct.eje1 = true;
+        const btn = document.getElementById('btn-complete-eje1');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 1';
+      }
+    }
+
+    // =========================
+    // EJE 2: EMOCIONÓMETRO + QUIZ (3 preguntas)
+    // =========================
+    const emotions = { happy:0, calm:0, sad:0, angry:0 };
+    const colors = { happy:'#ffd54f', calm:'#66bb6a', sad:'#64b5f6', angry:'#ef5350' };
+
+    function renderBars(){
+      const map = [
+        ['happy','bar-happy'],
+        ['calm','bar-calm'],
+        ['sad','bar-sad'],
+        ['angry','bar-angry']
+      ];
+      map.forEach(([k,id])=>{
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        for(let i=0;i<emotions[k];i++){
+          const n = document.createElement('div');
+          n.className = 'note';
+          n.style.background = colors[k];
+          el.appendChild(n);
+        }
+      });
+    }
+    function incEmotion(k){ emotions[k] = Math.min(12, emotions[k]+1); renderBars(); }
+    function resetEmotions(){ emotions.happy=0; emotions.calm=0; emotions.sad=0; emotions.angry=0; renderBars(); }
+
+    // respuestas correctas del mini-reto
+    const quizRight = { q1:'B', q2:'D', q3:'B' };
+    const quizState = { q1:false, q2:false, q3:false };
+
+    function answerQuiz(q, option){
+      const out = document.getElementById(`quiz-${q}`);
+      if(option === quizRight[q]){
+        quizState[q] = true;
+        out.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto.</div>`;
+      }else{
+        quizState[q] = false;
+        out.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Incorrecto. Revisa el contexto y la tabla.</div>`;
+      }
+
+      const all = quizState.q1 && quizState.q2 && quizState.q3;
+      if(all){
+        correct.eje2 = true;
+        const btn = document.getElementById('btn-complete-eje2');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 2';
+      }
+    }
+
+    // =========================
+    // EJE 3: DECISIÓN
+    // =========================
+    function answerEje3(opt){
+      const out = document.getElementById('eje3-feedback');
+      if(opt === 'B'){
+        correct.eje3 = true;
+        out.innerHTML = `<div class="alert alert-success border-0">
+          <i class="bi bi-check-circle-fill"></i> Correcto: combina cálculo con criterios de inclusión y acuerdos.
+        </div>`;
+        const btn = document.getElementById('btn-complete-eje3');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 3';
+      }else{
+        correct.eje3 = false;
+        out.innerHTML = `<div class="alert alert-danger border-0">
+          <i class="bi bi-x-circle-fill"></i> Aún no. Busca una opción que justifique la decisión pedagógica (no solo operación).
+        </div>`;
+      }
+    }
+
+    // =========================
+    // EJE 4: DUA
+    // =========================
+    function checkDUA(){
+      const ok = document.getElementById('dua1').checked &&
+                 document.getElementById('dua3').checked &&
+                 document.getElementById('dua4').checked &&
+                 !document.getElementById('dua2').checked &&
+                 !document.getElementById('dua5').checked;
+
+      const out = document.getElementById('eje4-feedback');
+
+      if(ok){
+        correct.eje4 = true;
+        out.innerHTML = `<div class="alert alert-success border-0">
+          <i class="bi bi-check-circle-fill"></i> Correcto: acciones coherentes con DUA y participación real.
+        </div>`;
+        const btn = document.getElementById('btn-complete-eje4');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 4';
+      }else{
+        correct.eje4 = false;
+        out.innerHTML = `<div class="alert alert-danger border-0">
+          <i class="bi bi-x-circle-fill"></i> Revisa: DUA implica apoyos, pasos, flexibilidad y roles; no uniformidad ni exclusión.
+        </div>`;
+      }
+    }
+
+    // =========================
+    // FINALIZAR / CERTIFICADO
+    // =========================
+    function finalizeRoute(){
+      // marcar "rec" como visitado (no suma %)
+      if(!tasksCompleted.eje4){
+        alert('⚠️ Primero completa hasta el Eje 4 para cerrar la ruta.');
+        return;
+      }
+      tasksCompleted.rec = true;
+      markCompletedUI('rec');
+      document.getElementById('status-rec').innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+      alert('✅ Ruta cerrada. Ahora puedes generar el certificado (si ya estás al 100%).');
+    }
+
+    function generateCertificate(){
+      const name = (document.getElementById('student-name').value || '').trim();
+      const idea = (document.getElementById('tri-idea').value || '').trim();
+      const decisions = (document.getElementById('tri-decisions').value || '').trim();
+
+      if(progress < 100){
+        alert('⚠️ Debes completar 100% (Prefiguración + Ejes 1–4) para generar el certificado.');
+        return;
+      }
+      if(!name || !idea || !decisions){
+        alert('⚠️ Completa Nombre, Idea central y Decisiones didácticas.');
+        return;
+      }
+
+      document.getElementById('cert-student-name').innerText = name;
+      document.getElementById('cert-score').innerText = score + ' pts';
+      document.getElementById('cert-idea').innerText = idea;
+      document.getElementById('cert-decisions').innerText = decisions.replace(/\n/g,'\n');
+
+      const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+      modal.show();
+    }
+
+    // =========================
+    // HEADER HIDE ON SCROLL
+    // =========================
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const scrollThreshold = 10;
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+
+    window.addEventListener('load', function() {
+      header.classList.remove('header-hidden');
+    });
+
+    // =========================
+    // MOBILE NAV TOGGLE
+    // =========================
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar');
+    
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function(e) {
+        navbar.classList.toggle('active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+    }
+
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          const toggle = document.querySelector('.mobile-nav-toggle');
+          toggle.classList.add('bi-list');
+          toggle.classList.remove('bi-x');
+        }
+      });
+    });
+
+    // =========================
+    // INIT
+    // =========================
+    renderBars();
+    updateProgressBar();
+  </script>
+</body>
+</html>
