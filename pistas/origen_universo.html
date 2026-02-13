@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Pista: Origen del Universo II (Matemáticas) | MathStats Code Hub</title>
+
+  <!-- Bootstrap + Icons + Fuente -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --brand:#2487ce;
+      --brand2:#1a6ca3;
+      --dark:#0f2a4f;
+      --soft:#f7f9fc;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:16px;
+    }
+    body{
+      font-family:'Poppins', sans-serif;
+      padding-top: 86px;
+      background: var(--soft);
+    }
+
+    /* HEADER */
+    #header{
+      background:#fff;
+      box-shadow:0 2px 15px rgba(36,135,206,.10);
+      padding:14px 0;
+      position:fixed; top:0; width:100%; z-index:1000;
+      transition: transform .25s ease-in-out;
+    }
+    .header-hidden{ transform: translateY(-100%); }
+    .logo{
+      font-size: 24px; font-weight: 900; color: var(--brand);
+      text-decoration:none; letter-spacing:-.5px; transition:.2s;
+    }
+    .logo:hover{ color: var(--brand2); }
+
+    /* NAV */
+    .navbar ul{ margin:0; padding:0; display:flex; list-style:none; align-items:center; }
+    .navbar li{ position:relative; }
+    .navbar>ul>li{ padding:10px 0 10px 18px; }
+    .navbar a{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 3px; font-size:15px; font-weight:700; color:#444;
+      white-space:nowrap; transition:.2s; text-decoration:none;
+    }
+    .navbar a:hover, .navbar .active{ color:var(--brand); }
+    .navbar > ul > li > a:before{
+      content:""; position:absolute; width:0; height:2px; bottom:-5px; left:0;
+      background-color: var(--brand); visibility:hidden; transition: all .25s ease-in-out;
+    }
+    .navbar > ul > li > a:hover:before, .navbar > ul > li > a.active:before{
+      visibility: visible; width: 25px;
+    }
+    .navbar .dropdown ul{
+      display:block; position:absolute; left:14px; top:calc(100% + 28px);
+      margin:0; padding:10px 0; z-index:99; opacity:0; visibility:hidden;
+      background:#fff; box-shadow:0 0 30px rgba(127,137,161,.25);
+      transition:.25s; border-radius: 12px;
+    }
+    .navbar .dropdown ul li{ min-width: 240px; }
+    .navbar .dropdown ul a{ padding:10px 20px; font-size:14px; font-weight:700; }
+    .navbar .dropdown:hover>ul{ opacity:1; top:100%; visibility:visible; }
+
+    /* MOBILE NAV */
+    .mobile-nav-toggle{ font-size:28px; cursor:pointer; display:none; line-height:0; color:#444; }
+    @media (max-width: 991px){
+      .mobile-nav-toggle{ display:block; }
+      .navbar{
+        position:fixed; top:0; right:-100%; width:310px; bottom:0;
+        transition:.25s; padding:20px; background:#fff; box-shadow:0 0 20px rgba(0,0,0,.1);
+        z-index:9997; overflow-y:auto;
+      }
+      .navbar ul{ display:block; margin-top:60px; }
+      .navbar.active{ right:0; }
+      .navbar .dropdown ul{ position:static; display:none; opacity:1; visibility:visible; box-shadow:none; padding-left:20px; }
+      .navbar .dropdown:hover>ul{ display:block; }
+      .navbar > ul > li > a:before{ display:none; }
+    }
+
+    .get-started-btn{
+      background: var(--brand); color:#fff; padding:10px 24px; border-radius:999px;
+      text-decoration:none; font-weight:900; font-size:14px; transition:.2s;
+      box-shadow:0 4px 15px rgba(36,135,206,.30); border:none; display:inline-block;
+      margin-left:18px;
+    }
+    .get-started-btn:hover{
+      background: var(--brand2); color:#fff; transform: translateY(-2px);
+      box-shadow:0 6px 20px rgba(36,135,206,.40);
+    }
+    @media (max-width: 576px){ .get-started-btn{ display:none; } }
+
+    /* HERO */
+    #hero{
+      width:100%; min-height: 48vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      display:flex; align-items:center; justify-content:center;
+      padding: 52px 0;
+    }
+    #hero h1{
+      margin:0; font-size: 38px; font-weight: 900; color:#fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,.25);
+    }
+    #hero h2{ color:#dfe9ff; margin: 12px 0 0 0; font-size: 16px; font-weight:600; }
+    .btn-get-started{
+      background:#fff; color: var(--brand); padding:12px 28px; border-radius:999px;
+      margin-top:18px; text-decoration:none; font-weight:900; display:inline-block; transition:.15s;
+    }
+    .btn-get-started:hover{ background:#eef5ff; transform: scale(1.02); }
+
+    /* SECCIONES */
+    .section-pad{ padding: 60px 0; }
+    .section-title{ text-align:center; padding-bottom: 26px; }
+    .section-title h2{
+      font-size: 30px; font-weight: 900; color: var(--brand);
+      position: relative; padding-bottom: 18px;
+    }
+    .section-title h2::after{
+      content:''; position:absolute; display:block; width: 90px; height:3px;
+      background: var(--brand); bottom:0; left: calc(50% - 45px);
+    }
+    .section-title p{ color:#5f6b7a; }
+
+    .card-soft{
+      border:0; border-radius: var(--radius); box-shadow: var(--shadow);
+      transition:.2s; background: #fff;
+    }
+    .card-soft:hover{ transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,.10); }
+
+    .box{
+      padding: 22px; background:#fff; border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08); transition:.2s; height:100%;
+    }
+    .box:hover{ transform: translateY(-4px); }
+    .box h3{ color: var(--brand); font-weight: 900; margin-bottom: 12px; font-size: 18px; }
+    .box ul{ list-style:none; padding:0; margin:0; }
+    .box ul li{ padding: 7px 0; }
+    .box ul li i{ color:#2fb344; margin-right: 10px; }
+
+    .sticky-note{
+      border-left: 4px solid #ff9800; background:#fff8e1; padding:14px;
+      border-radius: 12px; margin-top: 14px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius: 999px;
+      border:2px solid #e6eef8; background:#fff; font-weight: 900;
+      color:#2b3645;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:.9rem; background:#0b1220; color:#e6f3ff; padding:2px 8px; border-radius:8px;
+    }
+
+    .quiz-opt{ text-align:left; font-weight:800; }
+    .quiz-opt:disabled{ opacity:.55; cursor:not-allowed; }
+    .feedback{ margin-top:10px; }
+    .feedback .alert{ margin-bottom:0; }
+
+    .btn-locked{ opacity:.45; pointer-events:none; cursor:not-allowed; }
+
+    /* BARRA INFERIOR */
+    .fixed-bottom-bar{
+      z-index: 999; background: linear-gradient(135deg, #0f2a4f 0%, #1e3c72 100%);
+      color:#fff; padding: 14px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    }
+    .progress{ background-color: rgba(255,255,255,0.25); height: 18px; border-radius: 10px; }
+    .progress-bar{ font-weight: 900; border-radius: 10px; }
+    .badge-score{ font-size: 1rem; }
+
+    /* PRINT MODE */
+    #print-area{ display:none; }
+    body.print-mode #print-area{ display:block; }
+    @media print{
+      body.print-mode *{ visibility:hidden; }
+      body.print-mode #print-area, body.print-mode #print-area *{ visibility:visible; }
+      body.print-mode #print-area{
+        position:absolute; left:0; top:0; width:100%;
+        padding: 18px;
+      }
+    }
+
+    #footer{ background: var(--dark); color:#fff; padding: 26px 0; margin-top: 60px; }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="#" class="logo">MathStats Code Hub</a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Pedagogía - Pistas</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="origen_universo.html" class="active">Origen del Universo II (Matemáticas)</a></li>
+              <li><a href="#">Espacios alternativos educativos</a></li>
+              <li><a href="nuevos_lenguajes.html">Nuevos lenguajes</a></li>
+              <li><a href="relaciones_ser.html">Relaciones del ser humano II</a></li>
+            </ul>
+          </li>
+          <li><a href="../geometria.html">Geometría</a></li>
+          <li><a href="../algebra.html">Álgebra</a></li>
+          <li><a href="../programacion.html">Programación</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+      <a href="#preconfiguracion" class="get-started-btn">
+        <i class="bi bi-activity"></i> Ir a Preconfiguración
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container text-center">
+      <h1>Origen del Universo II (Matemáticas)</h1>
+      <h2>Preconfiguración (Evaluada, <strong>20%</strong>) → evidencia PDF Moodle (1 intento)</h2>
+      <a href="#preconfiguracion" class="btn-get-started">
+        <i class="bi bi-rocket-takeoff"></i> Iniciar
+      </a>
+      <div class="mt-3 d-flex flex-wrap justify-content-center gap-2">
+        <span class="pill"><i class="bi bi-cube"></i> 3D básico</span>
+        <span class="pill"><i class="bi bi-rulers"></i> Distancia simple</span>
+        <span class="pill"><i class="bi bi-stars"></i> UA · año luz · pc</span>
+        <span class="pill"><i class="bi bi-superscript"></i> Notación científica</span>
+        <span class="pill"><i class="bi bi-diagram-3"></i> Escala</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <!-- PRECONFIGURACIÓN -->
+    <section id="preconfiguracion" class="section-pad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento I. Preconfiguración (Evaluada – 1 intento)</h2>
+          <p>5 preguntas sencillas (2 pts c/u). Cada respuesta se confirma y queda bloqueada.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card card-soft p-4">
+
+              <h5 class="mb-3"><i class="bi bi-bullseye"></i> Enfoque (según guía)</h5>
+              <div class="alert alert-info border-0">
+                Matemáticas para comprender el universo: ubicación en 3D, noción de distancia, unidades astronómicas,
+                notación científica y escala/modelación.
+              </div>
+
+              <div class="sticky-note">
+                <strong><i class="bi bi-exclamation-triangle"></i> Importante:</strong>
+                Esta Preconfiguración equivale al <strong>20%</strong>. Solo hay <strong>1 intento</strong>.
+                Cada respuesta pide confirmación y luego se bloquea. <strong>No hay botón de reinicio.</strong>
+              </div>
+
+              <hr class="my-4">
+
+              <h5 class="mb-3"><i class="bi bi-person-badge"></i> Datos para el PDF</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Nombre completo *</label>
+                  <input type="text" class="form-control" id="st_name" placeholder="Nombre completo" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-bold">Documento *</label>
+                  <input type="text" class="form-control" id="st_id" placeholder="ID" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-bold">Grupo</label>
+                  <input type="text" class="form-control" id="st_group" placeholder="Ej.: A" />
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <!-- Q1 -->
+              <h5 class="mb-2"><i class="bi bi-cube"></i> Reto 1 (2 pts): Signo en coordenadas 3D</h5>
+              <p class="text-muted mb-2">
+                Para el punto <span class="kbd">P(2, −1, 3)</span>, ¿qué coordenada es negativa?
+              </p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q1" onclick="mcqLock('q1','A')">A) x</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q1" onclick="mcqLock('q1','B')">B) y</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q1" onclick="mcqLock('q1','C')">C) z</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q1" onclick="mcqLock('q1','D')">D) Ninguna</button>
+              </div>
+              <div id="fb_q1" class="feedback"></div>
+
+              <hr class="my-4">
+
+              <!-- Q2 -->
+              <h5 class="mb-2"><i class="bi bi-rulers"></i> Reto 2 (2 pts): Distancia sencilla en 3D</h5>
+              <p class="text-muted mb-2">
+                Entre <span class="kbd">A(1,2,1)</span> y <span class="kbd">B(4,6,1)</span>, ¿cuál es la distancia?
+              </p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q2" onclick="mcqLock('q2','A')">A) 5</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q2" onclick="mcqLock('q2','B')">B) 3</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q2" onclick="mcqLock('q2','C')">C) 7</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q2" onclick="mcqLock('q2','D')">D) 9</button>
+              </div>
+              <div id="fb_q2" class="feedback"></div>
+
+              <hr class="my-4">
+
+              <!-- Q3 -->
+              <h5 class="mb-2"><i class="bi bi-stars"></i> Reto 3 (2 pts): Unidad astronómica adecuada</h5>
+              <p class="text-muted mb-2">
+                ¿Cuál afirmación es la más adecuada (según escala de magnitudes)?
+              </p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q3" onclick="mcqLock('q3','A')">
+                  A) UA para galaxias, año luz para el sistema solar, pc para distancias de aula.
+                </button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q3" onclick="mcqLock('q3','B')">
+                  B) UA para sistema solar, año luz para estrellas cercanas, pc para escalas galácticas.
+                </button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q3" onclick="mcqLock('q3','C')">
+                  C) Año luz para medir un cuaderno, UA para el salón, pc para el patio.
+                </button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q3" onclick="mcqLock('q3','D')">
+                  D) Todas son igual de correctas.
+                </button>
+              </div>
+              <div id="fb_q3" class="feedback"></div>
+
+              <hr class="my-4">
+
+              <!-- Q4 -->
+              <h5 class="mb-2"><i class="bi bi-superscript"></i> Reto 4 (2 pts): Notación científica (comprensión)</h5>
+              <p class="text-muted mb-2">
+                ¿Cuál es la notación científica correcta de <span class="kbd">150.000.000</span>?
+              </p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q4" onclick="mcqLock('q4','A')">A) 15×10^7</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q4" onclick="mcqLock('q4','B')">B) 1.5×10^7</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q4" onclick="mcqLock('q4','C')">C) 1.5×10^8</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q4" onclick="mcqLock('q4','D')">D) 0.15×10^9</button>
+              </div>
+              <div id="fb_q4" class="feedback"></div>
+
+              <hr class="my-4">
+
+              <!-- Q5 -->
+              <h5 class="mb-2"><i class="bi bi-diagram-3"></i> Reto 5 (2 pts): Escala simple</h5>
+              <p class="text-muted mb-2">
+                Si la escala es <span class="kbd">1 cm = 10^7 km</span>, entonces <span class="kbd">1.5×10^8 km</span> en el modelo equivale a:
+              </p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q5" onclick="mcqLock('q5','A')">A) 1.5 cm</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q5" onclick="mcqLock('q5','B')">B) 15 cm</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q5" onclick="mcqLock('q5','C')">C) 150 cm</button>
+                <button class="btn btn-outline-secondary quiz-opt" data-q="q5" onclick="mcqLock('q5','D')">D) 1500 cm</button>
+              </div>
+              <div id="fb_q5" class="feedback"></div>
+
+              <hr class="my-4">
+
+              <h5 class="mb-2"><i class="bi bi-chat-square-text"></i> Reflexión breve (se incluye en el PDF)</h5>
+              <p class="text-muted mb-2">
+                En 3–5 líneas: ¿por qué para “hacer matemáticas del universo” necesitas escala, números grandes y diferentes unidades?
+              </p>
+              <textarea class="form-control" id="q_reflex" rows="3" placeholder="Escribe mínimo 3–5 líneas."></textarea>
+
+              <hr class="my-4">
+
+              <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                <div>
+                  <span class="pill"><i class="bi bi-clipboard-data"></i> Nota Preconfiguración:</span>
+                  <span class="badge bg-warning text-dark badge-score ms-2" id="pre_score_badge">0 / 10</span>
+                </div>
+                <div>
+                  <button class="btn btn-outline-secondary" onclick="saveState()">
+                    <i class="bi bi-save2"></i> Guardar
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <button class="btn btn-success btn-lg w-100 btn-locked" id="btn_pdf_pre" onclick="generatePrePDF()">
+                  <i class="bi bi-file-earmark-pdf"></i> Generar PDF (Preconfiguración) para Moodle
+                </button>
+                <div class="small text-muted mt-2">
+                  Se habilita al completar: Nombre + Documento + reflexión mínima + 5 respuestas confirmadas.
+                </div>
+              </div>
+
+              <div class="mt-3 alert alert-info border-0">
+                <strong>Calificación rápida:</strong> registra en Moodle la nota del PDF (0–10). El peso 20% lo controla Moodle.
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="box">
+              <h3><i class="bi bi-check2-square"></i> Checklist para entregar</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Confirmé las 5 respuestas (bloqueadas)</li>
+                <li><i class="bi bi-check"></i> Escribí reflexión breve</li>
+                <li><i class="bi bi-check"></i> Generé PDF desde el botón verde</li>
+                <li><i class="bi bi-check"></i> Subí el PDF a Moodle</li>
+              </ul>
+
+              <hr />
+
+              <h3><i class="bi bi-shield-check"></i> Evidencia</h3>
+              <div class="alert alert-warning border-0 small mb-0">
+                El PDF incluye folio y fecha. Esto facilita verificación cuando solo hay un intento.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BARRA INFERIOR -->
+  <div class="fixed-bottom fixed-bottom-bar">
+    <div class="container">
+      <div class="row align-items-center g-2">
+        <div class="col-md-3">
+          <div class="d-flex align-items-center">
+            <i class="bi bi-trophy-fill text-warning me-2 fs-3"></i>
+            <div>
+              <small class="d-block text-uppercase" style="font-size:0.68rem;opacity:.85;">Preconfiguración</small>
+              <strong style="font-size:0.95rem;">Evaluada (20%)</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="progress">
+            <div id="game-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                 role="progressbar" style="width:0%;">0%</div>
+          </div>
+        </div>
+        <div class="col-md-2 text-end">
+          <span class="badge bg-warning text-dark badge-score" id="score-badge">0 / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT AREA (PDF) -->
+  <div id="print-area">
+    <div class="border rounded-3 p-3">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <h2 style="margin:0; font-weight:900; color:#1e3c72;">Reporte de Preconfiguración</h2>
+          <div style="color:#334155; font-weight:800;">Pista: Origen del Universo II (Matemáticas)</div>
+          <div style="color:#64748b; font-weight:700;">Peso en el curso: <strong>20%</strong> (según Moodle)</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:900; font-size:1.1rem;">Nota: <span id="rp_score">0</span> / 10</div>
+          <div style="color:#64748b; font-weight:800;">Folio: <span id="rp_folio">-</span></div>
+          <div style="color:#64748b; font-weight:800;">Fecha: <span id="rp_date">-</span></div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row g-2">
+        <div class="col-md-6">
+          <div><strong>Estudiante:</strong> <span id="rp_name">-</span></div>
+          <div><strong>Documento:</strong> <span id="rp_id">-</span></div>
+          <div><strong>Grupo:</strong> <span id="rp_group">-</span></div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>Resumen:</strong> 3D básico · distancia · unidades astronómicas · notación científica · escala.</div>
+          <div><strong>Observación:</strong> Respuestas confirmadas y bloqueadas (1 intento).</div>
+        </div>
+      </div>
+
+      <hr />
+
+      <h4 style="font-weight:900; color:#1e3c72; margin-bottom:10px;">Resultados</h4>
+      <table class="table table-sm table-bordered bg-white align-middle">
+        <thead class="table-light">
+          <tr>
+            <th style="width:10%;">Reto</th>
+            <th>Descripción</th>
+            <th style="width:28%;">Respuesta</th>
+            <th style="width:12%;">Puntos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Signo en P(2,−1,3)</td><td id="rp_a1">-</td><td id="rp_p1">0</td></tr>
+          <tr><td>2</td><td>Distancia entre A(1,2,1) y B(4,6,1)</td><td id="rp_a2">-</td><td id="rp_p2">0</td></tr>
+          <tr><td>3</td><td>Unidad adecuada (UA/año luz/pc)</td><td id="rp_a3">-</td><td id="rp_p3">0</td></tr>
+          <tr><td>4</td><td>Notación científica de 150.000.000</td><td id="rp_a4">-</td><td id="rp_p4">0</td></tr>
+          <tr><td>5</td><td>Escala 1 cm = 10^7 km para 1.5×10^8 km</td><td id="rp_a5">-</td><td id="rp_p5">0</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="font-weight:900; color:#1e3c72; margin-top:16px;">Reflexión breve</h4>
+      <div class="border rounded-3 p-2" style="min-height: 90px;">
+        <span id="rp_reflex">-</span>
+      </div>
+
+      <div class="mt-3" style="color:#64748b; font-weight:800;">
+        Firma del estudiante: ________________________________ &nbsp;&nbsp;&nbsp;&nbsp;
+        Firma del docente: ________________________________
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="container text-center">
+      <div>&copy; 2026 <strong>MathStats Code Hub</strong> - Origen del Universo II (Matemáticas)</div>
+      <div style="opacity:.85; margin-top:6px;">Recurso de apoyo pedagógico (no reemplaza la guía oficial).</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /************************************************************
+     * PRECONFIGURACIÓN SIMPLE + 1 INTENTO (BLOQUEO)
+     ************************************************************/
+    const STORAGE_KEY = 'OU2_PRECONFIG_V4_LOCKED';
+
+    const correctKey = {
+      q1:'B', // y
+      q2:'A', // 5
+      q3:'B', // UA sistema solar / ly estrellas / pc galaxias
+      q4:'C', // 1.5×10^8
+      q5:'B'  // 15 cm
+    };
+
+    const state = {
+      folio: '',
+      st_name: '',
+      st_id: '',
+      st_group: '',
+      reflex: '',
+      answers: { q1:null, q2:null, q3:null, q4:null, q5:null },
+      points:  { q1:0,    q2:0,    q3:0,    q4:0,    q5:0 },
+      locked:  { q1:false,q2:false,q3:false,q4:false,q5:false }
+    };
+
+    function nowISO(){
+      const d = new Date();
+      const pad = n => String(n).padStart(2,'0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    function makeFolio(){
+      const s = Math.random().toString(36).slice(2,8).toUpperCase();
+      const t = Date.now().toString(36).slice(-6).toUpperCase();
+      return `OU2-${t}-${s}`;
+    }
+
+    function getScore(){
+      return Object.values(state.points).reduce((a,b)=>a+b,0);
+    }
+    function getProgress(){
+      const done = Object.values(state.locked).filter(Boolean).length;
+      return Math.round((done/5)*100);
+    }
+
+    function setProgressUI(){
+      const score = getScore();
+      const prog = getProgress();
+      document.getElementById('score-badge').innerText = `${score} / 10`;
+      document.getElementById('pre_score_badge').innerText = `${score} / 10`;
+      const bar = document.getElementById('game-progress');
+      bar.style.width = `${prog}%`;
+      bar.innerText = `${prog}%`;
+      updatePDFButtonState();
+    }
+
+    function updatePDFButtonState(){
+      const nameOk = (document.getElementById('st_name').value || '').trim().length >= 5;
+      const idOk = (document.getElementById('st_id').value || '').trim().length >= 5;
+      const ref = (document.getElementById('q_reflex').value || '').trim();
+      const refOk = ref.length >= 25;
+      const allLocked = Object.values(state.locked).every(v=>v===true);
+
+      const btn = document.getElementById('btn_pdf_pre');
+      if(nameOk && idOk && refOk && allLocked){
+        btn.classList.remove('btn-locked');
+      }else{
+        btn.classList.add('btn-locked');
+      }
+    }
+
+    function lockButtons(q){
+      document.querySelectorAll(`[data-q="${q}"]`).forEach(btn=>{
+        btn.disabled = true;
+      });
+    }
+
+    function mcqLock(q, opt){
+      if(state.locked[q]) return;
+
+      const ok = confirm('¿Confirmas tu respuesta? ⚠️ Después de confirmar NO podrás cambiarla.');
+      if(!ok) return;
+
+      state.answers[q] = opt;
+      state.locked[q] = true;
+
+      const isCorrect = (opt === correctKey[q]);
+      state.points[q] = isCorrect ? 2 : 0;
+
+      lockButtons(q);
+      renderFeedback(q, isCorrect);
+      saveState();
+      setProgressUI();
+    }
+
+    function renderFeedback(q, isCorrect){
+      const fb = document.getElementById(`fb_${q}`);
+      const pts = isCorrect ? 2 : 0;
+
+      let hint = '';
+      if(!isCorrect){
+        if(q==='q1') hint = 'En P(2,−1,3) solo y es negativa.';
+        if(q==='q2') hint = 'Diferencias (3,4,0) → distancia 5.';
+        if(q==='q3') hint = 'UA: sistema solar; año luz: estrellas; pc: galaxias.';
+        if(q==='q4') hint = '150.000.000 = 1.5×10^8 (mueves el punto 8 lugares).';
+        if(q==='q5') hint = '(1.5×10^8) / (10^7) = 15.';
+      }
+
+      fb.innerHTML = isCorrect
+        ? `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Confirmado. (+${pts} pts)</div>`
+        : `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Confirmado. (+${pts} pts) <span class="small">Pista: ${hint}</span></div>`;
+    }
+
+    function prettyAnswer(q){
+      const a = state.answers[q];
+      if(!a) return '-';
+
+      const maps = {
+        q1:{A:'x', B:'y', C:'z', D:'Ninguna'},
+        q2:{A:'5', B:'3', C:'7', D:'9'},
+        q3:{
+          A:'(Incorrecta) UA galaxias / año luz sistema solar / pc aula',
+          B:'UA sistema solar / año luz estrellas / pc galaxias',
+          C:'(Incorrecta) año luz cuaderno / UA salón / pc patio',
+          D:'(Incorrecta) todas iguales'
+        },
+        q4:{A:'15×10^7', B:'1.5×10^7', C:'1.5×10^8', D:'0.15×10^9'},
+        q5:{A:'1.5 cm', B:'15 cm', C:'150 cm', D:'1500 cm'}
+      };
+      const txt = maps[q] ? (maps[q][a] || a) : a;
+      return `${a}) ${txt}`;
+    }
+
+    function generatePrePDF(){
+      const name = (document.getElementById('st_name').value || '').trim();
+      const id   = (document.getElementById('st_id').value || '').trim();
+      const grp  = (document.getElementById('st_group').value || '').trim();
+      const ref  = (document.getElementById('q_reflex').value || '').trim();
+
+      state.st_name = name;
+      state.st_id = id;
+      state.st_group = grp;
+      state.reflex = ref;
+
+      if(!state.folio) state.folio = makeFolio();
+
+      document.getElementById('rp_name').innerText = name || '-';
+      document.getElementById('rp_id').innerText = id || '-';
+      document.getElementById('rp_group').innerText = grp || '-';
+      document.getElementById('rp_folio').innerText = state.folio;
+      document.getElementById('rp_date').innerText = nowISO();
+
+      const score = getScore();
+      document.getElementById('rp_score').innerText = score;
+
+      document.getElementById('rp_a1').innerText = prettyAnswer('q1');
+      document.getElementById('rp_a2').innerText = prettyAnswer('q2');
+      document.getElementById('rp_a3').innerText = prettyAnswer('q3');
+      document.getElementById('rp_a4').innerText = prettyAnswer('q4');
+      document.getElementById('rp_a5').innerText = prettyAnswer('q5');
+
+      document.getElementById('rp_p1').innerText = state.points.q1;
+      document.getElementById('rp_p2').innerText = state.points.q2;
+      document.getElementById('rp_p3').innerText = state.points.q3;
+      document.getElementById('rp_p4').innerText = state.points.q4;
+      document.getElementById('rp_p5').innerText = state.points.q5;
+
+      document.getElementById('rp_reflex').innerText = ref || '-';
+
+      saveState();
+
+      document.body.classList.add('print-mode');
+      window.print();
+      document.body.classList.remove('print-mode');
+    }
+
+    function saveState(){
+      state.st_name = (document.getElementById('st_name').value || '').trim();
+      state.st_id = (document.getElementById('st_id').value || '').trim();
+      state.st_group = (document.getElementById('st_group').value || '').trim();
+      state.reflex = (document.getElementById('q_reflex').value || '').trim();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      try{
+        const s = JSON.parse(raw);
+        if(!s || !s.answers || !s.points || !s.locked) return;
+        Object.assign(state, s);
+
+        document.getElementById('st_name').value = state.st_name || '';
+        document.getElementById('st_id').value = state.st_id || '';
+        document.getElementById('st_group').value = state.st_group || '';
+        document.getElementById('q_reflex').value = state.reflex || '';
+
+        ['q1','q2','q3','q4','q5'].forEach(q=>{
+          if(state.locked[q]){
+            lockButtons(q);
+            const isCorrect = state.answers[q] === correctKey[q];
+            renderFeedback(q, isCorrect);
+          }
+        });
+
+        setProgressUI();
+      }catch(e){
+        console.warn('No se pudo cargar estado:', e);
+      }
+    }
+
+    // Inputs: guardar estado y actualizar habilitación PDF
+    ['st_name','st_id','st_group','q_reflex'].forEach(id=>{
+      const el = document.getElementById(id);
+      el.addEventListener('input', ()=>{
+        saveState();
+        updatePDFButtonState();
+      });
+    });
+
+    // HEADER hide on scroll
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const scrollThreshold = 10;
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) header.classList.add('header-hidden');
+        else header.classList.remove('header-hidden');
+      } else header.classList.remove('header-hidden');
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+
+    // Mobile nav toggle
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar');
+    if(mobileNavToggle){
+      mobileNavToggle.addEventListener('click', function(){
+        navbar.classList.toggle('active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+    }
+    document.querySelectorAll('#navbar a').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        if(navbar.classList.contains('active')){
+          navbar.classList.remove('active');
+          mobileNavToggle.classList.add('bi-list');
+          mobileNavToggle.classList.remove('bi-x');
+        }
+      });
+    });
+
+    // INIT
+    loadState();
+    setProgressUI();
+  </script>
+</body>
+</html>
