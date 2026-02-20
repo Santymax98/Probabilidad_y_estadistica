@@ -703,130 +703,108 @@
           </div>
 
           <!-- EJE 2: DATOS Y BIENESTAR -->
-          <div class="tab-pane fade" id="pills-eje2" role="tabpanel">
-            <div class="row g-4">
-              <div class="col-lg-5">
-                <div class="card card-soft p-4 h-100">
-                  <h5 class="mb-2"><i class="bi bi-bar-chart"></i> Eje 2: Modelación de bienestar y convivencia</h5>
-                  <p class="text-muted">
-                    Construye un "emocionómetro" simple (barras con notas). Luego responde el mini-reto tipo Saber Pro con un solo contexto.
-                  </p>
+<div id="mini-reto-eje2" style="scroll-margin-top: 90px;">
+  <!-- Mini-reto (Eje 2) -->
+  <h5 class="mb-2"><i class="bi bi-clipboard-check"></i> Mini-reto (3 preguntas, un solo contexto)</h5>
+  <p class="text-muted mb-2">
+    <strong>Contexto:</strong> En una práctica de aula, un docente aplicó un “chequeo emocional” diario.
+    Cada día, 120 estudiantes eligieron una emoción dominante. La tabla muestra el número de elecciones por emoción durante una semana.
+  </p>
+  <p class="small text-muted mb-3">
+    <em>Competencias evaluadas:</em> (1) Interpretación y representación, (2) Formulación y ejecución, (3) Argumentación.
+  </p>
 
-                  <div class="sticky-note">
-                    <strong><i class="bi bi-check-circle"></i> Idea didáctica:</strong>
-                    transformar una variable cualitativa (emoción) en representación cuantitativa gestionable (conteos y barras).
-                  </div>
+  <div class="table-responsive">
+    <table class="table table-sm table-bordered align-middle bg-white">
+      <thead class="table-light">
+        <tr>
+          <th>Día</th><th>Happy</th><th>Calm</th><th>Sad</th><th>Angry</th><th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lunes</td><td>32</td><td>40</td><td>28</td><td>20</td><td>120</td></tr>
+        <tr><td>Martes</td><td>28</td><td>42</td><td>30</td><td>20</td><td>120</td></tr>
+        <tr><td>Miércoles</td><td>35</td><td>38</td><td>22</td><td>25</td><td>120</td></tr>
+        <tr><td>Jueves</td><td>30</td><td>45</td><td>25</td><td>20</td><td>120</td></tr>
+        <tr><td>Viernes</td><td>24</td><td>52</td><td>28</td><td>16</td><td>120</td></tr>
+      </tbody>
+      <caption class="small text-muted">
+        <strong>Tabla 2.</strong> Registro semanal de emociones reportadas por 120 estudiantes.
+        <br><strong>Nota.</strong> Los valores corresponden al número de estudiantes que seleccionaron cada emoción en el chequeo diario; el total por día es 120 (una respuesta por estudiante).
+        <strong>Fuente:</strong> Elaborado por los autores.
+      </caption>
+    </table>
+  </div>
 
-                  <hr class="my-3">
+  <div class="mt-3">
 
-                  <div class="d-flex flex-wrap gap-2">
-                    <button class="btn btn-outline-warning" onclick="incEmotion('happy')">+ Happy</button>
-                    <button class="btn btn-outline-success" onclick="incEmotion('calm')">+ Calm</button>
-                    <button class="btn btn-outline-primary" onclick="incEmotion('sad')">+ Sad</button>
-                    <button class="btn btn-outline-danger" onclick="incEmotion('angry')">+ Angry</button>
-                    <button class="btn btn-outline-secondary" onclick="resetEmotions()"><i class="bi bi-arrow-counterclockwise"></i> Reiniciar</button>
-                  </div>
+    <!-- PREGUNTA 1 -->
+    <div class="mb-4 p-3 border rounded bg-light">
+      <div class="fw-bold mb-1">Pregunta 1 (Competencia 1: Interpretación y Representación)</div>
+      <div class="mb-2">
+        ¿Cuál emoción presenta mayor variabilidad diaria, medida por el rango (máximo − mínimo) de sus conteos en la semana?
+      </div>
 
-                  <div class="small text-muted mt-3">
-                    Ajusta las barras (no es evaluación). El reto evaluativo está abajo con tabla y preguntas.
-                  </div>
-                </div>
-              </div>
+      <div class="d-grid gap-2 qblock" id="qblock-q1">
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q1" data-opt="A" onclick="answerQuiz('q1','A', this)">A. Happy</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q1" data-opt="B" onclick="answerQuiz('q1','B', this)">B. Calm</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q1" data-opt="C" onclick="answerQuiz('q1','C', this)">C. Sad</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q1" data-opt="D" onclick="answerQuiz('q1','D', this)">D. Angry</button>
+      </div>
 
-              <div class="col-lg-7">
-                <div class="card card-soft p-4">
-                  <h5 class="mb-3"><i class="bi bi-stickies"></i> Emocionómetro (barras con "notas")</h5>
+      <div id="quiz-q1" class="mt-2"></div>
+    </div>
 
-                  <div class="bar-wrap" aria-label="Emocionómetro">
-                    <div>
-                      <div class="bar" id="bar-happy"></div>
-                      <div class="bar-label"><span class="emoji">😊</span><br>Happy</div>
-                    </div>
-                    <div>
-                      <div class="bar" id="bar-calm"></div>
-                      <div class="bar-label"><span class="emoji">😌</span><br>Calm</div>
-                    </div>
-                    <div>
-                      <div class="bar" id="bar-sad"></div>
-                      <div class="bar-label"><span class="emoji">😢</span><br>Sad</div>
-                    </div>
-                    <div>
-                      <div class="bar" id="bar-angry"></div>
-                      <div class="bar-label"><span class="emoji">😠</span><br>Angry</div>
-                    </div>
-                  </div>
+    <!-- PREGUNTA 2 -->
+    <div class="mb-4 p-3 border rounded bg-light">
+      <div class="fw-bold mb-1">Pregunta 2 (Competencia 2: Formulación y Ejecución)</div>
+      <div class="mb-2">
+        Se define un índice diario de bienestar:
+        <span class="badge bg-light text-dark border">β = 3(Happy) + 2(Calm) − (Sad) − 4(Angry)</span>
+        <br>¿En qué día el índice β fue mayor?
+      </div>
 
-                  <hr class="my-4">
+      <div class="d-grid gap-2 qblock" id="qblock-q2">
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q2" data-opt="A" onclick="answerQuiz('q2','A', this)">A. Lunes</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q2" data-opt="B" onclick="answerQuiz('q2','B', this)">B. Miércoles</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q2" data-opt="C" onclick="answerQuiz('q2','C', this)">C. Jueves</button>
+        <button class="btn btn-outline-secondary quiz-btn" data-q="q2" data-opt="D" onclick="answerQuiz('q2','D', this)">D. Viernes</button>
+      </div>
 
-                  <h5 class="mb-2"><i class="bi bi-clipboard-check"></i> Mini-reto (3 preguntas, un solo contexto)</h5>
-                  <p class="text-muted mb-3">
-                    Contexto: En una práctica de aula, un docente aplicó un "chequeo emocional" diario. Cada día, 120 estudiantes eligieron una emoción dominante.
-                  </p>
+      <div id="quiz-q2" class="mt-2"></div>
+    </div>
 
-                  <div class="table-responsive">
-                    <table class="table table-sm table-bordered align-middle bg-white">
-                      <thead class="table-light">
-                        <tr>
-                          <th>Día</th><th>Happy</th><th>Calm</th><th>Sad</th><th>Angry</th><th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>Lunes</td><td>32</td><td>40</td><td>28</td><td>20</td><td>120</td></tr>
-                        <tr><td>Martes</td><td>28</td><td>42</td><td>30</td><td>20</td><td>120</td></tr>
-                        <tr><td>Miércoles</td><td>35</td><td>38</td><td>22</td><td>25</td><td>120</td></tr>
-                        <tr><td>Jueves</td><td>30</td><td>45</td><td>25</td><td>20</td><td>120</td></tr>
-                        <tr><td>Viernes</td><td>24</td><td>52</td><td>28</td><td>16</td><td>120</td></tr>
-                      </tbody>
-                      <caption class="small text-muted">
-                        <strong>Tabla 2.</strong> Registro semanal de emociones reportadas por 120 estudiantes.
-                        <br><strong>Nota.</strong> Los valores corresponden al número de estudiantes que seleccionaron cada emoción; el total por día es 120.
-                      </caption>
-                    </table>
-                  </div>
+    <!-- PREGUNTA 3 -->
+    <div class="mb-4 p-3 border rounded bg-light">
+      <div class="fw-bold mb-1">Pregunta 3 (Competencia 3: Argumentación)</div>
+      <div class="mb-2">
+        La coordinadora afirma: “El viernes fue el día con mejor bienestar porque al menos el 65% de los registros fueron positivos (Happy + Calm)”.
+        ¿Cuál opción evalúa mejor la validez de esa afirmación con base en la tabla?
+      </div>
 
-                  <div class="mt-3">
-                    <div class="mb-3">
-                      <div class="fw-bold">P1 (Interpretación y representación): ¿Qué emoción tiene mayor rango (máx–mín) en la semana?</div>
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','A')">A) Happy</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','B')">B) Calm</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','C')">C) Sad</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q1','D')">D) Angry</button>
-                      </div>
-                      <div id="quiz-q1" class="mt-2"></div>
-                    </div>
+      <div class="d-grid gap-2 qblock" id="qblock-q3">
+        <button class="btn btn-outline-secondary quiz-btn text-start" data-q="q3" data-opt="A" onclick="answerQuiz('q3','A', this)">
+          A. Es válida, porque 76/120 ≈ 0.633 y eso es mayor que 0.65.
+        </button>
+        <button class="btn btn-outline-secondary quiz-btn text-start" data-q="q3" data-opt="B" onclick="answerQuiz('q3','B', this)">
+          B. No es válida, porque 76/120 ≈ 0.633 y no alcanza el 65%.
+        </button>
+        <button class="btn btn-outline-secondary quiz-btn text-start" data-q="q3" data-opt="C" onclick="answerQuiz('q3','C', this)">
+          C. No es válida, porque en viernes 24+52 = 74, no 76.
+        </button>
+        <button class="btn btn-outline-secondary quiz-btn text-start" data-q="q3" data-opt="D" onclick="answerQuiz('q3','D', this)">
+          D. Es válida, porque el valor de Calm en viernes (52) es el más alto de la semana.
+        </button>
+      </div>
 
-                    <div class="mb-3">
-                      <div class="fw-bold">P2 (Formulación y ejecución): Sea <span class="badge bg-light text-dark">B = 3·Happy + 2·Calm − Sad − 4·Angry</span>. ¿En qué día B es mayor?</div>
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','A')">A) Lunes</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','B')">B) Miércoles</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','C')">C) Jueves</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q2','D')">D) Viernes</button>
-                      </div>
-                      <div id="quiz-q2" class="mt-2"></div>
-                    </div>
+      <div id="quiz-q3" class="mt-2"></div>
+    </div>
 
-                    <div class="mb-3">
-                      <div class="fw-bold">P3 (Argumentación): "El viernes fue el mejor porque al menos 65% fueron positivos (Happy+Calm)". ¿Cuál evaluación es correcta?</div>
-                      <div class="d-grid gap-2">
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','A')">A) Válida: 76/120 ≈ 0.633 &gt; 0.65</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','B')">B) No válida: 76/120 ≈ 0.633 no alcanza 0.65</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','C')">C) No válida: viernes 24+52 = 74</button>
-                        <button class="btn btn-outline-secondary" onclick="answerQuiz('q3','D')">D) Válida: Calm (52) es máximo semanal</button>
-                      </div>
-                      <div id="quiz-q3" class="mt-2"></div>
-                    </div>
-
-                    <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje2" onclick="completeLevel('eje2', 20)">
-                      <i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para avanzar
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
+    <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje2" onclick="completeLevel('eje2', 20)">
+      <i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para avanzar
+    </button>
+  </div>
+</div>
 
           <!-- EJE 3: DECIDIR Y JUSTIFICAR -->
           <div class="tab-pane fade" id="pills-eje3" role="tabpanel">
@@ -1280,52 +1258,117 @@
     // =========================
     // EJE 2: EMOCIONÓMETRO + QUIZ (3 preguntas)
     // =========================
-    const emotions = { happy:0, calm:0, sad:0, angry:0 };
-    const colors = { happy:'#ffd54f', calm:'#66bb6a', sad:'#64b5f6', angry:'#ef5350' };
+  const quizState = { q1: false, q2: false, q3: false };
 
-    function renderBars(){
-      const map = [
-        ['happy','bar-happy'],
-        ['calm','bar-calm'],
-        ['sad','bar-sad'],
-        ['angry','bar-angry']
-      ];
-      map.forEach(([k,id])=>{
-        const el = document.getElementById(id);
-        el.innerHTML = '';
-        for(let i=0;i<emotions[k];i++){
-          const n = document.createElement('div');
-          n.className = 'note';
-          n.style.background = colors[k];
-          el.appendChild(n);
+  const quizData = {
+    q1: {
+      correct: "B",
+      title: "Competencia 1: Interpretación y Representación",
+      shortOk: "Correcto. La emoción con mayor variabilidad semanal es Calm.",
+      shortNo: "Incorrecto. Revisa los máximos y mínimos por emoción.",
+      justification: `
+        <strong>Respuesta correcta: B (Calm).</strong><br>
+        Se calcula el rango por emoción (máximo − mínimo):<br>
+        • Happy: max 35, min 24 ⇒ rango = 35 − 24 = <strong>11</strong><br>
+        • Calm: max 52, min 38 ⇒ rango = 52 − 38 = <strong>14</strong><br>
+        • Sad: max 30, min 22 ⇒ rango = 30 − 22 = <strong>8</strong><br>
+        • Angry: max 25, min 16 ⇒ rango = 25 − 16 = <strong>9</strong><br>
+        El mayor rango es <strong>14</strong>, correspondiente a <strong>Calm</strong>.
+      `
+    },
+
+    q2: {
+      correct: "D",
+      title: "Competencia 2: Formulación y Ejecución",
+      shortOk: "Correcto. El índice β alcanza su valor máximo el viernes.",
+      shortNo: "Incorrecto. Evalúa β en los días de las opciones dadas.",
+      justification: `
+        <strong>Respuesta correcta: D (Viernes).</strong><br>
+        Se evalúa β = 3(Happy) + 2(Calm) − (Sad) − 4(Angry):<br>
+        • Lunes: 3(32)+2(40)-28-4(20)=96+80-28-80 = <strong>68</strong><br>
+        • Miércoles: 3(35)+2(38)-22-4(25)=105+76-22-100 = <strong>59</strong><br>
+        • Jueves: 3(30)+2(45)-25-4(20)=90+90-25-80 = <strong>75</strong><br>
+        • Viernes: 3(24)+2(52)-28-4(16)=72+104-28-64 = <strong>84</strong><br>
+        El máximo es <strong>84</strong>, y ocurre el <strong>viernes</strong>.
+      `
+    },
+
+    q3: {
+      correct: "B",
+      title: "Competencia 3: Argumentación",
+      shortOk: "Correcto. La afirmación no es válida porque 63.3% < 65%.",
+      shortNo: "Incorrecto. Verifica el cálculo de positivos y compáralo con 65%.",
+      justification: `
+        <strong>Respuesta correcta: B.</strong><br>
+        En viernes, positivos = Happy + Calm = 24 + 52 = <strong>76</strong>.<br>
+        Proporción positiva = 76/120 ≈ <strong>0.633</strong> = <strong>63.3%</strong>.<br>
+        Como <strong>63.3% &lt; 65%</strong>, la afirmación “al menos 65%” <strong>no está respaldada</strong> por los datos.<br>
+        Por tanto, la opción <strong>B</strong> es la que evalúa correctamente la validez de la afirmación.
+      `
+    }
+  };
+
+  function answerQuiz(q, option, btnEl = null) {
+    const out = document.getElementById(`quiz-${q}`);
+    const qbox = document.getElementById(`qblock-${q}`);
+    const data = quizData[q];
+
+    // Reiniciar estilos visuales de botones de esa pregunta
+    if (qbox) {
+      qbox.querySelectorAll(".quiz-btn").forEach(b => {
+        b.classList.remove("btn-success", "btn-danger", "btn-outline-success", "btn-outline-danger");
+        b.classList.add("btn-outline-secondary");
+      });
+
+      // Marcar opción correcta y opción elegida
+      qbox.querySelectorAll(".quiz-btn").forEach(b => {
+        const opt = b.getAttribute("data-opt");
+        if (opt === data.correct) {
+          b.classList.remove("btn-outline-secondary");
+          b.classList.add("btn-outline-success");
         }
       });
     }
-    function incEmotion(k){ emotions[k] = Math.min(12, emotions[k]+1); renderBars(); }
-    function resetEmotions(){ emotions.happy=0; emotions.calm=0; emotions.sad=0; emotions.angry=0; renderBars(); }
 
-    // respuestas correctas del mini-reto
-    const quizRight = { q1:'B', q2:'D', q3:'B' };
-    const quizState = { q1:false, q2:false, q3:false };
+    const isCorrect = option === data.correct;
+    quizState[q] = isCorrect;
 
-    function answerQuiz(q, option){
-      const out = document.getElementById(`quiz-${q}`);
-      if(option === quizRight[q]){
-        quizState[q] = true;
-        out.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto.</div>`;
-      }else{
-        quizState[q] = false;
-        out.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Incorrecto. Revisa el contexto y la tabla.</div>`;
-      }
+    if (btnEl) {
+      btnEl.classList.remove("btn-outline-secondary");
+      btnEl.classList.add(isCorrect ? "btn-success" : "btn-danger");
+    }
 
-      const all = quizState.q1 && quizState.q2 && quizState.q3;
-      if(all){
-        correct.eje2 = true;
-        const btn = document.getElementById('btn-complete-eje2');
+    out.innerHTML = `
+      <div class="alert ${isCorrect ? 'alert-success' : 'alert-warning'} border-0 shadow-sm">
+        <div class="d-flex align-items-center mb-2">
+          <i class="bi ${isCorrect ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'} me-2"></i>
+          <strong>${isCorrect ? data.shortOk : data.shortNo}</strong>
+        </div>
+        <div class="small">
+          ${data.justification}
+        </div>
+      </div>
+    `;
+
+    // Desbloqueo del botón del eje cuando las 3 estén correctas
+    const all = quizState.q1 && quizState.q2 && quizState.q3;
+    if (all) {
+      correct.eje2 = true;
+      const btn = document.getElementById('btn-complete-eje2');
+      if (btn) {
         btn.classList.remove('btn-locked');
         btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 2';
       }
+    } else {
+      // opcional: si vuelve a fallar alguna, relock
+      correct.eje2 = false;
+      const btn = document.getElementById('btn-complete-eje2');
+      if (btn && !btn.classList.contains('btn-locked')) {
+        btn.classList.add('btn-locked');
+        btn.innerHTML = '<i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para avanzar';
+      }
     }
+  }
 
     // =========================
     // EJE 3: DECISIÓN
