@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "Probabilidad_unidad_1"}' />
+		<title>Cálculo de probabilidades</title>
+
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-overpass2 theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="69cb6992487cefc1bd1b88eafe294007"><div class="sl-block" data-block-type="text" style="width: 925.811px; left: 17.0945px; top: 214px; height: auto;" data-block-id="39f2d4935046471d5e76c12b0fe478a0"><div class="sl-block-content" data-placeholder-tag="h1" style="z-index: 11; font-size: 192%; padding: 20px; line-height: 0.858; color: rgb(194, 12, 12); letter-spacing: -0.01em;" data-has-line-height="" data-placeholder-text="Text" data-has-letter-spacing=""><p style="text-align:left">Fundamentos de Probabilidad</p></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-a5c0c7" style="width: auto; height: auto; left: 0px; top: 136.711px;" data-block-id="78dad7795879e44b3f6d0d27a922bb1c"><div class="sl-block-style" style="z-index: 12; mix-blend-mode: color;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="960" data-line-y2="0" data-line-color="#93c47d" data-line-start-type="none" data-line-end-type="none" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-line-width="4px" data-animation-type="fade-in"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="960" height="1" viewbox="0 0 960 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#93c47d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="width: 620.997px; left: 17.0945px; top: 384px; height: auto;" data-name="text-d18e72" data-block-id="e0215e0db6002c41a2834fa09b4c06c0"><div class="sl-block-content" data-placeholder-tag="p" style="z-index: 13; text-align: center; color: rgb(68, 68, 68); font-size: 120%; padding: 20px; line-height: 0.507;" data-placeholder-text="Text" data-has-line-height="">
+<p style="text-align:left"><em>Santiago Jiménez Ramos</em></p>
+<pre style="text-align:left"><span style="font-size:0.7em"><em>sjramos@udenar.edu.co</em></span></pre>
+<p style="text-align: left;"><span style="font-size:0.7em"><em></em></span>​<br></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-67a5ec" data-block-id="c4cb9aed845a22f83d8811f0898fdef5" style="width: 739.776px; height: 700px; left: 220.224px; top: 0px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; opacity: 0.1;"><div class="sl-block-content" style="z-index: 10;"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0" data-crop-y="0.026884" data-crop-width="1" data-crop-height="0.946232" style="left: 0px; top: -20px; width: 740px; height: 740px;" data-src="tecnicas_de_conteo/2bab4e67f28f0b33f3ccb542cad42a8c.png"></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-0b19d1" data-block-id="ece81103eaff410f593df035db0a06b6" style="width: 230.566px; height: 120.564px; left: 8.054px; top: 9.1473px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 14;"><img class="" data-natural-width="1000" data-natural-height="700" data-crop-x="0" data-crop-y="0.126499" data-crop-width="1" data-crop-height="0.747003" style="left: 0px; top: -20px; width: 231px; height: 161px;" data-lazy-loaded="" data-src="tecnicas_de_conteo/3a6df621e3af195a4410e3dec6265d8d.png"></div></div>
+<div class="sl-block" data-block-type="text" style="width: 620.997px; left: 17.0945px; top: 529px; height: auto;" data-block-id="200fcbd562c2e6c2fce330c737d4e3ce" data-name="text-dd2bd3"><div class="sl-block-content" data-placeholder-tag="p" style="z-index: 15; text-align: center; color: rgb(68, 68, 68); font-size: 120%; padding: 20px; line-height: 0.507;" data-placeholder-text="Text" data-has-line-height="">
+<p style="text-align:left">Probabilidad y estadística</p>
+
+<p style="text-align:left"><span style="font-size:23.52px"><em>Universidad de Nariño</em></span></p>
+</div></div></section><section class="stack" data-id="f3d7131bd8a46cbf62cd8d17982bf0c4"><section data-id="52f570586b1fd0135166ce20a16acdc3">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="bad9d9b29803689a3fd523ea94fedd57"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#6aa84f" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#6aa84f" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 652.422px; left: 17.59px; top: 24px; height: auto;" data-name="text-bad4e5" data-block-id="01e9417d84a8d4e152f9c4755e347e9f"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; font-size: 124%; transition-duration: 0.6s; transition-delay: 0.6s;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>📊Motivación</h2></div></div>
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" data-block-id="dcfb02c783b513935c14bb481667af45" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" data-block-id="c14ede15278dcbbca5f171377f831099" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 57px; top: 181.196px;" data-name="math-c33019" data-block-id="803be502c43ed937bcf0a3105cfb8a74"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{🧠 ¿Qué es la probabilidad?}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 102px; top: 230.804px;" data-name="math-b5baec" data-block-id="3650f833f5908cb3a6137eb7f03dc797"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{🔹 Es una forma de cuantificar la incertidumbre.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 102px; top: 268.803px;" data-block-id="36332f48c33ab43b77faa806cb76cdc7" data-name="math-159e52"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{🔹 Permite tomar decisiones, inferir, modelar fenómenos aleatorios.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 25.9422px; top: 371.629px;" data-name="math-6c48f4" data-block-id="0af660b51ec85cd09318835f99a2e837"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 52%; color: rgb(242, 237, 232);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\textbf{¿Qué es un experimento?}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5482px; top: 426.796px;" data-block-id="2f506503ca1f9df4dd0cd8f3f59aa4a4" data-name="math-f37533"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Un experimento es cualquier procedimiento o acción que produce un resultado, el cual}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-91bbca" style="width: 924.82px; height: 43.6502px; left: 17.59px; top: 367.804px;" data-block-id="c986cfb5157e7b9e1280047235fc646b"><div class="sl-block-style" style="z-index: 18; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 0px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(91, 161, 61)" data-shape-stretch="true" style="z-index: 18;" data-shape-corner-radius="12px" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 925 44"><defs><clippath id="shape-mask-5-1742945619239"><rect width="924.82" height="43.6502" rx="12" ry="12" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="924.82" height="43.6502" rx="12" ry="12" class="shape-element" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-5-1742945619239)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-ecc314" style="width: 924.82px; height: 160.603px; left: 17.59px; top: 411.454px;" data-block-id="c196e81fdb0b92d5747d31a2ff59ce8c"><div class="sl-block-style" style="z-index: 17; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 15px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 17;" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-shape-corner-radius="12px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 925 161"><defs><clippath id="shape-mask-6-1742945619239"><rect width="924.82" height="160.603" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="924.82" height="160.603" rx="12" ry="12" class="shape-element" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-6-1742945619239)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5482px; top: 497.796px;" data-block-id="5088b8769a58f21dc0c32ae7e3665faa" data-name="math-37b511"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{🔹 Todo experimento tiene una regla de ejecución bien definida.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5482px; top: 455.454px;" data-block-id="074fe8779d3890f37da9ad5052468dd6" data-name="math-34d210"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{ puede observarse o medirse.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5482px; top: 529.796px;" data-block-id="f8e26b62218574107dc92e0c555cd7af" data-name="math-63f2e7"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{🔹 Lo esencial es el tipo de incertidumbre sobre el resultado.}</div></div></div></section><section data-id="778c9cadd52fcc057ee7397d32045673">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="cdc411944ff74f151498267938e8f514"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 23.9422px; top: 164.282px;" data-name="math-6c48f4" data-block-id="1902e91f81013223f41411a3a8fac97d"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 52%; color: rgb(242, 237, 232);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{Determinísta}</div></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 23.9422px; top: 216.782px;" data-block-id="50d184e1f17c9eb9acb5ba4ddff5149a" data-name="math-c33019"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Un experimento determinista es
+aquel que,}</div></div></div>
+
+<div class="sl-block" data-block-type="shape" data-name="shape-91bbca" data-block-id="9d59e1e47da4f29f99a65096c1c58c46" style="width: 435.82px; height: 43.6502px; left: 17.59px; top: 160.957px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 0px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(91, 161, 61)" data-shape-stretch="true" style="z-index: 11;" data-shape-corner-radius="12px" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 436 44"><defs><clippath id="shape-mask-9-1742946328407"><rect width="435.82" height="43.6502" rx="12" ry="12" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="435.82" height="43.6502" rx="12" ry="12" class="shape-element" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-9-1742946328407)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-ecc314" data-block-id="4989c7b1562c315979f0b8a44c1e35d5" style="width: 435.82px; height: 147.385px; left: 17.59px; top: 202.615px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 15px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 10;" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-shape-corner-radius="12px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 436 147"><defs><clippath id="shape-mask-10-1742946328407"><rect width="435.82" height="147.385" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="435.82" height="147.385" rx="12" ry="12" class="shape-element" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-10-1742946328407)"></rect></svg></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="14bba9a83b3473e50d2fda58484d55e8"><div class="sl-block-content" style="z-index: 15; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="3b869d13d74c81e5aecb8b846b077a3e"><div class="sl-block-content" style="z-index: 16; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.59px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="be55bc694b75e8e1d47cf306dc5e9758"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 17; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>📘Deterministas vs. Aleatorios</h2></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 23.9422px; top: 247px;" data-block-id="26c3229fab370fc323af9699e701661d" data-name="math-3c2b34"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{dado un conjunto de condiciones iniciales,}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 23.9422px; top: 279px;" data-block-id="39c96944e9566fdd7cb1d5bf4d41bcef" data-name="math-11da4e"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{el resultado es completamente predecible y}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 23.9422px; top: 311px;" data-block-id="f9c82b1229fd3937e05160c910c8e8e6" data-name="math-14b0ed"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{está sujeto al azar.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 512.032px; top: 164.282px;" data-block-id="2e8cf5f1393e077273bbbde4e5a62346" data-name="math-d30946"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 52%; color: rgb(242, 237, 232);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{Aleatorio}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 512.032px; top: 216.782px;" data-block-id="03c4cbdf2ad4a09c011414dc132a170b" data-name="math-495834"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Un experimento aleatorio es
+aquel que,}</div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 435.82px; height: 43.6502px; left: 505.68px; top: 160.957px;" data-block-id="d998f885e854862a7908b3cc49d18970" data-name="shape-0c2fd5"><div class="sl-block-style" style="z-index: 22; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 0px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(91, 161, 61)" data-shape-stretch="true" style="z-index: 22;" data-shape-corner-radius="12px" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 436 44"><defs><clippath id="shape-mask-11-1742946328413"><rect width="435.82" height="43.6502" rx="12" ry="12" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="435.82" height="43.6502" rx="12" ry="12" class="shape-element" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-11-1742946328413)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 435.82px; height: 147.385px; left: 505.68px; top: 202.615px;" data-block-id="1b33685c8f721bdbedc68fdf5cf801e3" data-name="shape-4cfd4a"><div class="sl-block-style" style="z-index: 21; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 15px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 21;" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-shape-corner-radius="12px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 436 147"><defs><clippath id="shape-mask-12-1742946328413"><rect width="435.82" height="147.385" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="435.82" height="147.385" rx="12" ry="12" class="shape-element" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-12-1742946328413)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 512.032px; top: 247px;" data-block-id="f25c7f3673c3f2a72c5ca7728b4fe092" data-name="math-5d0179"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{el resultado no se puede predecir con}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 512.032px; top: 279px;" data-block-id="cc141ad5617b5e37a815dbaac7e2c9dc" data-name="math-85f34f"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{certeza y está sujeto a
+variabilidad o azar.}</div></div></div>
+<div class="sl-block" data-block-type="table" data-name="table-205068" style="height: auto; min-width: 497px; width: 923.91px; left: 17.59px; top: 405px;" data-block-id="c68ca0d8a22fe5fd9ecf0f4f28883715"><div class="sl-block-content fragment" style="z-index: 27; font-size: 70%;" data-table-cols="4" data-table-rows="3" data-table-has-header="true" data-table-padding="5px" data-table-border-width="1px" data-animation-trigger-id="self" data-fragment-index="2"><table><tbody>
+<tr>
+<th style="width: 177px;">Tipo de experimento</th>
+<th style="width: 135px;">Resultado</th>
+<th style="width: 145px;">Incertidumbre</th>
+<th>Ejemplo</th>
+
+</tr>
+<tr>
+<td style="width: 177px;">Determinista</td>
+<td style="width: 135px;">Único</td>
+<td style="width: 145px;">❌ No</td>
+<td>Calcular 3x7, Caída libre de un objeto,  Medir la longitud de un objeto...</td>
+
+</tr>
+<tr>
+<td style="width: 177px;">Aleatorio</td>
+<td style="width: 135px;">Variable</td>
+<td style="width: 145px;">✅ Sí</td>
+<td>Lanzar un dado, Tirar una moneda, Tiempo de llegada del próximo bus...</td>
+
+</tr>
+
+
+
+</tbody></table></div></div></section><section data-id="7687441fc776c6ae67410ea38a9d5b4b">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="f69a6d1b153ac16e16369505ae756734"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 24.3972px; top: 133.01px;" data-name="math-6c48f4" data-block-id="5718b2d42e92e15117f7e56d0ffb5191"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 52%; color: rgb(242, 237, 232);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{Definición}</div></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 31.4999px; top: 190.51px;" data-name="math-c33019" data-block-id="f4f6fe6231084ac7f18c7492c18edb10"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sea un experimento aleatorio. El espacio muestral, denotado por} \ \Omega, \ \text{es el conjunto de todos}</div></div></div>
+
+<div class="sl-block" data-block-type="shape" data-name="shape-91bbca" style="width: 923.91px; height: 43.6502px; left: 18.045px; top: 129.685px;" data-block-id="165a6e64d4ea8ab2249324bfd8f08aa2"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 0px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(91, 161, 61)" data-shape-stretch="true" style="z-index: 11;" data-shape-corner-radius="12px" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 44"><defs><clippath id="shape-mask-3-1743005100073"><rect width="923.91" height="43.6502" rx="12" ry="12" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="923.91" height="43.6502" rx="12" ry="12" class="shape-element" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-3-1743005100073)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-ecc314" style="width: 923.91px; height: 202.385px; left: 18.045px; top: 171.343px;" data-block-id="a3350ad11c265c9dfebb086fde149c71"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 15px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 10;" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-shape-corner-radius="12px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 202"><defs><clippath id="shape-mask-4-1743005100073"><rect width="923.91" height="202.385" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="923.91" height="202.385" rx="12" ry="12" class="shape-element" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-4-1743005100073)"></rect></svg></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="7cde33c3c2a000a78a3a1cf85498dd7d"><div class="sl-block-content" style="z-index: 15; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="33925d81e0826d2852d33141250937ae"><div class="sl-block-content" style="z-index: 16; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.59px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="f8752a3c319438c11af50d2caf219bb2"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 17; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>📘espacio muestral</h2></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 31.4999px; top: 224.728px;" data-name="math-3c2b34" data-block-id="a5fbf9db449701ea8334ebbaff6871c6"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{los posibles resultados elementales del experimento aleatorio.}</div></div></div>
+<div class="sl-block" data-block-type="table" data-name="table-205068" style="height: auto; width: 923.91px; left: 18.045px; top: 396.728px; min-width: 716px;" data-block-id="9a80bc3bdab3a929095e13307bf6ccba"><div class="sl-block-content fragment" style="z-index: 19; font-size: 70%;" data-table-cols="3" data-table-rows="6" data-table-has-header="true" data-table-padding="5px" data-table-border-width="1px" data-animation-trigger-id="self" data-fragment-index="2"><table><tbody>
+<tr>
+<th style="width: 350px;">Experimento</th>
+<th style="width: 326px;"></th>
+<th>Cardinalidad</th>
+
+
+</tr>
+<tr>
+<td style="width: 350px;">Lanzamiento de una moneda</td>
+<td style="width: 326px;">  </td>
+<td>2</td>
+
+
+</tr>
+<tr>
+<td style="width: 350px;">Lanzamiento de un dado</td>
+<td style="width: 326px;"></td>
+<td>6</td>
+
+
+</tr>
+
+
+
+<tr>
+<td style="width: 350px;">Lanzamiento de dos dados</td>
+<td style="width: 326px;"></td>
+<td>36</td>
+</tr>
+<tr>
+<td style="width: 350px;">Lanzamiento de una moneda hasta obtener "cara"</td>
+<td style="width: 326px;"></td>
+<td>Infinito numerable</td>
+</tr>
+<tr>
+<td style="width: 350px;">Tiempo hasta que llegue el próximo bus</td>
+<td style="width: 326px;"></td>
+<td>Infinito no numerable</td>
+</tr>
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 60.955px; top: 272.536px;" data-name="math-37b511" data-block-id="7acdbf58d999a32b01f91c5ef1bc6717"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{🔹 Cada elemento} \ \omega \in \Omega \ \text{representa un resultado elemental.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 60.955px; top: 307.728px;" data-block-id="8dc8c9cc87e5f2c2afa6221e4de69443" data-name="math-40af5a"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{🔹El espacio muestral puede ser finito o infinito.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 382.455px; top: 396.728px;" data-block-id="2d5de306c38aa54eb6548d7fc95bb513" data-name="math-ef00e0"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\Omega</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 382.455px; top: 437.728px;" data-block-id="dc3a447235e922b4049cc3bddb33980b" data-name="math-3ccab4"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\{cara, sello\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 830px; top: 396.728px;" data-block-id="7b09f3daa6d961a9cf3da9b03829b2fb" data-name="math-e02fdc"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">|\Omega|</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 382.455px; top: 473px;" data-block-id="cb40c216314734ea7e7d639b96ba3d5e" data-name="math-fcfbd3"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\{1,2,3,4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 382.455px; top: 505px;" data-block-id="b259e68e40224fe1a81c000b2b6e3a61" data-name="math-a131ee"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\{(x,y): x,y = 1,2,\ldots, 6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 382.455px; top: 557.439px;" data-block-id="bd5f92f8fb731cb1fcb2751786c0e812" data-name="math-55df7b"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\{1,2,3,4,5,6,\ldots,\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 384.955px; top: 604px;" data-block-id="d27b839ed4a984c34935fea9991f6299" data-name="math-cf7e57"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">[0,\infty)</div></div></div></section><section data-id="0df1471a167692b601f94a9a7678b11c">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 1.77636e-15px; top: 106.685px;" data-block-id="d785f914627b143b58611c80984b3337"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 652.422px; left: 17.59px; top: 12.261px; height: auto;" data-name="text-bad4e5" data-block-id="9979b4dde23eb343d8cb6d6798b763f6"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; font-size: 124%; transition-duration: 0.6s; transition-delay: 0.6s;" data-placeholder-text="Text" data-animation-type="scale-up"><h1>📘 Eventos</h1></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="ceb0f204c1ba107a9769ef60da1cb72c"><div class="sl-block-content" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="80ad6a9b5391babb7bc1bb7da16ed51a"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 24.6247px; top: 166.223px;" data-name="math-6c48f4" data-block-id="a3065ab7d21684c11f65b154c97fe751"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 52%; color: rgb(242, 237, 232);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{Definición}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 31.2275px; top: 240.223px;" data-name="math-c33019" data-block-id="64544da5613f3b9b5e4cd57df45a4ca5"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Un evento es un subconjunto del espacio muestral} \ \Omega. \ \text{Es decir, un evento} \ A \subseteq \Omega \ \text{es una}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-91bbca" style="width: 923.91px; height: 43.6502px; left: 18.2725px; top: 162.898px;" data-block-id="58e2db7bbb023d9ad5eec9508aab2282"><div class="sl-block-style" style="z-index: 15; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 0px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(91, 161, 61)" data-shape-stretch="true" style="z-index: 15;" data-shape-corner-radius="12px" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 44"><defs><clippath id="shape-mask-9-1743005163831"><rect width="923.91" height="43.6502" rx="12" ry="12" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="923.91" height="43.6502" rx="12" ry="12" class="shape-element" fill="rgb(91, 161, 61)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-9-1743005163831)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-ecc314" style="width: 923.91px; height: 124.476px; left: 18.2725px; top: 204.556px;" data-block-id="e1bc982501877ac58361b3d17c7a1877"><div class="sl-block-style" style="z-index: 14; filter: drop-shadow(rgba(0, 0, 0, 0.5) 11px 15px 5px) opacity(100%);"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#000000" data-shape-stroke-width="1px" data-shape-corner-radius="12px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 124"><defs><clippath id="shape-mask-10-1743005163832"><rect width="923.91" height="124.476" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2"></rect></clippath></defs><rect width="923.91" height="124.476" rx="12" ry="12" class="shape-element" fill="rgb(255, 255, 255)" stroke="#000000" stroke-width="2" clip-path="url(#shape-mask-10-1743005163832)"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 31.2275px; top: 274.723px;" data-name="math-3c2b34" data-block-id="0b3541671bdf1b166de1e08c4f4df3f6"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{colección de resultados en los que estamos interesados.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 18.2725px; top: 360.703px;" data-name="math-f37533" data-block-id="e9d4f9d2f522b20bd96d38542d95b02f"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🟩 Ejemplos}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 18.2725px; top: 401.297px;" data-block-id="6e884dde5844245ec64829c6f962cf4c" data-name="math-73af42"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{Supongamos que el experimento es lanzar un dado. Entonces:} \ \Omega = \{1,2,3,4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="table" data-name="table-205068" style="height: auto; width: 923.91px; left: 17.8175px; top: 448.807px; min-width: 716px;" data-block-id="7144650e1d057cbc8dd2f44b1adb3196"><div class="sl-block-content fragment" style="z-index: 21; font-size: 70%;" data-table-cols="3" data-table-rows="5" data-table-has-header="true" data-table-padding="5px" data-table-border-width="1px" data-animation-trigger-id="self" data-fragment-index="3"><table><tbody>
+<tr>
+<th style="width: 350px;">Evento</th>
+<th style="width: 326px;">Notación</th>
+<th>Tipo de evento</th>
+
+
+</tr>
+<tr>
+<td style="width: 350px;">Salir par</td>
+<td style="width: 326px;">  </td>
+<td>Evento Compuesto</td>
+
+
+</tr>
+<tr>
+<td style="width: 350px;">Salir 5</td>
+<td style="width: 326px;"></td>
+<td>Evento simple</td>
+
+
+</tr>
+
+
+
+<tr>
+<td style="width: 350px;">Salir mayor que 6</td>
+<td style="width: 326px;"></td>
+<td>Evento imposble</td>
+</tr>
+<tr>
+<td style="width: 350px;">Salir un número entre 1 y 6</td>
+<td style="width: 326px;"></td>
+<td>Evento seguro</td>
+</tr>
+
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 375.302px; top: 488.163px;" data-name="math-3ccab4" data-block-id="731b120b6f056a23cdc7a91626269d7a"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">A = \{2,4,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 375.302px; top: 524.307px;" data-block-id="394f0cd5245833bb7622a62f6c7ad673" data-name="math-efa807"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">B = \{5\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 375.302px; top: 561.213px;" data-block-id="3f7c5469d01ac8a39671457bfdeac505" data-name="math-3a8b36"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">C = \emptyset</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 375.302px; top: 597.807px;" data-block-id="8f64fe70f381e0e07825606b12760f1e" data-name="math-d2468e"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">D = \Omega</div></div></div></section><section data-id="27c1660c2b08b028ac6a27224def6e48">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="43871d38ecdff2bd73ac531831f8a867"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 673.91px; left: 2.59px; top: 21.4999px; height: auto;" data-name="text-bad4e5" data-block-id="a43789d2c542b0bf2a670239c6b9878d"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h1><span style="font-size:0.9em">📘Operaciones con Eventos</span></h1></div></div>
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5px; top: 145.677px;" data-name="math-c33019" data-block-id="3459f3e9e244bf7420556ecf191567fb"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{🟦 Supuestos}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="ba0bde0c680dd222c2f2afe6c9132cf9"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="5ebfa1bc655626d39f49192bab95b141"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 81.8149px; top: 195px;" data-block-id="b542a2abc1c2f88ceded91296eb695c9" data-name="math-b5baec"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{Sea} \ \Omega \ \text{un espacio muestral y } A,B \in \Omega \ \text{dos eventos.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5px; top: 244.444px;" data-block-id="a4472330ef34072f0db021ece7d28ae5" data-name="math-a8f478"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{🟩 Operaciones básicas}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 291.444px;" data-block-id="ff3268fc2300040e6df2f83babcb1461" data-name="math-686a7d"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{1. Unión de eventos:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 308.04px; top: 323.444px;" data-block-id="e351a3dbf8cc6be209889fa35a96e32c" data-name="math-77b98f"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">A \cup B = \{\omega \in \Omega : \omega \in A \text{ o } \omega \in B\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 404.944px;" data-block-id="4ded3741b4a1a802c5df8ca90cdeade0" data-name="math-340fce"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{2. Intersección de eventos:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 308.04px; top: 436.944px;" data-block-id="38de50e625033e05ac7129965238392c" data-name="math-3d5035"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input"> A \cap B = \{\omega \in \Omega : \omega \in A \text{ y } \omega \in B\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 358.944px;" data-block-id="7a14b0a5fa811ee340c7c221ca058048" data-name="math-c9d404"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{Evento que ocurre si } \textbf{ocurre A o B o ambos.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 470.444px;" data-block-id="baaf95b02dc5e2745231fca3e524f161" data-name="math-784774"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{Evento que ocurre si } \textbf{ocurren A y B simultáneamente}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 510.444px;" data-block-id="c4ce75901968d936c3be14a13f44951c" data-name="math-70c5f0"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{3. Complemento de un evento:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 337.085px; top: 542.444px;" data-block-id="adc8b45e072f3b9adc58104aa3aa0d5e" data-name="math-d4b2e9"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">  A^c = \{\omega \in \Omega : \omega \notin A\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 61.5398px; top: 582.444px;" data-block-id="d4a099173e9f21562786a5ec81bb171b" data-name="math-9bca58"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Evento que ocurre si } \textbf{no ocurre A.}</div></div></div></section><section data-id="b926304d551fee317d15bc6449249ad8">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="eaa186adcf9d16d7299fdd0c8f615f4b"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 673.91px; left: 2.59px; top: 21.4999px; height: auto;" data-name="text-bad4e5" data-block-id="b926b25c871f1449208395dc9f4c031a"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h1><span style="font-size:0.9em">📘Operaciones con Eventos</span></h1></div></div>
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 78.1651px; top: 136.233px;" data-name="math-c33019" data-block-id="9f686efae925f11fc3967403ac0e6836"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{📊 Ejemplo}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="c2729007dc4891cf018829ad2847f10a"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="7a11439d20cdf4687d86e26eda9b2533"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 111.75px; top: 185.556px;" data-name="math-b5baec" data-block-id="e395705fb7a0217245700781955c4904"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\text{Supón que se lanza un dado,} \ \Omega = \{1,2,3,4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 78.1651px; top: 235px;" data-name="math-a8f478" data-block-id="7558ee8255eb1d21da77ab345502d68b"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 93.2049px; top: 282px;" data-name="math-686a7d" data-block-id="afd40e4d2344aa4d9480f6d0351f1cd3"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹 } A = \{\text{número par}\} = \{2,4,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 93.2049px; top: 316px;" data-name="math-77b98f" data-block-id="db5f03addadd0122b93d18c196ef987e"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹 } B=\{\text{número} &gt; 3\} = \{4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="table" data-name="table-fbfd6d" style="height: auto; min-width: 80px; width: 800px; left: 80px; top: 358.611px;" data-block-id="c62df976bcf26359a5d33bf6b886978d"><div class="sl-block-content fragment" style="z-index: 19; font-size: 80%;" data-table-cols="2" data-table-rows="4" data-fragment-index="3"><table><tbody>
+<tr>
+<th>Operación</th>
+<th>Resultado</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 90.085px; top: 404px;" data-block-id="fa463f2c86b4deda0e08e935082028c2" data-name="math-0a247a"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">A \cup B</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 490px; top: 404px;" data-block-id="f51914b7a83dcc243633ceca8cd29d77" data-name="math-c7b55d"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\{2,4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 90.085px; top: 441.611px;" data-block-id="ba654533ab239b726bcd7d064b3dc690" data-name="math-46fc6e"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">A \cap B</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 490px; top: 442.611px;" data-block-id="98ecc24674119bcb3e03ce5259e0718e" data-name="math-8758f3"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\{4,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 90.085px; top: 479.611px;" data-block-id="5537115b4228cd9b0bf06dc62945da05" data-name="math-80f7a3"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">A^c</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 490px; top: 481.611px;" data-block-id="36c2656763a7b91a2395acc63b6503e8" data-name="math-56d666"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\{1,3,5\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 78.1651px; top: 530px;" data-block-id="df818aff67ce0baeec0aa66b2e458120" data-name="math-efb5ba"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🧩 Propiedades lógicas (mención breve)}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 111.75px; top: 568px;" data-block-id="de25e10f8a8a3cd2ddc641d5eef4d27d" data-name="math-ae2556"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{🔹 Conmutatividad: } A \cup B = B \cup A, A\cap B = B \cap A</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 111.75px; top: 604.611px;" data-block-id="9ad376bc149e8c1e2ad3de7bc1ec21c2" data-name="math-fe9d26"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{🔹 Distributividad: } A \cup (B \cap C) = (A \cup B) \cap (A\cup C)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 111.75px; top: 645.611px;" data-block-id="cee4a393d39e69dc02dfeb665c8aa0d4" data-name="math-0aa5ea"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 46%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{🔹 Distributividad: } (A \cup B)^c = A^c \cap B^c, (A \cap B)^c = A^c \cup B^c</div></div></div></section></section><section class="stack" data-id="a5594ad62f923e9afebff7a5b3e1b08e"><section data-id="dcf280ca01584e15192e5c8edac511a1">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="15a8ef7751544cb96cd1e719b3e9f600"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.09px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="466fc6afc945e0fb79440ec51792ff56"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.0em">📘Enfoques de la Probabilidad</span></h2></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="9e7e07740ad6a9fdf38ee63b33a18791"><div class="sl-block-content" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="c094724b1504d6dff8bf6ec443ca7658"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5001px; top: 118.685px;" data-name="math-6c48f4" data-block-id="3f7e4e944c28c5d60f8cf17ed9efcf6f"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{🟩 1. Probabilidad Clásica o de Laplace}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 169.685px;" data-name="math-8c580d" data-block-id="588bdce07c58d1bdd1c3a01d5675d61f"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Se basa en el principio de equiprobabilidad. Si todos los resultados posibles son}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 253.5px; top: 239.185px;" data-name="math-650f1f" data-block-id="5e64e04c9899f8a17e223772f7edbb7c"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 65%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">P(A)=\frac{|A|}{|\Omega|}=\frac{\text{número de casos favorables}}{\text{número total de casos posibles}}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 205.685px;" data-name="math-6a8d13" data-block-id="c850fafc8db932905b8ce81e3f30750f"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{igualmente probables:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 300.685px;" data-name="math-37b511" data-block-id="8a43bde6d1e50717603a1c8f1a943914"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{🔹 Aplica a espacios finitos y simétricos}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.5001px; top: 354.685px;" data-name="math-285943" data-block-id="92eb75227502c3b4aa81ab3f2f633f6f"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 55%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\textbf{🧪 Ejemplo}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 412.685px;" data-name="math-3ed5ba" data-block-id="5945afff5b971f99694238b71027ad9e"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{Lanzar dos dados distinguibles}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 461.685px;" data-name="math-5a5024" data-block-id="d14baec641f3ba8507e531c4713788eb"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\Omega = \{(x,y): x,y = 1,2, \ldots, 6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 505.685px;" data-block-id="5cbc0a1fe330181fe7eaddf419453191" data-name="math-7f64e4"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">A = \text{Ambos dados muestran el mismo número}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 543.685px;" data-block-id="a8f9f4607ab552d185ec7dae206468b4" data-name="math-297763"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">B = \text{Al menos un dado cae 6}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 677.058px; top: 461.685px;" data-block-id="7e69be19c64b1b6153dadcb4f366bde2" data-name="math-998055"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">P(A)=\frac{6}{36}=\frac{1}{6}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 677.058px; top: 527.685px;" data-block-id="5fb25a40757f18bd60979da32d87623b" data-name="math-5ce07b"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">P(B)=\frac{11}{36}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 599.685px;" data-block-id="22c5e671bef3355122d7f2e6ef72030c" data-name="math-ebac57"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="7"><div class="math-input">\text{✅ Intuitiva y sencilla}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.4999px; top: 640.685px;" data-block-id="2df83f3a57d13088712703f70a1b94ce" data-name="math-b075c9"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="7"><div class="math-input">\text{❌ No sirve si los resultados no son equiprobables o si el espacio es continuo}</div></div></div></section><section data-id="2ac6de7390c0581408adfb8ce1cfd035">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="efd9e169985ff335cacb3ed53764392b"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.09px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="797078b2b369bba6196123f4904a17b2"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.0em">📘Enfoques de la Probabilidad</span></h2></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="b8a58f0017e862e1eadc3b2b82d14a11"><div class="sl-block-content" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="10089d06c6f778be8a1611fe9bf17a78"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 166.66px;" data-name="math-6c48f4" data-block-id="3ac40a161208a57a1892084c85cd5bdd"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{🟦 2. Probabilidad Geométrica}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 64.4999px; top: 217.66px;" data-name="math-8c580d" data-block-id="30133dfee4883300ec081272c4548790"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Se usa cuando el espacio de resultados es continuo y se puede medir (longitud,}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 246px; top: 296.975px;" data-name="math-650f1f" data-block-id="c9a95d6245301bfe3802d4d3967aa461"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 65%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">P(A)=\frac{\text{medida (longitud, área, etc) de A}}{\text{medida de }\Omega}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 64.4999px; top: 253.66px;" data-name="math-6a8d13" data-block-id="de83159bb0e690edb2c8a5d35193c016"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{área, volumen).}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 352.975px;" data-name="math-285943" data-block-id="3e805c6acc7f14ce1024f1fd7986fc57"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 55%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🧪 Ejemplo}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 64.4999px; top: 399.975px;" data-name="math-3ed5ba" data-block-id="59a4ad04ec8b54e24b0bd665c4880c0e"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{¿cuál es la probabilidad de que un punto elegido al azar en [0,1] caiga en [0.3, 0.6]?}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 353.5px; top: 454.305px;" data-name="math-998055" data-block-id="6c6164a8ed60b1bbe8456c0ac523b1fd"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 65%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">P=\frac{0.6-0.3}{1-0}=0.3</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 516.475px;" data-name="math-ebac57" data-block-id="51aaf87a8647af54d5984c0660aca5b4"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{✅ Introduce el concepto de “medida”}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 565.475px;" data-name="math-b075c9" data-block-id="7e5b84a7a1b3851746fe949bbc7d8e68"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{❌ Ambigua si no se define claramente la noción de “azar” (paradojas como la de}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 79.3242px; top: 600.475px;" data-block-id="f2c081f6ecbb1ae79da3bd3417cdf324" data-name="math-8bf398"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{Bertrand)}</div></div></div></section><section data-id="44f8d1e600623d373ab5373c159ac0b8">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="99cf1398572409ee254253a13eaf01fb"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.09px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="5b588f08d6ab530823e090a9e7137be0"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.0em">📘Enfoques de la Probabilidad</span></h2></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="af0a6e2fd6b27bd9169ce13b784b1db6"><div class="sl-block-content" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="261979b4c71539a737bbcaa763707984"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 166.66px;" data-name="math-6c48f4" data-block-id="ad64c5f8c8159ee6f3abfabea20afd5f"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{🟥 3. Probabilidad Frecuentista}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 64.4999px; top: 217.66px;" data-name="math-8c580d" data-block-id="0b8899c5dbdf4b3b4aa22ee505411f29"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{La probabilidad de un evento es el límite de su frecuencia relativa en un número}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 64.4999px; top: 253.66px;" data-name="math-6a8d13" data-block-id="46f3ec93e005ebe530d0f4bf8821f3ab"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{grande de repeticiones del experimento:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 487.271px;" data-name="math-ebac57" data-block-id="f7688a8f85fc85057825de8cd46b4ae6"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{✅ Aplicable en el laboratorio o experimentación}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 536.271px;" data-name="math-b075c9" data-block-id="678c75a91df5b5117684e819d5582a70"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{❌ No aplica bien a eventos únicos o no repetibles}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 346px; top: 310.611px;" data-name="math-650f1f" data-block-id="119682f9b86eb83eda99c8bbc78f618d"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 65%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">P(A)=\lim_{n \to \infty}\frac{nA}{n}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 380.611px;" data-name="math-37b511" data-block-id="3bd80c03c0210ee92e19bb0562c47f21"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{🔹 Intérprete operativo y empírico}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 416.271px;" data-block-id="d5182573f83c92bfc638f75f78205ef3" data-name="math-d53ab7"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{🔹 Base de la estadística clásica}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 37.5001px; top: 585.271px;" data-block-id="eb0ea3047ab91ff5fce26718de219fcc" data-name="math-ef43e5"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{❌ No es una definición matemática formal, depende de un límite}</div></div></div></section><section data-id="8717c123dd698cac73b5c3cb4ee26f9f">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="388a71d8894e7b7fcf6d5e3e42e2006e"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 589.4px; left: 17.09px; top: 26.5px; height: auto;" data-name="text-bad4e5" data-block-id="25b3ad02401edd7cf9ac7f77f8883088"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.0em">📘Enfoques de la Probabilidad</span></h2></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="b3b316b7f7d24164e000e91a9ecebd6a"><div class="sl-block-content" style="z-index: 12; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="dca69ee70aef9fc886a6bdf57eec574b"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5001px; top: 118.685px;" data-name="math-6c48f4" data-block-id="732a832169116524eb49310077cc83e0"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{🟨 4. Probabilidad Axiomática}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 73.4999px; top: 169.685px;" data-name="math-8c580d" data-block-id="e257215e225efa8a3620b72edffd86b2"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Define la probabilidad como una medida} \ P \ \text{sobre una } \sigma-\text{álgebra de eventos,}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 73.4999px; top: 205.685px;" data-name="math-6a8d13" data-block-id="adb4979680d32f95301cc91530cc50b4"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{cumpliendo tres axiomas.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5001px; top: 316.685px;" data-name="math-ebac57" data-block-id="5f2e21184ef6ec5bdff0e5ca4c30cc5c"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{✅ General, rigurosa, coherente}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5001px; top: 365.685px;" data-name="math-b075c9" data-block-id="5db360f67f05a42d65bdb95b5784c765"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{✅ Conecta con teoría de la medida}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 73.4999px; top: 243.685px;" data-name="math-37b511" data-block-id="ff8ffb8b7ca09e5d2ef1f778be1cf419"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹 No depende del tipo de espacio (finito, infinito, continuo)}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 73.4999px; top: 279.345px;" data-name="math-d53ab7" data-block-id="a28cc34c8a23de898c016efe1abfa89b"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹 Es la base moderna de la teoría matemática de la probabilidad}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 46.5001px; top: 414.685px;" data-name="math-ef43e5" data-block-id="7944a2083c17d076159052b564e66d3c"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{✅ Permite demostrar teoremas}</div></div></div>
+<div class="sl-block" data-block-type="table" style="height: auto; min-width: 531px; width: 895px; left: 46.5px; top: 463.685px;" data-name="table-17f53d" data-block-id="12417eacd3f8af0924fadede97c2ad39"><div class="sl-block-content fragment" style="z-index: 22; font-size: 70%;" data-table-cols="5" data-table-rows="5" data-fragment-index="4"><table><tbody>
+<tr>
+<th style="width: 138px;">Enfoque</th>
+<th style="width: 187px;">Tipo de espacio</th>
+<th style="width: 94px;">Intuitivo</th>
+<th style="width: 72px;">Rigor<br>
+ </th>
+<th>Limitaciones</th>
+</tr>
+<tr>
+<td style="width: 138px;">Clásico</td>
+<td style="width: 187px;">Finito y simétrico</td>
+<td style="width: 94px;">✅</td>
+<td style="width: 72px;">❌</td>
+<td>No aplicable a casos asimétricos o infinitos</td>
+</tr>
+<tr>
+<td style="width: 138px;">Geométrico</td>
+<td style="width: 187px;">Continuo medible</td>
+<td style="width: 94px;">✅</td>
+<td style="width: 72px;">⚠️</td>
+<td>Ambiguo sin definición precisa de medida</td>
+</tr>
+<tr>
+<td style="width: 138px;">Frecuentista</td>
+<td style="width: 187px;">Empírico, repetible</td>
+<td style="width: 94px;">✅</td>
+<td style="width: 72px;">⚠️</td>
+<td>No define eventos únicos, depende del límite</td>
+</tr>
+<tr>
+<td style="width: 138px;">Axiomático</td>
+<td style="width: 187px;">General</td>
+<td style="width: 94px;">⚠️</td>
+<td style="width: 72px;">✅</td>
+<td>Menos intuitivo, requiere formalismo</td>
+</tr>
+</tbody></table></div></div></section></section><section class="stack" data-id="0ad6aa00b3e5ff35afa51b6d6d48fdca"><section data-id="21ac98f18d2300dd098756fd81dc6983">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="139918bf51b148b7c4ced9e4acdc0676"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 653.781px; left: 9.9242px; top: 12.4999px; height: auto;" data-name="text-bad4e5" data-block-id="7adc5320a2a830f0ecbab2504889ce1d"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>📘Espacio de Probabilidad y                        Axiomas de Kolmogórov</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="17272ced336b77d1e7f3b64b8159f2f0"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{🧩 Definición: Espacio de probabilidad}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="b959f34c3044590998fd1ffefa07572c"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="382cca8fff0b427246d9fe1afad41180"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="75e7a1614dfabfae6704a6c42cef51d0"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Un espacio de probabilidad es una terna:} \ (\Omega, \mathcal{A}, P) \ \text{donde:}</div></div></div>
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 240.333px;" data-name="math-37b511" data-block-id="80b85a365392e4bfb3937651d7cc3de0"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹 }\Omega \ \text{conjunto no vacío llamado espacio muestra}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 282.333px;" data-block-id="f89a49fad397ecea676214e04f6aa669" data-name="math-3d4dc1"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹} \ \mathcal{A} \subseteq P(A):\sigma-\text{álgebra de conjuntos de }\Omega</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 324.333px;" data-block-id="f6ea39814f2a33571b5a2581b703cbca" data-name="math-47b990"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{🔹} \ P:\mathcal{A} \to [0,1]: \ \text{función llamada probabilidad}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 388.898px;" data-block-id="a438de8fa8fd3010025e67febc94a5d3" data-name="math-d5bfde"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🧱 Axiomas de Kolmogórov}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 444.333px;" data-block-id="8b6397b8810801e55684da89aa579dd7" data-name="math-6749a2"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{Sea} \ A \subseteq \Omega \ \text{un evento. La función} \ P \ \text{debe satisfacer:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 77.5px; top: 492.333px;" data-block-id="0fec65dd423b0a2bb49238cf2f6084af" data-name="math-226945"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🔹 }0 \leq P(A) \leq 1, \quad \forall A \in \mathcal{A}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 77.5px; top: 534.333px;" data-block-id="2d5a6058a1931750fa5fef27ce4f0afc" data-name="math-ea69dc"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🔹} \ P(\Omega)=1 </div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 77.5px; top: 576.333px;" data-block-id="edc6a3ea1b6ef46e300417aca4bfc020" data-name="math-3d987d"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🔹} \ \text{Si} \ A_1, A_2, \dots \in \mathcal{A} \ \text{y} \ A_i \cap A_j = \emptyset \ \text{para} \ i \ne j, \text{entonces:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 339px; top: 625.563px;" data-block-id="493f10e6ba748cd949f0e37caa1f7bf7" data-name="math-8c01db"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">P\left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)</div></div></div></section><section data-id="273b95d21d2ca7107339f7a5cff2c572">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="6ff7d859d506e1769da72c14a17edd63"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 653.781px; left: 9.9242px; top: 12.4999px; height: auto;" data-name="text-bad4e5" data-block-id="690296d136f15662282c749935a0b4d0"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h1>📘Algunas propiedades</h1></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="78e35d4329688b85e22da9c67f167661"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Proposición}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="45e5cc53cd70cf2e5832f53447928f18"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="84d716d674eb825e39e6f7e4e43d9960"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="afd9208741de3bf78f5c2f24a5e26dcc"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean} \ A,B \subseteq \Omega, \ \text{con} \ A,B \in \mathcal{A}, \ \text{entonces, se cumplen las siguientes propiedades:}</div></div></div>
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 240.333px;" data-name="math-37b511" data-block-id="abcbd33533a0d52ee4dcd30f2e344bbe"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">i) \ P(A) = 1- P(A^c), \quad P(A^c) = 1-P(A)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 282.333px;" data-name="math-3d4dc1" data-block-id="f92eec7ec0bce273354da5d0bb969443"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">ii) \ P(\emptyset) = 0</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 324.333px;" data-name="math-47b990" data-block-id="173b539ab40697f3e884b1d56437c3fd"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">iii) \ \text{Si} \ A \subseteq B, \ \text{entonces} \ P(A) \leq P(B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 416.333px;" data-name="math-d5bfde" data-block-id="4380ccc4bb5de9152e9d9e4f74fc303e"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🧩 Observación}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 473.333px;" data-name="math-6749a2" data-block-id="cc2346470c1b17f0ead989916083f93e"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{Si} \ A \cap B = \emptyset, \ \text{entonces}</div></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 366.333px;" data-block-id="ccb98eeea8ded2ac1a5f279e6dbd7b2f" data-name="math-8795dd"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">iv) \ P(A\cup B) = P(A) + P(B) - P(A\cap B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 336.815px; top: 534.333px;" data-block-id="628b8153e2d7766ce09afac33c113777" data-name="math-f6ec5d"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">P(A\cup B) = P(A)+P(B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 83.442px; top: 588.333px;" data-block-id="3b09bc768bef75f93e48fe31b8ea347a" data-name="math-c9ae38"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{Es un caso particular de la regla general, y coincide con el axioma de aditividad.}</div></div></div></section><section data-id="f90d5de0310f031ee0e9b4cec1d3ebbc">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="f67fa77f257c4830d62d358f185e8f70"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="6305a20994bbdcf3d693aeb42860191a"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.2em">📘Probabilidad Condicional</span></h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="aef58d089beaf78199355e8a2982d9cc"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Definición}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="2aeeb52d2b8ebb8d0bbf9d896d180508"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="4b2d54d2f3275da8b9fa51ba63e14da3"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="fbee552673c5d2434d6141ccda97cd59"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean} \ A,B \in \mathcal{A}, \ \text{con} \ P(B)&gt;0. \ \text{La probabilidad condicional de} \ A \ \text{dado} \ B \ \text{se}</div></div></div>
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 240.333px;" data-name="math-37b511" data-block-id="078474535a17cf8857417e7528502c59"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{define como:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 365.5px; top: 259px;" data-name="math-3d4dc1" data-block-id="adb6cc36190b98042d56488344d5c51a"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">P(A|B) = \frac{P(A\cap B)}{P(B)}</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 309.5px;" data-name="math-d5bfde" data-block-id="6d760ea916d7615b1ed15f88d0f1eb30"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🔎 Interpretación}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 362.5px;" data-name="math-226945" data-block-id="026fb38d5f31f089c75edbb9e4c97f7d"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🔹 }P(A∣B) \ \text{representa la probabilidad de que ocurra} \ A, \ \text{asumiendo que ya}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 121.442px; top: 398.5px;" data-block-id="64ed1328e52ad4fc900081053cb0f1cd" data-name="math-911dec"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{ocurrió} \ B.</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 434.5px;" data-block-id="6a3eed68301c9798cd00d51c60490c18" data-name="math-c62e40"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{🔹 }\text{Es una nueva función de probabilidad, restringida al subconjunto} \ B.</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 477.5px;" data-block-id="6ce0fe18f322ad9a5df47d7d0aec00c4" data-name="math-2f6add"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\textbf{📊 Ejemplo:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 92.5002px; top: 520.5px;" data-block-id="4c0dbcad0471fa24101c4cdcdbe34298" data-name="math-e78b18"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{Se lanza un dado al aire, y definimos}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 92.5002px; top: 566.5px;" data-block-id="7fe4931cc7e965725d212fe3d1a049f1" data-name="math-4ac70c"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{🔹 }A=\{\text{número par}\}=\{2,4,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 92.5002px; top: 608.5px;" data-block-id="c7d95543d683163d16a5d9f4da793a06" data-name="math-83dd16"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{🔹 }B=\{\text{número mayor que }3\}=\{4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 90px; top: 648.5px;" data-block-id="7b589965955094c341347df34f5ef162" data-name="math-4574d7"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="7"><div class="math-input">\text{entonces,} \quad P(A\cap B)= \frac{2}{6}, \quad P(B) = \frac{3}{6}, \quad P(A|B) = \frac{2/6}{3/6}=\frac{2}{3}.</div></div></div></section><section data-id="edf656c2382433bcd4d4fbfc811350b9">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="78cbf497d571e8f689cbad3603bcbbd9"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="c207b1674a92e60c4be4fef15489856c"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2><span style="font-size:1.2em">📘Regla del producto</span></h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="c9dab6a312cb6316e6e7326f6bb1c898"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Regla del producto (para dos eventos)}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="bbfd8f1aae02facc374f564a7e17967d"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="8a05a3a566a53aff861ae8887658bfee"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="edb8cdecab32264ca7407d2458ff656f"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean} \ A,B \in \mathcal{A}, \ \text{con} \ P(A), P(B)&gt;0. \ \text{Entonces:}</div></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 200.5px; top: 241.333px;" data-name="math-3d4dc1" data-block-id="060b21b8cabc0f20822f91a6257e263b"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input"> P(A \cap B)  = P(A|B)P(B) = P(B|A)P(A).</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 309.5px;" data-name="math-d5bfde" data-block-id="db263835be7edcfe659ba12e453a804b"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🔧 Extensión a tres eventos}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 362.5px;" data-name="math-226945" data-block-id="4710c9db1ab447aba5e45722c15fd57c"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Sean} \ A,B,C \in \mathcal{A}, \ \text{con probabilidades bien definidas. Entonces:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 445.5px;" data-name="math-2f6add" data-block-id="e2011774dadf25f69e0f0b6a668c29b8"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\textbf{📊 Ejemplo:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 488.5px;" data-name="math-e78b18" data-block-id="dc556bbcb9178c1cc43a51ad51bddeae"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{Se extraen dos cartas sin reemplazo de un mazo estándar y definimos}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 534.5px;" data-name="math-4ac70c" data-block-id="42c0bae14794eb2cac9cfea88fa3d538"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{🔹 }A=\{\text{``la primera carta es un as"}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 334px; top: 613.5px;" data-name="math-4574d7" data-block-id="e94b7017bca668f32bead2c072b951b3"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="7"><div class="math-input">P(A) = \frac{4}{52}, \quad P(B|A) = \frac{3}{51} </div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 200.5px; top: 399px;" data-block-id="e1396a857f76aedc1a25c08f976d853a" data-name="math-214336"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input"> P(A \cap B \cap C)  = P(A)P(B|A)P(C|A\cap B).</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.5px; top: 576px;" data-block-id="9862e2b3cf53e640b41e9d5c8b6817fe" data-name="math-b4a12d"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{🔹 }B=\{\text{``la segunda carta es un as"}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 340.942px; top: 653.5px;" data-block-id="b4346ae52e0e1ad61fe94a68b2e7a7eb" data-name="math-718782"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="7"><div class="math-input">P(A\cap B) = \frac{4}{52}\cdot \frac{3}{51} = \frac{1}{121}.</div></div></div></section><section data-id="22d148ccd8adf106cf8c1f785b7ca3cd">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="74b9eb3a11c0f2936860c207eb65773d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="04cd57c17db730fc1e87e3ce597ed932"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>
+<span style="font-size:1.2em">📘</span>Independencia de eventos</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="039a4741b586a776c854c1a83e28475b"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Definición (Independencia)}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="9da37214c83cbd5f4f447ac88fe2553e"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="0a59ba35a97fb0990265173db62beadd"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="35572e3c4ecb2f13bc42d6fa4f3a71a5"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean} \ A,B \in \mathcal{A}. \ \text{Se dice que} \ A \ \text{y} \ B \ \text{son independientes si}</div></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 325.942px; top: 234.333px;" data-name="math-3d4dc1" data-block-id="5184b7203f8c9f36f316805e50a421e5"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input"> P(A \cap B)  = P(A)P(B)</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 309.5px;" data-name="math-d5bfde" data-block-id="24f0dc9e121c4ef4f6ff81cd9ddbe7f0"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🔧 Independencia mutua (más de dos eventos)}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 362.5px;" data-name="math-226945" data-block-id="c9f23a0eb0a66f72bd502561cf098769"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Eventos} \ A_1,A_2,\ldots,A_n \ \text{son mutuamente independientes si para toda subcolección}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 215.942px; top: 434.5px;" data-name="math-214336" data-block-id="2710079f39c6a3e1231d781a8cb14d4f"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">P(A_{i_1} \cap \cdots \cap A_{i_k}) = P(A_{i_1}) \cdots P(A_{i_k})</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 398.5px;" data-block-id="d1b374b0ba95233228972efca510d425" data-name="math-ffc2ed"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\{A_{i_1}, \dots, A_{i_k}\} \ \text{se cumple:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 480.5px;" data-block-id="9b9ee31bb0b9dbf46cc97990d67792d9" data-name="math-fcc1cf"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{❗ Independencia por pares no implica independencia mutua.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 530.922px;" data-block-id="f87a75ab9aa05f33ac78d1783535d64a" data-name="math-cc00c2"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🟨 Interpretación}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 577.5px;" data-block-id="d4e6449e870bee2af55a7ca3f4b66a03" data-name="math-a5159b"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Conocer que ocurrió} \ B \ \text{no cambia la probabilidad de} \ A, \ \text{y viceversa:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 213.5px; top: 617.5px;" data-block-id="2f1188f9c5bc4b38250fd51a4465e233" data-name="math-5396ab"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input"> P(A \mid B) = P(A) \quad \text{y} \quad P(B \mid A) = P(B)</div></div></div></section><section data-id="9c0a73d1dfab225bef1f49e6eaffd6f7">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="5800ef5321a25cdfefcc04997d8aff1f"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="edab59668766f9d34a21dfedebbe6931"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>
+<span style="font-size:1.2em">📘</span>Independencia de eventos</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="5f08dca8385e9f1256a77af089265c76"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Definición (Independencia)}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="a98eb9d1f65ecec37bad48c8dd150bbd"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="a511014803fedd6a658a28e153adadb3"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="4c2c6ec7b5f5175bd2a78357282b6f60"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sean} \ A,B \in \mathcal{A}. \ \text{Se dice que} \ A \ \text{y} \ B \ \text{son independientes si}</div></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 325.942px; top: 234.333px;" data-name="math-3d4dc1" data-block-id="c4dacce646fa279fdbed04e2a4536910"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input"> P(A \cap B)  = P(A)P(B)</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 309.5px;" data-name="math-d5bfde" data-block-id="f637853cc76a2f98fca6f2e65d742bbf"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🔧 Independencia mutua (más de dos eventos)}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 362.5px;" data-name="math-226945" data-block-id="988afa2a80b949cb0fa83b17dc7fb635"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Eventos} \ A_1,A_2,\ldots,A_n \ \text{son mutuamente independientes si para toda subcolección}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 215.942px; top: 434.5px;" data-name="math-214336" data-block-id="80c32088046e0afaf24469bccbd50768"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">P(A_{i_1} \cap \cdots \cap A_{i_k}) = P(A_{i_1}) \cdots P(A_{i_k})</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 398.5px;" data-name="math-ffc2ed" data-block-id="255c429ab25ab332f70ec4c100c3a45b"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\{A_{i_1}, \dots, A_{i_k}\} \ \text{se cumple:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 480.5px;" data-name="math-fcc1cf" data-block-id="504ae9e40a0c892ceb4dd7acaf5c2e5c"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{❗ Independencia por pares no implica independencia mutua.}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 530.922px;" data-name="math-cc00c2" data-block-id="1673131d256f670c1de77f9631585354"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🟨 Interpretación}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 577.5px;" data-name="math-a5159b" data-block-id="68b8cc6a3cfe92b67bf2fc9bfc5b4af6"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Conocer que ocurrió} \ B \ \text{no cambia la probabilidad de} \ A, \ \text{y viceversa:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 213.5px; top: 617.5px;" data-name="math-5396ab" data-block-id="4b9545e4b249d58c51553da650ce71d0"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input"> P(A \mid B) = P(A) \quad \text{y} \quad P(B \mid A) = P(B)</div></div></div></section><section data-id="5b9b71c45667195541b54ae047eae214">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="6fbd387e5b4a10bc3b653349370d70dc"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="38b7f14cff0a233ae04c407a703b1bd3"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>
+<span style="font-size:1.2em">📘</span>Eventos mutuamente excluyentes</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="722fa7d2c3cd3ecf3830c1104cf82a18"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Definición}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="a7cd8f6644863609fc8a16cc9ca93bac"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="788c707f73e7066fad23790e1c6db4c3"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 84.442px; top: 198.333px;" data-name="math-8c580d" data-block-id="0462d039473254ced42a14ba9c317631"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Se dice que dos eventos} \ A,B \in \mathcal{A} \ \text{son mutuamente excluyentes si:}</div></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 298px; top: 241px;" data-name="math-3d4dc1" data-block-id="73395beaa7345dc89d4d9127a92718b8"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">A \cap B = \emptyset \Rightarrow P(A \cap B)  = 0</div></div></div>
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 309.5px;" data-name="math-d5bfde" data-block-id="28c5f51b05f84b1245ce34643196bdba"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🧪 Ejemplo}</div></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 51.5px; top: 362.5px;" data-name="math-226945" data-block-id="4c944b0641ccae1e684e57915e8e63c1"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="4"><div class="math-input">\text{Lanzar un dado}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 55.25px; top: 397.5px;" data-name="math-4ac70c" data-block-id="c2bf09e6e0245163a6ef411198ca1e4b"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{🔹 }A=\{\text{Sale }2 \text{ o }4\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 55.25px; top: 434.5px;" data-block-id="9aa0e9d90565c77c38bdefce9a0d7be3" data-name="math-1c400d"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">\text{🔹 }B=\{\text{Sale }5 \text{ o }6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 286.75px; top: 411px;" data-block-id="68bd81b5778dafbcd8eb7143d8f12ba6" data-name="math-2f9dc3"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\Rightarrow </div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 335.75px; top: 416px;" data-block-id="e5faa975bc0f79f55b63fa4ef645fbf0" data-name="math-bab403"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="5"><div class="math-input">A \cap B=\emptyset, \ \text{y por lo tanto} \ P(A \cup B) = P(A)+P(B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 38.2211px; top: 479.5px;" data-block-id="99f4e1fc172191a8ebbc4c0d2fb69c39" data-name="math-09042c"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\textbf{🔧 Mutuamente excluyentes por pares}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 45.7789px; top: 532.5px;" data-block-id="9e970831e8f8b4198a8eecc7dded355b" data-name="math-b2316c"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{Una colección de eventos} \ A_1,A_2,\ldots,A_n \ \text{es mutuamente excluyente por pares si:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 290px; top: 569.5px;" data-name="math-214336" data-block-id="e3f458b77b2fa3b04d463354f4bd8a62"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">A_i \cap A_j = \emptyset \quad \text{para todo } i \ne j</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 629px;" data-name="math-fcc1cf" data-block-id="4908e766e3a9e17f248b93cbbc8069e3"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="6"><div class="math-input">\text{🧩 Si además } \bigcup_{i=1}^{n}A_i = \Omega, \ \text{se dice que forman una partición de }\Omega.</div></div></div></section><section data-id="47cc8579215351680841efc0a3cf9a81">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="112fdba9dc3c7a3385667f1299a50fba"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 681.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="3e3945e6c246e598b3ee350b58528cfd"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>
+<span style="font-size:1.2em">📘</span>Eventos mutuamente excluyentes</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="4c8e2cb61915510553e79ae38dce7de0"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{❗ Recordatorio importante}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="d9dc9c3c043b51411f5e4cdc5e9099cf"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="febdbf0598a14f78396aba7e51e60512"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 80.2211px; top: 195.5px;" data-name="math-8c580d" data-block-id="26e000e6f20a9f0081d7eaef1328591f"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{No confundir independencia con exclusión mutua}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="table" data-name="table-0312bd" data-block-id="c65b9532aa32c72a4576e91564d3b160" style="height: auto; min-width: 500px; width: 800px; left: 80.2211px; top: 265px;"><div class="sl-block-content fragment" style="z-index: 16; font-size: 70%;" data-fragment-index="1"><table><tbody>
+<tr>
+<th style="width: 232px;">Concepto</th>
+<th style="width: 228px;">Condición</th>
+<th>¿Pueden ocurrir simultáneamente?</th>
+</tr>
+<tr>
+<td style="width: 232px;">Mutuamente excluyentes</td>
+<td style="width: 228px;"></td>
+<td>❌ Nunca ocurren juntas</td>
+</tr>
+<tr>
+<td style="width: 232px;">Independientes</td>
+<td style="width: 228px;"></td>
+<td>✅ Puede ocurrir ambas</td>
+</tr>
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 317.284px; top: 304px;" data-block-id="b07726b4941f69b028e81b5a7b6016c0" data-name="math-630a81"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 44%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">A \cap B = \emptyset</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 317.284px; top: 342px;" data-block-id="88935cfc4e1f5770d70d852fc8ea8713" data-name="math-8fe010"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 43%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">P(A \cap B) = P(A)P(B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 408.5px;" data-name="math-d5bfde" data-block-id="ea3f48b43121c15498d4278b4903b608"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\textbf{🧪 Ejemplo}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 80px; top: 451.5px;" data-name="math-b2316c" data-block-id="9df3fee2bdd7a4fa4a5e0e050fbebec9"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{Si } A \ \text{y} \ B \ \text{son mutuamente excluyentes y ambos tienen probabilidad positiva,}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 80px; top: 488.5px;" data-block-id="f3aa5337af418b3f29941c3df70f8042" data-name="math-3bc83d"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{entonces:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 299px; top: 531.5px;" data-name="math-3d4dc1" data-block-id="4da7e222fb7581b8f41e628225a0c982"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 60%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">P(A \cap B) = 0 \ne P(A)P(B)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 80px; top: 583.5px;" data-block-id="7c5057633c2704c3e9970c59e3f14cee" data-name="math-3b4c7f"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{es decir, no pueden ser independientes.}</div></div></div></section><section data-id="9ff1de6b49a8546adcdc8bcdde3b8432">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="a9d33ba2dafef1260718a0f8f8bad6c6"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 618.576px; left: 9.924px; top: 27.4999px; height: auto;" data-name="text-bad4e5" data-block-id="d18c3269ff7f69bac4942cb6fe3d5ef3"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h2>
+<span style="font-size:1.2em">📘</span>Partición del espacio muestral</h2></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="e457a8d2686be2a82507548e686a11fe"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Definición (Partición del espacio muestral)}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="cbe1a5f232314e68d4fa45515d65242a"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="a5ca9bfb4c8d0f6371a397f5350707f4"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 194px;" data-name="math-8c580d" data-block-id="c0092e906835a042109b110e7c0d1b1c"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sea} \ \Omega \ \text{un espacio muestral, y sea }\{A_1,A_2,\ldots,A_n\}\subseteq \mathcal{A}. \ \text{Decimos que esta colección}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 229.333px;" data-block-id="f362d3633f68f19c1450cd4ac202d7b0" data-name="math-2250ac"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{de eventos forma una partición de }\Omega \ \text{si se cumplen:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 281.053px;" data-block-id="1ec3d14f289dfeefd64ce07d24214a2e" data-name="math-1c0ef7"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{1.} \ A_i\cap A_j = \emptyset, \quad \forall i\ne j</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 331.5px;" data-block-id="5f512faba7d610f0bc5d50392678594a" data-name="math-815dc8"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{2.} \ \bigcup_{i=1}^{n}A_i=\Omega</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 401.333px;" data-block-id="671cd848609149f4c11b728393625e7d" data-name="math-08a880"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\textbf{📊 Ejemplo}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.712px; top: 444.333px;" data-block-id="25d43b414e731023e571138ff471b078" data-name="math-6644ea"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{Sea } \ A \in \mathcal{A}, \ \text{entonces } \{A, A^c\} \ \text{es una partición de }\Omega.</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 481.333px;" data-block-id="ad3a308fe678077d0095245cd57e6244" data-name="math-620f46"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">\text{Suponga que se lanza un dado. Sea }A=\{\text{``número par"}\}. \ \text{Entonces: } </div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.712px; top: 527.333px;" data-block-id="1dd57e7a3a9734319ff9d1cec0c35995" data-name="math-63ff09"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="2"><div class="math-input">A=\{2,4,6\}; \quad A^c=\{1,3,5\} \Rightarrow \{A,A^c\} \ \text{es una partición de }\Omega=\{1,2,3,4,5,6\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 34.9421px; top: 592.5px;" data-block-id="3f318ea04e6abc5e55bfce0b3d85dc15" data-name="math-8cf619"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\textbf{🧩 Notas}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 72.9422px; top: 635.5px;" data-name="math-4ac70c" data-block-id="002f9cd49665e47f8f8d48950f0e18f4"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 50%;" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="3"><div class="math-input">\text{🔹 Las particiones permiten descomponer probabilidades en partes más simples.}</div></div></div></section><section data-id="feb191b1d28fae2da936433fcc154fde">
+
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-29000e" style="width: auto; height: auto; left: 0px; top: 106.685px;" data-block-id="940612d3f1defa343b7f9de23e439cd2"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="959.9999842105263" data-line-y2="0" data-line-color="#5ba13d" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="959.9999842105263" height="1" viewbox="0 0 959.9999842105263 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#5ba13d" stroke-width="4" d="M0 0 L960 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L960 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L960 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 669.576px; left: 6.924px; top: 19.5px; height: auto;" data-name="text-bad4e5" data-block-id="15cf940a76bcfd2ec41f2789f94fb79a"><div class="sl-block-content" data-placeholder-tag="h2" style="text-align: left; z-index: 11; padding: 10px; transition-duration: 0.6s; transition-delay: 0.6s; font-size: 90%;" data-placeholder-text="Text" data-animation-type="scale-up"><h1>
+<span style="font-size:1.2em">📘</span>Teoremas principales</h1></div></div>
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 141.333px;" data-name="math-6c48f4" data-block-id="636c1dbae8fa258821f18adae01f2d67"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Teorema de la Probabilidad Total}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d5d372" style="width: 81.9999px; height: 80.875px; left: 859.5px; top: 15.125px; min-width: 1px; min-height: 1px;" data-block-id="f68b513e6550e9a861147ae87d08d2d9"><div class="sl-block-content" style="z-index: 13; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.147826" data-crop-y="0.039674" data-crop-width="0.713043" data-crop-height="0.703261" style="left: -17px; top: -5px; width: 115px; height: 115px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9ac620" style="width: 153px; height: 49.0001px; left: 691.5px; top: 35.4999px; min-width: 1px; min-height: 1px;" data-block-id="7dd58e33d82ed690ee52e0615dd17367"><div class="sl-block-content" style="z-index: 14; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img class="" data-natural-width="225" data-natural-height="225" data-lazy-loaded="" data-crop-x="0.155556" data-crop-y="0.737777" data-crop-width="0.68" data-crop-height="0.217778" style="left: -35px; top: -166px; width: 225px; height: 225px;" data-src="tecnicas_de_conteo/12570e64b3dc6a322a8d63505ffe6c11.png"></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 194px;" data-name="math-8c580d" data-block-id="f7f315cf74ca127756e077cf442336ab"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sea }\{B_1,B_2,\ldots,B_n\}\subseteq\mathcal{A}, \ \text{una partición de }\Omega, \ \text{tal que }P(B_i)&gt;0 \ \forall_i, \ \text{entonces,}</div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 229.333px;" data-name="math-2250ac" data-block-id="9c4db205585908e77fbe6b746988a9c0"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{para cualquier evento } A \in \mathcal{A}, \ \text{se cumple:}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 272px; top: 299px;" data-name="math-1c0ef7" data-block-id="ef96f85932f2e9fffd138d73c9c123d8"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">P(A)=\sum_{i=1}^{n}P(A\mid B_i)\cdot P(B_i).</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 411.333px;" data-block-id="07b8aa26d372b5cfb8f22c4d785802ff" data-name="math-0c5ea2"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="0"><div class="math-input">\textbf{📌 Teorema de Bayes}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 464px;" data-block-id="e34d44ba66268eec5e706c5830b16343" data-name="math-c8472c"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">\text{Sea }\{B_1,B_2,\ldots,B_n\}\subseteq\mathcal{A}, \ \text{una partición de }\Omega, \ \text{tal que }P(B_i)&gt;0, \ \text{y sea, }A \in \mathcal{A} \ \text{con}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.9422px; top: 499.333px;" data-block-id="714e855a43d50c2b5110904c0e3ad504" data-name="math-fed310"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">P(A)&gt;0. \ \text{Entonces, para cada }i=1,2,\ldots,n:</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 294.5px; top: 581.333px;" data-block-id="163282c1cf7969c21d60addebd5ea269" data-name="math-44cfa7"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 60%; color: rgb(0, 0, 0);" data-animation-trigger="hover" data-animation-trigger-id="self" data-fragment-index="1"><div class="math-input">P(B_i\mid A) = \frac{P(A\mid B_i)P(B_i)}{\sum_{j=1}^{n}P(A|B_j)P(B_j)}.</div></div></div></section></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":3373359,"slug":"tecnicas_de_conteo","title":"Probabilidad_unidad_1","description":"","width":960,"height":700,"margin":0.05,"visibility":"all","published_at":"2025-03-25T23:18:09.270Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/378bac6d971501d42f05d66801b9436f/thumb.jpg?1742945136","view_count":0,"user":{"id":2411819,"username":"santiagojimenezramos","name":"Santiago Jimenez Ramos","description":null,"thumbnail_url":"https://lh3.googleusercontent.com/a/AGNmyxburfXxCWY3gHKlA9yTJDrPFZ56zb0om8UXVqWJrQ=s96-c","account_type":"lite","team_id":null,"settings":{"id":57004144,"present_controls":true,"present_upsizing":true,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"fade","transition":"slide","theme_id":null,"theme_font":"overpass2","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":false,"slide_count":24,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1743087321687,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: false,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				scrollActivationWidth: null,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "fade",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+
+	</body>
+</html>
