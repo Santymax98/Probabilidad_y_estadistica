@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pista: Teorías del desciframiento textual cultural II | MathStats</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+      background: #f7f9fc;
+      color: #2b3645;
+    }
+
+    #header {
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(36, 135, 206, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .header-hidden { transform: translateY(-100%); }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2487ce;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: 0.3s;
+    }
+
+    .logo:hover { color: #1a6ca3; }
+
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    .navbar li { position: relative; }
+    .navbar > ul > li { padding: 10px 0 10px 18px; }
+
+    .navbar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      white-space: nowrap;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .navbar a i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+
+    .navbar > ul > li > a:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #2487ce;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar > ul > li > a:hover:before,
+    .navbar > ul > li > a.active:before {
+      visibility: visible;
+      width: 25px;
+    }
+
+    .navbar a:hover,
+    .navbar .active { color: #2487ce; }
+
+    .navbar .dropdown ul {
+      display: block;
+      position: absolute;
+      left: 14px;
+      top: calc(100% + 30px);
+      margin: 0;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      background: #fff;
+      box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
+      transition: 0.3s;
+      border-radius: 10px;
+    }
+
+    .navbar .dropdown ul li { min-width: 240px; }
+    .navbar .dropdown ul a { padding: 10px 20px; font-size: 14px; }
+    .navbar .dropdown:hover > ul { opacity: 1; top: 100%; visibility: visible; }
+
+    .mobile-nav-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+      transition: 0.5s;
+      color: #444;
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle { display: block; }
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        bottom: 0;
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        z-index: 9997;
+        overflow-y: auto;
+      }
+      .navbar ul { display: block; margin-top: 60px; }
+      .navbar.active { right: 0; }
+      .navbar .dropdown ul {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 20px;
+      }
+      .navbar .dropdown:hover > ul { display: block; }
+      .navbar > ul > li > a:before { display: none; }
+    }
+
+    .get-started-btn {
+      background: #2487ce;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(36, 135, 206, 0.3);
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .get-started-btn:hover {
+      background: #1a6ca3;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 135, 206, 0.4);
+    }
+
+    #hero {
+      width: 100%;
+      min-height: 56vh;
+      background: linear-gradient(135deg, #17345f 0%, #2a5298 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hero h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,.25);
+    }
+
+    #hero h2 {
+      color: #dfe9ff;
+      margin: 12px 0 0 0;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .btn-get-started {
+      background: #fff;
+      color: #2487ce;
+      padding: 12px 28px;
+      border-radius: 50px;
+      margin-top: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: .2s;
+    }
+
+    .btn-get-started:hover {
+      background: #eef5ff;
+      transform: scale(1.03);
+      color: #2487ce;
+    }
+
+    .section-pad { padding: 60px 0; }
+
+    .section-title {
+      text-align: center;
+      padding-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #2487ce;
+      position: relative;
+      padding-bottom: 18px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 90px;
+      height: 3px;
+      background: #2487ce;
+      bottom: 0;
+      left: calc(50% - 45px);
+    }
+
+    .section-title p { color: #5f6b7a; }
+
+    .card-soft {
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      transition: .2s;
+    }
+
+    .card-soft:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
+    }
+
+    .sticky-note {
+      border-left: 4px solid #ff9800;
+      background: #fff8e1;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 14px;
+    }
+
+    .box {
+      padding: 26px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: .2s;
+      height: 100%;
+    }
+
+    .box:hover { transform: translateY(-6px); }
+    .box h3 { color: #2487ce; font-weight: 800; margin-bottom: 14px; }
+    .box ul { list-style: none; padding: 0; margin: 0; }
+    .box ul li { padding: 8px 0; }
+    .box ul li i { color: #2fb344; margin-right: 10px; }
+
+    .fixed-bottom-bar {
+      z-index: 999;
+      background: linear-gradient(135deg, #0f2a4f 0%, #1e3c72 100%);
+      color: #fff;
+      padding: 14px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    }
+
+    .progress { background-color: rgba(255,255,255,0.25); height: 18px; border-radius: 10px; }
+    .progress-bar { font-weight: 800; border-radius: 10px; }
+
+    .btn-locked {
+      opacity: .45;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .nav-pills .nav-link {
+      border-radius: 50px;
+      padding: 12px 18px;
+      margin: 4px;
+      transition: .2s;
+    }
+
+    .nav-pills .nav-link.active { background: #2487ce; }
+    .nav-pills .nav-link:disabled { opacity: .35; }
+
+    .mini-card {
+      border: 2px solid #e8eef6;
+      border-radius: 14px;
+      padding: 18px;
+      background: #fff;
+      height: 100%;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      padding: 14px 18px;
+      transition: .2s;
+    }
+
+    .quiz-btn:hover:not(.disabled) {
+      background: #eaf4ff;
+      border-color: #2487ce;
+    }
+
+    .register-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 2px solid #e6eef8;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .register-chip:hover { transform: translateY(-2px); }
+    .register-chip.selected { border-color: #2487ce; background: #eaf4ff; }
+
+    #footer {
+      background: #0f2a4f;
+      color: #fff;
+      padding: 26px 0;
+      margin-top: 60px;
+    }
+
+    #footer a { color: #7ee787; text-decoration: none; }
+
+    .modal-certificate {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 46px;
+      text-align: center;
+    }
+
+    .certificate-badge {
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 56px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+
+    .certificate-content {
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-align: left;
+    }
+
+    .context-box {
+      background: #f8fbff;
+      border: 1px solid #dbe8fb;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .tag-eje {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #edf5ff;
+      color: #1d5fa8;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      #hero h1 { font-size: 28px; }
+      #hero h2 { font-size: 16px; }
+      .section-title h2 { font-size: 24px; }
+      .get-started-btn { padding: 8px 16px; font-size: 14px; margin-left: 10px; }
+    }
+
+    @media (max-width: 576px) {
+      .logo { font-size: 22px; }
+      .get-started-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="#" class="logo">MathStats Code Hub</a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="#hero" class="active">Inicio</a></li>
+          <li><a href="#prefiguracion">Prefiguración</a></li>
+          <li><a href="#ruta">Ruta</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Pedagogía - Pistas</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Nuevos lenguajes</a></li>
+              <li><a href="#">Relación del ser humano II</a></li>
+              <li><a href="#configuracion">Teorías del desciframiento</a></li>
+            </ul>
+          </li>
+          <li><a href="#reconfiguracion">Reconfiguración</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+      <a href="#configuracion" class="get-started-btn"><i class="bi bi-activity"></i> Ir a la pista</a>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="container text-center">
+      <h1>Teorías del desciframiento textual cultural II</h1>
+      <h2>Pista interactiva · Matemáticas, lectura etnomatemática, representación y organización de información</h2>
+      <a href="#prefiguracion" class="btn-get-started"><i class="bi bi-rocket-takeoff"></i> Iniciar</a>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="prefiguracion" class="section-pad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento I. Prefiguración</h2>
+          <p>Observación inicial del texto cultural antes de ingresar a la configuración</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card card-soft p-4">
+              <h5 class="mb-3"><i class="bi bi-bullseye"></i> Competencia y resultado de aprendizaje</h5>
+              <div class="alert alert-info border-0 mb-3">
+                <strong>Competencia:</strong> Reconoce relaciones matemáticas (patrones, simetrías, formas, medida y organización simple de información) presentes en textos culturales del territorio y en entornos digitales, en el marco del umbral cartográfico cognitivo y la etnografía-comunicativa para la educación básica primaria.
+              </div>
+              <div class="alert alert-light border-0 mb-0">
+                <strong>Resultado de aprendizaje:</strong> Describe una lectura etnomatemática de un texto cultural (físico o digital) mediante patrones, simetrías o medidas y organización simple de información, como base de una micropropuesta didáctica con enfoque inclusivo y criterios de evaluación formativa.
+              </div>
+
+              <hr class="my-4">
+
+              <h5 class="mb-2"><i class="bi bi-compass"></i> Diagnóstico inicial</h5>
+              <p class="text-muted mb-3">Responde correctamente las tres preguntas para desbloquear la ruta secuencial.</p>
+
+              <div class="mb-4 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 1 · Observación inicial</div>
+                <p class="mb-2">En la lectura de un texto cultural, ¿qué acción corresponde mejor a una observación matemática inicial?</p>
+                <div class="d-grid gap-2" id="pref-q1-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','A', this)">A. Describir únicamente los colores y si el objeto gusta o no.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','B', this)">B. Identificar repeticiones, formas, simetrías y relaciones espaciales visibles.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','C', this)">C. Copiar el diseño completo sin analizar sus relaciones.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','D', this)">D. Memorizar el nombre del objeto cultural antes de observarlo.</button>
+                </div>
+                <div id="pref-q1-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="mb-4 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 2 · Representación</div>
+                <p class="mb-2">¿Cuál acción muestra mejor el paso de un objeto cultural a una representación matemática?</p>
+                <div class="d-grid gap-2" id="pref-q2-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','A', this)">A. Reducir el objeto a una imagen decorativa sin anotaciones.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','B', this)">B. Hacer un esquema donde se marquen patrones, ejes o unidades de repetición.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','C', this)">C. Reemplazar el objeto por una fórmula sin justificación.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','D', this)">D. Copiar el objeto a color para que quede más realista.</button>
+                </div>
+                <div id="pref-q2-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="mb-3 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 3 · Registro de información</div>
+                <p class="mb-2">¿Qué opción expresa mejor el sentido de registrar información en esta pista?</p>
+                <div class="d-grid gap-2" id="pref-q3-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','A', this)">A. Llenar una tabla aunque no se interprete lo que se observa.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','B', this)">B. Organizar observaciones sobre lo que se dice, se muestra y se hace alrededor del texto cultural.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','C', this)">C. Contar figuras sin relacionarlas con el contexto.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','D', this)">D. Describir solo la parte estética del diseño.</button>
+                </div>
+                <div id="pref-q3-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="sticky-note">
+                <strong><i class="bi bi-lightbulb"></i> Clave:</strong> en esta pista, leer matemáticamente un texto cultural implica observar, representar y organizar hallazgos con sentido pedagógico.
+              </div>
+
+              <hr class="my-4">
+
+              <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-pref" onclick="completeLevel('pref', 20)">
+                <i class="bi bi-lock-fill"></i> Responde correctamente para desbloquear la ruta secuencial
+              </button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="box">
+              <h3><i class="bi bi-check2-square"></i> Checklist de entrada</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Distingo observación estética de observación matemática.</li>
+                <li><i class="bi bi-check"></i> Comprendo que representar no es copiar, sino destacar relaciones.</li>
+                <li><i class="bi bi-check"></i> Reconozco que registrar implica organizar hallazgos.</li>
+                <li><i class="bi bi-check"></i> Entiendo que el texto cultural puede analizarse matemáticamente.</li>
+              </ul>
+              <hr>
+              <a href="#configuracion" class="btn btn-primary w-100"><i class="bi bi-lightning-charge"></i> Ir a Configuración</a>
+              <div class="mt-3 alert alert-warning border-0 small">
+                <i class="bi bi-info-circle"></i> Los ejes 1 a 3 siguen una secuencia. El bloque de ejemplos Saber Pro puede trabajarse de forma independiente.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ruta" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ruta de trabajo</h2>
+          <p>Secuencia metodológica de la pista</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-1-circle"></i> Prefiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Observación inicial del texto cultural</li>
+                <li><i class="bi bi-check"></i> Activación de hallazgos previos</li>
+                <li><i class="bi bi-check"></i> Preparación para la lectura matemática</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box" style="border:3px solid #2487ce;">
+              <h3><i class="bi bi-2-circle"></i> Configuración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Lectura etnomatemática</li>
+                <li><i class="bi bi-check"></i> Representación y comunicación</li>
+                <li><i class="bi bi-check"></i> Registro y organización simple de información</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-3-circle"></i> Reconfiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Texto narrativo colaborativo</li>
+                <li><i class="bi bi-check"></i> Integración de hallazgos del bloque</li>
+                <li><i class="bi bi-check"></i> Soporte y verificación de entrega</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fixed-bottom fixed-bottom-bar">
+      <div class="container">
+        <div class="row align-items-center g-2">
+          <div class="col-md-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-trophy-fill text-warning me-2 fs-3"></i>
+              <div>
+                <small class="d-block text-uppercase" style="font-size:0.68rem;opacity:.85;">Misión actual</small>
+                <strong id="mission-name" style="font-size:0.95rem;">Prefiguración</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="progress">
+              <div id="game-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:0%;">0%</div>
+            </div>
+          </div>
+          <div class="col-md-2 text-end">
+            <span class="badge bg-warning text-dark fs-6" id="score-badge">0 Pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="configuracion" class="section-pad" style="padding-bottom:150px;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento II. Configuración</h2>
+          <p>Ruta interactiva con tres ejes secuenciales, ejemplos por competencias y cierre evaluativo</p>
+        </div>
+
+        <ul class="nav nav-pills nav-fill mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-pref-tab" data-bs-toggle="pill" data-bs-target="#pills-pref" type="button" role="tab">
+              <span id="status-pref"><i class="bi bi-circle"></i></span> 0. Prefiguración
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje1-tab" data-bs-toggle="pill" data-bs-target="#pills-eje1" type="button" role="tab" disabled>
+              <span id="status-eje1"><i class="bi bi-lock-fill"></i></span> 1. Lectura etnomatemática
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje2-tab" data-bs-toggle="pill" data-bs-target="#pills-eje2" type="button" role="tab" disabled>
+              <span id="status-eje2"><i class="bi bi-lock-fill"></i></span> 2. Representación y comunicación
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje3-tab" data-bs-toggle="pill" data-bs-target="#pills-eje3" type="button" role="tab" disabled>
+              <span id="status-eje3"><i class="bi bi-lock-fill"></i></span> 3. Registro y organización
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje5-tab" data-bs-toggle="pill" data-bs-target="#pills-eje5" type="button" role="tab">
+              <span id="status-eje5"><i class="bi bi-circle"></i></span> 4. Ejemplos Saber Pro
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-rec-tab" data-bs-toggle="pill" data-bs-target="#pills-rec" type="button" role="tab" disabled>
+              <span id="status-rec"><i class="bi bi-lock-fill"></i></span> 5. Reconfiguración
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+          <div class="tab-pane fade show active" id="pills-pref" role="tabpanel">
+            <div class="card card-soft p-4">
+              <h5><i class="bi bi-flag"></i> Estado de ingreso</h5>
+              <p class="text-muted mb-2">Completa el bloque de prefiguración para desbloquear la secuencia de los ejes 1 a 3. El bloque de ejemplos Saber Pro puede trabajarse de forma independiente.</p>
+              <div class="alert alert-info border-0 mb-0">
+                <strong>Propósito:</strong> asegurar que la ruta parta de la observación del texto cultural, su representación matemática y la organización de hallazgos en contexto.
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje1" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <span class="tag-eje">Eje temático 1</span>
+                  <h5 class="mb-2"><i class="bi bi-grid-3x3-gap"></i> Lectura etnomatemática del texto cultural</h5>
+                  <p class="text-muted mb-3">Selecciona la acción que expresa mejor una lectura matemática pertinente de un texto cultural.</p>
+
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','A', this)">A. Observar únicamente los colores predominantes y la impresión estética del diseño.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','B', this)">B. Identificar patrones, simetrías, formas y relaciones espaciales que puedan describirse matemáticamente.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','C', this)">C. Memorizar el origen cultural del objeto sin analizar su estructura visual.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','D', this)">D. Copiar el diseño con la mayor fidelidad posible sin hacer anotaciones.</button>
+                  </div>
+
+                  <div id="feedback-eje1" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Idea clave:</strong> en este eje, leer matemáticamente significa reconocer estructura, regularidad y relación, no solo describir la apariencia del objeto cultural.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    El futuro docente necesita reconocer que un texto cultural puede analizarse a partir de repeticiones, unidades de diseño, ejes de simetría, formas dominantes y relaciones espaciales.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje1" onclick="completeLevel('eje1', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje2" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <span class="tag-eje">Eje temático 2</span>
+                  <h5 class="mb-2"><i class="bi bi-diagram-3"></i> Representación y comunicación matemática</h5>
+                  <p class="text-muted mb-3">Identifica la mejor mediación para convertir un hallazgo del texto cultural en una representación comprensible.</p>
+
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','A', this)">A. Una imagen decorativa del diseño sin marcas, etiquetas ni explicación.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','B', this)">B. Un esquema que marque la unidad de repetición, el eje de simetría y las formas dominantes con una explicación breve.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','C', this)">C. Una lista de fórmulas sin conexión visible con el objeto cultural.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','D', this)">D. Una copia del diseño ampliado a color sin comentarios adicionales.</button>
+                  </div>
+
+                  <div id="feedback-eje2" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-info-circle"></i> Recuerda:</strong> representar y comunicar supone hacer visible la estructura matemática del hallazgo y explicarla con claridad, también en entornos virtuales.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    En esta pista, comunicar matemáticamente implica observar, representar, nombrar y justificar hallazgos en distintos registros y formatos, incluidos los digitales.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje2" onclick="completeLevel('eje2', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje3" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <span class="tag-eje">Eje temático 3</span>
+                  <h5 class="mb-2"><i class="bi bi-table"></i> Registro y organización simple de información</h5>
+                  <p class="text-muted">Selecciona los elementos que mejor organizan un registro de observación de un texto cultural. Debes marcar exactamente tres.</p>
+
+                  <div class="d-flex flex-wrap gap-2 mt-3 mb-3" id="register-bank">
+                    <button class="register-chip" onclick="toggleRegister(this, 'dice')">Qué se dice</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'muestra')">Qué se muestra</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'hace')">Qué se hace</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'gusta')">Qué tanto gusta</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'decora')">Qué tan decorativo parece</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'adorna')">Qué color adorna más</button>
+                  </div>
+
+                  <button class="btn btn-outline-primary w-100" onclick="checkRegisters()"><i class="bi bi-check-circle"></i> Verificar selección</button>
+                  <div id="feedback-eje3" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Pista:</strong> en este eje se registra información sobre el discurso, lo visible y la acción alrededor del texto cultural.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    Registrar no es acumular datos sin sentido. Supone organizar observaciones relevantes para interpretarlas y comunicar hallazgos de manera clara y pedagógica.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje3" onclick="completeLevel('eje3', 20)">
+                    <i class="bi bi-lock-fill"></i> Verifica correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div href="#saberpro" class="tab-pane fade" id="pills-eje5" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-12">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-clipboard-data"></i> Ejemplos Saber Pro · Razonamiento Cuantitativo</h5>
+                  <p class="text-muted mb-3">
+                    Este bloque es independiente. Responde las tres preguntas a partir de un mismo contexto. Cada una corresponde a una competencia del módulo.
+                  </p>
+
+                  <div class="context-box mb-4">
+                    <strong>Contexto:</strong> En una actividad de formación docente, se analiza una cenefa digital compuesta por 3 módulos cuadrados de lado 8 cm, alineados horizontalmente. En cada módulo hay un rombo cuyos vértices están en los puntos medios del cuadrado (diagonales de 8 cm) y 4 triángulos rectángulos isósceles en las esquinas con catetos de 2 cm. La longitud total de la cenefa es 24 cm y presenta un eje de simetría vertical central. Posteriormente, el diseño se amplía proporcionalmente hasta una longitud de 30 cm para su uso en un entorno virtual.
+                  </div>
+
+                  <div class="mb-4 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 1</div>
+                    <p class="mb-2">
+                      Al ampliar la cenefa a 30 cm de longitud total, ¿cuál es el área total ocupada por los <strong>tres rombos</strong>?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q1-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','A', this)">A. 120 cm²</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','B', this)">B. 144 cm²</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','C', this)">C. 150 cm²</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','D', this)">D. 192 cm²</button>
+                    </div>
+                    <div id="eje5-q1-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div class="mb-4 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 2</div>
+                    <p class="mb-2">
+                      Un estudiante afirma: <em>“Como el diseño tiene un eje de simetría central, la unidad mínima de repetición es la mitad de la cenefa”.</em> ¿Cuál opción evalúa correctamente esta afirmación?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q2-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q2','A', this)">A. Es correcta, porque el eje divide el diseño en dos partes iguales.</button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q2','B', this)">B. Es correcta, porque la simetría determina la periodicidad del patrón.</button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q2','C', this)">C. Es incorrecta, porque la repetición depende del módulo, no del eje global.</button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q2','D', this)">D. Es incorrecta, porque la unidad mínima depende del área del rombo.</button>
+                    </div>
+                    <div id="eje5-q2-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div class="mb-3 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 3</div>
+                    <p class="mb-2">
+                      Para comunicar el análisis en un entorno virtual, una docente dispone de tres recursos:
+                      <br>• Esquema visual: 3 min, 18 puntos
+                      <br>• Explicación escrita: 4 min, 22 puntos
+                      <br>• Tabla resumen: 5 min, 26 puntos
+                      <br><br>
+                      Si el tiempo máximo es 8 minutos y se busca <strong>maximizar la comprensión total</strong>, ¿qué combinación debe elegir?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q3-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q3','A', this)">A. Esquema + explicación</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q3','B', this)">B. Esquema + tabla</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q3','C', this)">C. Explicación + tabla</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q3','D', this)">D. Solo tabla</button>
+                    </div>
+                    <div id="eje5-q3-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div id="feedback-eje5" class="mt-3"></div>
+
+                  <div class="alert alert-info border-0 mt-3">
+                    <strong>Clave pedagógica:</strong> este bloque valora interpretación geométrica, escalamiento, argumentación y toma de decisiones para comunicar hallazgos en entornos virtuales.
+                  </div>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje5" onclick="completeLevel('eje5', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para registrar este bloque
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-rec" role="tabpanel">
+            <div class="row g-4" id="reconfiguracion">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-2"><i class="bi bi-arrow-repeat"></i> Momento III. Reconfiguración</h5>
+                  <p class="text-muted">
+                    En este momento se consolida la actividad evaluativa final de la pista. El producto se organiza de manera colaborativa a partir de las preguntas orientadoras del bloque y de la lectura etnomatemática desarrollada durante la ruta.
+                  </p>
+
+                  <div class="alert alert-info border-0">
+                    <strong>Nombre de la actividad:</strong> Elaboración de un texto narrativo colaborativo y verificación de entrega del bloque.
+                    <br><strong>Modalidad de entrega:</strong> colaborativa, en grupos.
+                    <br><strong>Tipo de actividad:</strong> documento escrito y soporte de cargue en plataforma.
+                    <br><strong>Fecha de inicio:</strong> según programación institucional.
+                    <br><strong>Fecha de cierre:</strong> según programación institucional.
+                  </div>
+
+                  <h6 class="fw-bold mt-3"><i class="bi bi-bullseye"></i> Propósito de la actividad</h6>
+                  <p>
+                    Integrar la observación del texto cultural, la representación matemática y la organización de hallazgos en una respuesta narrativa que dialogue con las preguntas orientadoras del bloque de áreas.
+                  </p>
+
+                  <h6 class="fw-bold mt-3"><i class="bi bi-list-check"></i> Descripción de la actividad</h6>
+                  <ol class="mb-3">
+                    <li>Revisión de las preguntas orientadoras del bloque.</li>
+                    <li>Selección del texto cultural o recurso trabajado por el grupo.</li>
+                    <li>Construcción del texto narrativo con apoyo conceptual y pedagógico.</li>
+                    <li>Subida del documento y del soporte de cargue según la ruta institucional.</li>
+                  </ol>
+
+                  <div class="alert alert-light border">
+                    <strong>Producto a entregar:</strong> un documento escrito, no superior a 5 páginas, en el que el grupo responda las preguntas orientadoras del bloque e integre la lectura etnomatemática del texto cultural.
+                  </div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-upload"></i> Entrega:</strong> además del documento, se recomienda adjuntar pantallazo del cargue en la plataforma como soporte de seguimiento.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-file-earmark-check"></i> Control de entrega del grupo</h5>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre del grupo *</label>
+                    <input type="text" class="form-control form-control-lg" id="group-name" placeholder="Ej.: Grupo 3 - Desciframiento cultural">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Integrantes *</label>
+                    <textarea class="form-control" id="group-members" rows="3" placeholder="Escribe los nombres de los integrantes..."></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Texto cultural o recurso trabajado *</label>
+                    <input type="text" class="form-control" id="group-pedagogues" placeholder="Ej.: Cenefa digital, tejido, mural o diseño analizado">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Verificación de la entrega *</label>
+                    <textarea class="form-control" id="group-delivery" rows="3" placeholder="Ej.: Documento narrativo, soporte de cargue y evidencia de participación grupal."></textarea>
+                  </div>
+
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check-apa">
+                    <label class="form-check-label" for="check-apa">Confirmamos citación en normas APA.</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check-original">
+                    <label class="form-check-label" for="check-original">Confirmamos originalidad del trabajo.</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="check-upload">
+                    <label class="form-check-label" for="check-upload">Confirmamos soporte de entrega en plataforma.</label>
+                  </div>
+
+                  <button class="btn btn-primary btn-lg w-100 btn-locked" id="btn-generate-certificate" onclick="generateCertificate()">
+                    <i class="bi bi-award"></i> Generar constancia de ruta
+                  </button>
+
+                  <div class="text-center mt-2">
+                    <small class="text-muted"><i class="bi bi-info-circle"></i> Se activa al completar el 100% de la ruta.</small>
+                  </div>
+
+                  <hr class="my-3">
+
+                  <div class="alert alert-success border-0 mb-0">
+                    <i class="bi bi-camera-fill"></i> Al finalizar, toma un pantallazo de la constancia y adjúntalo como soporte de seguimiento.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-success btn-lg w-100 mt-4" onclick="finalizeRoute()">
+              <i class="bi bi-check2-circle"></i> Finalizar ruta
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0">
+        <div class="modal-certificate position-relative">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="certificate-badge"><i class="bi bi-trophy-fill"></i></div>
+
+          <h2 class="mb-2">¡Felicitaciones!</h2>
+          <h3 class="mb-3" id="cert-student-name" style="color:#ffd700;">Grupo</h3>
+          <p class="lead mb-3">Has completado exitosamente el <strong>100%</strong> de la ruta interactiva<br>“Teorías del desciframiento textual cultural II”.</p>
+
+          <div class="certificate-content">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-star-fill text-warning"></i> Puntaje:</strong>
+                <div class="fs-3" id="cert-score">0 pts</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-check-circle-fill text-success"></i> Estaciones:</strong>
+                <div class="fs-3">Completadas</div>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.25)">
+
+            <p class="mb-2"><strong>Grupo:</strong> <span id="cert-topic">-</span></p>
+            <p class="mb-2"><strong>Texto cultural o recurso trabajado:</strong> <span id="cert-organizer">-</span></p>
+            <p class="mb-2"><strong>Integrantes:</strong> <span id="cert-registers">-</span></p>
+            <p class="mb-0"><strong>Verificación de entrega:</strong> <span id="cert-evidence">-</span></p>
+          </div>
+
+          <div class="mt-4">
+            <p class="mb-3"><i class="bi bi-camera-fill"></i> Toma un pantallazo de esta constancia y adjúntalo como evidencia de seguimiento.</p>
+            <button class="btn btn-light btn-lg px-5" onclick="window.print()">
+              <i class="bi bi-printer"></i> Imprimir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="container text-center">
+      <div class="copyright">&copy; 2026 <strong><span>MathStats Code Hub</span></strong> - Recursos interactivos</div>
+      <div class="credits mt-2">Página de apoyo pedagógico para la pista Teorías del desciframiento textual cultural II</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let score = 0;
+    let progress = 0;
+
+    const stepOrder = ['pref','eje1','eje2','eje3','eje5'];
+    const tasksCompleted = { pref:false, eje1:false, eje2:false, eje3:false, eje5:false, rec:false };
+    const correct = { pref:false, eje1:false, eje2:false, eje3:false, eje5:false };
+
+    const prefData = {
+      q1: { correct: 'B', ok: 'Correcto. La lectura matemática inicial del texto cultural parte de observar regularidades, formas y relaciones espaciales.', no: 'Aún no. En esta pista la observación inicial debe orientarse a identificar relaciones matemáticas.' },
+      q2: { correct: 'B', ok: 'Correcto. Representar implica destacar información matemática relevante mediante esquemas o marcas.', no: 'Aún no. Representar no es copiar ni decorar, sino hacer visible la estructura matemática.' },
+      q3: { correct: 'B', ok: 'Correcto. El registro organiza lo que se dice, se muestra y se hace alrededor del texto cultural.', no: 'Aún no. Registrar no es llenar tablas sin sentido, sino organizar hallazgos para interpretarlos.' }
+    };
+
+    const singleAnswers = {
+      eje1: 'B',
+      eje2: 'B'
+    };
+
+    const registerSelection = new Set();
+
+    const eje5QuizState = { q1:false, q2:false, q3:false };
+
+    const eje5QuizData = {
+      q1: {
+        correct: 'C',
+        ok: 'Correcto. El área total de los tres rombos ampliados es 150 cm².',
+        no: 'Incorrecto. Debes calcular el área original de los tres rombos y luego aplicar el factor de escala al cuadrado.',
+        detail: `
+          <strong>Respuesta correcta: C.</strong><br>
+          Área de un rombo: <code>(8 × 8) / 2 = 32</code> cm².<br>
+          Área original de tres rombos: <code>3 × 32 = 96</code> cm².<br>
+          Factor de escala lineal: <code>30/24 = 1.25</code>.<br>
+          El área escala con <code>1.25² = 1.5625</code>.<br>
+          <code>96 × 1.5625 = 150</code> cm².
+        `
+      },
+      q2: {
+        correct: 'C',
+        ok: 'Correcto. La simetría global no define la unidad mínima de repetición.',
+        no: 'Incorrecto. Debes distinguir entre una propiedad global del diseño y la periodicidad del patrón.',
+        detail: `
+          <strong>Respuesta correcta: C.</strong><br>
+          El eje de simetría describe una propiedad del diseño completo, pero la <strong>unidad mínima de repetición</strong> depende del módulo que reproduce el patrón.<br>
+          En este caso, la unidad de repetición es un módulo de <strong>8 cm</strong>, no la mitad de la cenefa.
+        `
+      },
+      q3: {
+        correct: 'B',
+        ok: 'Correcto. La combinación esquema + tabla maximiza la comprensión total dentro del tiempo disponible.',
+        no: 'Incorrecto. Debes comparar solo las combinaciones válidas bajo el límite de 8 minutos.',
+        detail: `
+          <strong>Respuesta correcta: B.</strong><br>
+          A: 18 + 22 = 40 puntos en 7 min.<br>
+          B: 18 + 26 = 44 puntos en 8 min.<br>
+          C: 22 + 26 = 48 puntos, pero excede el tiempo (9 min).<br>
+          D: 26 puntos.<br>
+          La mejor opción válida es <strong>B</strong>.
+        `
+      }
+    };
+
+    function setMissionName(name) {
+      document.getElementById('mission-name').innerText = name;
+    }
+
+    function updateProgressBar() {
+      document.getElementById('game-progress').style.width = progress + '%';
+      document.getElementById('game-progress').innerText = progress + '%';
+      document.getElementById('score-badge').innerText = score + ' Pts';
+
+      if (progress === 100) {
+        document.getElementById('btn-generate-certificate').classList.remove('btn-locked');
+      }
+    }
+
+    function computeProgress() {
+      const completed = stepOrder.filter(k => tasksCompleted[k]).length;
+      progress = Math.round((completed / stepOrder.length) * 100);
+      updateProgressBar();
+    }
+
+    function updateTabAccess() {
+      const eje1Tab = document.getElementById('pills-eje1-tab');
+      const eje2Tab = document.getElementById('pills-eje2-tab');
+      const eje3Tab = document.getElementById('pills-eje3-tab');
+      const recTab  = document.getElementById('pills-rec-tab');
+
+      if (tasksCompleted.pref) {
+        eje1Tab.disabled = false;
+        if (!tasksCompleted.eje1) document.getElementById('status-eje1').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+      if (tasksCompleted.eje1) {
+        eje2Tab.disabled = false;
+        if (!tasksCompleted.eje2) document.getElementById('status-eje2').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+      if (tasksCompleted.eje2) {
+        eje3Tab.disabled = false;
+        if (!tasksCompleted.eje3) document.getElementById('status-eje3').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+
+      const allDone = stepOrder.every(k => tasksCompleted[k]);
+      if (allDone) {
+        recTab.disabled = false;
+        if (!tasksCompleted.rec) document.getElementById('status-rec').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+    }
+
+    function completeLevel(levelKey, points) {
+      if (tasksCompleted[levelKey]) return;
+      if (!correct[levelKey]) {
+        alert('⚠️ Debes completar correctamente el reto antes de registrar este bloque.');
+        return;
+      }
+
+      tasksCompleted[levelKey] = true;
+      score += points;
+      computeProgress();
+      document.getElementById(`status-${levelKey}`).innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+      updateTabAccess();
+
+      const nextMap = {
+        pref: 'pills-eje1-tab',
+        eje1: 'pills-eje2-tab',
+        eje2: 'pills-eje3-tab',
+        eje3: null,
+        eje5: null
+      };
+
+      const nextTabId = nextMap[levelKey];
+      if (nextTabId) {
+        const nextTab = document.getElementById(nextTabId);
+        if (nextTab) nextTab.click();
+      }
+
+      if (stepOrder.every(k => tasksCompleted[k])) {
+        const recTab = document.getElementById('pills-rec-tab');
+        if (recTab && recTab.disabled === false) {
+          setTimeout(() => recTab.click(), 500);
+        }
+      }
+    }
+
+    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(tab => {
+      tab.addEventListener('shown.bs.tab', function (event) {
+        const text = event.target.innerText.replace(/^.*?\d\.\s*/, '').trim();
+        setMissionName(text || 'Ruta');
+      });
+    });
+
+    const prefState = { q1:false, q2:false, q3:false };
+
+    function answerPref(qKey, option, btn) {
+      const info = prefData[qKey];
+      const group = document.getElementById(`pref-${qKey}-buttons`);
+      const feedback = document.getElementById(`pref-${qKey}-feedback`);
+
+      if (group) {
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+          b.classList.add('btn-outline-secondary');
+        });
+
+        group.querySelectorAll('button').forEach(b => {
+          if (b.getAttribute('onclick').includes(`'${info.correct}'`)) {
+            b.classList.remove('btn-outline-secondary');
+            b.classList.add('btn-outline-success');
+          }
+        });
+      }
+
+      const isCorrect = option === info.correct;
+      prefState[qKey] = isCorrect;
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      feedback.innerHTML = `<div class="alert ${isCorrect ? 'alert-success' : 'alert-warning'} border-0 mb-0">${isCorrect ? info.ok : info.no}</div>`;
+
+      if (prefState.q1 && prefState.q2 && prefState.q3) {
+        correct.pref = true;
+        const completeBtn = document.getElementById('btn-complete-pref');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Prefiguración';
+      } else {
+        correct.pref = false;
+      }
+    }
+
+    function answerSingle(levelKey, option, btn) {
+      const correctOption = singleAnswers[levelKey];
+      const feedback = document.getElementById(`feedback-${levelKey}`);
+      const buttonGroup = btn.parentElement.querySelectorAll('button');
+
+      buttonGroup.forEach(b => {
+        b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+        b.classList.add('btn-outline-secondary');
+      });
+
+      buttonGroup.forEach(b => {
+        if (b.getAttribute('onclick').includes(`'${correctOption}'`)) {
+          b.classList.remove('btn-outline-secondary');
+          b.classList.add('btn-outline-success');
+        }
+      });
+
+      const isCorrect = option === correctOption;
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      if (isCorrect) {
+        correct[levelKey] = true;
+        feedback.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto. Has seleccionado la acción más coherente con el eje temático.</div>`;
+        const completeBtn = document.getElementById(`btn-complete-${levelKey}`);
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar y avanzar';
+      } else {
+        correct[levelKey] = false;
+        feedback.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Intenta de nuevo. Busca la opción que da sentido matemático y pedagógico al análisis del texto cultural.</div>`;
+      }
+    }
+
+    function toggleRegister(btn, value) {
+      if (registerSelection.has(value)) {
+        registerSelection.delete(value);
+        btn.classList.remove('selected');
+      } else {
+        registerSelection.add(value);
+        btn.classList.add('selected');
+      }
+    }
+
+    function checkRegisters() {
+      const needed = ['dice','muestra','hace'];
+      const feedback = document.getElementById('feedback-eje3');
+      const isCorrect = needed.every(v => registerSelection.has(v)) && registerSelection.size === needed.length;
+
+      if (isCorrect) {
+        correct.eje3 = true;
+        feedback.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto. Has identificado las tres entradas básicas del registro de observación de esta pista.</div>`;
+        const btn = document.getElementById('btn-complete-eje3');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 3';
+      } else {
+        correct.eje3 = false;
+        feedback.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Aún no. Debes seleccionar exactamente: qué se dice, qué se muestra y qué se hace.</div>`;
+      }
+    }
+
+    function answerEje5Quiz(qKey, option, btn) {
+      const info = eje5QuizData[qKey];
+      const group = document.getElementById(`eje5-${qKey}-buttons`);
+      const feedback = document.getElementById(`eje5-${qKey}-feedback`);
+
+      if (group) {
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+          b.classList.add('btn-outline-secondary');
+        });
+
+        group.querySelectorAll('button').forEach(b => {
+          if (b.getAttribute('onclick').includes(`'${info.correct}'`)) {
+            b.classList.remove('btn-outline-secondary');
+            b.classList.add('btn-outline-success');
+          }
+        });
+      }
+
+      const isCorrect = option === info.correct;
+      eje5QuizState[qKey] = isCorrect;
+
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      feedback.innerHTML = `
+        <div class="alert ${isCorrect ? 'alert-success' : 'alert-warning'} border-0 mb-0">
+          <div class="fw-bold mb-1">${isCorrect ? info.ok : info.no}</div>
+          <div>${info.detail}</div>
+        </div>
+      `;
+
+      if (eje5QuizState.q1 && eje5QuizState.q2 && eje5QuizState.q3) {
+        correct.eje5 = true;
+        const completeBtn = document.getElementById('btn-complete-eje5');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar bloque de ejemplos';
+        document.getElementById('feedback-eje5').innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-award-fill"></i> Has respondido correctamente las tres preguntas del bloque independiente.</div>`;
+      } else {
+        correct.eje5 = false;
+      }
+    }
+
+    function generateCertificate() {
+      if (progress < 100) return;
+
+      const groupName = document.getElementById('group-name').value.trim();
+      const members = document.getElementById('group-members').value.trim();
+      const culturalText = document.getElementById('group-pedagogues').value.trim();
+      const delivery = document.getElementById('group-delivery').value.trim();
+
+      if (!groupName || !members || !culturalText || !delivery) {
+        alert('⚠️ Completa todos los campos del control de entrega antes de generar la constancia.');
+        return;
+      }
+
+      if (!document.getElementById('check-apa').checked || !document.getElementById('check-original').checked || !document.getElementById('check-upload').checked) {
+        alert('⚠️ Debes confirmar los tres criterios de verificación antes de generar la constancia.');
+        return;
+      }
+
+      document.getElementById('cert-student-name').textContent = groupName;
+      document.getElementById('cert-score').textContent = score + ' pts';
+      document.getElementById('cert-topic').textContent = groupName;
+      document.getElementById('cert-organizer').textContent = culturalText;
+      document.getElementById('cert-registers').textContent = members;
+      document.getElementById('cert-evidence').textContent = delivery;
+
+      const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+      modal.show();
+    }
+
+    function finalizeRoute() {
+      if (progress < 100) {
+        alert('⚠️ Primero debes completar el 100% de la ruta.');
+        return;
+      }
+      alert('✅ Ruta finalizada. Ahora puedes completar el control de entrega y generar la constancia.');
+    }
+
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const scrollThreshold = 80;
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar');
+
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function() {
+        navbar.classList.toggle('active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+    }
+
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          mobileNavToggle.classList.add('bi-list');
+          mobileNavToggle.classList.remove('bi-x');
+        }
+      });
+    });
+
+    updateProgressBar();
+    updateTabAccess();
+  </script>
+</body>
+</html>
