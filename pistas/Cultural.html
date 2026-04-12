@@ -779,8 +779,8 @@
             </div>
           </div>
 
-          <div href="#saberpro" class="tab-pane fade" id="pills-eje5" role="tabpanel">
-            <div class="row g-4">
+          <div class="tab-pane fade" id="pills-eje5" role="tabpanel">
+            <div id="saberpro" class="row g-4">
               <div class="col-lg-12">
                 <div class="card card-soft p-4 h-100">
                   <h5 class="mb-2"><i class="bi bi-clipboard-data"></i> Ejemplos Saber Pro · Razonamiento Cuantitativo</h5>
@@ -1377,6 +1377,26 @@
 
     updateProgressBar();
     updateTabAccess();
+    window.addEventListener('load', function () {
+  if (window.location.hash === '#saberpro') {
+    
+    const tabTrigger = document.querySelector('#pills-eje5-tab');
+    const tab = new bootstrap.Tab(tabTrigger);
+    tab.show();
+
+    setTimeout(() => {
+      const target = document.getElementById('saberpro');
+      const headerOffset = 90;
+      const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }, 300);
+  }
+});
   </script>
 </body>
 </html>
