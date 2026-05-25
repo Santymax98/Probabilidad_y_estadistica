@@ -25,7 +25,13 @@
       padding: 120px 0 80px;
       margin-top: 70px;
     }
+    html {
+      scroll-behavior: smooth;
+    }
 
+    #saber-pro {
+      scroll-margin-top: 100px;
+    }
     .resources-hero h1 {
       font-weight: 700;
       font-size: 2.2rem;
@@ -955,6 +961,22 @@
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script>
+  window.addEventListener("load", function () {
+    if (window.location.hash === "#saber-pro") {
+      const saberSection = document.getElementById("saber-pro");
+
+      if (saberSection) {
+        setTimeout(function () {
+          saberSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 400);
+      }
+    }
+  });
+  </script>
   <script>
   const saberData = {
     q1: {
