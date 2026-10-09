@@ -32,28 +32,117 @@
 .research-matrix td:first-child{font-weight:500}
 @media(max-width:760px){.research-lens{grid-template-columns:1fr}.semester-route{font-size:13px}}
 
-/* Revisión editorial: formación matemática del profesorado */
-.editorial-note{margin:25px 0;padding:18px 20px;background:#f6f3ed;border-left:4px solid #9a7b60;border-radius:0 12px 12px 0;font-size:14px;line-height:1.7}
-.case-pro{margin:24px 0;padding:23px 25px;border:1px solid #e2d3c5;border-left:5px solid #aa7757;background:#fffaf5;border-radius:12px;line-height:1.7}
-.case-label,.section-kicker{font:700 11px var(--sans);text-transform:uppercase;letter-spacing:.12em;color:#95684e}
-.case-pro h4{font:600 23px var(--serif);margin:7px 0 13px}.case-pro p,.case-pro li{font-size:15px}.case-pro ol{padding-left:24px}
-.proof{background:#f7f9fc;border-left:4px solid #637e96;padding:17px 21px;border-radius:0 10px 10px 0;margin:22px 0;line-height:1.8}
-.mathline{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.8;text-align:center;background:#f6f8fa;border:1px solid #e3e8ee;border-radius:10px;margin:17px 0;padding:13px;overflow:auto}
-.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:22px 0}
-.levels>div{background:var(--accent-soft);padding:17px;border:1px solid var(--line);border-radius:12px}
-.levels p{font-size:14px;margin:10px 0 0}
-.steps li{margin-bottom:11px;line-height:1.8}
-.reading-list{list-style:none;margin:16px 0;padding:0}.reading-list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.7}
-.reading-list a{word-break:break-word}.smallprint{font-size:13px;color:var(--muted)}
-@media(max-width:760px){.levels{grid-template-columns:1fr}.case-pro{padding:18px 15px}.mathline{font-size:16px}}
-</style></head><body><div class="mobile-toc"><a href="#cover">Pensamiento Matemático para Licenciados</a></div><div class="book"><aside class="sidebar"><div class="brand">Libro académico digital</div><h2 class="book-title-small">Pensamiento Matemático para Licenciados</h2><div class="author-small">Santiago Jiménez <section class="page cover" id="cover">
-<div class="kicker">Libro universitario · Manuscrito de revisión académica · Octubre de 2026</div>
+/* Ajuste editorial y de legibilidad — se aplica a la apertura reescrita */
+#cover,#preface,#architecture,#teacher-knowledge,#numeric{color:var(--ink);text-wrap:pretty}
+#cover{min-height:100vh;max-width:1060px;padding-top:96px;padding-bottom:82px;justify-content:center;gap:0}
+#cover:before{width:48%;height:52%;top:16%;opacity:.46;pointer-events:none}
+#cover .kicker{font-size:12px;letter-spacing:.13em;color:#736459}
+#cover h1{font-size:clamp(48px,6.4vw,78px);line-height:1.06;letter-spacing:-.042em;max-width:790px;margin:22px 0 24px;text-wrap:balance}
+#cover .lead{font-size:clamp(19px,2.3vw,25px);line-height:1.48;color:#544f49;max-width:730px}
+#cover .meta{margin-top:44px;gap:22px;grid-template-columns:1fr 1.2fr 1.15fr}
+#cover .meta div{font-size:13px;line-height:1.6;border-top:2px solid #898178}
+#cover .meta strong{display:block;margin-bottom:4px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#827b74}
+#cover .quote{font-size:clamp(20px,2.4vw,27px);line-height:1.53;margin:49px 0 31px;padding-left:24px;border-left-width:3px}
+.hero-foot{display:flex;gap:8px 22px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font:600 11px/1.7 var(--sans);letter-spacing:.065em;text-transform:uppercase}
+#preface{padding-top:75px}
+#preface>h2{font-size:clamp(33px,3vw,43px);max-width:700px;line-height:1.16;margin:10px 0 33px;padding:0;border:0}
+#preface .grid3>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 19px}
+#preface .grid3 h4{margin:0 0 10px;color:#403a35;font-size:15px}
+#preface .grid3 p{margin:0;font-size:15px;line-height:1.65}
+#preface>.chapter-number{margin-bottom:7px}
+:is(#preface,#architecture,#teacher-knowledge,#numeric)>h3{font-size:clamp(23px,2.5vw,28px);line-height:1.24;font-weight:500;letter-spacing:-.015em;margin:62px 0 20px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) p{line-height:1.82}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) > p{max-width:79ch}
+#architecture>h2,#teacher-knowledge>h2{font-size:clamp(36px,3.6vw,47px);line-height:1.16;margin:12px 0 28px;border:0;padding:0}
+#numeric .chapter-band{background:linear-gradient(135deg,#fbeaf0,rgba(248,232,237,.22) 80%);border-color:#e5bdcb}
+#numeric .chapter-band h2{font-size:clamp(37px,4vw,54px);max-width:760px;text-wrap:balance}
+#numeric .chapter-band .lead{max-width:740px;line-height:1.6;font-size:20px}
+.editorial-note{background:#f7f6f2;border:1px solid #e1dbd1;border-left:4px solid #867a6d;border-radius:0 10px 10px 0;padding:18px 23px;margin:20px 0 36px;color:#534c44;font:14px/1.8 var(--sans)}
+.case-pro{position:relative;margin:29px 0 34px;padding:26px 29px 25px;background:#fff;border:1px solid #dfd6d0;border-left:4px solid #8d796f;border-radius:0 12px 12px 0;box-shadow:0 7px 22px rgba(59,49,44,.035)}
+#numeric .case-pro{border-left-color:#b73555;background:linear-gradient(115deg,#fff8fa 0%,#fff 43%)}
+.case-label,.section-kicker{font:700 11px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#695c55}
+#numeric .case-label{color:#9b3150}
+.case-pro h4{font:500 clamp(20px,2vw,24px)/1.3 var(--serif);letter-spacing:-.013em;margin:9px 0 16px}
+.case-pro p,.case-pro li{font-size:16px;line-height:1.8}
+.case-pro p:last-child,.case-pro li:last-child{margin-bottom:0}
+.case-pro ol{padding-left:22px;margin-top:13px}
+.case-pro details{margin-top:18px}
+.proof{background:#f5f7fa;border:1px solid #dbe2e9;border-left:4px solid #667d94;border-radius:0 11px 11px 0;margin:24px 0 30px;padding:21px 24px;line-height:1.85;font-size:16px}
+.proof strong:first-child{color:#36495f}
+.mathline{font:19px/1.7 Georgia,"Times New Roman",serif;display:block;margin:17px 0;padding:16px 10px;background:#fff;border:1px solid #d9dfe5;border-radius:10px;text-align:center;overflow-x:auto;white-space:normal}
+.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 31px}
+.levels>div{background:#fff;border:1px solid var(--line);padding:20px 18px;border-radius:12px;font:15px/1.7 var(--sans)}
+.levels p{font-size:14px;margin:9px 0 0}
+.steps{margin-top:21px;padding-left:28px}.steps li{padding-left:5px;margin-bottom:15px;line-height:1.8}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) table{width:100%;max-width:100%;border:1px solid var(--line);border-radius:10px;border-collapse:separate;border-spacing:0;background:white;font:14px/1.62 var(--sans);margin:24px 0 33px}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) th{font-size:12px;letter-spacing:.04em;line-height:1.4;padding:14px 15px;background:var(--accent-soft);color:var(--accent);border-bottom:1px solid var(--line)}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) td{padding:13px 15px;border-bottom:1px solid #ebe8e2;vertical-align:top;overflow-wrap:break-word}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) tr:last-child td{border-bottom:0}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) tbody tr:nth-child(even){background:#fafaf8}
+:is(#preface,#architecture,#teacher-knowledge,#numeric) td:first-child{font-weight:550}
+#numeric .exercise{border:1px solid #e4d6dd;border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:19px 22px;background:#fff}
+#numeric .exercise .n{letter-spacing:.07em;margin-bottom:8px}
+#numeric .exercise p{font-size:16px;margin-bottom:0}
+#numeric .reading-list{list-style:none;padding:0;margin:20px 0 35px}
+#numeric .reading-list li{border-bottom:1px solid var(--line);padding:15px 0;line-height:1.75;font-size:14px}
+#numeric .reading-list li:first-child{border-top:1px solid var(--line)}
+#numeric a,#preface a,#architecture a,#teacher-knowledge a{overflow-wrap:anywhere;text-underline-offset:3px}
+#numeric .lab{max-width:100%;overflow-x:auto}
+#numeric .lab .abacus{max-width:100%;overflow-x:auto;justify-content:flex-start}
+#numeric .lab .controls{gap:7px}
+#numeric .lab .controls button{min-width:55px}
+#numeric details{padding:12px 0}
+#numeric summary{font-size:15px}
+.smallprint{font:13px/1.65 var(--sans);color:var(--muted)}
+#preface,#architecture,#teacher-knowledge,#numeric{scroll-margin-top:65px}
+@media(max-width:1100px){
+ #cover .meta{gap:16px}
+}
+@media(max-width:900px){
+ #cover{min-height:auto;padding:74px 24px 64px}
+ #cover .meta{grid-template-columns:1fr 1fr;gap:12px 20px}
+ #cover .quote{margin:35px 0 26px}
+ #preface{padding-top:44px}
+}
+@media(max-width:760px){
+ :is(#preface,#architecture,#teacher-knowledge,#numeric) table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:13px}
+ :is(#preface,#architecture,#teacher-knowledge,#numeric) table th,:is(#preface,#architecture,#teacher-knowledge,#numeric) table td{min-width:130px;padding:11px 12px}
+ :is(#preface,#architecture,#teacher-knowledge,#numeric) table th:first-child,:is(#preface,#architecture,#teacher-knowledge,#numeric) table td:first-child{min-width:115px}
+ #cover .meta{grid-template-columns:1fr}
+ #cover h1{font-size:clamp(42px,10.8vw,62px)}
+ #cover .lead{font-size:19px}
+ #cover .quote{font-size:20px}
+ .levels{grid-template-columns:1fr}
+ .case-pro{padding:21px 17px}
+ .case-pro p,.case-pro li{font-size:15px}
+ .proof{padding:17px 16px;font-size:15px}
+ .mathline{font-size:17px}
+ #numeric .chapter-band h2{font-size:37px}
+ #numeric .chapter-band .lead{font-size:18px}
+ .mobile-toc{display:flex;gap:20px;overflow-x:auto;align-items:center;white-space:nowrap}
+ .mobile-toc a{color:var(--ink);font:600 12px/1.5 var(--sans);text-decoration:none}
+ .mobile-toc a:first-child{color:var(--accent)}
+}
+@media print{
+ #cover{min-height:auto;padding:16mm 18mm}
+ #preface,#architecture,#teacher-knowledge,#numeric{scroll-margin-top:0}
+ .case-pro,.proof,.editorial-note,.exercise{box-shadow:none;break-inside:avoid-page}
+ :is(#preface,#architecture,#teacher-knowledge,#numeric) table{display:table;overflow:visible}
+}
+</style></head><body><div class="mobile-toc"><a href="#cover">Inicio</a><a href="#preface">Presentación</a><a href="#numeric">Pensamiento numérico</a></div><div class="book"><aside class="sidebar"><div class="brand">Libro académico digital</div><h2 class="book-title-small">Pensamiento Matemático para Licenciados</h2><div class="author-small">Santiago Jiménez Ramos</div><input class="search" id="book-search" placeholder="Buscar en el libro…"/><div class="search-results" id="search-status"></div><nav><a data-target="cover" href="#cover">Inicio</a><a data-target="preface" href="#preface">Presentación</a><a data-target="architecture" href="#architecture">Arquitectura general</a><a data-target="teacher-knowledge" href="#teacher-knowledge">Conocimiento para enseñar</a><a data-target="numeric" href="#numeric">Numérico y sistemas numéricos</a><a data-target="spatial" href="#spatial">Espacial y sistemas geométricos</a><a data-target="metric" href="#metric">Métrico y sistemas de medidas</a><a data-target="variational" href="#variational">Variacional y sistemas algebraicos</a><a data-target="random" href="#random">Aleatorio y sistemas de datos</a><a data-target="materials" href="#materials">Laboratorio de instrumentos</a><a data-target="design" href="#design">Diseño, tecnología e IA</a><a data-target="tasks" href="#tasks">Banco de tareas</a><a data-target="references" href="#references">Referencias</a></nav><div class="nav-group"><div class="nav-label">Edición ampliada</div><a href="#criterios-evidencia">Criterios de evidencia</a><a href="#numeric-research">Investigación numérica</a><a href="#spatial-research">Investigación espacial</a><a href="#metric-research">Investigación métrica</a><a href="#variational-research">Investigación variacional</a><a href="#random-research">Investigación aleatoria</a><a href="#design-research">Prácticas contemporáneas</a></div><div class="tools"><button id="print-btn">Imprimir</button><button id="top-btn">Inicio</button></div></aside><main class="content"><section class="page cover" id="cover">
+<div class="kicker">Formación universitaria de profesores · Edición académica digital</div>
 <h1>Pensamiento Matemático para Licenciados</h1>
-<p class="lead">Fundamentos matemáticos, investigación educativa y análisis de situaciones profesionales para formar profesores que comprendan, justifiquen y enseñen matemáticas.</p>
+<p class="lead">Fundamentos matemáticos, investigación educativa y situaciones profesionales para formar profesores que comprenden, argumentan y enseñan.</p>
 <div class="meta"><div><strong>Autor</strong><br>Santiago Jiménez Ramos</div><div><strong>Destinatarios</strong><br>Licenciaturas en Educación Básica Primaria y formación matemática docente</div><div><strong>Alcance</strong><br>Formación inicial y continua · Puentes hacia secundaria</div></div>
 <p class="quote">Comprender una operación no es solamente saber efectuarla. Enseñarla exige saber por qué funciona, reconocer cómo puede interpretarse y decidir qué experiencia intelectual necesita el estudiante para atribuirle sentido.</p>
-<div class="editorial-note"><strong>Estado de esta edición:</strong> revisión académica del inicio y del capítulo numérico para evaluación del autor. Los otros cuatro capítulos de pensamiento matemático permanecen en su versión anterior. Este documento aún no es una edición editorialmente arbitrada; los casos sin fuente empírica explícita son situaciones construidas con fines de formación.</div>
-<h3>Presentación</h3>
+
+<div class="hero-foot"><span>Cinco pensamientos matemáticos</span><span>Fundamentación · Investigación · Didáctica</span></div>
+</section>
+<section class="page" id="preface">
+<div class="chapter-number">Presentación y enfoque</div>
+<h2>Un libro para quienes enseñarán matemáticas</h2>
+<div class="editorial-note"><strong>Nota editorial.</strong> La apertura y el capítulo numérico constituyen el modelo de desarrollo para la próxima revisión de los otros cuatro pensamientos. Los casos sin fuente empírica explícita están construidos para fines de formación; no son transcripciones de aula.</div>
+<h3>La pregunta que guía esta obra</h3>
 <p>¿Qué significa saber matemáticas cuando la finalidad es enseñarlas? Saber efectuar una multiplicación, utilizar una fórmula o identificar una figura constituye apenas una parte del conocimiento que necesita un futuro docente. En la práctica profesional surgen otras preguntas: ¿por qué es válido un procedimiento?, ¿en qué dominio funciona una regla?, ¿qué conocimiento revela una respuesta inesperada?, ¿qué ejemplo permitiría distinguir dos hipótesis sobre el razonamiento de un estudiante?</p>
 <p>Este libro está dirigido <strong>a estudiantes universitarios que se preparan para enseñar matemáticas, no a niños de primaria</strong>. Los problemas escolares se convierten aquí en objetos de investigación profesional: se estudian sus estructuras matemáticas, se comparan representaciones, se analizan razonamientos posibles y se justifican alternativas de enseñanza. La sencillez aparente de un contenido escolar no disminuye la exigencia intelectual de examinarlo.</p>
 <p>La obra se organiza mediante los cinco pensamientos de los referentes curriculares de Colombia y dialoga con investigación producida en diversos contextos lingüísticos y educativos. Recupera contribuciones de la educación matemática en inglés, español y portugués sin asumir que un modelo propuesto en otro país pueda transferirse automáticamente a una escuela colombiana. Nuestro criterio será estudiar su fundamento, el problema que permite analizar y las condiciones de aplicación.</p>
@@ -65,7 +154,9 @@
 <h3>El compromiso académico de la obra</h3>
 <div class="grid3"><div><h4>Rigor pertinente</h4><p>Definiciones, condiciones de validez, argumentos y demostraciones cuando iluminan una cuestión de enseñanza.</p></div><div><h4>Investigación situada</h4><p>Lecturas contrastadas: qué se investigó, con quién, cómo y hasta dónde permiten llegar las conclusiones.</p></div><div><h4>Decisiones justificadas</h4><p>Análisis de casos, tareas, intervenciones y evaluación del aprendizaje; no recetas universales.</p></div></div>
 <p class="smallprint">Referentes de partida: <a href="https://doi.org/10.3102/0013189X015002004" target="_blank" rel="noopener">Shulman (1986)</a>; <a href="https://doi.org/10.1177/0022487108324554" target="_blank" rel="noopener">Ball, Thames y Phelps (2008)</a>; <a href="https://doi.org/10.17226/9822" target="_blank" rel="noopener">National Research Council (2001)</a>; <a href="https://www.mineducacion.gov.co/1621/articles-116042_archivo_pdf2.pdf" target="_blank" rel="noopener">MEN (2006)</a>.</p>
-</section><section class="page" id="architecture">
+
+</section>
+<section class="page" id="architecture">
 <div class="chapter-number">Parte I · Arquitectura académica</div>
 <h2>Comprender la matemática escolar desde la profesión docente</h2>
 <p class="lead">El contenido que se enseña en primaria es el punto de partida, no el límite intelectual. Nuestra tarea es reconstruir sus significados, sus justificaciones y las decisiones profesionales que suscita.</p>
@@ -102,7 +193,8 @@
 <h3>6. Delimitación y responsabilidad académica</h3>
 <p>La audiencia principal es la Licenciatura en Educación Básica Primaria; las conexiones con educación secundaria sirven para evitar explicaciones que solo funcionan en un dominio reducido, pero no pretenden cubrir completamente el currículo secundario. Cada caso <strong>construido</strong> se identificará como tal; los episodios <strong>documentados empíricamente</strong> exigirán fuente, contexto e indicación de su alcance. No presentaremos diálogos ficticios como transcripciones de investigación.</p>
 <div class="callout"><strong>Trabajo de apertura.</strong> Elabore una página comparando «saber resolver» y «saber enseñar» una suma de fracciones. Especifique qué saber matemático adicional necesita un profesor y qué evidencia recogería antes de decidir una intervención.</div>
-</section><section class="page" id="teacher-knowledge">
+</section>
+<section class="page" id="teacher-knowledge">
 <div class="chapter-number">Parte II · Saber matemático y juicio profesional</div>
 <h2>Qué necesita saber quien enseña matemáticas</h2>
 <p class="lead">Resolver bien es necesario; interpretar una solución, justificar un método, anticipar errores y organizar una discusión constituyen exigencias adicionales de la profesión docente.</p>
@@ -148,7 +240,8 @@
 <p class="smallprint">Esta rúbrica es una propuesta de trabajo del libro; no es un instrumento validado psicométricamente. Para usarla en una evaluación institucional sería necesario revisarla, pilotarla y examinar su consistencia entre evaluadores.</p>
 <h3>7. Ética del análisis de producciones</h3>
 <p>Un caso construido se identificará siempre como tal y nunca se presentará como un diálogo transcrito de una escuela. Los casos de investigación reales exigirán referencia, contexto, autorización cuando corresponda, tratamiento responsable de imágenes y datos, y reconocimiento de límites interpretativos. Las diferencias en respuestas no autorizan diagnósticos ni atribuciones de incapacidad.</p>
-</section><section class="page thought strawberry" id="numeric">
+</section>
+<section class="page thought strawberry" id="numeric">
 <div class="chapter-band"><div class="chapter-number">Pensamiento I · Unidad de referencia para revisión editorial</div><h2>Pensamiento numérico y sistemas numéricos</h2><p class="lead">Del sentido del número a las decisiones profesionales: cómo se justifican las operaciones, cómo se interpretan las producciones infantiles y cómo se diseña una enseñanza matemáticamente responsable.</p></div>
 <div class="editorial-note"><strong>Contrato de lectura.</strong> Este capítulo está escrito para futuros licenciados. No es una secuencia de clase para niños. Cada situación escolar debe resolverse en tres planos: matemático, interpretativo y didáctico. Los casos aquí presentados son construidos para formación, salvo aquellos vinculados explícitamente a investigaciones.</div>
 <h3>1. Situación inaugural: una multiplicación que disminuye</h3>
@@ -275,12 +368,6 @@ Por tanto, 402 − 178 = (3 − 1) centenas + (9 − 7) decenas + (12 − 8) uni
 <li><strong>[Colombia · Currículo]</strong> Ministerio de Educación Nacional (MEN). (1998). <em>Lineamientos Curriculares: Matemáticas.</em> <a href="https://www.mineducacion.gov.co/1780/articles-339975_matematicas.pdf" target="_blank" rel="noopener">Documento oficial</a>. MEN. (2006). <em>Estándares Básicos de Competencias en Matemáticas.</em> <a href="https://www.mineducacion.gov.co/1621/articles-116042_archivo_pdf2.pdf" target="_blank" rel="noopener">Documento oficial</a>.</li>
 </ul>
 <div class="callout"><strong>Cierre de unidad.</strong> Una propuesta didáctica será defendible cuando su explicación matemática sea correcta, interprete con prudencia las producciones, establezca una meta intelectual verificable y utilice la literatura sin atribuirle conclusiones que no demuestra. Esa será la exigencia para revisar los otros cuatro pensamientos.</div>
-</section>· modelos de fracciones</div><p>Wilkie y Roche analizan las preferencias del profesorado y ofrecen una base para discutir la adecuación epistemológica de distintos modelos.</p><div class="doi"><a href="https://doi.org/10.1007/s10857-022-09542-7">doi:10.1007/s10857-022-09542-7</a></div></div>
-</div><h3>Ejercicios para licenciados</h3>
-<div class="exercise"><div class="n">Problema 1</div><p>Encuentre todas las descomposiciones de 137 usando centenas, decenas y unidades cuando se exige utilizar exactamente 20 piezas. Formule el sistema de ecuaciones correspondiente y describa una estrategia accesible para tercer grado.</p></div>
-<div class="exercise"><div class="n">Problema 2</div><p>Clasifique seis problemas verbales según su estructura aditiva o multiplicativa. Luego modifique únicamente la incógnita y analice cómo cambia la dificultad cognitiva sin cambiar la operación numérica.</p></div>
-<div class="exercise"><div class="n">Problema 3</div><p>Produzca tres demostraciones de 3/4=6/8: mediante área, mediante recta numérica y mediante estructura multiplicativa. Compare qué aspectos hace visibles cada registro.</p></div>
-<details><summary>Criterios de autoevaluación disciplinar</summary><p>La respuesta debe distinguir representación y objeto, justificar los intercambios de base diez, usar significados diferentes de las operaciones y reconocer que la equivalencia fraccionaria no depende de la forma concreta del dibujo. <span class="cite">(<a href="#ref-wilkie2023">Wilkie y Roche, 2023</a>; <a href="#ref-siller2024">Siller y Ahmad, 2024</a>)</span></p></details>
 </section><section class="page thought periwinkle" id="spatial">
 <div class="chapter-band"><div class="chapter-number">Pensamiento 2 · Paleta Periwinkle</div><h2>Pensamiento espacial y sistemas geométricos</h2><p class="lead">Visualizar, orientar, representar y transformar. La geometría organiza el espacio mediante objetos y relaciones que permiten pasar de la intuición a la argumentación.</p></div>
 <h3>Espacio y geometría</h3>
