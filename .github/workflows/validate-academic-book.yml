@@ -18,36 +18,43 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate HTML structure, chapter order, and anchors
         run: python3 scripts/validate_academic_book.py
-      - name: Render book previews in headless Chrome
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capture responsive layouts with Playwright and Chrome
         shell: bash
         run: |
-          set -eu
-          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium)
-          BOOK="file://$GITHUB_WORKSPACE/libros/pensamiento-matematico-para-licenciados.html"
-          mkdir -p /tmp/book-previews
-          # Hash navigation can be delayed in CLI screenshots, so make an
-          # in-memory preview file that scrolls to the numerical chapter.
-          python3 - <<'PY'
+          python -m pip install --quiet playwright
+          python - <<'PY'
+          import shutil
           from pathlib import Path
-          source = Path("libros/pensamiento-matematico-para-licenciados.html").read_text(encoding="utf-8")
-          script = '''<script>
-          window.addEventListener("load", () => setTimeout(() => {
-            document.documentElement.style.scrollBehavior = "auto";
-            document.getElementById("numeric").scrollIntoView({behavior:"instant",block:"start"});
-          }, 1200));
-          </script>'''
-          Path("book-numeric-preview.html").write_text(source.replace("</body>", script + "</body>"), encoding="utf-8")
+          from playwright.sync_api import sync_playwright
+
+          target = Path("libros/pensamiento-matematico-para-licenciados.html").resolve().as_uri()
+          output = Path("/tmp/book-previews")
+          output.mkdir(parents=True, exist_ok=True)
+          chrome = shutil.which("google-chrome") or shutil.which("google-chrome-stable")
+          if not chrome:
+              raise RuntimeError("Google Chrome not available on GitHub runner")
+
+          with sync_playwright() as playwright:
+              browser = playwright.chromium.launch(
+                  executable_path=chrome, headless=True, args=["--no-sandbox"])
+              for name, viewport, target_id in [
+                  ("cover-desktop", {"width": 1440, "height": 900}, "cover"),
+                  ("numeric-desktop", {"width": 1440, "height": 900}, "numeric"),
+                  ("cover-mobile", {"width": 390, "height": 844}, "cover"),
+                  ("numeric-mobile", {"width": 390, "height": 844}, "numeric"),
+              ]:
+                  page = browser.new_page(viewport=viewport, device_scale_factor=1)
+                  page.goto(target, wait_until="load")
+                  page.locator(f"#{target_id}").scroll_into_view_if_needed()
+                  page.wait_for_timeout(350)
+                  page.screenshot(path=str(output / f"{name}.png"))
+                  print(name, "scroll-y:", page.evaluate("window.scrollY"))
+                  page.close()
+              browser.close()
           PY
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
-            --virtual-time-budget=5000 --window-size=1440,900 \
-            --screenshot=/tmp/book-previews/cover-desktop.png "$BOOK" 2>/tmp/chrome-cover.log
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
-            --virtual-time-budget=8000 --window-size=1440,900 \
-            --screenshot=/tmp/book-previews/numeric-desktop.png \
-            "file://$GITHUB_WORKSPACE/book-numeric-preview.html" 2>/tmp/chrome-numeric.log
-          "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
-            --virtual-time-budget=5000 --window-size=390,844 \
-            --screenshot=/tmp/book-previews/cover-mobile.png "$BOOK" 2>/tmp/chrome-mobile.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
