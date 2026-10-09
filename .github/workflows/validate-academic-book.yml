@@ -1,0 +1,63 @@
+name: Validate academic book HTML
+on:
+  pull_request:
+    paths:
+      - 'libros/pensamiento-matematico-para-licenciados.html'
+      - 'scripts/validate_academic_book.py'
+      - '.github/workflows/validate-academic-book.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'libros/pensamiento-matematico-para-licenciados.html'
+      - 'scripts/validate_academic_book.py'
+      - '.github/workflows/validate-academic-book.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate HTML structure, chapter order, and anchors
+        run: python3 scripts/validate_academic_book.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capture responsive layouts with Playwright and Chrome
+        shell: bash
+        run: |
+          python -m pip install --quiet playwright
+          python - <<'PY'
+          import shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          target = Path("libros/pensamiento-matematico-para-licenciados.html").resolve().as_uri()
+          output = Path("/tmp/book-previews")
+          output.mkdir(parents=True, exist_ok=True)
+          chrome = shutil.which("google-chrome") or shutil.which("google-chrome-stable")
+          if not chrome:
+              raise RuntimeError("Google Chrome not available on GitHub runner")
+
+          with sync_playwright() as playwright:
+              browser = playwright.chromium.launch(
+                  executable_path=chrome, headless=True, args=["--no-sandbox"])
+              for name, viewport, target_id in [
+                  ("cover-desktop", {"width": 1440, "height": 900}, "cover"),
+                  ("numeric-desktop", {"width": 1440, "height": 900}, "numeric"),
+                  ("cover-mobile", {"width": 390, "height": 844}, "cover"),
+                  ("numeric-mobile", {"width": 390, "height": 844}, "numeric"),
+              ]:
+                  page = browser.new_page(viewport=viewport, device_scale_factor=1)
+                  page.goto(target, wait_until="load")
+                  page.evaluate("id => document.getElementById(id).scrollIntoView({behavior: 'instant', block: 'start'})", target_id)
+                  page.wait_for_timeout(350)
+                  page.screenshot(path=str(output / f"{name}.png"))
+                  print(name, "scroll-y:", page.evaluate("window.scrollY"))
+                  page.close()
+              browser.close()
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: academic-book-layout-preview
+          path: /tmp/book-previews/*.png
+          if-no-files-found: warn
