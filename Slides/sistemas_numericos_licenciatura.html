@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#10263a">
+<meta name="description" content="Clase virtual universitaria interactiva sobre pensamiento numérico y sistemas numéricos: simuladores, análisis de casos y revisión de artículos científicos.">
+<title>Sistemas numéricos · Clase universitaria interactiva (3 horas)</title>
+<style>
+:root{--navy:#10263a;--navy2:#18374f;--night:#071622;--paper:#f4f0e9;--cream:#faf7f1;--ink:#152739;--muted:#687789;--accent:#d56e53;--gold:#dfae6c;--aqua:#5bada8;--rule:#dcd9d2;--shadow:0 24px 80px rgba(13,36,54,.11);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.52}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.presentation{height:100dvh;max-height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:#ebe5dc}
+.topbar{height:64px;display:flex;align-items:center;gap:15px;padding:0 clamp(12px,3vw,42px);background:var(--navy);color:#e9f0f3;border-bottom:1px solid rgba(255,255,255,.13)}.mark{width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.48);border-radius:11px;font-family:Georgia,serif;font-weight:800;color:var(--gold)}.brand{font-weight:700;letter-spacing:.035em;font-size:13px}.brand small{display:block;font-weight:500;color:#9ab0bd;letter-spacing:.07em;font-size:10px;text-transform:uppercase}.topright{margin-left:auto;display:flex;align-items:center;gap:8px}.icon-btn{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);color:#eef5f7;border-radius:10px;padding:9px 12px;font-size:12px}.icon-btn:hover{background:rgba(255,255,255,.17)}.icon-btn.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.stage{position:relative;min-height:0;padding:clamp(8px,1.5vw,20px);display:flex;align-items:stretch;justify-content:center}.slide{display:none;max-width:1470px;width:100%;height:100%;margin:auto;padding:clamp(22px,3.1vw,52px) clamp(24px,4vw,70px) clamp(20px,3vw,48px);border-radius:var(--radius);background:var(--cream);box-shadow:var(--shadow);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;position:relative;isolation:isolate}.slide.active{display:block;animation:enter .22s ease-out}.slide[data-section=INICIO]{background:linear-gradient(133deg,#faf7f1 66%,#ecedeb)}.slide.cover{background:linear-gradient(145deg,#10283c,#163a53 80%);color:white;overflow:hidden}.slide.break-slide{background:linear-gradient(135deg,#11283d,#204859);color:#f4efe5}.slide .eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 15px;font-weight:750;font-size:12px;letter-spacing:.125em;color:var(--accent);text-transform:uppercase}.slide.cover .eyebrow,.slide.break-slide .eyebrow{color:var(--gold)}.eyebrow:before{content:'';display:block;height:2px;width:32px;background:currentColor}.slide h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,5.2vw,84px);font-weight:500;letter-spacing:-.048em;line-height:1.02;margin:0 0 16px;max-width:1000px}.slide h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(32px,3.2vw,52px);line-height:1.1;letter-spacing:-.037em;margin:0 0 14px;max-width:1150px}.subtitle{font-size:clamp(15px,1.5vw,23px);color:#62768a;max-width:1000px;margin:0 0 clamp(18px,3vw,35px)}.slide.cover .subtitle,.slide.break-slide .subtitle{color:#b4ccd7}.slide-body{font-size:clamp(14px,1.2vw,18px)}.slide-body h3{font-size:clamp(17px,1.7vw,23px);line-height:1.23;margin:0 0 11px}.slide-body p{margin:0 0 15px}.slide-body strong{font-weight:730}.subnote{font-size:13px;line-height:1.55;color:#788696;margin-top:20px}.slide.cover .subnote{color:#a8c0cc}.slide .section-tag{font-size:11px;letter-spacing:.1em;color:#788797}.slide.cover .section-tag{color:#9bb9c5}
+.bottombar{height:65px;display:flex;gap:20px;align-items:center;padding:0 clamp(12px,3vw,42px);background:var(--navy);color:white}.progressbar{height:5px;background:rgba(255,255,255,.17);border-radius:10px;overflow:hidden;flex:1}.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--aqua),var(--gold));transition:width .3s}.slide-index{font-size:12px;color:#cad9e0;min-width:65px;text-align:center;font-variant-numeric:tabular-nums}.navbtn{border:1px solid rgba(255,255,255,.22);border-radius:11px;padding:10px 18px;color:white;background:rgba(255,255,255,.08);font-weight:650}.navbtn:hover{background:rgba(255,255,255,.19)}.navbtn:disabled{opacity:.35;cursor:default}.minute-label{font-size:11px;white-space:nowrap;color:#cad9e0}
+.hero-grid{display:grid;grid-template-columns:1.28fr .72fr;align-items:center;gap:35px;padding-top:15px}.cover .big-lead{color:#dbeaf0;font:500 clamp(19px,2.15vw,29px)/1.4 Georgia,serif;max-width:650px}.hero-line{color:var(--gold);font-weight:700;margin:24px 0 35px;letter-spacing:.025em}.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:610px}.hero-actions span{border-top:1px solid rgba(255,255,255,.24);padding:15px 0;color:#e2e9ec;font-size:14px}.cover-art{aspect-ratio:1;position:relative;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:radial-gradient(circle at 54% 50%,rgba(87,151,169,.26),transparent 67%)}.art-orbit{position:absolute;inset:20%;border:1px dashed rgba(255,255,255,.24);border-radius:50%}.art-n{position:absolute;font-family:Georgia,serif;color:#eef5f6;text-shadow:0 10px 25px rgba(0,0,0,.15)}.art-a{font-size:clamp(80px,10vw,150px);left:12%;top:5%;color:#e9af7b}.art-b{font-size:clamp(52px,6vw,91px);right:5%;top:50%}.art-c{font-size:clamp(43px,4.4vw,67px);left:10%;bottom:8%;color:#93c5c6}.art-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--gold)}.d1{top:15%;right:19%}.d2{top:53%;left:8%;width:8px;height:8px}.d3{bottom:15%;right:25%;width:9px;height:9px}
+.four,.three{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.feature{padding:22px 20px;border-radius:17px;background:white;border:1px solid #e4e4df;box-shadow:0 5px 22px rgba(12,37,53,.04)}.feature .num{font-size:12px;font-weight:850;letter-spacing:.08em;color:var(--accent)}.feature h3{margin:10px 0!important;font-size:20px}.feature p{font-size:15px;color:#617184}.compact .digit-box{min-height:100px}.digit-box{border:1px solid var(--rule);background:white;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px}.digit-box span{font-size:13px;color:#708090}.digit-box strong{font-family:Georgia,serif;font-size:52px;color:var(--navy)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.timeline>div{min-height:120px;background:white;border:1px solid var(--rule);border-radius:15px;padding:20px}.timeline b{display:block;color:var(--accent);font-size:13px;margin-bottom:10px}.timeline strong{display:block;color:var(--navy);font-size:17px}.timeline small{color:#647788}.timeline .break{background:#e7f1ed;border-color:#cee4dc}
+.callout,.math-box,.task-inline,.question{padding:17px 20px;background:#e8f0ef;border-left:4px solid var(--aqua);border-radius:0 12px 12px 0;margin:23px 0;font-size:clamp(15px,1.2vw,17px)}.task-inline{background:#fff4ea;border-left-color:var(--gold)}.question{background:#f5e9e4;border-left-color:var(--accent);font-family:Georgia,serif;font-size:clamp(18px,2vw,27px)}.math-box{background:#f0eff5;border-left-color:#8a8bb7}.statement{font-family:Georgia,serif;font-size:clamp(34px,4vw,67px);color:var(--navy);padding:25px 0}.quiz{padding:20px 22px;background:#fff;border:1px solid var(--rule);border-radius:16px}.quiz-q{font-weight:700;margin:0 0 15px}.choice-row{display:flex;flex-wrap:wrap;gap:12px}.choice-col{display:grid;gap:9px}.choice{border:1px solid #d9dfdf;background:#fafcfc;border-radius:11px;padding:15px 19px;text-align:left;flex:1;min-width:140px;color:var(--navy);font-weight:650;font-size:15px;transition:.18s}.choice:hover{transform:translateY(-2px);border-color:var(--aqua)}.choice.correct{border-color:#4d9d86;background:#e5f5eb}.choice.incorrect{border-color:#c87870;background:#fcecea}.quiz-feedback{margin:15px 0 0!important;font-size:15px;color:#6a7c8a}.quiz-feedback.good{color:#23765f}.quiz-feedback.bad{color:#b3574b}
+.concept{background:#fff;border:1px solid #e1e4e1;padding:20px 23px;border-radius:16px;min-height:220px}.concept small{font-size:11px;color:#c0674d;font-weight:780;letter-spacing:.07em}.concept h3{margin:12px 0!important;color:var(--navy)}.concept p{color:#657587;line-height:1.55}.math-card{font-family:Georgia,serif;background:#ecf4f4;font-size:clamp(20px,2.3vw,35px);border-radius:10px;text-align:center;padding:17px 8px;margin:12px 0 15px;color:#22485a}.concept.slim{min-height:auto}.concept.slim h3{font-family:Georgia,serif;font-size:30px;color:var(--navy)}.highlight{font-family:Georgia,serif;font-size:23px;margin-top:25px!important}
+.pair-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-panel{background:white;border:1px solid var(--rule);padding:20px 23px;border-radius:15px;display:flex;flex-direction:column;gap:5px}.mini-panel b{font-size:13px;color:#bb6a4e}.mini-panel strong{font:27px Georgia,serif;color:var(--navy)}.mini-panel span{color:#73818e;font-size:14px}.num-nesting{background:linear-gradient(120deg,#f8f4ee,#f2f7f5);border:1px solid #e1e0db;border-radius:17px;padding:14px}.set{border-radius:15px;border:2px solid;min-height:95px;display:block;font-weight:800;letter-spacing:.04em;padding:11px 18px}.set span{font-size:19px}.set.R{background:#e7eafa;border-color:#7282ad}.set.Q{background:#edf7f5;border-color:#5ca79c;margin:9px 0 0 9%}.set.Z{background:#fff4e5;border-color:#d5a75f;margin:9px 0 0 13%}.set.N{background:#fff;border-color:#c77158;margin:9px 0 0 15%;min-height:58px}.foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:15px}.interactive-card{background:white;border:1px solid #e0e2df;border-radius:17px;padding:22px;display:flex;flex-direction:column;gap:14px;max-width:700px}.interactive-card label{font-weight:750;font-size:15px}.interactive-card select,.interactive-card input{border:1px solid #cdd5d7;border-radius:9px;padding:12px 14px;background:white;max-width:400px}.minor-btn{background:var(--navy);color:white;border:0;border-radius:10px;padding:11px 19px;font-size:14px;font-weight:700;align-self:flex-start}.minor-btn:hover{background:var(--navy2)}.live-result{background:#f1f7f6;border-radius:10px;padding:13px 16px;margin:0!important;color:#405e63;font-size:15px}.equation-large{font:clamp(29px,3.4vw,51px)/1.2 Georgia,serif;text-align:center;color:var(--navy);background:white;border:1px solid #e0e3df;border-radius:15px;padding:28px 18px;margin:25px 0}.place-studio{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;max-width:950px}.place-row{background:white;border-radius:16px;padding:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border:1px solid var(--rule)}.place-row label{font-weight:750;display:flex;flex-direction:column;align-items:center;gap:10px}.place-row input{font-size:34px;font-family:Georgia,serif;width:100%;border:1px solid var(--rule);text-align:center;border-radius:12px;padding:9px 0;color:var(--navy)}.place-result{border-radius:16px;background:var(--navy);color:white;padding:26px 24px;display:flex;flex-direction:column;justify-content:center}.place-result span{color:#bbd2dc;font-size:13px}.place-result strong{font:clamp(41px,5vw,69px) Georgia,serif}.place-result small{color:#bcd0da;line-height:1.6}.regroup{border-radius:17px;background:#fff;border:1px solid var(--rule);padding:24px}.reg-values{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.reg-values>div{border:1px solid #e1e1df;padding:22px;text-align:center;border-radius:13px;background:#f6f8f7}.reg-values span{display:block;color:#657688}.reg-values strong{display:block;font:clamp(37px,4.5vw,65px) Georgia,serif;color:var(--navy)}.reg-actions{display:flex;gap:10px;flex-wrap:wrap;margin:19px 0}.reg-actions button{border:0;border-radius:10px;background:#27837a;color:white;padding:12px 16px;font-size:14px;font-weight:700}.reg-actions button.ghost{background:#e3e7e6;color:var(--navy)}.reg-invariant{font-size:16px;font-weight:750}.reg-invariant span{color:#437c67;font-weight:500;font-size:14px}.case-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px;align-items:center}.case-quote{display:flex;flex-direction:column;border-radius:16px;background:var(--navy);padding:31px;text-align:center;color:white}.case-quote span{font-size:12px;letter-spacing:.1em;color:#b6cbd5}.case-quote strong{font:clamp(51px,6vw,90px) Georgia,serif;color:var(--gold)}.case-quote small{color:#c5d4dd}.math-showcase{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:center}.math-showcase .equation-large{font-size:clamp(24px,3vw,45px)}.inline-input{display:flex;gap:8px;flex-wrap:wrap}.inline-input input{width:140px}.small-interactive{padding:20px}.break-screen{max-width:1000px;padding:clamp(20px,5vw,70px) 0}.break-screen strong{font:clamp(31px,3.5vw,56px)/1.22 Georgia,serif;font-weight:500;display:block}.break-screen p{color:#bcd0dc;margin-top:35px}.equation-stack{display:flex;align-items:center;flex-direction:column;gap:6px;font:clamp(23px,2.9vw,39px) Georgia,serif;color:var(--navy)}.equation-stack>div{background:white;border:1px solid var(--rule);border-radius:10px;padding:8px 30px;min-width:390px;text-align:center}.equation-stack span{font-size:24px;color:#9ab2b7}
+.five-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.five-grid>div{background:white;border:1px solid var(--rule);padding:20px 15px;border-radius:12px;min-height:140px}.five-grid b{display:block;color:#a25e48;margin-bottom:9px}.five-grid span{display:block;font-size:14px;line-height:1.5;color:#647486}.frac-lab{background:white;border:1px solid var(--rule);border-radius:17px;padding:22px}.frac-controls{display:flex;gap:24px;flex-wrap:wrap}.frac-controls label{flex:1;min-width:180px;display:grid;gap:6px;font-size:13px;font-weight:750}.frac-controls input{accent-color:#b34e55;width:100%}.frac-controls output{font-size:17px;color:#914853}.frac-display{display:flex;gap:20px;align-items:baseline;justify-content:center}.frac-display strong{font:52px Georgia,serif;color:var(--navy)}.frac-display span{color:#82919f;font-size:22px}.frac-lab svg{width:100%;max-height:125px;overflow:visible}.axis{stroke:#385368;stroke-width:4;stroke-linecap:round}.tick{stroke:#385368;stroke-width:3}.axis-label{text-anchor:middle;font-family:Georgia,serif;fill:#50677b;font-size:21px}.point{fill:var(--accent);stroke:white;stroke-width:4}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:870px}.comparison>div{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:24px;display:grid;gap:9px}.comparison span{color:#687988}.comparison strong{font:32px Georgia,serif;color:var(--navy)}.bar{width:100%;height:42px;background:repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),#fff calc(12.5% - 1px),#fff 12.5%),#e9eff1;border-radius:7px;overflow:hidden}.bar i{display:block;height:100%;background:var(--aqua)}#sixth i{width:16.667%}#eighth i{width:12.5%}.large-copy{font:clamp(20px,2.5vw,32px) Georgia,serif;margin:22px 0!important}.decimal-compare{display:grid;gap:25px;max-width:950px}.decimal-compare>div{display:grid;gap:9px}.progress-strip{width:100%;height:38px;border-radius:8px;background:#e1e9e9;overflow:hidden}.progress-strip i{display:block;height:100%;background:var(--aqua)}
+.large-callout{background:#fff;padding:24px;border-radius:16px;border:1px solid #e0e3df}.large-callout h3{margin-bottom:17px!important}.large-callout .feature{padding:14px}.large-callout .feature p{font-size:14px}.case-tool{background:#fff;border:1px solid var(--rule);padding:20px;border-radius:16px}.case-tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}.case-tab{padding:10px 17px;border:1px solid #d7dddc;background:#f6faf9;border-radius:8px;color:#43596b;font-weight:750}.case-tab.active{color:white;background:var(--navy);border-color:var(--navy)}.case-prompt{font-size:17px;font-weight:720;margin-bottom:15px;color:var(--navy)}.case-tool textarea{display:block;width:100%;padding:15px;resize:vertical;min-height:100px;border:1px solid var(--rule);border-radius:10px;margin-bottom:12px;background:#fafdfd}.micro-feedback{font-size:13px;margin-left:10px;color:#5f8a83}.debate-matrix{display:grid;gap:10px;max-width:850px}.debate-row{display:grid;grid-template-columns:90px 1fr;align-items:center;background:white;border:1px solid var(--rule);border-radius:12px;overflow:hidden}.debate-row b{background:var(--navy);color:white;padding:18px;text-align:center}.debate-row span{padding:16px 22px}.big-research-question{font:clamp(25px,3vw,44px)/1.28 Georgia,serif;max-width:1000px;color:var(--navy);padding:30px 0}.research-chain{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.research-chain span{padding:13px;border-radius:10px;background:#eaf0ef;font-size:13px;font-weight:750}.research-chain i{font-style:normal;color:#94a6a9}.paper-list{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.paper-list a{color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:4px;padding:13px 17px;background:white;border:1px solid var(--rule);border-radius:12px}.paper-list a:hover{border-color:var(--aqua);box-shadow:0 3px 15px #adc9c544}.paper-list a span{color:#b3674f;font-size:10px;font-weight:900;letter-spacing:.08em}.paper-list a strong{font-size:14px}.paper-list a small{color:#6d7d87;line-height:1.4}.six-faces{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.six-faces>div{display:flex;flex-direction:column;gap:8px;border:1px solid var(--rule);border-radius:14px;background:white;padding:19px}.six-faces b{font:26px Georgia,serif;color:#b16b50}.six-faces strong{font-size:16px}.six-faces small{color:#687988;line-height:1.5}.rubric-lines{display:grid;gap:8px}.rubric-lines>div{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:22px;border-bottom:1px solid var(--rule);padding:12px 6px}.rubric-lines b{color:var(--navy)}.rubric-lines span{color:#607488}.exit-questions{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.exit-questions>div{background:white;border:1px solid var(--rule);border-radius:16px;padding:22px}.exit-questions b{font:39px Georgia,serif;color:var(--accent)}.exit-questions p{font-size:16px}.final-banner{background:var(--navy);color:#e1e8ee;border-radius:13px;padding:20px 24px;margin-top:25px}
+.presenter-note{display:none;margin:22px 0 0;border:1px dashed #c7a37b;background:#fff7eb;color:#62513c;padding:16px 19px;border-radius:11px;font-size:14px}.show-notes .presenter-note{display:block}.show-notes .presenter-note:before{content:'NOTA PARA EL DOCENTE';display:block;font-size:10px;letter-spacing:.1em;font-weight:850;margin-bottom:8px;color:#ae7041}.modal{display:none;position:fixed;z-index:30;inset:0;background:rgba(5,14,24,.72);padding:5vh 6vw}.modal.open{display:block}.modal-inner{width:min(1100px,100%);height:90vh;margin:auto;border-radius:18px;background:#f7f4ee;padding:23px;overflow:auto}.modal h2{font-family:Georgia,serif;font-size:27px;margin:0 0 15px}.modal-head{display:flex;justify-content:space-between;align-items:center}.close-modal{border:0;background:var(--navy);color:white;border-radius:9px;padding:9px 15px}.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.overview-item{background:white;border:1px solid var(--rule);text-align:left;border-radius:10px;padding:14px}.overview-item b{display:block;font-size:11px;color:var(--accent);margin-bottom:7px}.overview-item span{font-size:14px;font-weight:700;color:var(--navy)}
+@keyframes enter{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:1050px){.four{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(4,1fr)}.five-grid{grid-template-columns:repeat(3,1fr)}.hero-grid{grid-template-columns:1.5fr .5fr}.hero-actions{grid-template-columns:1fr 1fr}}
+@media(max-width:740px){.presentation{grid-template-rows:56px minmax(0,1fr) 58px}.topbar{padding:0 10px;gap:9px}.brand{font-size:11px}.topright{gap:5px}.icon-btn{font-size:11px;padding:7px 8px}.topright .hide-small{display:none}.stage{padding:5px}.slide{padding:22px 19px 30px;border-radius:11px}.slide h1{font-size:44px}.slide h2{font-size:33px}.subtitle{font-size:15px;margin-bottom:16px}.slide-body{font-size:14px}.four,.three,.pair-grid,.place-studio,.case-layout,.comparison,.math-showcase,.paper-list,.six-faces,.exit-questions{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr)}.timeline>div{min-height:100px;padding:13px}.feature{padding:15px}.num-nesting .set span{font-size:15px}.set{min-height:75px;padding:9px}.set.N{min-height:46px}.foot-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}.cover-art{display:none}.hero-actions{grid-template-columns:1fr 1fr}.place-row{padding:13px;gap:5px}.place-row input{font-size:22px;padding:6px}.place-result strong{font-size:47px}.regroup{padding:15px}.reg-values>div{padding:14px 8px}.reg-values strong{font-size:42px}.reg-actions button{font-size:12px;padding:10px}.five-grid{grid-template-columns:repeat(2,1fr)}.five-grid>div{min-height:120px;padding:12px}.frac-controls{gap:11px}.equation-stack>div{min-width:0;width:100%;font-size:26px}.timeline strong{font-size:15px}.rubric-lines>div{grid-template-columns:1fr;gap:4px}.overview-grid{grid-template-columns:1fr 1fr}.minute-label{display:none}.bottombar{height:58px;padding:0 9px;gap:7px}.navbtn{padding:10px;font-size:12px}.slide-index{min-width:44px}.break-screen strong{font-size:33px}.question{font-size:21px}.equation-large{font-size:28px;padding:16px}.paper-list a{padding:11px}.statement{font-size:39px}}
+@media print{body{background:white}.presentation{height:auto;display:block;background:white}.topbar,.bottombar,.modal{display:none!important}.stage{padding:0;display:block}.slide{display:block!important;height:auto;max-width:none;min-height:180mm;border-radius:0;box-shadow:none;break-after:page;padding:16mm 18mm;margin:0;overflow:visible}.slide.cover{background:#f3f5f6!important;color:var(--navy)}.slide.cover .subtitle,.slide.cover .big-lead{color:var(--navy)}.slide.break-slide{background:#f0f4f4!important;color:var(--navy)}.hero-grid{grid-template-columns:1fr 200px}.cover-art{display:none}.presenter-note{display:none!important}}
+</style></head><body>
+<div class="presentation" role="application" aria-label="Presentación interactiva sobre sistemas numéricos">
+<header class="topbar"><span class="mark">Σ</span><span class="brand">Sistemas Numéricos y Algebraicos<small>Licenciatura · Pensamiento numérico</small></span>
+<div class="topright"><button class="icon-btn hide-small" id="overview-btn" aria-label="Ver índice">☷ Índice</button><button class="icon-btn" id="notes" aria-pressed="false" title="Notas para el docente">Notas</button><button class="icon-btn hide-small" id="fullscreen" title="Pantalla completa">⛶ Presentar</button></div></header>
+<main class="stage" id="stage"><section class="slide cover" id="s-01" data-section="INICIO" data-minute="00–05" aria-label="Diapositiva 1: Sistemas numéricos" aria-hidden="true">
+      <div class="eyebrow">SESIÓN EN VIVO <span class="section-tag">· 00–05 min</span></div>
+      <h1>Sistemas numéricos</h1>
+      <p class="subtitle">Pensar como matemáticos. Analizar como docentes.</p>
+      <div class="slide-body">
+<div class="hero-grid"><div><p class="big-lead">Sesión universitaria · Licenciatura en Educación Básica Primaria</p>
+<div class="hero-line">3 horas · 100% virtual · Laboratorios interactivos</div>
+<div class="hero-actions"><span>01 · Comprender</span><span>02 · Justificar</span><span>03 · Interpretar</span><span>04 · Investigar</span></div></div>
+<div class="cover-art" aria-hidden="true"><span class="art-n art-a">⅜</span><span class="art-n art-b">402</span><span class="art-n art-c">0,27</span><div class="art-orbit"></div><span class="art-dot d1"></span><span class="art-dot d2"></span><span class="art-dot d3"></span></div></div>
+<p class="subnote">Los ejemplos proceden de situaciones escolares; el análisis es de nivel universitario y se dirige a futuros docentes.</p>
+</div>
+      <div class="presenter-note">Presentar el objetivo profesional: no dar una clase infantil ni evaluar solo operaciones. Pedir abrir este mismo archivo desde el enlace compartido.</div>
+    </section><section class="slide" id="s-02" data-section="INICIO" data-minute="05–09" aria-label="Diapositiva 2: ¿Qué aprenderemos hoy?" aria-hidden="true">
+      <div class="eyebrow">INICIO <span class="section-tag">· 05–09 min</span></div>
+      <h2>¿Qué aprenderemos hoy?</h2>
+      <p class="subtitle">Cuatro evidencias que deben aparecer al final de la clase.</p>
+      <div class="slide-body">
+<div class="four"><div class="feature"><span class="num">01</span><h3>Distinguir</h3><p>Número, numeral, sistema de numeración y conjunto numérico.</p></div><div class="feature"><span class="num">02</span><h3>Justificar</h3><p>Valor posicional, reagrupamientos y propiedades de operaciones.</p></div><div class="feature"><span class="num">03</span><h3>Interpretar</h3><p>Producciones escolares mediante hipótesis que puedan contrastarse.</p></div><div class="feature"><span class="num">04</span><h3>Investigar</h3><p>Leer un artículo, extraer evidencia y fundamentar una decisión docente.</p></div></div>
+<div class="callout">Pregunta vertebral: <strong>¿qué debe comprender un profesor más allá de saber hacer la cuenta?</strong></div>
+</div>
+      <div class="presenter-note">Actividad oral: que dos participantes expliquen la diferencia entre resolver y enseñar una resta.</div>
+    </section><section class="slide" id="s-03" data-section="INICIO" data-minute="09–12" aria-label="Diapositiva 3: Nuestro recorrido: 180 minutos" aria-hidden="true">
+      <div class="eyebrow">INICIO <span class="section-tag">· 09–12 min</span></div>
+      <h2>Nuestro recorrido: 180 minutos</h2>
+      <p class="subtitle">Ritmo recomendado para una clase sincrónica.</p>
+      <div class="slide-body">
+<div class="timeline"><div><b>00–15</b><strong>Activación</strong><small>Encuesta y debate</small></div><div><b>15–40</b><strong>Número y representación</strong><small>Sentidos y conjuntos</small></div><div><b>40–75</b><strong>Sistema posicional</strong><small>Laboratorio y reagrupamiento</small></div><div class="break"><b>75–85</b><strong>Pausa</strong><small>10 minutos</small></div><div><b>85–115</b><strong>Operaciones</strong><small>Significados y justificaciones</small></div><div><b>115–145</b><strong>Racionales</strong><small>Fracciones y decimales</small></div><div><b>145–165</b><strong>Clínica docente</strong><small>Grupos y socialización</small></div><div><b>165–180</b><strong>Investigar</strong><small>Artículo y tríptico</small></div></div>
+<p class="subnote">La presentación permite avanzar con ← y →, tocar sus botones o abrir la vista de todas las diapositivas.</p>
+</div>
+      <div class="presenter-note">Recomiendo reservar los tiempos de producción grupal y no pasar los casos demasiado rápido.</div>
+    </section><section class="slide" id="s-04" data-section="DIAGNÓSTICO" data-minute="12–15" aria-label="Diapositiva 4: Una afirmación incómoda" aria-hidden="true">
+      <div class="eyebrow">DIAGNÓSTICO <span class="section-tag">· 12–15 min</span></div>
+      <h2>Una afirmación incómoda</h2>
+      <p class="subtitle">¿Multiplicar siempre hace que un número sea mayor?</p>
+      <div class="slide-body">
+<div class="statement">«Multiplicar es hacer más»</div>
+<div class="quiz" data-correct-msg="Exacto: depende del número por el que multiplicamos y del signo del primer factor. Por ejemplo, 8 × 0,5 = 4." data-incorrect-msg="Esta regla funciona en algunos contextos de naturales, pero no en todos los conjuntos numéricos."><p class="quiz-q">Elige la respuesta que justificarías ante futuros docentes:</p>
+<div class="choice-row"><button class="choice" data-correct="false">Siempre</button><button class="choice" data-correct="false">Nunca</button><button class="choice" data-correct="true">Depende de las condiciones</button></div><p class="quiz-feedback" aria-live="polite">Selecciona una opción para descubrir el argumento.</p></div>
+<div class="task-inline"><b>En el chat:</b> escribe un contraejemplo y una condición bajo la cual la afirmación sí sea válida.</div>
+</div>
+      <div class="presenter-note">No reducir a 8×0,5. Insistir en ab&gt;a según a(b−1)&gt;0.</div>
+    </section><section class="slide" id="s-05" data-section="FUNDAMENTOS" data-minute="15–20" aria-label="Diapositiva 5: ¿Número, numeral o sistema?" aria-hidden="true">
+      <div class="eyebrow">FUNDAMENTOS <span class="section-tag">· 15–20 min</span></div>
+      <h2>¿Número, numeral o sistema?</h2>
+      <p class="subtitle">Tres objetos diferentes que solemos confundir.</p>
+      <div class="slide-body">
+<div class="three"><div class="concept"><small>OBJETO MATEMÁTICO</small><h3>Número</h3><div class="math-card">11</div><p>Cantidad o posición en un orden, entre otros significados.</p></div>
+<div class="concept"><small>REPRESENTACIÓN</small><h3>Numeral</h3><div class="math-card">XI · 1011₂ · 11</div><p>Escrituras diferentes que pueden designar el mismo número.</p></div>
+<div class="concept"><small>CONVENCIÓN Y REGLAS</small><h3>Sistema de numeración</h3><div class="math-card">Base 10</div><p>Alfabeto, valor de posición y reglas de formación.</p></div></div>
+<p class="highlight">Una cosa es <em>cuál número</em>; otra es <em>cómo lo escribimos</em>.</p>
+</div>
+      <div class="presenter-note">Recuperar que 1011 base 2 equivale a 11 en base 10, no leer el subíndice como multiplicación.</div>
+    </section><section class="slide" id="s-06" data-section="FUNDAMENTOS" data-minute="20–25" aria-label="Diapositiva 6: Los sentidos del número" aria-hidden="true">
+      <div class="eyebrow">FUNDAMENTOS <span class="section-tag">· 20–25 min</span></div>
+      <h2>Los sentidos del número</h2>
+      <p class="subtitle">Una cifra puede participar en relaciones muy distintas.</p>
+      <div class="slide-body">
+<div class="pair-grid"><div class="mini-panel"><b>Cardinal</b><strong>8 semillas</strong><span>¿Cuántas hay?</span></div><div class="mini-panel"><b>Ordinal</b><strong>8.º puesto</strong><span>¿En qué posición?</span></div><div class="mini-panel"><b>Medida</b><strong>8 metros</strong><span>¿Cuánto respecto de una unidad?</span></div><div class="mini-panel"><b>Operador</b><strong>½ de 8</strong><span>¿Qué transformación aplica?</span></div><div class="mini-panel"><b>Identificador</b><strong>Ruta 8</strong><span>¿Etiqueta o cantidad?</span></div><div class="mini-panel"><b>Referencia</b><strong>−8 °C</strong><span>¿Qué posición respecto de cero?</span></div></div>
+<div class="question">¿Qué pasaría si enseñamos todos estos usos con una sola definición?</div>
+</div>
+      <div class="presenter-note">No exagerar la noción ordinal con sistema de orden parcial. Invitar a un ejemplo social colombiano contextualizado.</div>
+    </section><section class="slide" id="s-07" data-section="FUNDAMENTOS" data-minute="25–32" aria-label="Diapositiva 7: Conjuntos numéricos" aria-hidden="true">
+      <div class="eyebrow">FUNDAMENTOS <span class="section-tag">· 25–32 min</span></div>
+      <h2>Conjuntos numéricos</h2>
+      <p class="subtitle">Una extensión resuelve problemas que el sistema anterior no podía.</p>
+      <div class="slide-body">
+<div class="num-nesting"><div class="set R"><span>ℝ · Reales</span><div class="set Q"><span>ℚ · Racionales</span><div class="set Z"><span>ℤ · Enteros</span><div class="set N"><span>ℕ · Naturales</span></div></div></div></div></div>
+<div class="foot-grid"><p><b>Convención:</b> aquí ℕ = {0,1,2,…}.</p><p><b>Extender:</b> 5−8 exige enteros; 1÷4 exige racionales.</p></div>
+<div class="callout">La <strong>escritura decimal</strong> no define por sí sola un conjunto: 0,5 ∈ ℚ y √2 ∈ ℝ∖ℚ.</div>
+</div>
+      <div class="presenter-note">Explicar inclusión N⊂Z⊂Q⊂R sin asumir que una fracción escrita equivale a un conjunto separado. 0 en N por convención.</div>
+    </section><section class="slide" id="s-08" data-section="FUNDAMENTOS" data-minute="32–40" aria-label="Diapositiva 8: Comprobación conceptual" aria-hidden="true">
+      <div class="eyebrow">FUNDAMENTOS <span class="section-tag">· 32–40 min</span></div>
+      <h2>Comprobación conceptual</h2>
+      <p class="subtitle">Clasificar exige justificar, no memorizar etiquetas.</p>
+      <div class="slide-body">
+<div class="interactive-card"><label for="class-number">Selecciona el número</label><select id="class-number"><option value="-3">−3</option><option value="0.25">¼</option><option value="0">0</option><option value="sqrt">√2</option></select><button class="minor-btn" id="class-check">Examinar pertenencia</button><div class="live-result" id="class-result">¿A qué conjuntos pertenece? Formula primero tu hipótesis.</div></div>
+<p>La pregunta relevante no es solo “¿en qué conjunto está?”, sino <strong>“¿qué operación obliga a ampliar el dominio?”</strong>.</p>
+<div class="task-inline">En el chat: escribe un ejemplo de afirmación cierta en ℕ que deba modificarse en ℚ.</div>
+</div>
+      <div class="presenter-note">Respuestas: −3 Z,Q,R; ¼ Q,R; 0 N,Z,Q,R; √2 R no Q. Confirmar tolerancia de convenciones distintas del cero.</div>
+    </section><section class="slide" id="s-09" data-section="VALOR POSICIONAL" data-minute="40–45" aria-label="Diapositiva 9: El sistema decimal no es una tabla de nombres" aria-hidden="true">
+      <div class="eyebrow">VALOR POSICIONAL <span class="section-tag">· 40–45 min</span></div>
+      <h2>El sistema decimal no es una tabla de nombres</h2>
+      <p class="subtitle">Su propiedad central: cambiar de orden conserva el valor.</p>
+      <div class="slide-body">
+<div class="equation-large">3 024 = 3×10³ + 0×10² + 2×10¹ + 4×10⁰</div>
+<div class="four compact"><div class="digit-box"><span>Millares</span><strong>3</strong></div><div class="digit-box"><span>Centenas</span><strong>0</strong></div><div class="digit-box"><span>Decenas</span><strong>2</strong></div><div class="digit-box"><span>Unidades</span><strong>4</strong></div></div>
+<div class="callout">El <b>0</b> no equivale a “nada sin función”: preserva la posición de las otras cifras.</div>
+</div>
+      <div class="presenter-note">Pedir un ejemplo en el que omitir el cero cambie el número. Contrastar 3024 vs 324.</div>
+    </section><section class="slide" id="s-10" data-section="VALOR POSICIONAL" data-minute="45–52" aria-label="Diapositiva 10: Laboratorio 1 · Componer y leer" aria-hidden="true">
+      <div class="eyebrow">VALOR POSICIONAL <span class="section-tag">· 45–52 min</span></div>
+      <h2>Laboratorio 1 · Componer y leer</h2>
+      <p class="subtitle">Mueve las cifras y observa qué cambia.</p>
+      <div class="slide-body">
+<div class="place-studio"><div class="place-row"><label>M <input type="number" id="pos-thousands" min="0" max="9" value="3" inputmode="numeric"></label><label>C <input type="number" id="pos-hundreds" min="0" max="9" value="0" inputmode="numeric"></label><label>D <input type="number" id="pos-tens" min="0" max="9" value="2" inputmode="numeric"></label><label>U <input type="number" id="pos-units" min="0" max="9" value="4" inputmode="numeric"></label></div>
+<div class="place-result"><span>Número representado</span><strong id="pos-output">3024</strong><small id="pos-expanded">3 × 1000 + 0 × 100 + 2 × 10 + 4</small></div></div>
+<div class="task-inline"><b>Desafío en parejas:</b> escribe un número con 0 en la posición de centenas y explica cómo cambia si el cero desaparece. ¿Qué significaría “leer 30045”?</div>
+</div>
+      <div class="presenter-note">Mostrar diferencias entre posición y valor absoluto del dígito. Interactuar con 3 024 y 3 204.</div>
+    </section><section class="slide" id="s-11" data-section="VALOR POSICIONAL" data-minute="52–64" aria-label="Diapositiva 11: Laboratorio 2 · Reagrupar 402" aria-hidden="true">
+      <div class="eyebrow">VALOR POSICIONAL <span class="section-tag">· 52–64 min</span></div>
+      <h2>Laboratorio 2 · Reagrupar 402</h2>
+      <p class="subtitle">Cambiar la representación sin cambiar el número.</p>
+      <div class="slide-body">
+<div class="regroup"><div class="reg-values"><div><span>Centenas</span><strong id="reg-c">4</strong></div><div><span>Decenas</span><strong id="reg-d">0</strong></div><div><span>Unidades</span><strong id="reg-u">2</strong></div></div>
+<div class="reg-actions"><button id="to-tens">1 C → 10 D</button><button id="to-units">1 D → 10 U</button><button class="ghost" id="reg-reset">Reiniciar</button></div>
+<div class="reg-invariant">Valor representado: <b id="reg-total">402</b> <span id="reg-alert">· invariante conservado</span></div></div>
+<div class="math-box">Meta: construir <b>3 C + 9 D + 12 U</b> para justificar 402 − 178 = 224.</div>
+<p class="subnote">No basta decir “prestar”. Explica qué igualdad justifica cada intercambio.</p>
+</div>
+      <div class="presenter-note">Permitir exploración antes de mostrar el algoritmo. 402 -&gt; 3C10D2U -&gt;3C9D12U. Al llegar pedir verbalizar 3-1,9-7,12-8.</div>
+    </section><section class="slide" id="s-12" data-section="VALOR POSICIONAL" data-minute="64–70" aria-label="Diapositiva 12: Una respuesta infantil como objeto de estudio" aria-hidden="true">
+      <div class="eyebrow">VALOR POSICIONAL <span class="section-tag">· 64–70 min</span></div>
+      <h2>Una respuesta infantil como objeto de estudio</h2>
+      <p class="subtitle">Producción construida: «trescientos cuarenta y cinco» → 30045.</p>
+      <div class="slide-body">
+<div class="case-layout"><div class="case-quote"><span>ESCRITURA OBSERVADA</span><strong>30045</strong><small>Para el número 345</small></div>
+<div><h3>Dos hipótesis posibles</h3><ol><li>Concatena partes de la expresión oral: “300” y “45”.</li><li>Comprendió la consigna como escribir por partes, no como un único numeral.</li></ol><p>¿Qué <em>nueva producción</em> ayudaría a discriminar ambas?</p></div></div>
+<div class="task-inline"><b>En el chat:</b> escribe una pregunta diagnóstica. No diagnostiques al estudiante a partir de un dato.</div>
+</div>
+      <div class="presenter-note">Insistir en hipótesis alternativas y tareas discriminantes. No etiquetar como falta de capacidad.</div>
+    </section><section class="slide" id="s-13" data-section="VALOR POSICIONAL" data-minute="70–75" aria-label="Diapositiva 13: Más allá de base diez" aria-hidden="true">
+      <div class="eyebrow">VALOR POSICIONAL <span class="section-tag">· 70–75 min</span></div>
+      <h2>Más allá de base diez</h2>
+      <p class="subtitle">El principio posicional permite escribir sistemas en otras bases.</p>
+      <div class="slide-body">
+<div class="math-showcase"><div class="equation-large">1011₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰</div>
+<div class="interactive-card small-interactive"><label>¿Qué número representa en base diez?</label><div class="inline-input"><input type="number" id="binary-answer" placeholder="Tu respuesta" min="0"/><button id="binary-check" class="minor-btn">Comprobar</button></div><p class="live-result" id="binary-result">El valor depende de la posición y la base.</p></div></div>
+<div class="callout">Comparación conceptual: el símbolo «10» significa diez en base diez, pero dos en base dos.</div>
+</div>
+      <div class="presenter-note">Resultado 11, ver que cada potencia representa un orden. Nivel de extensión para futuros docentes, no lección de bases en 1.º.</div>
+    </section><section class="slide break-slide" id="s-14" data-section="PAUSA" data-minute="75–85" aria-label="Diapositiva 14: Pausa activa · 10 minutos" aria-hidden="true">
+      <div class="eyebrow">PAUSA <span class="section-tag">· 75–85 min</span></div>
+      <h2>Pausa activa · 10 minutos</h2>
+      <p class="subtitle">Antes de salir, deja esta pregunta abierta.</p>
+      <div class="slide-body">
+<div class="break-screen"><strong>Si un estudiante resuelve 402 − 178 = 224,<br>¿qué evidencia necesitamos para saber que comprendió el reagrupamiento?</strong><p>Regresamos con los significados de las operaciones.</p></div>
+</div>
+      <div class="presenter-note">Pausa exacta de diez minutos. Mostrar la pregunta hasta el regreso.</div>
+    </section><section class="slide" id="s-15" data-section="OPERACIONES" data-minute="85–91" aria-label="Diapositiva 15: Una operación, varios significados" aria-hidden="true">
+      <div class="eyebrow">OPERACIONES <span class="section-tag">· 85–91 min</span></div>
+      <h2>Una operación, varios significados</h2>
+      <p class="subtitle">Misma cuenta no implica misma situación cognitiva.</p>
+      <div class="slide-body">
+<div class="three"><div class="concept"><small>REPARTO</small><h3>24 ÷ 6</h3><p>24 semillas distribuidas por igual en 6 sobres. ¿Cuántas por sobre?</p></div><div class="concept"><small>AGRUPAMIENTO</small><h3>24 ÷ 6</h3><p>24 semillas en grupos de 6. ¿Cuántos sobres?</p></div><div class="concept"><small>RAZÓN / MEDIDA</small><h3>24 ÷ 6</h3><p>Un objeto mide 24 cm y otro 6 cm. ¿Cuántas veces cabe?</p></div></div>
+<div class="question">La operación simbólica es idéntica: ¿qué cambia en los modelos de solución?</div>
+</div>
+      <div class="presenter-note">Traer Vergnaud/CGI como marcos de estructuras sin afirmar que todas las tareas son intercambiables.</div>
+    </section><section class="slide" id="s-16" data-section="OPERACIONES" data-minute="91–99" aria-label="Diapositiva 16: Comparar problemas sin calcular" aria-hidden="true">
+      <div class="eyebrow">OPERACIONES <span class="section-tag">· 91–99 min</span></div>
+      <h2>Comparar problemas sin calcular</h2>
+      <p class="subtitle">¿Cuál pregunta exige encontrar el tamaño de cada grupo?</p>
+      <div class="slide-body">
+<div class="quiz" data-correct-msg="Sí. El tamaño de cada grupo es la incógnita cuando conocemos el total y el número de grupos." data-incorrect-msg="Identifica qué dato es la cantidad de grupos y cuál es el tamaño de cada grupo.">
+<div class="choice-col"><button class="choice" data-correct="false">«Tengo 24 semillas y pongo 6 en cada sobre. ¿Cuántos sobres?»</button><button class="choice" data-correct="true">«Tengo 24 semillas y las reparto en 6 sobres. ¿Cuántas por sobre?»</button></div><p class="quiz-feedback" aria-live="polite">Justifica tu elección antes de pulsar.</p></div>
+<div class="callout">Diseño profesional: anticipar la estructura del problema y las representaciones que podrían producir los estudiantes.</div>
+</div>
+      <div class="presenter-note">Discusión oral: comparar reparto versus medida y anticipar dibujos que lo representen.</div>
+    </section><section class="slide" id="s-17" data-section="OPERACIONES" data-minute="99–108" aria-label="Diapositiva 17: ¿Por qué funciona el algoritmo?" aria-hidden="true">
+      <div class="eyebrow">OPERACIONES <span class="section-tag">· 99–108 min</span></div>
+      <h2>¿Por qué funciona el algoritmo?</h2>
+      <p class="subtitle">La distributividad fundamenta la multiplicación escrita.</p>
+      <div class="slide-body">
+<div class="equation-stack"><div>27 × 14</div><span>↓</span><div>27 × (10 + 4)</div><span>↓</span><div>27×10 + 27×4</div><span>↓</span><div><strong>270 + 108 = 378</strong></div></div>
+<div class="math-box">Una “fila desplazada” es una abreviatura del valor posicional y de la propiedad distributiva.</div>
+</div>
+      <div class="presenter-note">Invitar a explicar la fila de 270 sin referirse a que se agrega un cero mecánicamente.</div>
+    </section><section class="slide" id="s-18" data-section="OPERACIONES" data-minute="108–115" aria-label="Diapositiva 18: Razonamiento con error: 402 − 178" aria-hidden="true">
+      <div class="eyebrow">OPERACIONES <span class="section-tag">· 108–115 min</span></div>
+      <h2>Razonamiento con error: 402 − 178</h2>
+      <p class="subtitle">¿Cuál afirmación tiene más valor diagnóstico?</p>
+      <div class="slide-body">
+<div class="quiz" data-correct-msg="Correcto. Un resultado por sí solo no permite saber qué se entiende. La estrategia y la justificación discriminan hipótesis." data-incorrect-msg="La rapidez y el acierto son datos, pero no explican directamente el conocimiento sobre reagrupamiento.">
+<div class="choice-col"><button class="choice" data-correct="false">«Si da 224, comprendió el valor posicional»</button><button class="choice" data-correct="false">«Si terminó rápido, comprendió el algoritmo»</button><button class="choice" data-correct="true">«Debemos pedir una explicación del intercambio y una tarea de transferencia»</button></div><p class="quiz-feedback" aria-live="polite">Piensa: resultado, procedimiento y argumento no son equivalentes.</p></div>
+</div>
+      <div class="presenter-note">Mostrar por qué es importante triangular evidencia, sin afirmar que se necesitan pruebas largas.</div>
+    </section><section class="slide" id="s-19" data-section="RACIONALES" data-minute="115–121" aria-label="Diapositiva 19: Fracciones: más que partes coloreadas" aria-hidden="true">
+      <div class="eyebrow">RACIONALES <span class="section-tag">· 115–121 min</span></div>
+      <h2>Fracciones: más que partes coloreadas</h2>
+      <p class="subtitle">Cinco significados que el docente debería distinguir.</p>
+      <div class="slide-body">
+<div class="five-grid"><div><b>Parte–todo</b><span>3 de 4 partes congruentes de una misma unidad</span></div><div><b>Cociente</b><span>3 objetos compartidos entre 4 personas</span></div><div><b>Medida</b><span>¾ de una unidad sobre una recta</span></div><div><b>Operador</b><span>¾ de 20</span></div><div><b>Razón</b><span>3 por cada 4 en una comparación</span></div></div>
+<div class="callout">Pregunta docente: ¿qué significado es más visible en la tarea?, ¿cuál queda oculto?</div>
+</div>
+      <div class="presenter-note">No tratar razón y fracción como conceptos idénticos. Mantener clara la unidad.</div>
+    </section><section class="slide" id="s-20" data-section="RACIONALES" data-minute="121–130" aria-label="Diapositiva 20: Laboratorio 3 · Magnitud fraccionaria" aria-hidden="true">
+      <div class="eyebrow">RACIONALES <span class="section-tag">· 121–130 min</span></div>
+      <h2>Laboratorio 3 · Magnitud fraccionaria</h2>
+      <p class="subtitle">La fracción es un número ubicable en la misma recta.</p>
+      <div class="slide-body">
+<div class="frac-lab"><div class="frac-controls"><label>Numerador <input type="range" id="frac-num" min="0" max="12" value="3"><output id="frac-num-val">3</output></label><label>Denominador <input type="range" id="frac-den" min="2" max="12" value="4"><output id="frac-den-val">4</output></label></div>
+<div class="frac-display"><strong id="frac-show">¾</strong><span id="frac-value">0,75</span></div><svg viewBox="0 0 760 120" role="img" aria-label="Recta numérica de cero a uno, con ubicación de la fracción"><path d="M 55 65 L 705 65" class="axis"/><g><line x1="55" y1="51" x2="55" y2="79" class="tick"/><text x="55" y="98" class="axis-label">0</text><line x1="380" y1="51" x2="380" y2="79" class="tick"/><text x="380" y="98" class="axis-label">½</text><line x1="705" y1="51" x2="705" y2="79" class="tick"/><text x="705" y="98" class="axis-label">1</text></g><circle id="frac-point" cx="542" cy="65" r="13" class="point"/></svg>
+<p id="frac-msg" class="live-result">Una fracción puede estar entre 0 y 1 o superar la unidad.</p></div>
+<div class="task-inline">Compara <b>3/4 y 5/8</b> sin cambiar de unidad. Da dos argumentos independientes.</div>
+</div>
+      <div class="presenter-note">Se permite numerador mayor que denominador; el punto se limita visualmente a 0–1, indicado en mensaje. Para 3/4 y 5/8 usar 6/8 &gt; 5/8 y la recta.</div>
+    </section><section class="slide" id="s-21" data-section="RACIONALES" data-minute="130–136" aria-label="Diapositiva 21: La trampa de los naturales" aria-hidden="true">
+      <div class="eyebrow">RACIONALES <span class="section-tag">· 130–136 min</span></div>
+      <h2>La trampa de los naturales</h2>
+      <p class="subtitle">¿Por qué 1/8 es menor que 1/6?</p>
+      <div class="slide-body">
+<div class="comparison"><div><span>Un sexto</span><div class="bar" id="sixth"><i></i></div><strong>1/6</strong></div><div><span>Un octavo</span><div class="bar" id="eighth"><i></i></div><strong>1/8</strong></div></div>
+<p class="large-copy">Al dividir <b>la misma unidad</b> en más partes congruentes, cada parte es menor.</p>
+<div class="math-box">Como 6 &lt; 8 y ambos son positivos, <strong>1/6 &gt; 1/8</strong>.</div>
+</div>
+      <div class="presenter-note">Explicar la necesaria igualdad del todo de referencia; no diagnosticar al estudiante solo por contestar 1/8.</div>
+    </section><section class="slide" id="s-22" data-section="RACIONALES" data-minute="136–141" aria-label="Diapositiva 22: Decimales y lectura posicional" aria-hidden="true">
+      <div class="eyebrow">RACIONALES <span class="section-tag">· 136–141 min</span></div>
+      <h2>Decimales y lectura posicional</h2>
+      <p class="subtitle">0,3 y 0,27 no son “tres contra veintisiete”.</p>
+      <div class="slide-body">
+<div class="decimal-compare"><div><span>0,3 = 30 centésimas</span><div class="progress-strip"><i style="width:30%"></i></div></div><div><span>0,27 = 27 centésimas</span><div class="progress-strip"><i style="width:27%"></i></div></div></div>
+<div class="equation-large">0,30 &gt; 0,27</div><div class="question">¿Qué tarea distinguiría al estudiante que sabe comparar de quien solo memorizó “agregar ceros”?</div>
+</div>
+      <div class="presenter-note">Pedir comparación nueva 0,50 vs 0,48, utilizar dinero con precaución de unidades.</div>
+    </section><section class="slide" id="s-23" data-section="RACIONALES" data-minute="141–145" aria-label="Diapositiva 23: Volvemos al punto inicial" aria-hidden="true">
+      <div class="eyebrow">RACIONALES <span class="section-tag">· 141–145 min</span></div>
+      <h2>Volvemos al punto inicial</h2>
+      <p class="subtitle">Ahora tenemos argumentos, no solo respuestas.</p>
+      <div class="slide-body">
+<div class="equation-large">a(b − 1) = ab − a</div>
+<div class="three"><div class="concept slim"><small>SI a &gt; 0 y 0 &lt; b &lt; 1</small><h3>ab &lt; a</h3><p>El producto disminuye.</p></div><div class="concept slim"><small>SI a &gt; 0 y b = 1</small><h3>ab = a</h3><p>El producto se conserva.</p></div><div class="concept slim"><small>SI a &gt; 0 y b &gt; 1</small><h3>ab &gt; a</h3><p>El producto aumenta.</p></div></div>
+<p class="subnote">¿Qué cambia si a es negativo? La generalización necesita condiciones de signo.</p>
+</div>
+      <div class="presenter-note">Al extender a a&lt;0 el signo se invierte. Este contenido es profundización del futuro profesor, no la primera explicación infantil.</div>
+    </section><section class="slide" id="s-24" data-section="CLÍNICA" data-minute="145–149" aria-label="Diapositiva 24: Clínica de casos docentes" aria-hidden="true">
+      <div class="eyebrow">CLÍNICA <span class="section-tag">· 145–149 min</span></div>
+      <h2>Clínica de casos docentes</h2>
+      <p class="subtitle">Organización del trabajo colaborativo virtual.</p>
+      <div class="slide-body">
+<div class="large-callout"><h3>Consigna: 4 piezas de razonamiento, no 4 opiniones</h3>
+<div class="four"><div class="feature"><span class="num">A</span><h3>Matemática</h3><p>¿Cuál es la propiedad en juego?</p></div><div class="feature"><span class="num">B</span><h3>Hipótesis</h3><p>¿Cómo pudo razonar el estudiante?</p></div><div class="feature"><span class="num">C</span><h3>Contraste</h3><p>¿Qué pregunta discrimina hipótesis?</p></div><div class="feature"><span class="num">D</span><h3>Evidencia</h3><p>¿Cómo sabemos si hubo avance?</p></div></div></div>
+<div class="task-inline">Salas virtuales: grupos de 3–4. <b>8 minutos</b> de trabajo y <b>8 minutos</b> de socialización.</div>
+</div>
+      <div class="presenter-note">Compartir una misma pantalla por grupo. Los campos de respuesta son locales al dispositivo; solicitar comunicar por chat o entregar en plataforma.</div>
+    </section><section class="slide" id="s-25" data-section="CLÍNICA" data-minute="149–157" aria-label="Diapositiva 25: Selecciona un caso y diseña una intervención" aria-hidden="true">
+      <div class="eyebrow">CLÍNICA <span class="section-tag">· 149–157 min</span></div>
+      <h2>Selecciona un caso y diseña una intervención</h2>
+      <p class="subtitle">Tus notas pueden copiarse para discutirlas con el grupo.</p>
+      <div class="slide-body">
+<div class="case-tool"><div class="case-tabs"><button class="case-tab active" data-case="0">30045</button><button class="case-tab" data-case="1">2/9</button><button class="case-tab" data-case="2">0,27</button><button class="case-tab" data-case="3">8×0,5</button></div>
+<div class="case-prompt" id="case-prompt">«Trescientos cuarenta y cinco» → 30045. ¿Es un problema de composición posicional o de interpretación de la consigna?</div>
+<textarea id="case-notes" rows="6" placeholder="1. Propiedad matemática…
+2. Dos hipótesis…
+3. Pregunta de contraste…
+4. Evidencia esperada…"></textarea>
+<button id="copy-case" class="minor-btn">Copiar análisis para compartir</button><span id="case-copy-status" class="micro-feedback" aria-live="polite"></span></div>
+</div>
+      <div class="presenter-note">Evitar casos médicos o atribuciones de incapacidad. Necesitamos discusión de un evento construido, no de una persona real.</div>
+    </section><section class="slide" id="s-26" data-section="CLÍNICA" data-minute="157–165" aria-label="Diapositiva 26: Socialización: defender una decisión" aria-hidden="true">
+      <div class="eyebrow">CLÍNICA <span class="section-tag">· 157–165 min</span></div>
+      <h2>Socialización: defender una decisión</h2>
+      <p class="subtitle">Cada grupo comparte una hipótesis y cómo la pondría a prueba.</p>
+      <div class="slide-body">
+<div class="debate-matrix"><div class="debate-row"><b>60 s</b><span>Describe el dato observado sin interpretar.</span></div><div class="debate-row"><b>60 s</b><span>Enuncia dos hipótesis plausibles.</span></div><div class="debate-row"><b>60 s</b><span>Propón la pregunta o representación de contraste.</span></div><div class="debate-row"><b>60 s</b><span>Define evidencia observable de comprensión.</span></div></div>
+<div class="callout">Una respuesta correcta posterior no es prueba suficiente de transferencia. Hay que cambiar la tarea o la representación.</div>
+</div>
+      <div class="presenter-note">Tiempo breve, escoger 2 grupos para exposición y pedir réplica de resto vía chat. 8 min totales.</div>
+    </section><section class="slide" id="s-27" data-section="INVESTIGACIÓN" data-minute="165–169" aria-label="Diapositiva 27: Después del encuentro: investigar" aria-hidden="true">
+      <div class="eyebrow">INVESTIGACIÓN <span class="section-tag">· 165–169 min</span></div>
+      <h2>Después del encuentro: investigar</h2>
+      <p class="subtitle">No queremos una ficha de resumen; queremos una decisión docente fundamentada.</p>
+      <div class="slide-body">
+<div class="big-research-question">¿Qué dificultad o razonamiento numérico estudia el artículo, qué evidencia ofrece y qué decisión de enseñanza podemos justificar?</div>
+<div class="research-chain"><span>Problema</span><i>→</i><span>Método y contexto</span><i>→</i><span>Hallazgo verificable</span><i>→</i><span>Decisión</span><i>→</i><span>Evidencia para evaluarla</span></div>
+<p class="subnote">Trabajo posterior en grupos de 3–4 integrantes. Un artículo por grupo; la fecha de entrega se acuerda en el aula virtual.</p>
+</div>
+      <div class="presenter-note">Es la traducción de la actividad evaluativa adjunta, que exige artículo individual por grupo, 6 caras y articulación curricular. No inventar fecha.</div>
+    </section><section class="slide" id="s-28" data-section="INVESTIGACIÓN" data-minute="169–173" aria-label="Diapositiva 28: Banco de artículos verificables" aria-hidden="true">
+      <div class="eyebrow">INVESTIGACIÓN <span class="section-tag">· 169–173 min</span></div>
+      <h2>Banco de artículos verificables</h2>
+      <p class="subtitle">Cinco propuestas de pensamiento numérico: español, inglés y portugués.</p>
+      <div class="slide-body">
+<div class="paper-list"><a target="_blank" rel="noopener" href="https://doi.org/10.54541/reviem.v3i2.62"><span>ES · 2023</span><strong>Acevedo Rodríguez, Carrillo García y López-Flores</strong><small>Valor posicional, operaciones y adaptación para estudiantes con discapacidad visual.</small></a>
+<a target="_blank" rel="noopener" href="https://doi.org/10.5007/1982-5153.2021.e75571"><span>PT · 2021</span><strong>Tracanella y Bianchini</strong><small>Valor posicional: estudio cualitativo con alumnado de años iniciales.</small></a>
+<a target="_blank" rel="noopener" href="https://doi.org/10.3389/feduc.2021.642153"><span>EN · 2022</span><strong>Herzog y Fritz</strong><small>Comprensión posicional y escritura de números en 2.º y 3.º.</small></a>
+<a target="_blank" rel="noopener" href="https://doi.org/10.12802/relime.24.2721"><span>ES · 2024</span><strong>Hernández Hernández y Fuenlabrada Velázquez</strong><small>Libros de texto y aulas de primer grado: abordaje del sistema decimal.</small></a>
+<a target="_blank" rel="noopener" href="https://doi.org/10.48075/ReBECEM.2025.v.9.n.2.33722"><span>PT · 2025</span><strong>Sabel y Silveira</strong><small>Manipulativos, representaciones y sistema decimal en libros didácticos.</small></a></div>
+<p class="subnote">Enlaces a editoriales, revistas y DOI; pulsar el título para abrir la fuente original. Asignar por grupo y disponibilidad de lectura.</p>
+</div>
+      <div class="presenter-note">Las fichas de asignación del PDF requieren corregir autorías de Acevedo Rodríguez et al. (2023) y Sabel &amp; Silveira (2025). No usar la lista sin verificar.</div>
+    </section><section class="slide" id="s-29" data-section="INVESTIGACIÓN" data-minute="173–176" aria-label="Diapositiva 29: La misma actividad, una exigencia más precisa" aria-hidden="true">
+      <div class="eyebrow">INVESTIGACIÓN <span class="section-tag">· 173–176 min</span></div>
+      <h2>La misma actividad, una exigencia más precisa</h2>
+      <p class="subtitle">Tríptico digital de 6 caras, como establece la actividad evaluativa.</p>
+      <div class="slide-body">
+<div class="six-faces"><div><b>01</b><strong>Identidad</strong><small>Artículo, autores, revista, año y equipo.</small></div><div><b>02</b><strong>Problema</strong><small>Pregunta, propósito y relevancia.</small></div><div><b>03</b><strong>Método</strong><small>Participantes, contexto e instrumentos.</small></div><div><b>04</b><strong>Evidencia</strong><small>Hallazgo específico, datos y límites.</small></div><div><b>05</b><strong>Lectura docente</strong><small>Dificultad + DBA/estándar/Saber justificados.</small></div><div><b>06</b><strong>Decisión</strong><small>Mini intervención + evaluación + APA 7.</small></div></div>
+<div class="callout">En las caras 4–6, <strong>no basta</strong> afirmar «el material ayuda». Indiquen <em>qué observó el estudio, en quiénes y hasta dónde se sostiene esa conclusión</em>.</div>
+</div>
+      <div class="presenter-note">La sexta cara enlaza directamente con la evidencia empírica. Mantener la estructura exacta de la actividad PDF.</div>
+    </section><section class="slide" id="s-30" data-section="INVESTIGACIÓN" data-minute="176–178" aria-label="Diapositiva 30: ¿Cómo juzgaremos el trabajo?" aria-hidden="true">
+      <div class="eyebrow">INVESTIGACIÓN <span class="section-tag">· 176–178 min</span></div>
+      <h2>¿Cómo juzgaremos el trabajo?</h2>
+      <p class="subtitle">Criterios del documento evaluativo; pesos por definir con el grupo.</p>
+      <div class="slide-body">
+<div class="rubric-lines"><div><b>Comprensión</b><span>Problema, propósito, método y hallazgos sin distorsiones.</span></div><div><b>Síntesis</b><span>Seis caras legibles, cada una con una función clara.</span></div><div><b>Lectura didáctica</b><span>Transformar hallazgos en hipótesis e intervención justificables.</span></div><div><b>Articulación curricular</b><span>DBA, estándares y Saber pertinentes, no solo nombrados.</span></div><div><b>Comunicación</b><span>Diseño, APA 7, citas e integridad académica.</span></div></div>
+<p class="subnote">La actividad adjunta no fija porcentajes por criterio; no se asignan pesos arbitrariamente.</p>
+</div>
+      <div class="presenter-note">Aclarar formato de entrega y plazo en plataforma. El PDF permite PDF, enlace o Word a criterio del docente.</div>
+    </section><section class="slide" id="s-31" data-section="CIERRE" data-minute="178–180" aria-label="Diapositiva 31: Billete de salida" aria-hidden="true">
+      <div class="eyebrow">CIERRE <span class="section-tag">· 178–180 min</span></div>
+      <h2>Billete de salida</h2>
+      <p class="subtitle">Un argumento matemático. Una pregunta docente. Una evidencia.</p>
+      <div class="slide-body">
+<div class="exit-questions"><div><b>1</b><p>Escribe algo que hoy puedas <strong>justificar</strong> y antes solo calculabas.</p></div><div><b>2</b><p>Describe una respuesta infantil para la que propondrías <strong>dos hipótesis</strong>.</p></div><div><b>3</b><p>Formula una pregunta concreta que harás al <strong>artículo</strong> asignado.</p></div></div>
+<div class="final-banner">Próxima sesión: <strong>pensamiento algebraico temprano</strong>. Patrones, equivalencia, relaciones y generalización.</div>
+</div>
+      <div class="presenter-note">Recoger 2–3 respuestas en chat o plataforma. Cerrar recordando que estudiar primaria no significa una formación matemática superficial.</div>
+    </section></main>
+<footer class="bottombar"><span class="minute-label" id="time-code">00–05</span><button class="navbtn" id="prev" title="Anterior">← Anterior</button><div class="progressbar" aria-label="Avance"><i id="progress"></i></div><span class="slide-index" id="counter">1 / 31</span><button class="navbtn" id="next" title="Siguiente">Siguiente →</button></footer>
+</div>
+<div class="modal" id="overview" aria-hidden="true"><div class="modal-inner"><div class="modal-head"><h2>Todas las diapositivas · 31</h2><button class="close-modal" id="close-overview">Cerrar ×</button></div><div class="overview-grid" id="overview-list"><button class="overview-item" data-index="0"><b>01 · INICIO · 00–05 min</b><span>Sistemas numéricos</span></button><button class="overview-item" data-index="1"><b>02 · INICIO · 05–09 min</b><span>¿Qué aprenderemos hoy?</span></button><button class="overview-item" data-index="2"><b>03 · INICIO · 09–12 min</b><span>Nuestro recorrido: 180 minutos</span></button><button class="overview-item" data-index="3"><b>04 · DIAGNÓSTICO · 12–15 min</b><span>Una afirmación incómoda</span></button><button class="overview-item" data-index="4"><b>05 · FUNDAMENTOS · 15–20 min</b><span>¿Número, numeral o sistema?</span></button><button class="overview-item" data-index="5"><b>06 · FUNDAMENTOS · 20–25 min</b><span>Los sentidos del número</span></button><button class="overview-item" data-index="6"><b>07 · FUNDAMENTOS · 25–32 min</b><span>Conjuntos numéricos</span></button><button class="overview-item" data-index="7"><b>08 · FUNDAMENTOS · 32–40 min</b><span>Comprobación conceptual</span></button><button class="overview-item" data-index="8"><b>09 · VALOR POSICIONAL · 40–45 min</b><span>El sistema decimal no es una tabla de nombres</span></button><button class="overview-item" data-index="9"><b>10 · VALOR POSICIONAL · 45–52 min</b><span>Laboratorio 1 · Componer y leer</span></button><button class="overview-item" data-index="10"><b>11 · VALOR POSICIONAL · 52–64 min</b><span>Laboratorio 2 · Reagrupar 402</span></button><button class="overview-item" data-index="11"><b>12 · VALOR POSICIONAL · 64–70 min</b><span>Una respuesta infantil como objeto de estudio</span></button><button class="overview-item" data-index="12"><b>13 · VALOR POSICIONAL · 70–75 min</b><span>Más allá de base diez</span></button><button class="overview-item" data-index="13"><b>14 · PAUSA · 75–85 min</b><span>Pausa activa · 10 minutos</span></button><button class="overview-item" data-index="14"><b>15 · OPERACIONES · 85–91 min</b><span>Una operación, varios significados</span></button><button class="overview-item" data-index="15"><b>16 · OPERACIONES · 91–99 min</b><span>Comparar problemas sin calcular</span></button><button class="overview-item" data-index="16"><b>17 · OPERACIONES · 99–108 min</b><span>¿Por qué funciona el algoritmo?</span></button><button class="overview-item" data-index="17"><b>18 · OPERACIONES · 108–115 min</b><span>Razonamiento con error: 402 − 178</span></button><button class="overview-item" data-index="18"><b>19 · RACIONALES · 115–121 min</b><span>Fracciones: más que partes coloreadas</span></button><button class="overview-item" data-index="19"><b>20 · RACIONALES · 121–130 min</b><span>Laboratorio 3 · Magnitud fraccionaria</span></button><button class="overview-item" data-index="20"><b>21 · RACIONALES · 130–136 min</b><span>La trampa de los naturales</span></button><button class="overview-item" data-index="21"><b>22 · RACIONALES · 136–141 min</b><span>Decimales y lectura posicional</span></button><button class="overview-item" data-index="22"><b>23 · RACIONALES · 141–145 min</b><span>Volvemos al punto inicial</span></button><button class="overview-item" data-index="23"><b>24 · CLÍNICA · 145–149 min</b><span>Clínica de casos docentes</span></button><button class="overview-item" data-index="24"><b>25 · CLÍNICA · 149–157 min</b><span>Selecciona un caso y diseña una intervención</span></button><button class="overview-item" data-index="25"><b>26 · CLÍNICA · 157–165 min</b><span>Socialización: defender una decisión</span></button><button class="overview-item" data-index="26"><b>27 · INVESTIGACIÓN · 165–169 min</b><span>Después del encuentro: investigar</span></button><button class="overview-item" data-index="27"><b>28 · INVESTIGACIÓN · 169–173 min</b><span>Banco de artículos verificables</span></button><button class="overview-item" data-index="28"><b>29 · INVESTIGACIÓN · 173–176 min</b><span>La misma actividad, una exigencia más precisa</span></button><button class="overview-item" data-index="29"><b>30 · INVESTIGACIÓN · 176–178 min</b><span>¿Cómo juzgaremos el trabajo?</span></button><button class="overview-item" data-index="30"><b>31 · CIERRE · 178–180 min</b><span>Billete de salida</span></button></div></div></div>
+<script>
+(()=>{'use strict';
+const slides=[...document.querySelectorAll('.slide')],total=slides.length;let current=0;
+const $=(id)=>document.getElementById(id);
+const safe=(n,min,max)=>Math.max(min,Math.min(max,n));
+function show(n,fromHash=false){current=safe(n,0,total-1);slides.forEach((s,i)=>{s.classList.toggle('active',i===current);s.setAttribute('aria-hidden',i===current?'false':'true');if(i===current)s.scrollTop=0});$('counter').textContent=(current+1)+' / '+total;$('progress').style.width=(100*(current+1)/total).toFixed(1)+'%';$('prev').disabled=current===0;$('next').disabled=current===total-1;$('time-code').textContent=slides[current].dataset.minute;if(!fromHash)history.replaceState(null,'','#s-'+String(current+1).padStart(2,'0'))}
+function syncHash(){let m=location.hash.match(/^#s-(\d+)$/);if(m)show(parseInt(m[1],10)-1,true)};
+$('prev').addEventListener('click',()=>show(current-1));$('next').addEventListener('click',()=>show(current+1));
+window.addEventListener('hashchange',syncHash);document.addEventListener('keydown',(e)=>{if(e.target.closest('input,textarea,select')||$('overview').classList.contains('open'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(current-1)}});
+$('notes').addEventListener('click',()=>{document.body.classList.toggle('show-notes');$('notes').setAttribute('aria-pressed',String(document.body.classList.contains('show-notes')))});
+$('fullscreen').addEventListener('click',async()=>{try{if(!document.fullscreenElement){await document.documentElement.requestFullscreen()}else{await document.exitFullscreen()}}catch(e){alert('El navegador no permitió pantalla completa. Puedes usar su modo de presentación.')}});
+$('overview-btn').addEventListener('click',()=>{$('overview').classList.add('open');$('overview').setAttribute('aria-hidden','false')});$('close-overview').addEventListener('click',()=>{$('overview').classList.remove('open');$('overview').setAttribute('aria-hidden','true')});
+$('overview-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{show(Number(b.dataset.index));$('overview').classList.remove('open');$('overview').setAttribute('aria-hidden','true')}));
+$('overview').addEventListener('click',(e)=>{if(e.target===$('overview')){$('overview').classList.remove('open')}});
+// Self-check activities: feedback stays on the user's device (no shared polling backend).
+document.querySelectorAll('.quiz').forEach(q=>{q.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>{q.querySelectorAll('.choice').forEach(x=>{x.classList.remove('correct','incorrect');x.setAttribute('aria-pressed','false')});const ok=b.dataset.correct==='true';b.classList.add(ok?'correct':'incorrect');b.setAttribute('aria-pressed','true');const f=q.querySelector('.quiz-feedback');f.textContent=q.dataset[ok?'correctMsg':'incorrectMsg'];f.className='quiz-feedback '+(ok?'good':'bad')}))});
+// Numerical sets check
+const cmap={'-3':'−3 ∈ ℤ, ℚ y ℝ, pero no ℕ.','0.25':'¼ ∈ ℚ y ℝ; no pertenece a ℤ ni a ℕ.','0':'0 ∈ ℕ, ℤ, ℚ y ℝ bajo la convención adoptada (0 ∈ ℕ).','sqrt':'√2 ∈ ℝ y no pertenece a ℚ, ℤ ni ℕ.'};
+$('class-check').addEventListener('click',()=>{$('class-result').textContent=cmap[$('class-number').value]});
+// Place-value representation
+function drawPos(){const ids=['pos-thousands','pos-hundreds','pos-tens','pos-units'];const a=ids.map(id=>{const el=$(id);const n=safe(Number(el.value)||0,0,9);el.value=n;return n});const v=a[0]*1000+a[1]*100+a[2]*10+a[3];$('pos-output').textContent=v.toLocaleString('es-CO');$('pos-expanded').textContent=`${a[0]} × 1000 + ${a[1]} × 100 + ${a[2]} × 10 + ${a[3]}`}
+['pos-thousands','pos-hundreds','pos-tens','pos-units'].forEach(id=>$(id).addEventListener('input',drawPos));drawPos();
+// Regrouping 402
+let c=4,d=0,u=2;function drawReg(){const t=100*c+10*d+u;$('reg-c').textContent=c;$('reg-d').textContent=d;$('reg-u').textContent=u;$('reg-total').textContent=t;$('reg-alert').textContent=t===402?'· invariante conservado':'· revisa los intercambios';$('reg-alert').style.color=t===402?'#437c67':'#a74444'}
+$('to-tens').addEventListener('click',()=>{if(c>0){c--;d+=10;drawReg()}});$('to-units').addEventListener('click',()=>{if(d>0){d--;u+=10;drawReg()}});$('reg-reset').addEventListener('click',()=>{c=4;d=0;u=2;drawReg()});drawReg();
+$('binary-check').addEventListener('click',()=>{$('binary-result').textContent=Number($('binary-answer').value)===11?'Correcto: 8 + 0 + 2 + 1 = 11.':'Recuerda: 1011₂ = 8 + 0 + 2 + 1.'});
+// Fraction number line, capped at one in the diagram.
+const subDigits=['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];function drawFraction(){let n=+$('frac-num').value,d=+$('frac-den').value,v=n/d;$('frac-num-val').value=n;$('frac-den-val').value=d;$('frac-num-val').textContent=n;$('frac-den-val').textContent=d;$('frac-show').textContent=`${n}/${d}`;$('frac-value').textContent=v.toLocaleString('es-CO',{maximumFractionDigits:4});$('frac-point').setAttribute('cx',55+650*Math.min(1,v));$('frac-msg').textContent=v>1?'La fracción supera 1; el punto queda en el extremo de esta recta 0–1.':v===1?'La fracción representa exactamente 1.':'Ubica la fracción respecto de 0, ½ y 1; conserva la misma unidad.'}
+['frac-num','frac-den'].forEach(id=>$(id).addEventListener('input',drawFraction));drawFraction();
+const prompts=['«Trescientos cuarenta y cinco» → 30045. ¿Comprensión posicional o consigna interpretada de otra manera?','1/4 + 1/5 = 2/9. ¿Generalización de suma de enteros o falta de comprensión de la unidad?','0,27 > 0,3 «porque 27 es mayor que 3». ¿Cómo discriminar estrategias?','8 × 0,5 > 8 «porque multiplicar aumenta». ¿Qué dominio y qué argumentos están detrás?'];let caseIndex=0;
+document.querySelectorAll('.case-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.case-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');caseIndex=+b.dataset.case;$('case-prompt').textContent=prompts[caseIndex]}));
+$('copy-case').addEventListener('click',async()=>{const txt=`Caso: ${prompts[caseIndex]}\n\n${$('case-notes').value}`;try{await navigator.clipboard.writeText(txt);$('case-copy-status').textContent='Análisis copiado.'}catch(err){$('case-notes').select();try{document.execCommand('copy');$('case-copy-status').textContent='Texto seleccionado; cópialo manualmente si es necesario.'}catch(_){$('case-copy-status').textContent='Selecciona y copia el texto de la caja.'}}});
+// No learning data leaves the browser. The teacher can collect responses via the class chat/LMS.
+if(location.hash)syncHash();else show(0,true);
+})();
+</script></body></html>
