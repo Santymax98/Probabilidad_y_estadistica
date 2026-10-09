@@ -25,15 +25,29 @@ jobs:
           CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium)
           BOOK="file://$GITHUB_WORKSPACE/libros/pensamiento-matematico-para-licenciados.html"
           mkdir -p /tmp/book-previews
+          # Hash navigation can be delayed in CLI screenshots, so make an
+          # in-memory preview file that scrolls to the numerical chapter.
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path("libros/pensamiento-matematico-para-licenciados.html").read_text(encoding="utf-8")
+          script = '''<script>
+          window.addEventListener("load", () => setTimeout(() => {
+            document.documentElement.style.scrollBehavior = "auto";
+            document.getElementById("numeric").scrollIntoView({behavior:"instant",block:"start"});
+          }, 1200));
+          </script>'''
+          Path("book-numeric-preview.html").write_text(source.replace("</body>", script + "</body>"), encoding="utf-8")
+          PY
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
             --virtual-time-budget=5000 --window-size=1440,900 \
-            --screenshot=/tmp/book-previews/cover-desktop.png "$BOOK#cover" 2>/tmp/chrome-cover.log
+            --screenshot=/tmp/book-previews/cover-desktop.png "$BOOK" 2>/tmp/chrome-cover.log
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
-            --virtual-time-budget=5000 --window-size=1440,900 \
-            --screenshot=/tmp/book-previews/numeric-desktop.png "$BOOK#numeric" 2>/tmp/chrome-numeric.log
+            --virtual-time-budget=8000 --window-size=1440,900 \
+            --screenshot=/tmp/book-previews/numeric-desktop.png \
+            "file://$GITHUB_WORKSPACE/book-numeric-preview.html" 2>/tmp/chrome-numeric.log
           "$CHROME" --headless --no-sandbox --disable-gpu --hide-scrollbars \
             --virtual-time-budget=5000 --window-size=390,844 \
-            --screenshot=/tmp/book-previews/cover-mobile.png "$BOOK#cover" 2>/tmp/chrome-mobile.log
+            --screenshot=/tmp/book-previews/cover-mobile.png "$BOOK" 2>/tmp/chrome-mobile.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
