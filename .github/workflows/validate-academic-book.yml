@@ -1,0 +1,20 @@
+name: Validate academic book HTML
+on:
+  pull_request:
+    paths:
+      - 'libros/pensamiento-matematico-para-licenciados.html'
+      - 'scripts/validate_academic_book.py'
+      - '.github/workflows/validate-academic-book.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'libros/pensamiento-matematico-para-licenciados.html'
+      - 'scripts/validate_academic_book.py'
+      - '.github/workflows/validate-academic-book.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate HTML structure, chapter order, and anchors
+        run: python3 scripts/validate_academic_book.py
