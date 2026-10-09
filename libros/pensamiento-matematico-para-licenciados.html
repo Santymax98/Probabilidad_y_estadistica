@@ -86,7 +86,8 @@
 #numeric .reading-list{list-style:none;padding:0;margin:20px 0 35px}
 #numeric .reading-list li{border-bottom:1px solid var(--line);padding:15px 0;line-height:1.75;font-size:14px}
 #numeric .reading-list li:first-child{border-top:1px solid var(--line)}
-#numeric a,#preface a,#architecture a,#teacher-knowledge a{overflow-wrap:anywhere;text-underline-offset:3px}
+#numeric a,#preface a,#architecture a,#teacher-knowledge a{color:var(--accent);overflow-wrap:anywhere;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+#numeric a:hover,#preface a:hover,#architecture a:hover,#teacher-knowledge a:hover{text-decoration-color:currentColor}
 #numeric .lab{max-width:100%;overflow-x:auto}
 #numeric .lab .abacus{max-width:100%;overflow-x:auto;justify-content:flex-start}
 #numeric .lab .controls{gap:7px}
