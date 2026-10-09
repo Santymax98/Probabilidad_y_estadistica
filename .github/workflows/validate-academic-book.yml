@@ -48,7 +48,7 @@ jobs:
               ]:
                   page = browser.new_page(viewport=viewport, device_scale_factor=1)
                   page.goto(target, wait_until="load")
-                  page.locator(f"#{target_id}").scroll_into_view_if_needed()
+                  page.evaluate("id => document.getElementById(id).scrollIntoView({behavior: 'instant', block: 'start'})", target_id)
                   page.wait_for_timeout(350)
                   page.screenshot(path=str(output / f"{name}.png"))
                   print(name, "scroll-y:", page.evaluate("window.scrollY"))
