@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pista: ¿Aprendemos? desde el área de matemáticas | MathStats</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+      background: #f7f9fc;
+      color: #2b3645;
+    }
+
+    #header {
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(36, 135, 206, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .header-hidden { transform: translateY(-100%); }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #2487ce;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: 0.3s;
+    }
+
+    .logo:hover { color: #1a6ca3; }
+
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    .navbar li { position: relative; }
+    .navbar > ul > li { padding: 10px 0 10px 18px; }
+
+    .navbar a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      white-space: nowrap;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .navbar a i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+
+    .navbar > ul > li > a:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #2487ce;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar > ul > li > a:hover:before,
+    .navbar > ul > li > a.active:before {
+      visibility: visible;
+      width: 25px;
+    }
+
+    .navbar a:hover,
+    .navbar .active { color: #2487ce; }
+
+    .navbar .dropdown ul {
+      display: block;
+      position: absolute;
+      left: 14px;
+      top: calc(100% + 30px);
+      margin: 0;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      background: #fff;
+      box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
+      transition: 0.3s;
+      border-radius: 10px;
+    }
+
+    .navbar .dropdown ul li { min-width: 220px; }
+    .navbar .dropdown ul a { padding: 10px 20px; font-size: 14px; }
+    .navbar .dropdown:hover > ul { opacity: 1; top: 100%; visibility: visible; }
+
+    .mobile-nav-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+      line-height: 0;
+      transition: 0.5s;
+      color: #444;
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav-toggle { display: block; }
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        bottom: 0;
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        z-index: 9997;
+        overflow-y: auto;
+      }
+      .navbar ul { display: block; margin-top: 60px; }
+      .navbar.active { right: 0; }
+      .navbar .dropdown ul {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding-left: 20px;
+      }
+      .navbar .dropdown:hover > ul { display: block; }
+      .navbar > ul > li > a:before { display: none; }
+    }
+
+    .get-started-btn {
+      background: #2487ce;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(36, 135, 206, 0.3);
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .get-started-btn:hover {
+      background: #1a6ca3;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 135, 206, 0.4);
+    }
+
+    #hero {
+      width: 100%;
+      height: 55vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hero h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,.25);
+    }
+
+    #hero h2 {
+      color: #dfe9ff;
+      margin: 10px 0 0 0;
+      font-size: 20px;
+    }
+
+    .btn-get-started {
+      background: #fff;
+      color: #2487ce;
+      padding: 12px 28px;
+      border-radius: 50px;
+      margin-top: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: .2s;
+    }
+
+    .btn-get-started:hover {
+      background: #eef5ff;
+      transform: scale(1.03);
+      color: #2487ce;
+    }
+
+    .section-pad { padding: 60px 0; }
+
+    .section-title {
+      text-align: center;
+      padding-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #2487ce;
+      position: relative;
+      padding-bottom: 18px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 90px;
+      height: 3px;
+      background: #2487ce;
+      bottom: 0;
+      left: calc(50% - 45px);
+    }
+
+    .section-title p { color: #5f6b7a; }
+
+    .card-soft {
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      transition: .2s;
+    }
+
+    .card-soft:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
+    }
+
+    .sticky-note {
+      border-left: 4px solid #ff9800;
+      background: #fff8e1;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 14px;
+    }
+
+    .box {
+      padding: 26px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: .2s;
+      height: 100%;
+    }
+
+    .box:hover { transform: translateY(-6px); }
+    .box h3 { color: #2487ce; font-weight: 800; margin-bottom: 14px; }
+    .box ul { list-style: none; padding: 0; margin: 0; }
+    .box ul li { padding: 8px 0; }
+    .box ul li i { color: #2fb344; margin-right: 10px; }
+
+    .fixed-bottom-bar {
+      z-index: 999;
+      background: linear-gradient(135deg, #0f2a4f 0%, #1e3c72 100%);
+      color: #fff;
+      padding: 14px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    }
+
+    .progress { background-color: rgba(255,255,255,0.25); height: 18px; border-radius: 10px; }
+    .progress-bar { font-weight: 800; border-radius: 10px; }
+
+    .btn-locked {
+      opacity: .45;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .nav-pills .nav-link {
+      border-radius: 50px;
+      padding: 12px 18px;
+      margin: 4px;
+      transition: .2s;
+    }
+
+    .nav-pills .nav-link.active { background: #2487ce; }
+    .nav-pills .nav-link:disabled { opacity: .35; }
+
+    .mini-card {
+      border: 2px solid #e8eef6;
+      border-radius: 14px;
+      padding: 18px;
+      background: #fff;
+      height: 100%;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      padding: 14px 18px;
+      transition: .2s;
+    }
+
+    .quiz-btn:hover:not(.disabled) {
+      background: #eaf4ff;
+      border-color: #2487ce;
+    }
+
+    .register-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 2px solid #e6eef8;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .register-chip:hover { transform: translateY(-2px); }
+    .register-chip.selected { border-color: #2487ce; background: #eaf4ff; }
+
+    #footer {
+      background: #0f2a4f;
+      color: #fff;
+      padding: 26px 0;
+      margin-top: 60px;
+    }
+
+    #footer a { color: #7ee787; text-decoration: none; }
+
+    .modal-certificate {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 46px;
+      text-align: center;
+    }
+
+    .certificate-badge {
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 56px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+
+    .certificate-content {
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      #hero h1 { font-size: 28px; }
+      #hero h2 { font-size: 16px; }
+      .section-title h2 { font-size: 24px; }
+      .get-started-btn { padding: 8px 16px; font-size: 14px; margin-left: 10px; }
+    }
+
+    @media (max-width: 576px) {
+      .logo { font-size: 22px; }
+      .get-started-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="#" class="logo">MathStats Code Hub</a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="#hero" class="active">Inicio</a></li>
+          <li><a href="#prefiguracion">Prefiguración</a></li>
+          <li><a href="#ruta">Ruta</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Pedagogía - Pistas</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Nuevos lenguajes</a></li>
+              <li><a href="#">Relación del ser humano II</a></li>
+              <li><a href="#configuracion">¿Aprendemos?</a></li>
+            </ul>
+          </li>
+          <li><a href="#reconfiguracion">Reconfiguración</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+      <a href="#configuracion" class="get-started-btn"><i class="bi bi-activity"></i> Ir a la ruta</a>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="container text-center">
+      <h1>¿Aprendemos? desde el área de matemáticas</h1>
+      <h2>Pista interactiva · Aprendizaje significativo, registros y evaluación formativa</h2>
+      <a href="#prefiguracion" class="btn-get-started"><i class="bi bi-rocket-takeoff"></i> Iniciar</a>
+    </div>
+  </section>
+
+  <main id="main">
+
+    <section id="prefiguracion" class="section-pad">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento I. Prefiguración</h2>
+          <p>Activación conceptual breve antes de ingresar a la configuración</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card card-soft p-4">
+              <h5 class="mb-3"><i class="bi bi-bullseye"></i> Competencia y resultado de aprendizaje</h5>
+              <div class="alert alert-info border-0 mb-3">
+                <strong>Competencia:</strong> Comprende la construcción de significados matemáticos en educación básica primaria desde el aprendizaje significativo y la coordinación de registros de representación semiótica, para el diseño de ambientes y secuencias didácticas con evaluación formativa.
+              </div>
+              <div class="alert alert-light border-0 mb-0">
+                <strong>Resultado de aprendizaje:</strong> Describe una micropropuesta didáctica de Matemáticas para básica primaria que articula organizadores previos, registros y conversiones, incluyendo evidencias, criterios e instrumento básico de evaluación formativa.
+              </div>
+
+              <hr class="my-4">
+
+              <h5 class="mb-2"><i class="bi bi-compass"></i> Diagnóstico inicial</h5>
+              <p class="text-muted mb-3">Responde correctamente las tres preguntas para desbloquear la configuración secuencial.</p>
+
+              <div class="mb-4 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 1 · Saber previo</div>
+                <p class="mb-2">¿Cuál opción describe mejor un saber previo en Matemáticas?</p>
+                <div class="d-grid gap-2" id="pref-q1-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','A', this)">A. Solo el contenido memorizado correctamente.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','B', this)">B. Ideas, experiencias, intuiciones y formas iniciales de comprender un concepto.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','C', this)">C. Únicamente el vocabulario técnico de la asignatura.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q1','D', this)">D. El resultado final que obtiene el estudiante.</button>
+                </div>
+                <div id="pref-q1-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="mb-4 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 2 · Organizador previo</div>
+                <p class="mb-2">¿Cuál ejemplo funciona mejor como organizador previo para introducir perímetro?</p>
+                <div class="d-grid gap-2" id="pref-q2-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','A', this)">A. Entregar diez ejercicios sin contexto.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','B', this)">B. Mostrar el contorno de una huerta escolar y preguntar qué significa bordearla completa.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','C', this)">C. Pedir que memoricen la definición formal antes de observar ejemplos.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q2','D', this)">D. Copiar la fórmula tres veces en el cuaderno.</button>
+                </div>
+                <div id="pref-q2-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="mb-3 p-3 border rounded bg-light">
+                <div class="fw-bold mb-1">Pregunta 3 · Comprensión matemática</div>
+                <p class="mb-2">¿Qué evidencia muestra mejor comprensión matemática en esta pista?</p>
+                <div class="d-grid gap-2" id="pref-q3-buttons">
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','A', this)">A. Resolver una cuenta sin explicar ni representar.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','B', this)">B. Obtener rápido la respuesta correcta, aunque no la pueda justificar.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','C', this)">C. Representar, explicar y convertir la idea matemática entre varios registros.</button>
+                  <button class="btn btn-outline-secondary quiz-btn" onclick="answerPref('q3','D', this)">D. Repetir exactamente el ejemplo del docente.</button>
+                </div>
+                <div id="pref-q3-feedback" class="mt-3"></div>
+              </div>
+
+              <div class="sticky-note">
+                <strong><i class="bi bi-lightbulb"></i> Clave:</strong> en esta pista, aprender Matemáticas significa relacionar, representar, convertir y explicar, no solo ejecutar un procedimiento.
+              </div>
+
+              <hr class="my-4">
+
+              <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-pref" onclick="completeLevel('pref', 20)">
+                <i class="bi bi-lock-fill"></i> Responde correctamente para desbloquear la ruta secuencial
+              </button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="box">
+              <h3><i class="bi bi-check2-square"></i> Checklist de entrada</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Distingo saber previo de respuesta correcta.</li>
+                <li><i class="bi bi-check"></i> Comprendo que un organizador previo orienta la comprensión.</li>
+                <li><i class="bi bi-check"></i> Reconozco la importancia de varios registros.</li>
+                <li><i class="bi bi-check"></i> Asumo la evaluación como lectura de evidencias.</li>
+              </ul>
+              <hr>
+              <a href="#configuracion" class="btn btn-primary w-100"><i class="bi bi-lightning-charge"></i> Ir a Configuración</a>
+              <div class="mt-3 alert alert-warning border-0 small">
+                <i class="bi bi-info-circle"></i> Los ejes 1 a 4 siguen una secuencia. El eje 5 es independiente.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ruta" class="section-pad bg-light">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ruta de trabajo</h2>
+          <p>Secuencia metodológica de la pista</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-1-circle"></i> Prefiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Activación de ideas iniciales</li>
+                <li><i class="bi bi-check"></i> Reconocimiento de organizadores previos</li>
+                <li><i class="bi bi-check"></i> Horizonte de comprensión matemática</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box" style="border:3px solid #2487ce;">
+              <h3><i class="bi bi-2-circle"></i> Configuración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Aprendizaje significativo</li>
+                <li><i class="bi bi-check"></i> Organizadores previos</li>
+                <li><i class="bi bi-check"></i> Registros y conversiones</li>
+                <li><i class="bi bi-check"></i> Diseño didáctico y evaluación formativa</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="box">
+              <h3><i class="bi bi-3-circle"></i> Reconfiguración</h3>
+              <ul>
+                <li><i class="bi bi-check"></i> Actividad evaluativa final</li>
+                <li><i class="bi bi-check"></i> Texto narrativo colaborativo</li>
+                <li><i class="bi bi-check"></i> Verificación de entrega y criterios éticos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fixed-bottom fixed-bottom-bar">
+      <div class="container">
+        <div class="row align-items-center g-2">
+          <div class="col-md-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-trophy-fill text-warning me-2 fs-3"></i>
+              <div>
+                <small class="d-block text-uppercase" style="font-size:0.68rem;opacity:.85;">Misión actual</small>
+                <strong id="mission-name" style="font-size:0.95rem;">Prefiguración</strong>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="progress">
+              <div id="game-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:0%;">0%</div>
+            </div>
+          </div>
+          <div class="col-md-2 text-end">
+            <span class="badge bg-warning text-dark fs-6" id="score-badge">0 Pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="configuracion" class="section-pad" style="padding-bottom:150px;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momento II. Configuración</h2>
+          <p>Ruta interactiva con cuatro ejes secuenciales, un bloque independiente por competencias y cierre evaluativo</p>
+        </div>
+
+        <ul class="nav nav-pills nav-fill mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-pref-tab" data-bs-toggle="pill" data-bs-target="#pills-pref" type="button" role="tab">
+              <span id="status-pref"><i class="bi bi-circle"></i></span> 0. Prefiguración
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje1-tab" data-bs-toggle="pill" data-bs-target="#pills-eje1" type="button" role="tab" disabled>
+              <span id="status-eje1"><i class="bi bi-lock-fill"></i></span> 1. Saberes previos
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje2-tab" data-bs-toggle="pill" data-bs-target="#pills-eje2" type="button" role="tab" disabled>
+              <span id="status-eje2"><i class="bi bi-lock-fill"></i></span> 2. Organizadores previos
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje3-tab" data-bs-toggle="pill" data-bs-target="#pills-eje3" type="button" role="tab" disabled>
+              <span id="status-eje3"><i class="bi bi-lock-fill"></i></span> 3. Registros
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje4-tab" data-bs-toggle="pill" data-bs-target="#pills-eje4" type="button" role="tab" disabled>
+              <span id="status-eje4"><i class="bi bi-lock-fill"></i></span> 4. Tratamientos y conversiones
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-eje5-tab" data-bs-toggle="pill" data-bs-target="#pills-eje5" type="button" role="tab">
+              <span id="status-eje5"><i class="bi bi-circle"></i></span> 5. Ejemplos Saber Pro
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-rec-tab" data-bs-toggle="pill" data-bs-target="#pills-rec" type="button" role="tab" disabled>
+              <span id="status-rec"><i class="bi bi-lock-fill"></i></span> 6. Reconfiguración
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+          <div class="tab-pane fade show active" id="pills-pref" role="tabpanel">
+            <div class="card card-soft p-4">
+              <h5><i class="bi bi-flag"></i> Estado de ingreso</h5>
+              <p class="text-muted mb-2">Completa el bloque de prefiguración para desbloquear la secuencia de los ejes 1 a 4. El eje 5 puede trabajarse de forma independiente.</p>
+              <div class="alert alert-info border-0 mb-0">
+                <strong>Propósito:</strong> asegurar que la ruta parta de significación, representación y evaluación formativa, no de repetición mecánica.
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje1" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-diagram-3"></i> Eje 1: Saberes previos y anclaje conceptual</h5>
+                  <p class="text-muted mb-3">Selecciona la pregunta que mejor ayuda a activar saberes previos para enseñar fracciones en primaria.</p>
+
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','A', this)">A. ¿Cuántas páginas tiene el libro de Matemáticas?</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','B', this)">B. ¿En qué situaciones de casa o de la escuela has repartido algo en partes iguales?</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','C', this)">C. Copia la definición de fracción en el cuaderno.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje1','D', this)">D. ¿Cuál es la fracción más difícil del libro?</button>
+                  </div>
+
+                  <div id="feedback-eje1" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Idea clave:</strong> activar saberes previos significa abrir una puerta de sentido, no pedir memoria aislada.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    El docente necesita reconocer las ideas iniciales del estudiante, sus intuiciones y sus experiencias cotidianas
+                    para construir un anclaje conceptual más sólido.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje1" onclick="completeLevel('eje1', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje2" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-kanban"></i> Eje 2: Organizadores previos</h5>
+                  <p class="text-muted mb-3">Identifica cuál recurso cumple mejor la función de organizador previo para introducir perímetro.</p>
+
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','A', this)">A. Una lista extensa de definiciones técnicas sin ejemplos.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','B', this)">B. Una imagen del contorno de la cancha escolar con una pregunta sobre lo que significa rodearla completa.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','C', this)">C. Un examen de diez operaciones descontextualizadas.</button>
+                    <button class="btn btn-outline-secondary quiz-btn" onclick="answerSingle('eje2','D', this)">D. Una tabla vacía sin indicaciones ni propósito.</button>
+                  </div>
+
+                  <div id="feedback-eje2" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-info-circle"></i> Recuerda:</strong> un organizador previo orienta la comprensión del contenido antes de formalizarlo.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    El organizador previo no es una actividad decorativa. Su función es ofrecer una estructura inicial
+                    que permita comprender mejor el nuevo contenido.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje2" onclick="completeLevel('eje2', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje3" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-grid-3x3-gap"></i> Eje 3: Registros de representación</h5>
+                  <p class="text-muted">Selecciona los registros que pueden representar un mismo contenido matemático. Debes marcar exactamente cinco.</p>
+
+                  <div class="d-flex flex-wrap gap-2 mt-3 mb-3" id="register-bank">
+                    <button class="register-chip" onclick="toggleRegister(this, 'verbal')">Verbal</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'numerico')">Numérico</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'grafico')">Gráfico</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'tabular')">Tabular</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'figural')">Figural</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'emocional')">Emocional</button>
+                    <button class="register-chip" onclick="toggleRegister(this, 'decorativo')">Decorativo</button>
+                  </div>
+
+                  <button class="btn btn-outline-primary w-100" onclick="checkRegisters()"><i class="bi bi-check-circle"></i> Verificar selección</button>
+                  <div id="feedback-eje3" class="mt-3"></div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-lightbulb"></i> Pista:</strong> en esta guía se trabajan los registros verbal, numérico, gráfico, tabular y figural.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    Comprender un concepto matemático exige reconocerlo en distintas formas de representación y no confundir
+                    el objeto matemático con una sola de sus apariciones.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje3" onclick="completeLevel('eje3', 20)">
+                    <i class="bi bi-lock-fill"></i> Verifica correctamente para avanzar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje4" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-shuffle"></i> Eje 4: Tratamientos y conversiones</h5>
+                  <p class="text-muted mb-3">Clasifica correctamente las tres acciones. Debes distinguir si corresponden a tratamiento o conversión.</p>
+
+                  <div class="mini-card mb-3">
+                    <div class="fw-bold">Caso 1</div>
+                    <p class="mb-2">Pasar de una tabla de valores a una gráfica cartesiana.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc1','tratamiento', this)">Tratamiento</button>
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc1','conversion', this)">Conversión</button>
+                    </div>
+                    <div id="tc1-feedback" class="mt-2"></div>
+                  </div>
+
+                  <div class="mini-card mb-3">
+                    <div class="fw-bold">Caso 2</div>
+                    <p class="mb-2">Simplificar 4/8 hasta obtener 1/2 dentro del mismo registro numérico.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc2','tratamiento', this)">Tratamiento</button>
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc2','conversion', this)">Conversión</button>
+                    </div>
+                    <div id="tc2-feedback" class="mt-2"></div>
+                  </div>
+
+                  <div class="mini-card">
+                    <div class="fw-bold">Caso 3</div>
+                    <p class="mb-2">Explicar con palabras el significado de una representación figural de fracción.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc3','tratamiento', this)">Tratamiento</button>
+                      <button class="btn btn-outline-secondary" onclick="answerTC('tc3','conversion', this)">Conversión</button>
+                    </div>
+                    <div id="tc3-feedback" class="mt-2"></div>
+                  </div>
+
+                  <div id="feedback-eje4" class="mt-3"></div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4 h-100">
+                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-text"></i> Orientación del eje</h6>
+                  <p class="mb-0">
+                    El tratamiento opera dentro del mismo registro. La conversión exige pasar de un registro a otro
+                    conservando el significado matemático.
+                  </p>
+
+                  <hr>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje4" onclick="completeLevel('eje4', 20)">
+                    <i class="bi bi-lock-fill"></i> Completa correctamente los tres casos
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-eje5" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-12">
+                <div class="card card-soft p-4 h-100">
+                  <h5 class="mb-2"><i class="bi bi-clipboard-data"></i> Eje 5: Diseño y evaluación · Preguntas por competencias</h5>
+                  <p class="text-muted mb-3">
+                    Este bloque es independiente. Responde las tres preguntas a partir de un solo contexto. Cada una corresponde
+                    a una competencia: interpretación y representación, formulación y ejecución, y argumentación.
+                  </p>
+
+                  <div class="alert alert-light border">
+                    <strong>Contexto:</strong> En un seminario de práctica docente, cuatro grupos de licenciatura analizaron una misma
+                    micropropuesta para enseñar fracciones en grado cuarto. En cada grupo participaron <strong>40 estudiantes</strong>.
+                    Al finalizar, los observadores registraron cuatro indicadores:
+                    <br><br>
+                    <strong>O</strong>: estudiantes que interpretaron adecuadamente el organizador previo.<br>
+                    <strong>N</strong>: estudiantes que resolvieron correctamente la tarea en registro numérico.<br>
+                    <strong>G</strong>: estudiantes que representaron correctamente la situación en registro figural.<br>
+                    <strong>C</strong>: estudiantes que realizaron correctamente la conversión del registro figural al verbal.
+                  </div>
+
+                  <div class="table-responsive mb-4">
+                    <table class="table table-sm table-bordered align-middle bg-white">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Grupo</th>
+                          <th>O</th>
+                          <th>N</th>
+                          <th>G</th>
+                          <th>C</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>A</td><td>34</td><td>31</td><td>29</td><td>22</td></tr>
+                        <tr><td>B</td><td>30</td><td>28</td><td>25</td><td>21</td></tr>
+                        <tr><td>C</td><td>36</td><td>33</td><td>32</td><td>23</td></tr>
+                        <tr><td>D</td><td>32</td><td>29</td><td>27</td><td>22</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="mb-4 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 1 · Competencia: Interpretación y representación</div>
+                    <p class="mb-2">
+                      Si se define la <strong>tasa de conversión efectiva</strong> como <code>C/G</code>, ¿qué grupo muestra el mejor desempeño
+                      en la transición del registro figural al verbal?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q1-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','A', this)">A. Grupo A</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','B', this)">B. Grupo B</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','C', this)">C. Grupo C</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q1','D', this)">D. Grupo D</button>
+                    </div>
+                    <div id="eje5-q1-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div class="mb-4 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 2 · Competencia: Formulación y ejecución</div>
+                    <p class="mb-2">
+                      La coordinación académica define un <strong>índice de articulación didáctica</strong>:
+                      <br>
+                      <code>I = 0.30(O/40) + 0.20(N/40) + 0.50(C/G)</code>
+                      <br>
+                      Según este criterio, ¿qué grupo debería priorizarse como referente de mejor articulación entre organizador previo,
+                      resolución y conversión entre registros?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q2-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q2','A', this)">A. Grupo A</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q2','B', this)">B. Grupo B</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q2','C', this)">C. Grupo C</button>
+                      <button class="btn btn-outline-secondary quiz-btn" onclick="answerEje5Quiz('q2','D', this)">D. Grupo D</button>
+                    </div>
+                    <div id="eje5-q2-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div class="mb-3 p-3 border rounded bg-light">
+                    <div class="fw-bold mb-1">Pregunta 3 · Competencia: Argumentación</div>
+                    <p class="mb-2">
+                      Un coordinador afirma: <em>“Como el grupo B tiene la mayor tasa de conversión efectiva, entonces es la mejor
+                      micropropuesta integral para recomendar.”</em>
+                      ¿Cuál opción evalúa mejor la validez de esa afirmación?
+                    </p>
+                    <div class="d-grid gap-2" id="eje5-q3-buttons">
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q3','A', this)">
+                        A. Es válida, porque maximizar C/G garantiza el mejor desempeño global del grupo.
+                      </button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q3','B', this)">
+                        B. Es inválida, porque una recomendación integral debe considerar también O y N, y con ese criterio C supera a B.
+                      </button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q3','C', this)">
+                        C. Es inválida, porque solo debería compararse el número absoluto de conversiones correctas.
+                      </button>
+                      <button class="btn btn-outline-secondary quiz-btn text-start" onclick="answerEje5Quiz('q3','D', this)">
+                        D. Es válida, porque la diferencia en C/G basta para ignorar las demás variables del contexto.
+                      </button>
+                    </div>
+                    <div id="eje5-q3-feedback" class="mt-3"></div>
+                  </div>
+
+                  <div id="feedback-eje5" class="mt-3"></div>
+
+                  <div class="alert alert-info border-0 mt-3">
+                    <strong>Clave pedagógica:</strong> este bloque no evalúa solo cálculo. También valora lectura de indicadores,
+                    integración de información y juicio sobre decisiones didácticas.
+                  </div>
+
+                  <button class="btn btn-success btn-lg w-100 btn-locked" id="btn-complete-eje5" onclick="completeLevel('eje5', 20)">
+                    <i class="bi bi-lock-fill"></i> Responde correctamente las 3 preguntas para registrar este bloque
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-rec" role="tabpanel">
+            <div class="row g-4" id="reconfiguracion">
+              <div class="col-lg-7">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-2"><i class="bi bi-arrow-repeat"></i> Momento III. Reconfiguración</h5>
+                  <p class="text-muted">
+                    En este momento se consolida la actividad evaluativa final de la pista. El producto no es una micropropuesta didáctica,
+                    sino un texto narrativo colaborativo construido a partir de preguntas orientadoras.
+                  </p>
+
+                  <div class="alert alert-info border-0">
+                    <strong>Nombre de la actividad:</strong> Elaboración de un texto narrativo a partir de preguntas orientadoras propuestas por el bloque de áreas.
+                    <br><strong>Modalidad de entrega:</strong> colaborativo, grupos de 5 personas.
+                    <br><strong>Tipo de actividad:</strong> texto escrito de corte narrativo.
+                    <br><strong>Fecha de inicio:</strong> 6 de abril de 2026.
+                    <br><strong>Fecha de cierre:</strong> 26 de abril de 2026.
+                  </div>
+
+                  <h6 class="fw-bold mt-3"><i class="bi bi-bullseye"></i> Propósito de la actividad</h6>
+                  <p>
+                    Fundamentar las bases conceptuales para el diseño de ambientes de aprendizaje significativos e interdisciplinarios,
+                    a partir de la exploración de teorías clásicas y contemporáneas, permitiendo que el estudiante identifique la pertinencia
+                    de los saberes en contextos reales y empiece a configurar su propia postura reflexiva como futuro docente.
+                  </p>
+
+                  <h6 class="fw-bold mt-3"><i class="bi bi-list-check"></i> Descripción de la actividad</h6>
+                  <ol class="mb-3">
+                    <li>Revisión de las preguntas orientadoras propuestas en la guía.</li>
+                    <li>Revisión teórico-conceptual con referencia a mínimo dos pedagogos tratados en clase.</li>
+                    <li>Construcción del texto narrativo dando respuesta al trabajo solicitado a partir de los pedagogos escogidos.</li>
+                    <li>Presentación del documento según la plantilla de trabajo escrito y la rúbrica final de la guía.</li>
+                  </ol>
+
+                  <div class="alert alert-light border">
+                    <strong>Producto a entregar:</strong> un documento escrito, no superior a 5 páginas, en el cual el grupo deberá responder
+                    las 3 preguntas problematizadoras propuestas por cada bloque de áreas.
+                    <br><br>
+                    <strong>Bloque 1:</strong> Ciencias Naturales, Ciencias Sociales y Matemáticas.<br>
+                    <strong>Bloque 2:</strong> Inglés, Ética y Lengua Castellana.<br>
+                    <strong>Bloque 3:</strong> Educación Física, Informática y Educación Artística.
+                  </div>
+
+                  <div class="sticky-note">
+                    <strong><i class="bi bi-upload"></i> Entrega:</strong> esta actividad se debe subir en el apartado de evaluación integral,
+                    actividad final. Además, se debe adjuntar un pantallazo de la plataforma. El mismo documento debe subirse por cada una
+                    de las 9 áreas.
+                  </div>
+
+                  <h6 class="fw-bold mt-4"><i class="bi bi-shield-check"></i> Lineamientos éticos y académicos</h6>
+                  <ul class="mb-0">
+                    <li><strong>Originalidad:</strong> el trabajo debe ser producto del propio esfuerzo del grupo, sin plagio.</li>
+                    <li><strong>Citación normativa:</strong> deben respetarse las normas APA y citar correctamente las fuentes usadas.</li>
+                    <li><strong>Respeto por la autoría:</strong> toda idea o texto de terceros debe reconocerse mediante referencia adecuada.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="card card-soft p-4">
+                  <h5 class="mb-3"><i class="bi bi-file-earmark-check"></i> Control de entrega del grupo</h5>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Nombre del grupo *</label>
+                    <input type="text" class="form-control form-control-lg" id="group-name" placeholder="Ej.: Grupo 3 - Aprendemos">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Integrantes (5 personas) *</label>
+                    <textarea class="form-control" id="group-members" rows="3" placeholder="Escribe los nombres de los cinco integrantes..."></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Pedagogos seleccionados *</label>
+                    <input type="text" class="form-control" id="group-pedagogues" placeholder="Ej.: Ausubel y Duval">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Verificación de la entrega *</label>
+                    <textarea class="form-control" id="group-delivery" rows="3" placeholder="Ej.: Documento narrativo máximo 5 páginas, respuesta a los 3 bloques, cargue por las 9 áreas y pantallazo adjunto."></textarea>
+                  </div>
+
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check-apa">
+                    <label class="form-check-label" for="check-apa">Confirmamos citación en normas APA.</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check-original">
+                    <label class="form-check-label" for="check-original">Confirmamos originalidad del trabajo.</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="check-upload">
+                    <label class="form-check-label" for="check-upload">Confirmamos cargue del mismo documento en las 9 áreas y pantallazo adjunto.</label>
+                  </div>
+
+                  <button class="btn btn-primary btn-lg w-100 btn-locked" id="btn-generate-certificate" onclick="generateCertificate()">
+                    <i class="bi bi-award"></i> Generar constancia de ruta
+                  </button>
+
+                  <div class="text-center mt-2">
+                    <small class="text-muted"><i class="bi bi-info-circle"></i> Se activa al completar el 100% de la ruta.</small>
+                  </div>
+
+                  <hr class="my-3">
+
+                  <div class="alert alert-success border-0 mb-0">
+                    <i class="bi bi-camera-fill"></i> Al finalizar, toma un pantallazo de la constancia y adjúntalo como soporte de seguimiento.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-success btn-lg w-100 mt-4" onclick="finalizeRoute()">
+              <i class="bi bi-check2-circle"></i> Finalizar ruta
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0">
+        <div class="modal-certificate position-relative">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="certificate-badge"><i class="bi bi-trophy-fill"></i></div>
+
+          <h2 class="mb-2">¡Felicitaciones!</h2>
+          <h3 class="mb-3" id="cert-student-name" style="color:#ffd700;">Grupo</h3>
+          <p class="lead mb-3">Has completado exitosamente el <strong>100%</strong> de la ruta interactiva<br>“¿Aprendemos? desde el área de matemáticas”.</p>
+
+          <div class="certificate-content">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-star-fill text-warning"></i> Puntaje:</strong>
+                <div class="fs-3" id="cert-score">0 pts</div>
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong><i class="bi bi-check-circle-fill text-success"></i> Estaciones:</strong>
+                <div class="fs-3">Completadas</div>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.25)">
+
+            <p class="mb-2"><strong>Grupo:</strong> <span id="cert-topic">-</span></p>
+            <p class="mb-2"><strong>Pedagogos de referencia:</strong> <span id="cert-organizer">-</span></p>
+            <p class="mb-2"><strong>Integrantes:</strong> <span id="cert-registers">-</span></p>
+            <p class="mb-0"><strong>Verificación de entrega:</strong> <span id="cert-evidence">-</span></p>
+          </div>
+
+          <div class="mt-4">
+            <p class="mb-3"><i class="bi bi-camera-fill"></i> Toma un pantallazo de esta constancia y adjúntalo como evidencia de seguimiento.</p>
+            <button class="btn btn-light btn-lg px-5" onclick="window.print()">
+              <i class="bi bi-printer"></i> Imprimir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="container text-center">
+      <div class="copyright">&copy; 2026 <strong><span>MathStats Code Hub</span></strong> - Recursos interactivos</div>
+      <div class="credits mt-2">Página de apoyo pedagógico para la pista ¿Aprendemos?</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let score = 0;
+    let progress = 0;
+
+    const stepOrder = ['pref','eje1','eje2','eje3','eje4','eje5'];
+    const tasksCompleted = { pref:false, eje1:false, eje2:false, eje3:false, eje4:false, eje5:false, rec:false };
+    const correct = { pref:false, eje1:false, eje2:false, eje3:false, eje4:false, eje5:false };
+
+    const prefData = {
+      q1: { correct: 'B', ok: 'Correcto. El saber previo incluye intuiciones, experiencias y comprensiones iniciales.', no: 'Aún no. El saber previo no se limita a lo memorizado correctamente.' },
+      q2: { correct: 'B', ok: 'Correcto. Ese recurso anticipa sentido y organiza la comprensión del nuevo contenido.', no: 'Aún no. Un organizador previo no es una lista mecánica de ejercicios o definiciones.' },
+      q3: { correct: 'C', ok: 'Correcto. En esta pista la comprensión implica representar, convertir y explicar.', no: 'Aún no. Resolver sin justificar no basta para evidenciar comprensión profunda.' }
+    };
+
+    const singleAnswers = {
+      eje1: 'B',
+      eje2: 'B'
+    };
+
+    const tcAnswers = { tc1:'conversion', tc2:'tratamiento', tc3:'conversion' };
+    const tcState = { tc1:false, tc2:false, tc3:false };
+    const registerSelection = new Set();
+
+    const eje5QuizState = { q1:false, q2:false, q3:false };
+
+    const eje5QuizData = {
+      q1: {
+        correct: 'B',
+        ok: 'Correcto. El grupo B tiene la mayor tasa de conversión efectiva.',
+        no: 'Incorrecto. Debes comparar la razón C/G en cada grupo, no solo los valores absolutos.',
+        detail: `
+          <strong>Respuesta correcta: B.</strong><br>
+          Se calcula <code>C/G</code> en cada grupo:<br>
+          A: 22/29 ≈ 0.759<br>
+          B: 21/25 = 0.840<br>
+          C: 23/32 ≈ 0.719<br>
+          D: 22/27 ≈ 0.815<br>
+          La mayor tasa corresponde al <strong>grupo B</strong>.
+        `
+      },
+      q2: {
+        correct: 'C',
+        ok: 'Correcto. El grupo C obtiene el mayor índice de articulación didáctica.',
+        no: 'Incorrecto. Debes combinar proporciones sobre el total y la razón C/G según la fórmula dada.',
+        detail: `
+          <strong>Respuesta correcta: C.</strong><br>
+          Se evalúa <code>I = 0.30(O/40) + 0.20(N/40) + 0.50(C/G)</code>.<br>
+          A ≈ 0.789<br>
+          B ≈ 0.785<br>
+          C ≈ 0.794<br>
+          D ≈ 0.792<br>
+          El mayor valor lo obtiene el <strong>grupo C</strong>.
+        `
+      },
+      q3: {
+        correct: 'B',
+        ok: 'Correcto. La afirmación no es válida como juicio integral.',
+        no: 'Incorrecto. La mejor evaluación debe considerar que un criterio integral no puede depender de un solo indicador.',
+        detail: `
+          <strong>Respuesta correcta: B.</strong><br>
+          Aunque el grupo B tiene la mayor tasa <code>C/G</code>, una recomendación <strong>integral</strong> también debe considerar
+          la interpretación del organizador previo y el desempeño en registro numérico.<br>
+          Bajo ese criterio, el grupo <strong>C</strong> supera a B. Por eso, la afirmación del coordinador es <strong>inválida</strong>.
+        `
+      }
+    };
+
+    function setMissionName(name) {
+      document.getElementById('mission-name').innerText = name;
+    }
+
+    function updateProgressBar() {
+      document.getElementById('game-progress').style.width = progress + '%';
+      document.getElementById('game-progress').innerText = progress + '%';
+      document.getElementById('score-badge').innerText = score + ' Pts';
+
+      if (progress === 100) {
+        document.getElementById('btn-generate-certificate').classList.remove('btn-locked');
+      }
+    }
+
+    function computeProgress() {
+      const completed = stepOrder.filter(k => tasksCompleted[k]).length;
+      progress = Math.round((completed / stepOrder.length) * 100);
+      updateProgressBar();
+    }
+
+    function updateTabAccess() {
+      const eje1Tab = document.getElementById('pills-eje1-tab');
+      const eje2Tab = document.getElementById('pills-eje2-tab');
+      const eje3Tab = document.getElementById('pills-eje3-tab');
+      const eje4Tab = document.getElementById('pills-eje4-tab');
+      const recTab  = document.getElementById('pills-rec-tab');
+
+      if (tasksCompleted.pref) {
+        eje1Tab.disabled = false;
+        if (!tasksCompleted.eje1) document.getElementById('status-eje1').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+      if (tasksCompleted.eje1) {
+        eje2Tab.disabled = false;
+        if (!tasksCompleted.eje2) document.getElementById('status-eje2').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+      if (tasksCompleted.eje2) {
+        eje3Tab.disabled = false;
+        if (!tasksCompleted.eje3) document.getElementById('status-eje3').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+      if (tasksCompleted.eje3) {
+        eje4Tab.disabled = false;
+        if (!tasksCompleted.eje4) document.getElementById('status-eje4').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+
+      const allDone = stepOrder.every(k => tasksCompleted[k]);
+      if (allDone) {
+        recTab.disabled = false;
+        if (!tasksCompleted.rec) document.getElementById('status-rec').innerHTML = '<i class="bi bi-circle"></i>';
+      }
+    }
+
+    function completeLevel(levelKey, points) {
+      if (tasksCompleted[levelKey]) return;
+      if (!correct[levelKey]) {
+        alert('⚠️ Debes completar correctamente el reto antes de registrar este bloque.');
+        return;
+      }
+
+      tasksCompleted[levelKey] = true;
+      score += points;
+      computeProgress();
+      document.getElementById(`status-${levelKey}`).innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+      updateTabAccess();
+
+      const nextMap = {
+        pref: 'pills-eje1-tab',
+        eje1: 'pills-eje2-tab',
+        eje2: 'pills-eje3-tab',
+        eje3: 'pills-eje4-tab',
+        eje4: null,
+        eje5: null
+      };
+
+      const nextTabId = nextMap[levelKey];
+      if (nextTabId) {
+        const nextTab = document.getElementById(nextTabId);
+        if (nextTab) nextTab.click();
+      }
+
+      if (stepOrder.every(k => tasksCompleted[k])) {
+        const recTab = document.getElementById('pills-rec-tab');
+        if (recTab && recTab.disabled === false) {
+          setTimeout(() => recTab.click(), 500);
+        }
+      }
+    }
+
+    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(tab => {
+      tab.addEventListener('shown.bs.tab', function (event) {
+        const text = event.target.innerText.replace(/^.*?\d\.\s*/, '').trim();
+        setMissionName(text || 'Ruta');
+      });
+    });
+
+    const prefState = { q1:false, q2:false, q3:false };
+
+    function answerPref(qKey, option, btn) {
+      const info = prefData[qKey];
+      const group = document.getElementById(`pref-${qKey}-buttons`);
+      const feedback = document.getElementById(`pref-${qKey}-feedback`);
+
+      if (group) {
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+          b.classList.add('btn-outline-secondary');
+        });
+
+        group.querySelectorAll('button').forEach(b => {
+          if (b.getAttribute('onclick').includes(`'${info.correct}'`)) {
+            b.classList.remove('btn-outline-secondary');
+            b.classList.add('btn-outline-success');
+          }
+        });
+      }
+
+      const isCorrect = option === info.correct;
+      prefState[qKey] = isCorrect;
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      feedback.innerHTML = `<div class="alert ${isCorrect ? 'alert-success' : 'alert-warning'} border-0 mb-0">${isCorrect ? info.ok : info.no}</div>`;
+
+      if (prefState.q1 && prefState.q2 && prefState.q3) {
+        correct.pref = true;
+        const completeBtn = document.getElementById('btn-complete-pref');
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Prefiguración';
+      } else {
+        correct.pref = false;
+      }
+    }
+
+    function answerSingle(levelKey, option, btn) {
+      const correctOption = singleAnswers[levelKey];
+      const feedback = document.getElementById(`feedback-${levelKey}`);
+      const buttonGroup = btn.parentElement.querySelectorAll('button');
+
+      buttonGroup.forEach(b => {
+        b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+        b.classList.add('btn-outline-secondary');
+      });
+
+      buttonGroup.forEach(b => {
+        if (b.getAttribute('onclick').includes(`'${correctOption}'`)) {
+          b.classList.remove('btn-outline-secondary');
+          b.classList.add('btn-outline-success');
+        }
+      });
+
+      const isCorrect = option === correctOption;
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      if (isCorrect) {
+        correct[levelKey] = true;
+        feedback.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto. Has seleccionado la mediación pedagógica más pertinente.</div>`;
+        const completeBtn = document.getElementById(`btn-complete-${levelKey}`);
+        completeBtn.classList.remove('btn-locked');
+        completeBtn.innerHTML = '<i class="bi bi-check-circle"></i> Completar y avanzar';
+      } else {
+        correct[levelKey] = false;
+        feedback.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Intenta de nuevo. Busca la opción que favorece comprensión y sentido pedagógico.</div>`;
+      }
+    }
+
+    function toggleRegister(btn, value) {
+      if (registerSelection.has(value)) {
+        registerSelection.delete(value);
+        btn.classList.remove('selected');
+      } else {
+        registerSelection.add(value);
+        btn.classList.add('selected');
+      }
+    }
+
+    function checkRegisters() {
+      const needed = ['verbal','numerico','grafico','tabular','figural'];
+      const feedback = document.getElementById('feedback-eje3');
+      const isCorrect = needed.every(v => registerSelection.has(v)) && registerSelection.size === needed.length;
+
+      if (isCorrect) {
+        correct.eje3 = true;
+        feedback.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto. Has identificado los cinco registros trabajados en la pista.</div>`;
+        const btn = document.getElementById('btn-complete-eje3');
+        btn.classList.remove('btn-locked');
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 3';
+      } else {
+        correct.eje3 = false;
+        feedback.innerHTML = `<div class="alert alert-danger border-0"><i class="bi bi-x-circle-fill"></i> Aún no. Debes seleccionar exactamente verbal, numérico, gráfico, tabular y figural.</div>`;
+      }
+    }
+
+    function answerTC(caseKey, option, btn) {
+      const group = btn.parentElement.querySelectorAll('button');
+      group.forEach(b => {
+        b.classList.remove('btn-success', 'btn-danger');
+        b.classList.add('btn-outline-secondary');
+      });
+
+      const isCorrect = option === tcAnswers[caseKey];
+      tcState[caseKey] = isCorrect;
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      document.getElementById(`${caseKey}-feedback`).innerHTML = `<div class="small mt-2 ${isCorrect ? 'text-success' : 'text-danger'}">${isCorrect ? 'Correcto.' : 'Revisa la distinción entre operación dentro del mismo registro y paso entre registros.'}</div>`;
+
+      const all = tcState.tc1 && tcState.tc2 && tcState.tc3;
+      const feedback = document.getElementById('feedback-eje4');
+
+      if (all) {
+        correct.eje4 = true;
+        feedback.innerHTML = `<div class="alert alert-success border-0"><i class="bi bi-check-circle-fill"></i> Correcto. Has distinguido adecuadamente tratamientos y conversiones.</div>`;
+        const btnComplete = document.getElementById('btn-complete-eje4');
+        btnComplete.classList.remove('btn-locked');
+        btnComplete.innerHTML = '<i class="bi bi-check-circle"></i> Completar Eje 4';
+      } else {
+        correct.eje4 = false;
+      }
+    }
+
+    function answerEje5Quiz(qKey, option, btn) {
+      const info = eje5QuizData[qKey];
+      const group = document.getElementById(`eje5-${qKey}-buttons`);
+      const feedback = document.getElementById(`eje5-${qKey}-feedback`);
+
+      if (group) {
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.remove('btn-success', 'btn-danger', 'btn-outline-success');
+          b.classList.add('btn-outline-secondary');
+        });
+
+        group.querySelectorAll('button').forEach(b => {
+          if (b.getAttribute('onclick').includes(`'${info.correct}'`)) {
+            b.classList.remove('btn-outline-secondary');
+            b.classList.add('btn-outline-success');
+          }
+        });
+      }
+
+      const isCorrect = option === info.correct;
+      eje5QuizState[qKey] = isCorrect;
+
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+
+      feedback.innerHTML = `
+        <div class="alert ${isCorrect ? 'alert-success' : 'alert-warning'} border-0 mb-0">
+          <div class="fw-bold mb-1">${isCorrect ? info.ok : info.no}</div>
+          <div class="small">${info.detail}</div>
+        </div>
+      `;
+
+      const allCorrect = eje5QuizState.q1 && eje5QuizState.q2 && eje5QuizState.q3;
+      const finalFeedback = document.getElementById('feedback-eje5');
+
+      if (allCorrect) {
+        correct.eje5 = true;
+        finalFeedback.innerHTML = `
+          <div class="alert alert-success border-0">
+            <i class="bi bi-check-circle-fill"></i>
+            Correcto. Has resuelto las tres preguntas del bloque por competencias.
+          </div>
+        `;
+        const btnComplete = document.getElementById('btn-complete-eje5');
+        btnComplete.classList.remove('btn-locked');
+        btnComplete.innerHTML = '<i class="bi bi-check-circle"></i> Registrar Eje 5';
+      } else {
+        correct.eje5 = false;
+      }
+    }
+
+    function finalizeRoute() {
+      if (!stepOrder.every(k => tasksCompleted[k])) {
+        alert('⚠️ Debes completar todos los bloques antes de finalizar la ruta.');
+        return;
+      }
+
+      tasksCompleted.rec = true;
+      document.getElementById('status-rec').innerHTML = '<i class="bi bi-check-circle-fill text-success"></i>';
+      alert('✅ Ruta finalizada. Ya puedes generar la constancia del grupo.');
+    }
+
+    function generateCertificate() {
+      const name = document.getElementById('group-name').value.trim();
+      const members = document.getElementById('group-members').value.trim();
+      const pedagogues = document.getElementById('group-pedagogues').value.trim();
+      const delivery = document.getElementById('group-delivery').value.trim();
+
+      const apa = document.getElementById('check-apa').checked;
+      const original = document.getElementById('check-original').checked;
+      const upload = document.getElementById('check-upload').checked;
+
+      if (progress < 100) {
+        alert('⚠️ Debes completar el 100% de la ruta antes de generar la constancia.');
+        return;
+      }
+
+      if (!name || !members || !pedagogues || !delivery) {
+        alert('⚠️ Completa todos los campos obligatorios antes de generar la constancia.');
+        return;
+      }
+
+      if (!apa || !original || !upload) {
+        alert('⚠️ Debes marcar todas las confirmaciones académicas y de entrega.');
+        return;
+      }
+
+      document.getElementById('cert-student-name').innerText = name;
+      document.getElementById('cert-score').innerText = score + ' pts';
+      document.getElementById('cert-topic').innerText = name;
+      document.getElementById('cert-organizer').innerText = pedagogues;
+      document.getElementById('cert-registers').innerText = members;
+      document.getElementById('cert-evidence').innerText = delivery;
+
+      const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+      modal.show();
+    }
+
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const scrollThreshold = 10;
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > header.offsetHeight) {
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navbar = document.querySelector('#navbar');
+
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', function() {
+        navbar.classList.toggle('active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+    }
+
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('active')) {
+          navbar.classList.remove('active');
+          mobileNavToggle.classList.add('bi-list');
+          mobileNavToggle.classList.remove('bi-x');
+        }
+      });
+    });
+
+    updateProgressBar();
+    updateTabAccess();
+  </script>
+</body>
+</html>
